@@ -7,6 +7,7 @@ import { FrontendFooterComponent } from './layouts/frontend-footer/frontend-foot
 
 import { FrontendHomeComponent } from './component/frontend-home/frontend-home.component';
 import { LoginComponent } from './component/login/login.component';
+import { ProfileUserComponent } from './component/profile-user/profile-user.component';
 
 
 
@@ -21,6 +22,7 @@ import { LoginComponent } from './component/login/login.component';
     FrontendFooterComponent,
 
     LoginComponent,
+     ProfileUserComponent,
  
   ],
   imports: [
