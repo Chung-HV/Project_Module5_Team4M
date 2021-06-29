@@ -4,17 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./frontend/frontend-routing.module').then(m => m.FrontendRoutingModule)
-      },
-      // {
-      //   path: 'admin',
-      //   loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule)
-      // }
-    ]
+    redirectTo: 'frontend',
+    pathMatch: 'full',
+  },
+
+  {
+    path: 'frontend',
+    loadChildren: () =>
+      import('./frontend/frontend.module').then((m) => m.FrontendModule),
   }
+
 ];
 
 @NgModule({
