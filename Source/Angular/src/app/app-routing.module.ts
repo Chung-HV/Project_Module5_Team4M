@@ -7,7 +7,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./frontend/frontend.module').then(m => m.FrontendModule)
+        loadChildren: () => import('./frontend/frontend-routing.module').then(m => m.FrontendRoutingModule)
       },
       // {
       //   path: 'admin',
