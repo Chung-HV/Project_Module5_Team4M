@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FrontendHomeComponent } from './home/component/frontend-home/frontend-home.component';
 import { FrontendRoutingModule } from './frontend-routing.module';
+
 import { FrontendHeaderComponent } from './layouts/frontend-header/frontend-header.component';
 import { FrontendFooterComponent } from './layouts/frontend-footer/frontend-footer.component';
+
+import { FrontendHomeComponent } from './component/frontend-home/frontend-home.component';
+import { LoginComponent } from './component/login/login.component';
+
+
 
 
 
@@ -11,8 +16,12 @@ import { FrontendFooterComponent } from './layouts/frontend-footer/frontend-foot
 @NgModule({
   declarations: [
     FrontendHomeComponent,
+
     FrontendHeaderComponent,
-    FrontendFooterComponent
+    FrontendFooterComponent,
+
+    LoginComponent,
+ 
   ],
   imports: [
     CommonModule,
