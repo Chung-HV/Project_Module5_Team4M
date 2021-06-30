@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile-user',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileUserComponent implements OnInit {
 
-  constructor() { }
+  id!:number;
+  user!: User
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
   }
+  updateProfileUser() {
+    this.userService.updateUserProfile(this.id, this.user)
+      .subscribe(data => {
+        console.log(data);
+        this.user = new User();
+        // this.gotoList();
+      }, error => console.log(error));
+  }
 
+  onSubmit(){
+    this.updateProfileUser();
+  }
 }
