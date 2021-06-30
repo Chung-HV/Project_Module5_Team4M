@@ -2207,3 +2207,15 @@
 		width: 100%
 	}
 }
+.fieldGroup textarea
+ {
+
+  padding: 16px 17px;
+	display: block;
+	width: 100%;
+	height: 120px;
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e6eaee;
+  font-family: Poppins;
+ }
