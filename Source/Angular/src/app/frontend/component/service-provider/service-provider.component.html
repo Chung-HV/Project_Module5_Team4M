@@ -1,8 +1,8 @@
 <div class="footer-bottom">
-    <div class="row" *ngFor="let service of services">
-        <div class="col-sm-3">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let service of services">
             <label class="check_box">
-                <input type="checkbox" value="{{service.id}}">
+                <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;">
                 <span>{{service.name}}</span>
             </label>
         </div>

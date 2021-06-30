@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\Auth\AuthController;
 
 /*
@@ -31,4 +32,5 @@ Route::prefix('admin')->group(function(){
     });
 });
 
-Route::get('user/service',[ServiceController::class, 'getAll']);
+Route::get('provider/service',[ServiceController::class, 'getAll']);
+Route::get('provider/{provider_id}/service',[ProviderController::class, 'getProvidingService']);
