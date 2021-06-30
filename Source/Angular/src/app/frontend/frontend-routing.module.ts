@@ -10,12 +10,15 @@ import { RegisterComponent } from './component/register/register.component';
 
 
 const routes: Routes = [
-  { path: '', component: ProfileUserComponent,
+  { path: '', component: FrontendHomeComponent,
    children: [
      {path:'',component:DashboardComponent},
     { path: 'login', component: LoginComponent},
 
-    {path:'register',component:RegisterComponent}
+    {path:'register',component:RegisterComponent},
+    {path:'user/profile',component:ProfileUserComponent},
+
+
 
    ],
   }

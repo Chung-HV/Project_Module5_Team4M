@@ -17,8 +17,7 @@ export class AppComponent {
     'assets/frontend/static/css/20.94581a99.chunk.css',
     'assets/frontend/static/css/15.0142c229.chunk.css',
     'assets/frontend/static/css/header.css',
-
-    'assets/frontend/static/css/10.dd0ef9d4.chunk.css'
+    'assets/frontend/static/css/10.dd0ef9d4.chunk.css',
 
 
   ];
