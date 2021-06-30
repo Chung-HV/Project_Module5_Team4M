@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { Service } from '../model/service';
+import { Service } from '../models/service';
 
 const API_URL = `${environment.base_Url}`
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Service } from '../../model/service';
+import { Service } from '../../models/service';
 import { ServiceProviderService } from '../../services/service-provider.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class ServiceProviderComponent implements OnInit {
   constructor(private serviceProvider: ServiceProviderService, private route: ActivatedRoute) {
     this.provider_id = this.route.snapshot.paramMap.get('id');
     this.getAll();
-    this.getProvidingService(this.provider_id);   
+    this.getProvidingService(this.provider_id);
   }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class ServiceProviderComponent implements OnInit {
         this.providingServices = providingServices,
         console.log(this.providingServices);
       });
-    
+
   }
 }
 
