@@ -5,7 +5,11 @@ import { FrontendHomeComponent } from './component/frontend-home/frontend-home.c
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
+<<<<<<< HEAD
 import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
+=======
+import { ReactiveFormsModule } from '@angular/forms';
+>>>>>>> feature
 
 
 
@@ -20,7 +24,8 @@ import { ServiceProviderComponent } from './component/service-provider/service-p
   ],
   imports: [
     CommonModule,
-    FrontendRoutingModule
+    FrontendRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class FrontendModule { }
