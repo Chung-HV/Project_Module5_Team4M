@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\AuthController;
 
 /*
@@ -29,3 +30,5 @@ Route::prefix('admin')->group(function(){
         Route::get('/profile', [AuthController::class, 'profile']);
     });
 });
+
+Route::get('user/service',[ServiceController::class, 'getAll']);

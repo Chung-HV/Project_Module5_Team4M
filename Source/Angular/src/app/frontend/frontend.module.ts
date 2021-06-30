@@ -5,6 +5,7 @@ import { FrontendHomeComponent } from './component/frontend-home/frontend-home.c
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
+import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
 
 
 
@@ -14,7 +15,8 @@ import { RegisterComponent } from './component/register/register.component';
     FrontendHomeComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ServiceProviderComponent
   ],
   imports: [
     CommonModule,
