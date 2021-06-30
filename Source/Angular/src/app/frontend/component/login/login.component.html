@@ -6,10 +6,10 @@
           class="" alt="PD"></div>
       <div class="col-md-5  col-xs-12 form-content">
         <div class="content-main">
-          <form>
-            <div class="fieldGroup "><input type="text" name="username" placeholder="Tên đăng nhập hoặc email"
+          <form method="post" class="colorlib-form" [formGroup] = "loginForm" (ngSubmit) = "onSubmit()">
+            <div class="fieldGroup "><input type="text" formControlName="email" placeholder="Nhập email"
                 maxlength="5000" autocomplete="false" value=""></div>
-            <div class="fieldGroup "><input type="password" name="password" placeholder="Mật khẩu" maxlength="5000"
+            <div class="fieldGroup "><input type="password" formControlName="password" placeholder="Mật khẩu" maxlength="5000"
                 autocomplete="false" value=""></div>
             <button type="submit"><span>Đăng nhập</span></button>
           </form>
