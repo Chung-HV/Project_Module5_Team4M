@@ -10,6 +10,7 @@ import { LoginComponent } from './component/login/login.component';
 
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -33,7 +34,8 @@ import { RegisterComponent } from './component/register/register.component';
   ],
   imports: [
     CommonModule,
-    FrontendRoutingModule
+    FrontendRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class FrontendModule { }
