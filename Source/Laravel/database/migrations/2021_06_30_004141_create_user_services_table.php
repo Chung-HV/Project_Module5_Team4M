@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUserInfosTable extends Migration
+class CreateUserServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class UpdateUserInfosTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_infos', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('name');
+        Schema::create('user_services', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +30,6 @@ class UpdateUserInfosTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_infos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('user_services');
     }
 }
