@@ -7,7 +7,6 @@ const routes: Routes = [
     redirectTo: 'frontend',
     pathMatch: 'full',
   },
-
   {
     path: 'frontend',
     loadChildren: () =>

@@ -10,6 +10,8 @@ import { LoginComponent } from './component/login/login.component';
 import { ProfileUserComponent } from './component/profile-user/profile-user.component';
 import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/frontend-user-header.component';
 
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { RegisterComponent } from './component/register/register.component';
 
 
 
@@ -19,13 +21,21 @@ import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/fron
   declarations: [
     FrontendHomeComponent,
 
+
     FrontendHeaderComponent,
     FrontendFooterComponent,
 
     LoginComponent,
+
      ProfileUserComponent,
      FrontendUserHeaderComponent,
- 
+
+
+
+    LoginComponent,
+    DashboardComponent,
+    RegisterComponent
+
   ],
   imports: [
     CommonModule,

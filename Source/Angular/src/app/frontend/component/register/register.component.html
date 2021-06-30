@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="container">
+     <div class="row login-page">
+        <div class="col-md-7 hidden-sm hidden-xs image-login"><img src="assets/frontend/favicons/banner_login.jpg" class="" alt="PD"></div>
+        <div class="col-md-5  col-xs-12 form-content">
+           <div class="content-main">
+              <form>
+                 <div class="fieldGroup "><input type="text" name="username" placeholder="Tên đăng nhập" maxlength="5000" autocomplete="false" value=""></div>
+                 <div class="fieldGroup "><input type="password" name="password" placeholder="Mật khẩu" maxlength="5000" autocomplete="false" value=""></div>
+                 <div class="fieldGroup "><input type="password" name="confirmPassword" placeholder="Nhập lại mật khẩu" maxlength="5000" autocomplete="false" value=""></div>
+
+                 <button type="submit"><span>Tạo tài khoản</span></button>
+              </form>
+              <a [routerLink]="['/frontend/login']">
+              <button style="background-color: gray;"><span>Đăng nhập</span></button>
+            </a>
+              <p class="forgot_password"><a href="login.html"><span>Quên mật khẩu?</span></a></p>
+           </div>
+        </div>
+     </div>
+  </div>
