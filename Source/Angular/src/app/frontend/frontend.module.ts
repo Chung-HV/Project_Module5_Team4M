@@ -12,6 +12,7 @@ import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/fron
 
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
+import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -35,7 +36,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+
+    RegisterComponent,
+    ServiceProviderComponent
 
   ],
   imports: [
