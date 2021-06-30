@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\frontend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
+Route::prefix('dashboard')->group(function(){
+    Route::get('',[DashboardController::class,'showServiceUser']);
+    Route::get('user_vip',[DashboardController::class,'showVipUser']);
+    Route::get('user_new',[DashboardController::class,'showNewUser']);
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
