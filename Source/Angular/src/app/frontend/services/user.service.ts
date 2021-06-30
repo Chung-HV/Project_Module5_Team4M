@@ -39,4 +39,7 @@ export class UserService {
     });
     return this.http.get(`${environment.base_Url}/users/profile`);
    }
+   updateUserProfile (id: number,user:User): Observable<any> {
+     return this.http.post(`${environment.base_Url}users/update/${id}`,user);
+   }
 }

@@ -37,28 +37,29 @@
                     style="margin-right: 5px;"></i><span>Làm mới</span></button>
            </section>
            <div class="row flex-card">
-              <div class="player-information-card-wrap">
+
+              <div class="player-information-card-wrap" *ngFor="let user of vip_user">
                  <div class="player-avatar">
                     <img
-                       src="https://playerduo.com/api/upload-service/images/de8b805a-450d-4e22-a7fa-7e02c604109b__a1bf6790-860b-11eb-9b27-8d15f8136226__player_avatar.jpg"
+                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxZ7cdHVKGvs3elopp8Om8nYqkGRGYIwsYQ&usqp=CAU"
                        class="" alt="PD" id="avt-img-reponsiver">
-                    <div class="player-price">60,000 đ/h</div>
+                    <div class="player-price">{{user.price|number}} đ/h</div>
                     <div class="hidden-information">
-                       <p><span>1 cô bé mới lớn thú zị, nói không với NULO 💟<br></span></p>
-                       <div class="rent"><a href="https://playerduo.com/caodaynee" target="_blank"
+                       <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
+                       <div class="rent"><a href="https://playerduo.com/nangmuathu" target="_blank"
                              rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
                     </div>
                  </div>
                  <div class="player-information">
                     <h3 class="player-name">
-                       <a href="/caodaynee">Cáooo</a>
+                       <a href="/nangmuathu">{{user.name}}</a>
                        <div class="player-status ready"> </div>
                     </h3>
-                    <p class="player-title">Cục tính vãi l</p>
+                    <p class="player-title">123</p>
                     <div class="category">
                        <div class="div--flex"><img
-                             src="https://files.playerduo.com/production/static-files/game-category/lienminh.png"
-                             class="" alt="category logo"><span>Liên Minh Huyền Thoại</span></div>
+                             src="https://files.playerduo.com/production/static-files/game-category/other.png"
+                             class="" alt="category logo"><span>Liên minh Huyền thoại</span></div>
                     </div>
                  </div>
               </div>
@@ -71,12 +72,12 @@
                     style="margin-right: 5px;"></i><span>Làm mới</span></button>
            </section>
            <div class="row flex-card">
-              <div class="player-information-card-wrap">
+              <div class="player-information-card-wrap" *ngFor="let user of users">
                  <div class="player-avatar">
                     <img
-                       src="https://playerduo.com/api/upload-service/images/858edb2f-7209-4a97-b394-f08b574bfb24__e2775940-a36c-11eb-8028-11e31f6326b7__player_avatar.jpg"
+                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxZ7cdHVKGvs3elopp8Om8nYqkGRGYIwsYQ&usqp=CAU"
                        class="" alt="PD" id="avt-img-reponsiver">
-                    <div class="player-price">80,000 đ/h</div>
+                    <div class="player-price">{{user.price|number}} đ/h</div>
                     <div class="hidden-information">
                        <p><span>Là shipper nhưng không thích ship đồ, chỉ thích ship trái tim em cho anh thôi
                              :))<br></span></p>
@@ -86,7 +87,7 @@
                  </div>
                  <div class="player-information">
                     <h3 class="player-name">
-                       <a href="/ngan2kvjppro">𝐏𝐢𝐧𝐤𝐲𝐲 🍑</a>
+                       <a href="/ngan2kvjppro">{{user.name}} 🍑</a>
                        <div class="player-status ready"> </div>
                     </h3>
                     <p class="player-title">Em là tay to khá là hay ho</p>
@@ -101,36 +102,36 @@
         </div>
         <div>
            <section class="rent-player">
-              <h4 class="section-title"><span>ĐANG ĐƯỢC THUÊ</span> (490)</h4>
+              <h4 class="section-title"><span>Mới Tham Gia</span> (490)</h4>
               <button class="refresh-btn"><i class="fas fa-sync fa-spin" aria-hidden="true"
                     style="margin-right: 5px;"></i><span>Làm mới</span></button>
            </section>
            <div class="row flex-card">
-              <div class="player-information-card-wrap">
-                 <div class="player-avatar">
-                    <img
-                       src="https://playerduo.com/api/upload-service/images/3bef571f-b8d3-47fa-b041-a9fa0b241019__a39818e0-a76d-11eb-ba3c-45f8a69d4fba__player_avatar.jpg"
-                       class="" alt="PD" id="avt-img-reponsiver">
-                    <div class="player-price">10,000 đ/h</div>
-                    <div class="hidden-information">
-                       <p><span>Team Beautiful Girl<br></span></p>
-                       <div class="rent"><a href="https://playerduo.com/trinhtt" target="_blank"
-                             rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
-                    </div>
-                 </div>
-                 <div class="player-information">
-                    <h3 class="player-name">
-                       <a href="/trinhtt">trinhttt</a>
-                       <div class="player-status busy"> </div>
-                    </h3>
-                    <p class="player-title">Thách Đấu</p>
-                    <div class="category">
-                       <div class="div--flex"><img
-                             src="https://files.playerduo.com/production/static-files/game-category/other.png"
-                             class="" alt="category logo"><span>Pubg , lol , liên quân , tốc chiến</span></div>
-                    </div>
+            <div class="player-information-card-wrap" *ngFor="let user of new_user">
+              <div class="player-avatar">
+                 <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxZ7cdHVKGvs3elopp8Om8nYqkGRGYIwsYQ&usqp=CAU"
+                    class="" alt="PD" id="avt-img-reponsiver">
+                 <div class="player-price">{{user.price|number}} đ/h</div>
+                 <div class="hidden-information">
+                    <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
+                    <div class="rent"><a href="https://playerduo.com/nangmuathu" target="_blank"
+                          rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
                  </div>
               </div>
+              <div class="player-information">
+                 <h3 class="player-name">
+                    <a href="/nangmuathu">{{user.name}}</a>
+                    <div class="player-status ready"> </div>
+                 </h3>
+                 <p class="player-title">123</p>
+                 <div class="category">
+                    <div class="div--flex"><img
+                          src="https://files.playerduo.com/production/static-files/game-category/other.png"
+                          class="" alt="category logo"><span>Liên minh Huyền thoại</span></div>
+                 </div>
+              </div>
+           </div>
            </div>
         </div>
      </div>

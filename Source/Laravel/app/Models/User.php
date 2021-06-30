@@ -18,10 +18,23 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'birth_day',
+        'gender',
+        'city',
+        'nation',
+        'avatar',
+        'height',
+        'weight',
+        'hobby',
+        'introducion',
+        'requirement',
+        'facebook',
+        'created_at'
     ];
 
     /**
@@ -43,9 +56,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function albums(){
+        return $this->hasMany(Album::class);
+    }
+
     public function services()
     {
         return $this->belongsToMany(Service::class, 'user_services', 'user_id', 'service_id');
     }
-    
+
+
 }

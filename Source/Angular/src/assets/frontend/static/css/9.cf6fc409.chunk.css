@@ -11636,3 +11636,15 @@ body.video-react-full-window .video-react-fullscreen {
 .video-react video::-webkit-media-text-track-container {
 	transform: translateY(-30px)
 }
+.fieldGroup textarea
+ {
+
+  padding: 16px 17px;
+	display: block;
+	width: 100%;
+	height: 120px;
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e6eaee;
+  font-family: Poppins;
+ }
