@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->float('height')->nullable();
             $table->float('weight')->nullable();
-            $table->float('hobby')->nullable();
+            $table->string('hobby')->nullable();
             $table->string('introducion')->nullable();
             $table->string('requirement')->nullable();
             $table->string('facebook')->nullable();
