@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -85,5 +87,28 @@ class AuthController extends Controller
     public function profile()
     {
         return response()->json(auth()->user());
+    }
+
+    public function update(Request $request, $idUser){
+
+        try{
+            $user = User::find($idUser);
+            $user->fill($request->all());
+            if ($request->hasFile('avatar')) {
+                // $request->validate([
+                //     'avatar' => 'required|image|file_extension:jpeg,png|mimes:jpeg,png|mimetypes:image/jpeg,image/png|max:1000000'
+                // ]);
+                Storage::delete('public/' . $user->avatar);
+                $newAvatarName = time() . '-' . str_replace(' ', '', $request->name) . "." . $request->avatar->getClientOriginalExtension();
+                // dd($newAvatarName);
+                $request->avatar->storeAs('public/images/users', $newAvatarName);
+                $user->avatar = "images/users/" . $newAvatarName;
+            }
+            $user->save();
+            $users = User::all();
+            return response()->json($users);
+        }catch(Exception $e){
+            return response()->json(['message' => 'error']);
+        }
     }
 }

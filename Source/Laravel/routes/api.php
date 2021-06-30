@@ -22,7 +22,9 @@ Route::prefix('admin')->group(function(){
 
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
-    
+    Route::post('/update/{id}', [AuthController::class, 'update']);
+
+
 
 
     Route::middleware('auth:sanctum')->group(function () {
