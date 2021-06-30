@@ -13,19 +13,19 @@ export class ServiceProviderService {
   constructor(private http:HttpClient) { }
 
   getServices():Observable<Service[]>{
-    return this.http.get<Service[]>(API_URL+'/provider/service');
+    return this.http.get<Service[]>(API_URL+'provider/service');
   }
 
   getById(provider_id:any):Observable<any>{
-    return this.http.get<any>(`${API_URL}/${provider_id}/provider`)
+    return this.http.get<any>(`${API_URL}${provider_id}/provider`)
   }
 
   updateProvidingServices(provider_id:any, services:any):Observable<any>{
-    return this.http.put<any>(`${API_URL}/provider/${provider_id}/service`,services)
+    return this.http.put<any>(`${API_URL}provider/${provider_id}/service`,services)
 
   }
 
   getProvidingServices(provider_id:any):Observable<any>{
-    return this.http.get<any>(`${API_URL}/provider/${provider_id}/service`)
+    return this.http.get<any>(`${API_URL}provider/${provider_id}/service`)
   }
 }

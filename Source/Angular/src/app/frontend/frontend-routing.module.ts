@@ -12,7 +12,7 @@ const routes: Routes = [
      {path:'',component:DashboardComponent},
     { path: 'login', component: LoginComponent},
     {path:'register',component:RegisterComponent},
-    {path:'user/service',component:ServiceProviderComponent},
+    {path:'provider/:id/service',component:ServiceProviderComponent},
    ],
   }
 ];

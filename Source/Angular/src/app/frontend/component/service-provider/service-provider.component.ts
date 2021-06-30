@@ -12,13 +12,11 @@ export class ServiceProviderComponent implements OnInit {
 
   services: Service[] = [];
   providingServices: Service[] = [];
-  provider_id:any
+  provider_id: any
   constructor(private serviceProvider: ServiceProviderService, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
-      this.provider_id = params['id']
-    });
+    this.provider_id = this.route.snapshot.paramMap.get('id');
     this.getAll();
-    this.getProvidingService(this.provider_id);
+    this.getProvidingService(this.provider_id);   
   }
 
   ngOnInit(): void {
@@ -31,10 +29,11 @@ export class ServiceProviderComponent implements OnInit {
   }
   getProvidingService(provider_id: any) {
     this.serviceProvider.getProvidingServices(provider_id).subscribe(
-      providingServices => this.providingServices = providingServices,
-         
-    );
-    console.log(this.providingServices);
+      providingServices => {
+        this.providingServices = providingServices,
+        console.log(this.providingServices);
+      });
+    
   }
 }
 
