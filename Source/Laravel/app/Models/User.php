@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Service;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -17,10 +18,23 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'birth_day',
+        'gender',
+        'city',
+        'nation',
+        'avatar',
+        'height',
+        'weight',
+        'hobby',
+        'introducion',
+        'requirement',
+        'facebook',
+        'created_at'
     ];
 
     /**
@@ -41,4 +55,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function albums(){
+        return $this->hasMany(Album::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'user_services', 'user_id', 'service_id');
+    }
+
+
 }
