@@ -22,7 +22,8 @@ Route::prefix('users')->group(function(){
 
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/update/{id}', [AuthController::class, 'update']);
+
+
 
 
 
@@ -30,5 +31,8 @@ Route::prefix('users')->group(function(){
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/profile', [AuthController::class, 'profile']);
+        Route::post('/update/{id}', [AuthController::class, 'update']);
+
+
     });
 });

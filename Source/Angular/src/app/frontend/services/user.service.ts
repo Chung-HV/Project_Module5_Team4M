@@ -30,5 +30,7 @@ export class UserService {
      let token = localStorage.getItem('token')
      return this.http.post(`${environment.base_Url}users/logout`, token);
    }
-   
+   updateUserProfile (id: number,user:User): Observable<any> {
+     return this.http.post(`${environment.base_Url}users/update/${id}`,user);
+   }
 }

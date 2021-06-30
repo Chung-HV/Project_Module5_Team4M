@@ -93,6 +93,7 @@ class AuthController extends Controller
 
         try{
             $user = User::find($idUser);
+            dd($user);
             $user->fill($request->all());
             if ($request->hasFile('avatar')) {
                 // $request->validate([
@@ -106,9 +107,24 @@ class AuthController extends Controller
             }
             $user->save();
             $users = User::all();
+            dd($users);
+
             return response()->json($users);
         }catch(Exception $e){
             return response()->json(['message' => 'error']);
         }
     }
+
+    public function detail( $idUser){
+
+        try{
+            $user = User::find($idUser);
+            dd($user);
+            return response()->json($user, 200);
+        }catch(Exception $e){
+
+            return response()->json(['message' => 'error']);
+        }
+    }
+
 }
