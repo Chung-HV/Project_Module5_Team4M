@@ -23,11 +23,8 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
 @NgModule({
   declarations: [
     FrontendHomeComponent,
-
-
     FrontendHeaderComponent,
     FrontendFooterComponent,
-
     LoginComponent,
 
      ProfileUserComponent,
