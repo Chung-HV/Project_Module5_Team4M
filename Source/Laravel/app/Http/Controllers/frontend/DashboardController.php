@@ -23,4 +23,11 @@ class DashboardController extends Controller
         $user = User::where('is_admin', '=', '0')->where('is_service_provider','=','1')->latest()->take(3)->get();
         return response()->json($user);
     }
+    public function getUser($id){
+        $user = User::where('id','=',$id)
+        ->where('is_admin', '=', '0')
+        ->where('is_service_provider','=','1')->get();
+
+        return response()->json($user);
+    }
 }

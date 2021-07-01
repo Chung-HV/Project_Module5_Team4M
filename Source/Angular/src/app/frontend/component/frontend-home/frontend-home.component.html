@@ -36,9 +36,99 @@
                  </a>
               </li>
               <li class="item-icon authent" ><a class="money-user" routerLink="login"><span >Đăng nhập</span></a></li>
+              <li class="item-icon mobile-search">
+                <a class="dropdown-toggle">
+                    <div class="item-title"><i class="fas fa-bars"></i></div>
+                </a>
+            </li>
+            <li class="item-icon group-fb"><a class="group-user"><i class="fab fa-facebook-f"></i></a></li>
+            <li class="item-icon notificate dropdown">
+                <a id="basic-nav-dropdown" role="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" href="#">
+                    <div class="item-title"><i class="fas fa-bell"></i></div>
+                </a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
+                    <div class="content ">
+                        <div class="tab-notif-common">
+                            <h5>Thông Báo</h5>
+                            <div class="tab-action">
+                                <p class="active"><span>Chính</span></p>
+                                <p class=""><span>Khác</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="infinite-scroll-component " style="height: 30px; overflow: auto;"></div>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li class="item-icon notificate dropdown">
+                <a id="basic-nav-dropdown" role="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" href="#">
+                    <div class="item-title"><i class="fas fa-users"></i></div>
+                </a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
+                    <div class="content ">
+                        <div class="tab-notif-common">
+                            <h5>Người Dùng</h5>
+                            <div class="tab-action">
+                                <p class="active"><span>Theo dõi</span></p>
+                                <p class=""><span>Tương tác</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="infinite-scroll-component " style="height: 30px; overflow: auto;"></div>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li class="item-icon notificate dropdown">
+                <a id="basic-nav-dropdown" role="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" href="#">
+                    <div class="item-title"><i class="fas fa-comment"></i></div>
+                </a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
+                    <div class="content ">
+                        <div class="tab-notif-common">
+                            <h5>Tin Nhắn</h5>
+                        </div>
+                        <div>
+                            <div class="infinite-scroll-component " style="height: 30px; overflow: auto;"></div>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li class="item-icon balance"><a class="money-user"><i class="fas fa-plus"></i> 1,000 đ</a></li>
+            <li class="item-icon item-avatar dropdown">
+                <a id="header-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://playerduo.com/api/upload-service/images/5ba2f695-9bcc-4091-a4a3-9b3a243ecfb8__dad78e20-dcc1-11ea-b386-575fea6f28e2__page_avatar.jpg" class="avt-img" alt="PD"></a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
+                    <li role="presentation" class="page-user">
+                        <a role="menuitem" tabindex="-1" href="#">
+                            <img src="https://playerduo.com/api/upload-service/images/5ba2f695-9bcc-4091-a4a3-9b3a243ecfb8__dad78e20-dcc1-11ea-b386-575fea6f28e2__page_avatar.jpg" class="avt-img" alt="PD">
+                            <div class="text-logo">
+                                <h5>Chung Hoàng</h5>
+                                <p>ID : <span>danbo</span></p>
+                                <p class="label-user-page"><span>Xem trang cá nhân của bạn</span></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="presentation" class="menu-item hidden-lg hidden-md"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-plus"></i> <span>Số dư</span> : <span class="money">1,000 đ</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-minus"></i> <span>Rút tiền</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-credit-card"></i> <span>Mua thẻ</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-user-lock"></i> <span>Tạo khóa bảo vệ</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-clock"></i> <span>Lịch sử giao dịch</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-users"></i> <span>Danh sách theo dõi</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-cogs"></i> <span>Cài đặt tài khoản</span></a></li>
+                    <li role="presentation" class="menu-item"><a role="menuitem" tabindex="-1" href="#"><i class="fas fa-power-off"></i> <span>Đăng xuất</span></a></li>
+                    <div class="menu-item list-flag">
+                        <div class="flag-all active"><img src="https://files.playerduo.com/production/static-files/flag/2.png" class="flag flag-vn" alt="PD"></div>
+                        <div class="flag-all false"><img src="https://files.playerduo.com/production/static-files/flag/1.png" class="flag flag-en" alt="PD"></div>
+                    </div>
+                </ul>
+            </li>
            </ul>
+
         </div>
      </header>
+     <body data-new-gr-c-s-check-loaded="14.1007.0" data-gr-ext-installed="" class="fixed-header" style="margin-top: 75px;">
+      <noscript>Bạn cần có cho phép Javascript hoạt động để chạy ứng dụng PlayerDuo.</noscript>
 
      <router-outlet></router-outlet>
 
