@@ -14,14 +14,13 @@ export class ProfileUserComponent implements OnInit {
 
   id!:number;
   user!: User;
-  avatar!:File;
+  avatar!:User;
   myForm = this.fb.group({
 
     name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
-    birth_day: ['', [Validators.required, Validators.pattern(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g
-    )]],
+    birth_day: ['', [Validators.required]],
 
-    gender: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(5)]],
+    gender: ['', [Validators.required]],
     city: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
     nation: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
     height: ['', [ Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
@@ -40,8 +39,7 @@ export class ProfileUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserProfile();
-    // const data = new FormData();
-    // console.log(data.append('image', this.user.avatar));
+
 
   }
 
@@ -70,12 +68,16 @@ export class ProfileUserComponent implements OnInit {
   }
 
   onSubmit(){
+    // const data = new FormData();
+    // data.append('image', this.user.avatar);
+    // console.log(data);
+
     this.updateProfileUser();
   }
 
-  // getImgFile($event: any) {
-  //   this.avatar = $event.target.files[0];
-  //   console.log(this.avatar);
+  getImgFile($event: any) {
+    this.avatar = $event.target.files[0];
+    console.log(this.avatar);
 
-  // }
+  }
 }

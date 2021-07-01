@@ -5,16 +5,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
-const HttpUploadOptions = {
-  headers: new HttpHeaders({ 'Content-Type':'' })
-}
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "multipart/form-data; charset=utf-8; boundary=" + Math.random().toString().substr(2),
-    "Accept": "application/json",
-  })
- }
 
 @Injectable({
   providedIn: 'root'
