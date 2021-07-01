@@ -22,6 +22,7 @@ Route::prefix('dashboard')->group(function(){
     Route::get('',[DashboardController::class,'showServiceUser']);
     Route::get('user_vip',[DashboardController::class,'showVipUser']);
     Route::get('user_new',[DashboardController::class,'showNewUser']);
+    Route::get('/{id}',[DashboardController::class,'getUser']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
