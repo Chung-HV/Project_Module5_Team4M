@@ -84,46 +84,30 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        // return response()->json(auth()->user());
-        return response()->json($request);
+        return response()->json(auth()->user());
     }
 
     public function update(Request $request, $idUser){
 
         try{
+
             $user = User::find($idUser);
-            dd($user);
             $user->fill($request->all());
             if ($request->hasFile('avatar')) {
-                // $request->validate([
-                //     'avatar' => 'required|image|file_extension:jpeg,png|mimes:jpeg,png|mimetypes:image/jpeg,image/png|max:1000000'
-                // ]);
+
                 Storage::delete('public/' . $user->avatar);
-                $newAvatarName = time() . '-' . str_replace(' ', '', $request->name) . "." . $request->avatar->getClientOriginalExtension();
-                // dd($newAvatarName);
+                $newAvatarName = time().'.'.$request->avatar->getClientOriginalExtension();
                 $request->avatar->storeAs('public/images/users', $newAvatarName);
                 $user->avatar = "images/users/" . $newAvatarName;
             }
             $user->save();
-            $users = User::all();
-            dd($users);
 
-            return response()->json($users);
+
+            return response()->json($request,['message' => 'success']);
         }catch(Exception $e){
             return response()->json(['message' => 'error']);
         }
     }
 
-    public function detail( $idUser){
-
-        try{
-            $user = User::find($idUser);
-            dd($user);
-            return response()->json($user, 200);
-        }catch(Exception $e){
-
-            return response()->json(['message' => 'error']);
-        }
-    }
 
 }

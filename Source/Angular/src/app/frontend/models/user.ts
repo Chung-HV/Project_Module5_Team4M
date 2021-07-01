@@ -1,10 +1,11 @@
 
 export class User {
+  id!:number
   name !: string;
   email !: string;
   password !: string;
   password_confirmation!:string;
-  birth_day!:string;
+  birth_day!:Date;
   gender!:string;
   city!:string;
   nation!:string;

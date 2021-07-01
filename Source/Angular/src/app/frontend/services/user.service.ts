@@ -35,14 +35,15 @@ export class UserService {
    }
 
    logout (): Observable<any> {
-     console.log(auth_token);
-     return this.http.post(`${environment.base_Url}users/logout`, {responseType: 'json', headers: reqHeader } );
+
+     return this.http.post(`${environment.base_Url}users/logout`, {headers: reqHeader });
    }
    profile(): Observable<any> {
-    console.log(auth_token);
-    return this.http.get(`${environment.base_Url}/users/profile`, { responseType: 'json', headers: reqHeader });
+
+    return this.http.get(`${environment.base_Url}users/profile`,{headers: reqHeader });
    }
-   updateUserProfile (id: number,user:User): Observable<any> {
-     return this.http.post(`${environment.base_Url}users/update/${id}`,user);
+   updateUserProfile(id:number,user:any): Observable<any> {
+
+     return this.http.post(`${environment.base_Url}users/update/${id}`,user, {headers: reqHeader });
    }
 }

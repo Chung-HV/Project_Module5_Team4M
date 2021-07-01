@@ -32,6 +32,7 @@ Route::prefix('users')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 
+
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/profile', [AuthController::class, 'profile']);
@@ -39,6 +40,8 @@ Route::prefix('users')->group(function () {
     });
 });
 
+
 Route::get('provider/service', [ServiceController::class, 'getAll']);
 Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);
 Route::post('provider/{id}/service/update', [ProviderController::class, 'setProvidingService']);
+
