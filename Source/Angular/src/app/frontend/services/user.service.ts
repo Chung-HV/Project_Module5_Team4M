@@ -32,12 +32,10 @@ export class UserService {
    profile(): Observable<any> {
      var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      //'Access-Control-Allow-Origin': '*',
-      //'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-      // cu phap co dau cach dang sau Bearer
+     
       'Authorization': 'Bearer ' + auth_token
     });
-    return this.http.get(`${environment.base_Url}/users/profile`);
+    return this.http.get(`${environment.base_Url}/users/profile`, { responseType: 'json', headers: reqHeader });
    }
    updateUserProfile (id: number,user:User): Observable<any> {
      return this.http.post(`${environment.base_Url}users/update/${id}`,user);
