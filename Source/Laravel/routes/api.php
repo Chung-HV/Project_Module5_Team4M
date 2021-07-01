@@ -34,3 +34,4 @@ Route::prefix('users')->group(function(){
 
 Route::get('provider/service',[ServiceController::class, 'getAll']);
 Route::get('provider/{provider_id}/service',[ProviderController::class, 'getProvidingService']);
+Route::post('provider/{id}/service/update',[ProviderController::class, 'setProvidingService']);
