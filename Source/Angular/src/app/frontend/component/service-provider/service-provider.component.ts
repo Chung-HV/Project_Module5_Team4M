@@ -11,30 +11,68 @@ import { ServiceProviderService } from '../../services/service-provider.service'
 export class ServiceProviderComponent implements OnInit {
 
   services: Service[] = [];
+  defaultServices: Service[] = [];
+  freeServices: Service[] = [];
+  extraServices: Service[] = [];
   providingServices: Service[] = [];
   provider_id: any
   newProvidingServices: Service[] = [];
 
   constructor(private serviceProvider: ServiceProviderService, private route: ActivatedRoute) {
+
+    // this.getDefaultServices();
+  }
+
+  ngOnInit(
+  ):
+    void {
     this.provider_id = this.route.snapshot.paramMap.get('id');
     this.getAll();
     this.getProvidingService(this.provider_id);
-  }
-
-  ngOnInit(): void {
+    this.getDefaultServices();
   }
 
   getAll() {
     this.serviceProvider.getServices().subscribe(
-      services => this.services = services
+      services => {
+        this.services = services,
+        this.getDefaultServices(),       
+        this.getFreeServices(),       
+        this.getExtraServices()      
+      }
     );
+  }
+
+  getDefaultServices() {
+    this.services.forEach(service => {
+      if (service.type == 'default') {
+        this.defaultServices.push(service);
+        this.newProvidingServices.push(service.id);
+      }
+    });
+    
+  }
+
+  getExtraServices() {
+    this.services.forEach(service => {
+      if (service.type == 'extra') {
+        this.extraServices.push(service);
+      }
+    });
+  }
+
+  getFreeServices() {
+    this.services.forEach(service => {
+      if (service.type == 'free') {
+        this.freeServices.push(service);
+      }
+    });
   }
 
   getProvidingService(provider_id: any) {
     this.serviceProvider.getProvidingServices(provider_id).subscribe(
       providingServices => {
-        this.providingServices = providingServices,
-          console.log(this.providingServices)
+        this.providingServices = providingServices
       }
     );
   }
@@ -57,7 +95,7 @@ export class ServiceProviderComponent implements OnInit {
         console.log(data);
       }
     );
-    alert('Your services you want to provide has been set');
+    alert('Services you want to provide have been set');
     console.log(this.providingServices);
   };
 }
