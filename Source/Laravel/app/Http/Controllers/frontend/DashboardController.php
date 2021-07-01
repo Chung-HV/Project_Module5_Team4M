@@ -10,24 +10,40 @@ class DashboardController extends Controller
 {
     public function showServiceUser()
     {
-        $user = User::where('is_admin', '=', '0')->where('is_service_provider','=','1')->get();
-        return response()->json($user);
+        $users = User::where('is_admin', '=', '0')
+        ->where('is_service_provider','=','1')
+        ->get();
+        foreach($users as $key => $user){
+            $user->services->all();
+        }
+        return response()->json($users);
     }
     public function showVipUser()
     {
-        $user = User::where('is_admin', '=', '0')->where('is_vip', '=', '1')->where('is_service_provider','=','1')->get();
-        return response()->json($user);
+        $users = User::where('is_admin', '=', '0')->where('is_vip', '=', '1')->where('is_service_provider','=','1')->get();
+        foreach($users as $key => $user){
+            $user->services->all();
+        }
+        return response()->json($users);
     }
     public function showNewUser()
     {
-        $user = User::where('is_admin', '=', '0')->where('is_service_provider','=','1')->latest()->take(3)->get();
-        return response()->json($user);
+        $users = User::where('is_admin', '=', '0')->where('is_service_provider','=','1')->latest()->take(3)->get();
+        foreach($users as $key => $user){
+            $user->services->all();
+        }
+        return response()->json($users);
     }
     public function getUser($id){
         $user = User::where('id','=',$id)
         ->where('is_admin', '=', '0')
         ->where('is_service_provider','=','1')->get();
-
+        foreach($user as $key => $sv){
+            $sv->services->all();
+        }
         return response()->json($user);
+    }
+    public function getService($id){
+
     }
 }
