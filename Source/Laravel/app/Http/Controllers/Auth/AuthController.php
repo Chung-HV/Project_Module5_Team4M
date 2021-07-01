@@ -62,7 +62,6 @@ class AuthController extends Controller
 
         $token = $user->createToken($request->email)->plainTextToken;
 
-        $cookie = cookie('sanctum_token', $token, 30);
 
         return response()->json([
             'message' => 'User successfully logged in',
@@ -71,20 +70,19 @@ class AuthController extends Controller
                 'token' => $token,
                 'token_type' => 'bearer',
             ],
-        ])->withCookie($cookie);
+        ]);
     }
 
     public function logout()
     {
-        $cookie = Cookie::forget('sanctum_token');
         auth()->user()->tokens()->delete();
 
         return response()->json([
             'message' => 'User successfully logged out'
-        ])->withCookie($cookie);
+        ]);
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
         return response()->json(auth()->user());
     }

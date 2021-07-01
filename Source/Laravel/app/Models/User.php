@@ -65,6 +65,4 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Service::class, 'user_services', 'user_id', 'service_id');
     }
-
-
 }

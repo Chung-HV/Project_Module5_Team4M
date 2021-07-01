@@ -53,6 +53,7 @@ export class ProfileUserComponent implements OnInit {
           this.user = data;
           this.id = this.user.id;
           this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+          console.log(this.user);
 
         }
       });
