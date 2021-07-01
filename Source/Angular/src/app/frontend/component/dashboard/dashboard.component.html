@@ -1,0 +1,279 @@
+<div class="wrapper">
+  <div class="container container2">
+    <div class="filter-player row">
+      <div xl="12" class="col-lg-12 col-md-12 col-sm-12">
+        <section id="search">
+          <div class="player-select div-autoComplete-search">
+            <label for="search-input"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search
+                Players</span></label><i class="fa fa-bars setting-search-index" aria-hidden="true"></i><input
+              class="form-control input-lg" placeholder="Tên game" autocomplete="off" spellcheck="false"
+              autocorrect="off" tabindex="1" name="gameCategory" type="text" value="">
+            <div class="suggestion-game-hide"></div>
+          </div>
+        </section>
+      </div>
+      <div xl="12" class="col-lg-12 col-md-12 col-sm-12">
+        <section class="search-destop">
+          <div class="text-right col-md-3"></div>
+          <div class="col-md-4">
+            <div class="player-select div-autoComplete-search">
+              <input class="form-control" name="gameCategory" placeholder="Tên game" type="text" autocomplete="off"
+                value="">
+              <div class="suggestion-game-hide"></div>
+            </div>
+          </div>
+          <div class="text-left col-md-3"><button class="btn btn-danger btn-filter" data-toggle="modal" data-target="#filter"><span>Bộ
+                lọc</span></button><button class="btn btn-success btn-search"><span>Tìm
+                kiếm</span>&nbsp;</button></div>
+        </section>
+      </div>
+    </div>
+    <div class="list-player">
+      <div>
+        <section class="box vip-player">
+          <h4 class="section-title">VIP PLAYER</h4>
+          <button class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+              mới</span></button>
+        </section>
+        <div class="row flex-card">
+
+          <div class="player-information-card-wrap" *ngFor="let user of vip_user">
+            <div class="player-avatar">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxZ7cdHVKGvs3elopp8Om8nYqkGRGYIwsYQ&usqp=CAU"
+                class="" alt="PD" id="avt-img-reponsiver">
+              <div class="player-price">{{user.price|number}} đ/h</div>
+              <div class="hidden-information">
+                <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" target="_blank"
+                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+              </div>
+            </div>
+            <div class="player-information">
+              <h3 class="player-name">
+                <a [routerLink]="['/frontend/provider-detail',user.id]">{{user.name}}</a>
+                <div class="player-status ready"> </div>
+              </h3>
+              <p class="player-title">123</p>
+              <div class="category">
+                <div class="div--flex"><img
+                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
+                    alt="category logo"><span>Liên minh Huyền thoại</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <section class="hot-player">
+          <h4 class="section-title">HOT PLAYER</h4>
+          <button class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+              mới</span></button>
+        </section>
+        <div class="row flex-card">
+          <div class="player-information-card-wrap" *ngFor="let user of users">
+            <div class="player-avatar">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxZ7cdHVKGvs3elopp8Om8nYqkGRGYIwsYQ&usqp=CAU"
+                class="" alt="PD" id="avt-img-reponsiver">
+              <div class="player-price">{{user.price|number}} đ/h</div>
+              <div class="hidden-information">
+                <p><span>Là shipper nhưng không thích ship đồ, chỉ thích ship trái tim em cho anh thôi
+                    :))<br></span></p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" target="_blank"
+                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+              </div>
+            </div>
+            <div class="player-information">
+              <h3 class="player-name">
+                <a [routerLink]="['/frontend/provider-detail',user.id]">{{user.name}} 🍑</a>
+                <div class="player-status ready"> </div>
+              </h3>
+              <p class="player-title">Em là tay to khá là hay ho</p>
+              <div class="category">
+                <div class="div--flex"><img
+                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
+                    alt="category logo"><span>LOL - PUBGPC - CSGO - DTCL - VLR</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <section class="rent-player">
+          <h4 class="section-title"><span>Mới Tham Gia</span> (490)</h4>
+          <button class="refresh-btn"><i class="fas fa-sync fa-spin" aria-hidden="true"
+              style="margin-right: 5px;"></i><span>Làm mới</span></button>
+        </section>
+        <div class="row flex-card">
+          <div class="player-information-card-wrap" *ngFor="let user of new_user">
+            <div class="player-avatar">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxZ7cdHVKGvs3elopp8Om8nYqkGRGYIwsYQ&usqp=CAU"
+                class="" alt="PD" id="avt-img-reponsiver">
+              <div class="player-price">{{user.price|number}} đ/h</div>
+              <div class="hidden-information">
+                <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" target="_blank"
+                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+              </div>
+            </div>
+            <div class="player-information">
+              <h3 class="player-name">
+                <a [routerLink]="['/provider-detail',user.id]">{{user.name}}</a>
+                <div class="player-status ready"> </div>
+              </h3>
+              <p class="player-title">123</p>
+              <div class="category">
+                <div class="div--flex"><img
+                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
+                    alt="category logo"><span>Liên minh Huyền thoại</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="button-scroll-top" style="display: none;">
+  <button><i class="fas fa-chevron-up"></i></button>
+</div>
+<!-- Modal -->
+
+<div class="fade search-index-modal in modal" id="filter" tabindex="-1" role="dialog" aria-labelledby="filter"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+
+        </button>
+        <h4 class="modal-title"><span>Tôi muốn tìm player với điều kiện</span></h4>
+      </div>
+      <div class="content modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="text-left"><span>Giới tính là</span></td>
+              <td class="text-right">
+                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><span><i
+                        class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Nam</span></span></label><label
+                    type="button" class="btn btn-default"><span><i class="fa fa-user-secret"
+                        aria-hidden="true"></i>&nbsp;<span>Nữ</span></span></label></div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button"
+                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left"><span>Hiện đang là</span></td>
+              <td class="text-right">
+                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><span><i
+                        class="fa fa-user-circle" aria-hidden="true"></i>
+                      new</span></label><label type="button" class="btn btn-default"><span><i class="fa fa-user-secret"
+                        aria-hidden="true"></i> hot</span></label><label type="button" class="btn btn-default"><span><i
+                        class="fa fa-user-md" aria-hidden="true"></i> vip</span></label></div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button"
+                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left"><span>Trạng thái là</span></td>
+              <td class="text-right">
+                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><input
+                      name="status" type="radio" value="ready"><span><i class="fa fa-spinner"
+                        aria-hidden="true"></i>&nbsp;<span><span>Sẵn
+                          sàng</span></span></span></label></div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button"
+                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left"><span>Đang online</span></td>
+              <td class="text-right">
+                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><span><i
+                        class="fas fa-globe-africa"></i>&nbsp;
+                      Online</span></label></div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button"
+                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left"><span>Khoảng giá thuê</span></td>
+              <td class="text-right">
+                <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal">
+                  <div class="noUi-base">
+                    <div class="noUi-connects">
+                      <div class="noUi-connect" style="transform: translate(0%, 0px) scale(1, 1);"></div>
+                    </div>
+                    <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
+                      <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider"
+                        aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0"
+                        aria-valuenow="5000.0" aria-valuetext="5000.00"></div>
+                    </div>
+                    <div class="noUi-origin" style="transform: translate(0%, 0px); z-index: 4;">
+                      <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider"
+                        aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0"
+                        aria-valuenow="5000000.0" aria-valuetext="5000000.00"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-10 row">
+                  <div class="text-left col-xs-4"><span class="example-val" id="skip-value-lower">5,000</span>
+                  </div>
+                  <div class="text-center col-xs-4"><span class="example-val"
+                      id="skip-value-lower"><span>đến</span></span></div>
+                  <div class="col-xs-4"><span class="example-val" id="skip-value-upper">5,000,000</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="text-left"><span>Sống tại</span></td>
+              <td class="text-right">
+                <div class="mb-4"></div>
+                <div class="player-select div-autoComplete-search">
+                  <input class="filter-modal" name="citySelect" type="text" value="">
+                  <div class="suggestion-game-hide"></div>
+                </div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button"
+                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left"><span>Tên</span>/Url player:</td>
+              <td class="text-right">
+                <div class="player-select div-autoComplete-search"><input class="filter-modal" name="nickName"
+                    type="text" autocomplete="off" maxlength="32" value=""></div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button"
+                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center modal-footer"><button class="btn btn-danger"><span>Bộ lọc</span></button>
+      </div>
+    </div>
+  </div>
+</div>

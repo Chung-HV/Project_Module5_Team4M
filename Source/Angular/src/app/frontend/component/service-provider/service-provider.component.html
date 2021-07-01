@@ -1,0 +1,95 @@
+<!-- <div class="footer-bottom">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let service of services">
+            <label class="check_box">
+                <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;" (change)="getNewProvidingServices(service.id)">
+                <span>{{service.name}}</span>
+            </label>
+        </div>
+    </div>
+    <div style="text-align: right;">
+        <button type="button" class="btn-fill btn btn-sm btn-default" style="opacity: 0.5;" (click)="updateProvidingService(provider_id)">
+            <span>Update</span>
+        </button>
+        <br>
+    </div>
+</div> -->
+<div style="padding-bottom: 200px;"></div>
+<div class="wrapper">
+    <div class="container">
+        <div class="user__profile row">
+            <!-- <div class="col-md-3">
+                <div class="user__action--introduce ">
+                    <div class="user__action--intro">
+                        <div class="user__action--avatar">
+                            <div class="user--avatar">
+                                <img src="https://files.playerduo.com/production/images/avatar25.png" class="" alt="avatar" sizes="md">
+                                <div class="hover-change-image"><span><i class="fas fa-camera"
+                                            aria-hidden="true"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="user__action--content hidden-over-name">
+                            <h5><a href="/page60d439f8e09d9b6352855007"><strong>Name </strong></a></h5>
+                        </div>
+                        <div class="user__action--mb">
+                            <div class="user__action--media"></div>
+                            <div class="user__action--info">
+                                <p><span>Sống tại</span>: Hà Nội</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user__action--introduce ">
+                    <div class="user__button"><button type="button" class="user__btn_action  btn btn-default"><i
+                                class="fas fa-heart"></i>Theo dõi</button><button type="button" class="user__btn_action fix-space  btn btn-default">Cài đặt</button><button type="button" class="user__btn_action  btn btn-default"><i class="fas fa-comment-alt"></i> Chat</button>
+                        <button disabled="" type="button" class="user__btn_action fix-space  btn btn-default">Donate</button><button type="button" class="user__btn_action  btn btn-default">Đang theo dõi</button><button type="button" class="user__btn_action fix-space  btn btn-default">Album</button>
+                        <button type="button" class="user__btn_action red-color btn-ext  btn btn-default"><i
+                                class="fa fa-home"></i>Khu thành viên</button>
+                    </div>
+                </div>
+                <div class="user__action---mobile hidden-lg hidden-md user__button"><button type="button" class="user__btn_action red-color btn-ext  btn btn-default">Ẩn thông tin khác</button></div>
+                <div class="title-mobile hidden-lg hidden-md"></div>
+                <div class="hidden-lg hidden-md">
+                    <div class="user__search hidden-sm hidden-xs">
+                        <div class="group-search"><span class="search input-group"><input
+                                    placeholder="Tìm kiếm bài viết" name="name" type="text" class="form-control"
+                                    value=""><span class="input-group-addon"><i class="fa fa-search"
+                                        aria-hidden="true"></i></span></span>
+                        </div>
+                    </div>
+                    <div class="title-mobile hidden-lg hidden-md"></div>
+                    <br>
+                </div>
+            </div> -->
+            <div class="group-main-wrap col-md-2"></div>
+            <div class="group-main-wrap col-md-8">
+                <div class="publish-post-wrap">
+                    <div class="header">
+                        <h3 style="text-align: center;">Select services you want to provide</h3>
+                    </div>
+                    <div class="footer">
+                        <div class="footer-bottom">
+                            <div class="row">
+                                <div class="col-sm-4" *ngFor="let service of services">
+                                    <label class="check_box">
+                                        <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                            (change)="getNewProvidingServices(service.id)">
+                                        <span>{{service.name}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" class="btn-fill btn btn-sm btn-default" (click)="updateProvidingService(provider_id)">
+                                    <span>Confirm</span>
+                                </button>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
