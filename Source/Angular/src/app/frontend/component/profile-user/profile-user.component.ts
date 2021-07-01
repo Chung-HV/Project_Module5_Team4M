@@ -14,6 +14,7 @@ export class ProfileUserComponent implements OnInit {
 
   id!:number;
   user!: User;
+  avatar!:File;
   myForm = this.fb.group({
 
     name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
@@ -39,6 +40,9 @@ export class ProfileUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserProfile();
+    // const data = new FormData();
+    // console.log(data.append('image', this.user.avatar));
+
   }
 
   getUserProfile()
@@ -68,4 +72,10 @@ export class ProfileUserComponent implements OnInit {
   onSubmit(){
     this.updateProfileUser();
   }
+
+  // getImgFile($event: any) {
+  //   this.avatar = $event.target.files[0];
+  //   console.log(this.avatar);
+
+  // }
 }
