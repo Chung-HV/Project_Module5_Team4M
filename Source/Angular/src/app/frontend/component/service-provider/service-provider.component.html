@@ -1,134 +1,212 @@
-<!-- <div class="footer-bottom">
-    <div class="row">
-        <div class="col-sm-3" *ngFor="let service of services">
-            <label class="check_box">
-                <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;" (change)="getNewProvidingServices(service.id)">
-                <span>{{service.name}}</span>
-            </label>
-        </div>
-    </div>
-    <div style="text-align: right;">
-        <button type="button" class="btn-fill btn btn-sm btn-default" style="opacity: 0.5;" (click)="updateProvidingService(provider_id)">
-            <span>Update</span>
-        </button>
-        <br>
-    </div>
-</div> -->
-<div style="padding-bottom: 100px;"></div>
-<div class="wrapper">
-    <div class="container">
-        <div class="user__profile row">
-            <!-- <div class="col-md-3">
-                <div class="user__action--introduce ">
-                    <div class="user__action--intro">
-                        <div class="user__action--avatar">
-                            <div class="user--avatar">
-                                <img src="https://files.playerduo.com/production/images/avatar25.png" class="" alt="avatar" sizes="md">
-                                <div class="hover-change-image"><span><i class="fas fa-camera"
-                                            aria-hidden="true"></i></span></div>
-                            </div>
-                        </div>
-                        <div class="user__action--content hidden-over-name">
-                            <h5><a href="/page60d439f8e09d9b6352855007"><strong>Name </strong></a></h5>
-                        </div>
-                        <div class="user__action--mb">
-                            <div class="user__action--media"></div>
-                            <div class="user__action--info">
-                                <p><span>Sống tại</span>: Hà Nội</p>
-                            </div>
-                        </div>
+<body class="fixed-header" style="margin-top: 75px">
+    <noscript>Bạn cần có cho phép Javascript hoạt động để chạy ứng dụng
+      PlayerDuo.</noscript
+    >
+    <div id="root">
+      <!-- <app-frontend-user-header></app-frontend-user-header> -->
+  
+      <div class="notifications-wrapper"></div>
+      <div></div>
+      <div class="wrapper">
+        <div class="setting__main row">
+          <div class="setting__main--menu col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="menu">
+              <div class="menu__setting panel-group">
+                <div class="menu__setting--main panel panel-default">
+                  <div class="panel-heading">
+                    <div class="panel-title">
+                      <a aria-expanded="true" class="" role="button" href="#"
+                        >TÀI KHOẢN
+                      </a>
                     </div>
+                  </div>
+                  <div class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <div class="panel-group">
+                        <div class="menu__setting--sub panel panel-default">
+                          <div class="panel-heading">
+                            <div class="active panel-title">
+                              <i class="fas fa-user-tie"></i> Thông tin cá nhân
+                            </div>
+                          </div>
+                        </div>
+                        <div class="menu__setting--sub panel panel-default">
+                          <div class="panel-heading">
+                            <div class="panel-title">
+                              <i class="fas fa-sliders-h"></i> Thống kê
+                            </div>
+                          </div>
+                        </div>
+                        <div class="menu__setting--sub panel panel-default">
+                          <div class="panel-heading">
+                            <div class="panel-title">
+                              <i class="fas fa-sliders-h"></i> Lịch sử thuê
+                            </div>
+                          </div>
+                        </div>
+                        <div class="menu__setting--sub panel panel-default">
+                          <div class="panel-heading">
+                            <div class="panel-title">
+                              <i class="fas fa-sliders-h"></i> Người thuê
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="menu__setting--sub panel panel-default">
+                                     <div class="panel-heading">
+                                        <div class="title-sub  panel-title"><a aria-expanded="true" class="" role="button" href="#"><i class="fas fa-cog"></i> lịch sử thuê <i class="fas fa-chevron-down"></i></a></div>
+                                     </div>
+                                     <div class="panel-collapse collapse in" style="">
+                                        <div class="panel-body">
+                                           <div class="panel-group">
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Email</div>
+                                                 </div>
+                                              </div>
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Tài khoản và mật khẩu</div>
+                                                 </div>
+                                              </div>
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Khoá bảo vệ</div>
+                                                 </div>
+                                              </div>
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Vip</div>
+                                                 </div>
+                                              </div>
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Hiển thị</div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div> -->
+                        <!--
+                                  <div class="menu__setting--sub panel panel-default">
+                                     <div class="panel-heading">
+                                        <div class="  panel-title"><i class="fas fa-wallet"></i> Ví </div>
+                                     </div>
+                                  </div> -->
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="user__action--introduce ">
-                    <div class="user__button"><button type="button" class="user__btn_action  btn btn-default"><i
-                                class="fas fa-heart"></i>Theo dõi</button><button type="button" class="user__btn_action fix-space  btn btn-default">Cài đặt</button><button type="button" class="user__btn_action  btn btn-default"><i class="fas fa-comment-alt"></i> Chat</button>
-                        <button disabled="" type="button" class="user__btn_action fix-space  btn btn-default">Donate</button><button type="button" class="user__btn_action  btn btn-default">Đang theo dõi</button><button type="button" class="user__btn_action fix-space  btn btn-default">Album</button>
-                        <button type="button" class="user__btn_action red-color btn-ext  btn btn-default"><i
-                                class="fa fa-home"></i>Khu thành viên</button>
-                    </div>
-                </div>
-                <div class="user__action---mobile hidden-lg hidden-md user__button"><button type="button" class="user__btn_action red-color btn-ext  btn btn-default">Ẩn thông tin khác</button></div>
-                <div class="title-mobile hidden-lg hidden-md"></div>
-                <div class="hidden-lg hidden-md">
-                    <div class="user__search hidden-sm hidden-xs">
-                        <div class="group-search"><span class="search input-group"><input
-                                    placeholder="Tìm kiếm bài viết" name="name" type="text" class="form-control"
-                                    value=""><span class="input-group-addon"><i class="fa fa-search"
-                                        aria-hidden="true"></i></span></span>
-                        </div>
-                    </div>
-                    <div class="title-mobile hidden-lg hidden-md"></div>
-                    <br>
-                </div>
-            </div> -->
-            <div class="group-main-wrap col-md-2"></div>
-            <div class="group-main-wrap col-md-8">
-                <div class="publish-post-wrap">
-                    <!-- <h3 style="text-align: center;">Services you are providing</h3>
-
-                    <div class="header">
-                        <div class="row" *ngFor="let service of providingServices">
-                            <div class="col-md-3">
-                                <p>{{service.name}}</p>
+                <!-- <div class="menu__setting--main panel panel-default">
+                         <div class="panel-heading">
+                            <div class="panel-title"><a aria-expanded="false" class="collapsed" role="button" href="#">TRANG CÁ NHÂN <i class="fas fa-chevron-right"></i></a></div>
+                         </div>
+                         <div class="panel-collapse collapse">
+                            <div class="panel-body">
+                               <div class="panel-group">
+                                  <div class="menu__setting--sub panel panel-default">
+                                     <div class="panel-heading">
+                                        <div class="title-sub  panel-title"><a aria-expanded="false" class="collapsed" role="button" href="#"><i class="fas fa-tags"></i> Hashtags <i class="fas fa-chevron-right"></i></a></div>
+                                     </div>
+                                     <div class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                           <div class="panel-group">
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Dành cho sáng tạo nội dung</div>
+                                                 </div>
+                                              </div>
+                                              <div class="menu__setting--last panel panel-default">
+                                                 <div class="panel-heading">
+                                                    <div class="panel-title">Dành cho người xem</div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+  
+  
+                               </div>
                             </div>
-                        </div>
-                    </div> -->
-
-                    <div class="header">
-                        <h3 style="text-align: center;">Select services you want to provide</h3>
-                    </div>
-
-                    <div class="footer">
-                        <div class="footer-bottom">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <label class="check_box">Default Services</label>
-                                    <div *ngFor="let service of defaultServices">
-                                        <label class="check_box">
-                                            <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                            checked
-                                            disabled
-                                                (change)="getNewProvidingServices(service.id)">
-                                            <span>{{service.name}}</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-sm-4">
-                                    <label class="check_box">Free Services</label>
-                                    <div *ngFor="let service of freeServices">
-                                        <label class="check_box">
-                                            <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                                (change)="getNewProvidingServices(service.id)">
-                                            <span>{{service.name}}</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <label class="check_box">Extra Services</label>
-                                    <div *ngFor="let service of extraServices">
-                                        <label class="check_box">
-                                            <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                                (change)="getNewProvidingServices(service.id)">
-                                            <span>{{service.name}}</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button type="button" class="btn-fill btn btn-sm btn-default" (click)="updateProvidingService(provider_id)">
-                                    <span>Confirm</span>
-                                </button>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                         </div>
+                      </div> -->
+              </div>
+              <div class="btn-drawer-setting visible-xs">
+                <i class="fas fa-chevron-right"></i>
+              </div>
             </div>
-
+          </div>
+          <div class="wrapper col-md-8">
+              <div class="container">
+                  <div class="user__profile row">
+                      <div class="group-main-wrap col-md-8">
+                          <div class="publish-post-wrap">
+          
+                              <div class="header">
+                                  <h3 style="text-align: center;">Select services you want to provide</h3>
+                              </div>
+          
+                              <div class="footer">
+                                  <div class="footer-bottom">
+                                      <div class="row">
+                                          <div class="col-sm-4">
+                                            <div class="card-header"><p>Default Services</p></div>
+                                              <div *ngFor="let service of defaultServices">
+                                                  <label class="check_box">
+                                                      <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                                          checked disabled (change)="getNewProvidingServices(service.id)">
+                                                      <span>{{service.name}}</span>
+                                                  </label>
+                                              </div>
+                                          </div>
+          
+          
+                                          <div class="col-sm-4">
+                                            <div class="card-header"><p>Free Services</p></div>
+                                              <div *ngFor="let service of freeServices">
+                                                  <label class="check_box">
+                                                      <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                                            [checked]="providingFreeServiceIds.indexOf(service.id) !== -1"
+                                                          (change)="getNewProvidingServices(service.id)">
+                                                      <span>{{service.name}}</span>
+                                                  </label>
+                                              </div>
+                                          </div>
+          
+                                          <div class="col-sm-4">
+                                            <div class="card-header"><p>Extra Services</p></div>
+                                              <div *ngFor="let service of extraServices">
+                                                  <label class="check_box">
+                                                      <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                                      [checked]="providingExtraServiceIds.indexOf(service.id) !== -1"
+                                                          (change)="getNewProvidingServices(service.id)">
+                                                      <span>{{service.name}}</span>
+                                                  </label>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div>
+                                          <button type="button" class="btn-fill btn btn-sm btn-default" (click)="updateProvidingService(provider_id)">
+                                              <span>Confirm</span>
+                                          </button>
+                                          <br>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+          
+                      </div>
+          
+                  </div>
+              </div>
+          </div>
         </div>
+      </div>
+  
+      <div id="button-scroll-top" style="display: none">
+        <button><i class="fas fa-chevron-up"></i></button>
+      </div>
     </div>
-</div>
+    <app-frontend-footer></app-frontend-footer>
+  </body>

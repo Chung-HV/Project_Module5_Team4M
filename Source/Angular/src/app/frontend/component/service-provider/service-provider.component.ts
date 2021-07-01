@@ -13,8 +13,15 @@ export class ServiceProviderComponent implements OnInit {
   services: Service[] = [];
   defaultServices: Service[] = [];
   freeServices: Service[] = [];
+  freeServiceIds: any[] = [];
   extraServices: Service[] = [];
+
   providingServices: Service[] = [];
+  providingExtraServiceIds: any[] = [];
+  providingExtraServices: Service[] = [];
+  providingFreeServices: any[] = [];
+  providingFreeServiceIds: any[] = [];
+
   provider_id: any
   newProvidingServices: Service[] = [];
 
@@ -28,8 +35,8 @@ export class ServiceProviderComponent implements OnInit {
     void {
     this.provider_id = this.route.snapshot.paramMap.get('id');
     this.getAll();
-    this.getProvidingService(this.provider_id);
     this.getDefaultServices();
+    this.getProvidingServices(this.provider_id);
   }
 
   getAll() {
@@ -38,7 +45,7 @@ export class ServiceProviderComponent implements OnInit {
         this.services = services,
         this.getDefaultServices(),       
         this.getFreeServices(),       
-        this.getExtraServices()      
+        this.getExtraServices()
       }
     );
   }
@@ -58,23 +65,50 @@ export class ServiceProviderComponent implements OnInit {
       if (service.type == 'extra') {
         this.extraServices.push(service);
       }
-    });
+    });    
   }
 
   getFreeServices() {
     this.services.forEach(service => {
       if (service.type == 'free') {
         this.freeServices.push(service);
+        this.freeServiceIds.push(service.id)
       }
     });
+
   }
 
-  getProvidingService(provider_id: any) {
+  getProvidingServices(provider_id: any) {
     this.serviceProvider.getProvidingServices(provider_id).subscribe(
       providingServices => {
-        this.providingServices = providingServices
+        this.providingServices = providingServices,
+        // this.getDefaultServices(),       
+        this.getProvidingFreeServices(),       
+        this.getProvidingExtraServices()
       }
     );
+  }
+
+  getProvidingExtraServices() {
+    this.providingServices.forEach(service => {
+      if (service.type == 'extra') {
+        this.providingExtraServices.push(service);
+        this.providingExtraServiceIds.push(service.id);
+        this.newProvidingServices.push(service.id);
+      }
+    });    
+  }
+
+  getProvidingFreeServices() {
+    this.providingServices.forEach(service => {
+      if (service.type == 'free') {
+        this.providingFreeServices.push(service);
+        this.providingFreeServiceIds.push(service.id);
+        this.newProvidingServices.push(service.id);
+      }
+    });
+    console.log(this.providingFreeServiceIds);
+
   }
 
   getNewProvidingServices(service_id: any) {
