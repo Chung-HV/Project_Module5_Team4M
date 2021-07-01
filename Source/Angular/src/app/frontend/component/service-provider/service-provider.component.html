@@ -14,7 +14,7 @@
         <br>
     </div>
 </div> -->
-<div style="padding-bottom: 200px;"></div>
+<div style="padding-bottom: 100px;"></div>
 <div class="wrapper">
     <div class="container">
         <div class="user__profile row">
@@ -64,18 +64,57 @@
             <div class="group-main-wrap col-md-2"></div>
             <div class="group-main-wrap col-md-8">
                 <div class="publish-post-wrap">
+                    <!-- <h3 style="text-align: center;">Services you are providing</h3>
+
+                    <div class="header">
+                        <div class="row" *ngFor="let service of providingServices">
+                            <div class="col-md-3">
+                                <p>{{service.name}}</p>
+                            </div>
+                        </div>
+                    </div> -->
+
                     <div class="header">
                         <h3 style="text-align: center;">Select services you want to provide</h3>
                     </div>
+
                     <div class="footer">
                         <div class="footer-bottom">
                             <div class="row">
-                                <div class="col-sm-4" *ngFor="let service of services">
-                                    <label class="check_box">
-                                        <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                            (change)="getNewProvidingServices(service.id)">
-                                        <span>{{service.name}}</span>
-                                    </label>
+                                <div class="col-sm-4">
+                                    <label class="check_box">Default Services</label>
+                                    <div *ngFor="let service of defaultServices">
+                                        <label class="check_box">
+                                            <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                            checked
+                                            disabled
+                                                (change)="getNewProvidingServices(service.id)">
+                                            <span>{{service.name}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <label class="check_box">Free Services</label>
+                                    <div *ngFor="let service of freeServices">
+                                        <label class="check_box">
+                                            <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                                (change)="getNewProvidingServices(service.id)">
+                                            <span>{{service.name}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label class="check_box">Extra Services</label>
+                                    <div *ngFor="let service of extraServices">
+                                        <label class="check_box">
+                                            <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
+                                                (change)="getNewProvidingServices(service.id)">
+                                            <span>{{service.name}}</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div>

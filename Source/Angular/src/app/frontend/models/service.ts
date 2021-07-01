@@ -1,4 +1,5 @@
 export interface Service {
     id: any,
-    name: any
+    name: any,
+    type: any,
 }
