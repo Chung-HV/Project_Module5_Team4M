@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Album extends Model
 {
     use HasFactory;
+    protected $table = 'albums';
+    public function users(){
+        return $this->belongsTo(Album::class);
+    }
 }

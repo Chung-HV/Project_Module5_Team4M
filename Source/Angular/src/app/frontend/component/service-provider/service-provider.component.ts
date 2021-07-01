@@ -58,7 +58,9 @@ export class ServiceProviderComponent implements OnInit {
       }
     );
     alert('Your services you want to provide has been set');
-  }
+    console.log(this.providingServices);
+  };
 }
+
 
 

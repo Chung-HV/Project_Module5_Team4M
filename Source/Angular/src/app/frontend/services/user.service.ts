@@ -1,9 +1,10 @@
 import { environment } from './../../../environments/environment.prod';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+const auth_token = localStorage.getItem('token');
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +23,23 @@ export class UserService {
    }
 
    login (user: User): Observable<any> {
-     console.log(`${environment.base_Url}users/login`);
      return this.http.post(`${environment.base_Url}users/login`, user);
    }
 
    logout (): Observable<any> {
-     let token = localStorage.getItem('token')
-     return this.http.post(`${environment.base_Url}users/logout`, token);
+     return this.http.post(`${environment.base_Url}users/logout`, auth_token);
+   }
+   profile(): Observable<any> {
+     var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      //'Access-Control-Allow-Origin': '*',
+      //'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+      // cu phap co dau cach dang sau Bearer
+      'Authorization': 'Bearer ' + auth_token
+    });
+    return this.http.get(`${environment.base_Url}/users/profile`);
+   }
+   updateUserProfile (id: number,user:User): Observable<any> {
+     return this.http.post(`${environment.base_Url}users/update/${id}`,user);
    }
 }

@@ -27,10 +27,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit () {
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('token', data.access.token);
+        console.log( data.access.token);
         this.router.navigate(['']);
       },
       error: (error: any) => {
