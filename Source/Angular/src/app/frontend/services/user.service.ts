@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-const auth_token = localStorage.getItem('token');
 
 @Injectable({
   providedIn: 'root'
@@ -27,19 +26,27 @@ export class UserService {
    }
 
    logout (): Observable<any> {
+    var auth_token = localStorage.getItem('token');
      return this.http.post(`${environment.base_Url}users/logout`, auth_token);
    }
    profile(): Observable<any> {
+    var auth_token = localStorage.getItem('token');
+    // console.log(auth_token);
+
      var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      //'Access-Control-Allow-Origin': '*',
-      //'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-      // cu phap co dau cach dang sau Bearer
       'Authorization': 'Bearer ' + auth_token
     });
-    return this.http.get(`${environment.base_Url}/users/profile`);
+    return this.http.get(`${environment.base_Url}users/profile`,{headers: reqHeader });
    }
-   updateUserProfile (id: number,user:User): Observable<any> {
-     return this.http.post(`${environment.base_Url}users/update/${id}`,user);
+   updateUserProfile(id:number,user:any): Observable<any> {
+    var auth_token = localStorage.getItem('token');
+    // console.log(auth_token);
+
+     var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    });
+     return this.http.post(`${environment.base_Url}users/update/${id}`,user, {headers: reqHeader });
    }
 }

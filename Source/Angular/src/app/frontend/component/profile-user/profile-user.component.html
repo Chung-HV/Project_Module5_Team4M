@@ -4,7 +4,7 @@
     PlayerDuo.</noscript
   >
   <div id="root">
-    <app-frontend-user-header></app-frontend-user-header>
+    <!-- <app-frontend-user-header></app-frontend-user-header> -->
 
     <div class="notifications-wrapper"></div>
     <div></div>
@@ -159,20 +159,21 @@
                   <span>0 Giờ</span>
                 </div>
               </div>
+
             </div>
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
                 <h3>Thông tin cá nhân</h3>
                 <div class="d-flex img-avatar">
                   <img
-                    src="https://files.playerduo.com/production/images/avatar25.png"
+                    src="{{ user.avatar }}"
                     class=""
                     alt="avatar"
                     sizes="sm"
                   />
 
                 </div>
-                <form class="from-userinfo" (ngSubmit)="onSubmit()">
+                <form class="from-userinfo" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                   <div class="cropimg-avatar">
 
                     <input type="file" name="avatar" />
@@ -180,121 +181,205 @@
                   <div class="fieldGroup">
                     <p class="control-label">Full name (*)</p>
                     <input
+                    [class.is-invalid] = "myForm.get('name')?.invalid && (myForm.get('name')?.dirty || myForm.get('name')?.touched)"
+                    formControlName="name"
                       type="text"
                       name="name"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.name"
                     />
+                    <div *ngIf = "myForm.get('name')?.hasError('required')" class="invalid-feedback">
+                      Name is required!
+                    </div>
+                    <div *ngIf = "myForm.get('name')?.hasError('maxlength')" class="invalid-feedback">
+                      Name max 30 characters!
+                    </div>
+                    <div *ngIf = "myForm.get('name')?.hasError('pattern')" class="invalid-feedback">
+                      Name only alphabet!
+                    </div>
                   </div>
+
+
                   <div class="fieldGroup">
                     <p class="control-label">Date of birth (*)</p>
-                    <input
-                      type="date"
-                      name="birth_day"
-                      placeholder=""
-                      maxlength="5000"
-                      autocomplete="false"
-                      value=""
-                    />
+                    <input [class.is-invalid] = "myForm.get('birth_day')?.invalid && (myForm.get('birth_day')?.dirty || myForm.get('birth_day')?.touched)" type="date" formControlName="birth_day" [(ngModel)]="user.birth_day" />
+                    <div *ngIf = "myForm.get('birth_day')?.hasError('required')" class="invalid-feedback">
+                      Date is required!
+                    </div>
+                    <div *ngIf = "myForm.get('birth_day')?.hasError('pattern')" class="invalid-feedback">
+                      Incorrect date format!
+                    </div>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Gender (*)</p>
                     <input
+                    [class.is-invalid] = "myForm.get('gender')?.invalid && (myForm.get('gender')?.dirty || myForm.get('gender')?.touched)"
+                    formControlName="gender"
                       type="text"
                       name="gender"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.gender"
                     />
+                    <div *ngIf = "myForm.get('gender')?.hasError('required')" class="invalid-feedback">
+                      Gender is required!
+                    </div>
+                    <div *ngIf = "myForm.get('gender')?.hasError('maxlength')" class="invalid-feedback">
+                      Gender max 5 characters!
+                    </div>
+                    <div *ngIf = "myForm.get('gender')?.hasError('pattern')" class="invalid-feedback">
+                      Gender only alphabet!
+                    </div>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">City (*)</p>
                     <input
+                    [class.is-invalid] = "myForm.get('city')?.invalid && (myForm.get('city')?.dirty || myForm.get('city')?.touched)"
+                    formControlName="city"
                       type="text"
                       name="city"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.city"
+
                     />
+                    <div *ngIf = "myForm.get('city')?.hasError('required')" class="invalid-feedback">
+                      City is required!
+                    </div>
+                    <div *ngIf = "myForm.get('city')?.hasError('maxlength')" class="invalid-feedback">
+                      City max 30 characters!
+                    </div>
+                    <div *ngIf = "myForm.get('city')?.hasError('pattern')" class="invalid-feedback">
+                      City only alphabet!
+                    </div>
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Country (*)</p>
+                    <p class="control-label">Nation (*)</p>
                     <input
+                    [class.is-invalid] = "myForm.get('nation')?.invalid && (myForm.get('nation')?.dirty || myForm.get('nation')?.touched)"
+                    formControlName="nation"
                       type="text"
                       name="nation"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.nation"
+
                     />
+                    <div *ngIf = "myForm.get('nation')?.hasError('required')" class="invalid-feedback">
+                      Nation is required!
+                    </div>
+                    <div *ngIf = "myForm.get('nation')?.hasError('maxlength')" class="invalid-feedback">
+                      Nation max 30 characters!
+                    </div>
+                    <div *ngIf = "myForm.get('nation')?.hasError('pattern')" class="invalid-feedback">
+                      Nation only alphabet!
+                    </div>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Height</p>
                     <input
-                      type="text"
-                      name="height"
-                      placeholder=""
-                      maxlength="5000"
-                      autocomplete="false"
-                      value=""
-                    />
+                    [class.is-invalid] = "myForm.get('height')?.invalid && (myForm.get('height')?.dirty || myForm.get('height')?.touched)"
+                     type="text"
+                      formControlName="height"
+                      [(ngModel)]="user.height"/>
+
+                      <div *ngIf = "myForm.get('height')?.hasError('maxlength')" class="invalid-feedback">
+                        Height max 10 characters!
+                      </div>
+                      <div *ngIf = "myForm.get('height')?.hasError('pattern')" class="invalid-feedback">
+                        Height must be numeric!
+                      </div>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">weight</p>
                     <input
+                    [class.is-invalid] = "myForm.get('weight')?.invalid && (myForm.get('weight')?.dirty || myForm.get('weight')?.touched)"
+                    formControlName="weight"
                       type="text"
                       name="weight"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.weight"
                     />
+
+                    <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback">
+                      Weight max 10 characters!
+                    </div>
+                    <div *ngIf = "myForm.get('weight')?.hasError('pattern')" class="invalid-feedback">
+                      Weight must be numeric!
+                    </div>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Hobby</p>
                     <input
+                    [class.is-invalid] = "myForm.get('hobby')?.invalid && (myForm.get('hobby')?.dirty || myForm.get('hobby')?.touched)"
+                    formControlName="hobby"
                       type="text"
                       name="hobby"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.hobby"
                     />
+
+                    <div *ngIf = "myForm.get('hobby')?.hasError('maxlength')" class="invalid-feedback">
+                      Hobby max 30 characters!
+                    </div>
+
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Introducion</p>
-                    <textarea maxlength="5000" autocomplete="false" name="introducion"></textarea>
+                    <textarea
+                    [class.is-invalid] = "myForm.get('introducion')?.invalid && (myForm.get('introducion')?.dirty || myForm.get('introducion')?.touched)"
+                      name="introducion"
+                      formControlName="introducion"
+                      [(ngModel)]="user.introducion" >
+
+                    </textarea>
+
+                    <div *ngIf = "myForm.get('introducion')?.hasError('maxlength')" class="invalid-feedback">
+                      Introducion max 50 characters!
+                    </div>
+
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Requirement</p>
-                    <textarea maxlength="5000" autocomplete="false" name="requirement"></textarea>
+                    <textarea
+                    [class.is-invalid] = "myForm.get('requirement')?.invalid && (myForm.get('requirement')?.dirty || myForm.get('requirement')?.touched)"
+                     name="requirement"
+                     formControlName="requirement"
+                     [(ngModel)]="user.requirement">
+
+
+                    </textarea>
+                    <div *ngIf = "myForm.get('requirement')?.hasError('maxlength')" class="invalid-feedback">
+                      Requirement max 50 characters!
+                    </div>
+
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Facebook</p>
                     <input
+                    [class.is-invalid] = "myForm.get('facebook')?.invalid && (myForm.get('facebook')?.dirty || myForm.get('facebook')?.touched)"
+                    formControlName="facebook"
                       type="text"
                       name="facebook"
                       placeholder=""
                       maxlength="5000"
                       autocomplete="false"
-                      value=""
+                      [(ngModel)]="user.facebook"
                     />
+                    <div *ngIf = "myForm.get('facebook')?.hasError('maxlength')" class="invalid-feedback">
+                      Facebook max 30 characters!
+                    </div>
+                    
                   </div>
-                  <!-- <div class="fieldGroup">
-                    <p class="control-label">Date invite</p>
-                    <input
-                      type="date"
-                      name="name"
-                      placeholder=""
-                      maxlength="5000"
-                      autocomplete="false"
-                      value=""
-                    />
-                  </div> -->
                   <button type="submit" class="btn-update">Update</button>
                 </form>
               </div>
@@ -303,6 +388,7 @@
         </div>
       </div>
     </div>
+
     <div id="button-scroll-top" style="display: none">
       <button><i class="fas fa-chevron-up"></i></button>
     </div>
