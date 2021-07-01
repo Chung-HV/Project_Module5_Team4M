@@ -14,12 +14,12 @@ export class AppComponent {
     'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i&amp;subset=vietnamese',
     'assets/frontend/static/css/9.cf6fc409.chunk.css',
     'assets/frontend/static/css/main.30c4c453.chunk.css',
+    'assets/frontend/static/css/detail-10.8fc49f27.chunk.css',
     'assets/frontend/static/css/20.94581a99.chunk.css',
     'assets/frontend/static/css/15.0142c229.chunk.css',
     'assets/frontend/static/css/header.css',
+    'assets/frontend/static/css/9.3d8f0907.chunk.css',
     'assets/frontend/static/css/10.dd0ef9d4.chunk.css',
-
-
   ];
 
   frontendScript = [

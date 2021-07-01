@@ -21,8 +21,9 @@ export class ServiceProviderService {
   }
 
   updateProvidingServices(provider_id:any, services:any):Observable<any>{
-    return this.http.put<any>(`${API_URL}provider/${provider_id}/service`,services)
-
+    const data = {"services":services}
+    // console.log(data);
+    return this.http.post<any>(`${API_URL}provider/${provider_id}/service/update`,data)
   }
 
   getProvidingServices(provider_id:any):Observable<any>{

@@ -25,5 +25,18 @@ class userSeeder extends Seeder
         $user->nation = 'Vietnam';
         $user->avatar = 'user_avatar';
         $user->save();
+
+        $user = new User();
+        $user->name = 'Đào';
+        $user->email = 'daopt@gmail.com';
+        $user->password = Hash::make(123456);
+        $user->city = 'Hanoi';
+        $user->birth_day = '202/11/14';
+        $user->price = '10';
+        $user->nation = 'Vietnam';
+        $user->is_service_provider = '1';
+
+        $user->avatar = 'user_avatar';
+        $user->save();
     }
 }

@@ -18,32 +18,27 @@ use App\Http\Controllers\frontend\DashboardController;
 |
 */
 
-Route::prefix('dashboard')->group(function(){
-    Route::get('',[DashboardController::class,'showServiceUser']);
-    Route::get('user_vip',[DashboardController::class,'showVipUser']);
-    Route::get('user_new',[DashboardController::class,'showNewUser']);
+Route::prefix('dashboard')->group(function () {
+    Route::get('', [DashboardController::class, 'showServiceUser']);
+    Route::get('user_vip', [DashboardController::class, 'showVipUser']);
+    Route::get('user_new', [DashboardController::class, 'showNewUser']);
+    Route::get('/{id}', [DashboardController::class, 'getUser']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::prefix('users')->group(function(){
+Route::prefix('users')->group(function () {
 
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
-
-
-
-
-
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/profile', [AuthController::class, 'profile']);
         Route::post('/update/{id}', [AuthController::class, 'update']);
-
-
     });
 });
 
-Route::get('provider/service',[ServiceController::class, 'getAll']);
-Route::get('provider/{provider_id}/service',[ProviderController::class, 'getProvidingService']);
+Route::get('provider/service', [ServiceController::class, 'getAll']);
+Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);
+Route::post('provider/{id}/service/update', [ProviderController::class, 'setProvidingService']);

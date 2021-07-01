@@ -14,6 +14,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
 
 
 
@@ -22,11 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     FrontendHomeComponent,
-
-
     FrontendHeaderComponent,
     FrontendFooterComponent,
-
     LoginComponent,
 
      ProfileUserComponent,
@@ -38,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
 
     RegisterComponent,
-    ServiceProviderComponent
+    ServiceProviderComponent,
+    ProviderDetailComponent
 
   ],
   imports: [

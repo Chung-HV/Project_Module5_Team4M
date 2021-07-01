@@ -4,7 +4,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+
+
 const auth_token = localStorage.getItem('token');
+const reqHeader = new HttpHeaders({
+  'Content-Type': 'application/json',
+
+  'Authorization': 'Bearer ' + auth_token
+});
 
 @Injectable({
   providedIn: 'root'
@@ -23,18 +30,16 @@ export class UserService {
    }
 
    login (user: User): Observable<any> {
+    console.log(auth_token);
      return this.http.post(`${environment.base_Url}users/login`, user);
    }
 
    logout (): Observable<any> {
-     return this.http.post(`${environment.base_Url}users/logout`, auth_token);
+     console.log(auth_token);
+     return this.http.post(`${environment.base_Url}users/logout`, {responseType: 'json', headers: reqHeader } );
    }
    profile(): Observable<any> {
-     var reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-     
-      'Authorization': 'Bearer ' + auth_token
-    });
+    console.log(auth_token);
     return this.http.get(`${environment.base_Url}/users/profile`, { responseType: 'json', headers: reqHeader });
    }
    updateUserProfile (id: number,user:User): Observable<any> {

@@ -10,6 +10,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
         localStorage.setItem('token', data.access.token);
-        console.log( data.access.token);
+        console.log(data.user);
         this.router.navigate(['']);
       },
       error: (error: any) => {
