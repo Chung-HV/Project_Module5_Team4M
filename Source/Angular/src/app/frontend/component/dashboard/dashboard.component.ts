@@ -11,8 +11,8 @@ import { HomeService } from '../../services/home.service';
 })
 export class DashboardComponent implements OnInit {
   users!: UserDashboard[];
-  vip_user !: UserDashboard[];
-  new_user !: UserDashboard[];
+  vip_user!: UserDashboard[];
+  new_user!: UserDashboard[];
   constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {

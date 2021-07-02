@@ -14,11 +14,10 @@ import { HomeService } from '../../services/home.service';
   styleUrls: ['./provider-detail.component.css'],
 })
 export class ProviderDetailComponent implements OnInit {
-  users!: any;
-  price!: number;
+  users!: any
   user_id:any =localStorage.getItem('user_id');
+  times =0.5;
 
-  message = '';
   constructor(
     private fb: FormBuilder,
     private homeService: HomeService,
@@ -26,15 +25,16 @@ export class ProviderDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  orderForm = new FormGroup({
-    price: new FormControl(),
-    start_at: new FormControl(),
-    time: new FormControl(),
-    address: new FormControl(),
-  });
+  // orderForm = new FormGroup({
+  //   price: new FormControl(),
+  //   start_at: new FormControl(),
+  //   time: new FormControl(),
+  //   address: new FormControl(),
+  // });
 
   ngOnInit(): void {
-    this.message = '';
+    console.log(this.times);
+
     this.getUser(this.route.snapshot.paramMap.get('id'));
    // console.log(localStorage.getItem('user_id'));
   }
@@ -50,7 +50,7 @@ export class ProviderDetailComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    console.log(this.orderForm.value);
-  }
+  // onSubmit() {
+  //   console.log(this.orderForm.value);
+  // }
 }

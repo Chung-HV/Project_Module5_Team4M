@@ -147,81 +147,80 @@
           <h4 class="modal-title"><span>Thuê Người Yêu</span></h4>
         </div>
         <div class="modal-body">
-          <form [formGroup]="orderForm">
-          <table>
-            <tbody>
-              <tr>
-                <td><input value="{{user_id}}"  name="user_id"></td>
-                <td><input value="{{user.id}}"  name="service_provider_id"></td>
-              </tr>
-              <tr>
-                <td>Người Yêu:</td>
-                <td>{{user.name}}</td>
-              </tr>
-              <tr>
-                <td>Ngày Đặt:</td>
-                <td><input type="date" class="form-control" name="start_at" formControlName="start_at"></td>
-              </tr>
-              <tr>
-                <td>Giờ Đặt:</td>
-                <td><input type="time" class="form-control" name="time" formControlName="time"></td>
-              </tr>
-              <tr>
-                <td>Địa Điểm:</td>
-                <td><input type="text" class="form-control" name="address" formControlName="address"></td>
-              </tr>
-              <tr>
-                <td><span>Thời gian muốn thuê</span>:</td>
-                <td>
-                  <select name="timeRent" class="form-control">
-                    <option value="0.5">30&nbsp;phút</option>
-                    <option value="1">1&nbsp;giờ</option>
-                    <option value="2">2&nbsp;giờ</option>
-                    <option value="3">3&nbsp;giờ</option>
-                    <option value="4">4&nbsp;giờ</option>
-                    <option value="5">5&nbsp;giờ</option>
-                    <option value="6">6&nbsp;giờ</option>
-                    <option value="7">7&nbsp;giờ</option>
-                    <option value="8">8&nbsp;giờ</option>
-                    <option value="9">9&nbsp;giờ</option>
-                    <option value="10">10&nbsp;giờ</option>
-                    <option value="11">11&nbsp;giờ</option>
-                    <option value="12">12&nbsp;giờ</option>
-                    <option value="13">13&nbsp;giờ</option>
-                    <option value="14">14&nbsp;giờ</option>
-                    <option value="15">15&nbsp;giờ</option>
-                    <option value="16">16&nbsp;giờ</option>
-                    <option value="17">17&nbsp;giờ</option>
-                    <option value="18">18&nbsp;giờ</option>
-                    <option value="19">19&nbsp;giờ</option>
-                    <option value="20">20&nbsp;giờ</option>
-                    <option value="21">21&nbsp;giờ</option>
-                    <option value="22">22&nbsp;giờ</option>
-                    <option value="23">23&nbsp;giờ</option>
-                    <option value="24">24&nbsp;giờ</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td><span>Chi phí</span>:</td>
-                <td><input value="{{user.price|number}} VND" disabled
-                  style="border: none;background-color: white;"
-                   name="price"></td>
-              </tr>
-              <tr>
-                <td><span>Số dư hiện tại</span>:</td>
-                <td><span class="total-amount">0đ</span><span class="load-more-credit">+</span></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <textarea placeholder="Type a message ..." name="message" maxlength="255" type="text"
-                    class="form-control"></textarea>
-                  <p class="err-message"></p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+          <form >
+            <table>
+              <tbody>
+                <tr>
+                  <td><input value="{{user_id}}" name="user_id"></td>
+                  <td><input value="{{user.id}}" name="service_provider_id"></td>
+                </tr>
+                <tr>
+                  <td>Người Yêu:</td>
+                  <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                  <td>Ngày Đặt:</td>
+                  <td><input type="date" class="form-control" name="start_at" formControlName="start_at"></td>
+                </tr>
+                <tr>
+                  <td>Giờ Đặt:</td>
+                  <td><input type="time" class="form-control" name="time" formControlName="time"></td>
+                </tr>
+                <tr>
+                  <td>Địa Điểm:</td>
+                  <td><input type="text" class="form-control" name="address" formControlName="address"></td>
+                </tr>
+                <tr>
+                  <td><span>Thời gian muốn thuê</span>:</td>
+                  <td>
+                    <select [(ngModel)]="times" class="form-control">
+                      <option value="0.5">30&nbsp;phút</option>
+                      <option value="1">1&nbsp;giờ</option>
+                      <option value="2">2&nbsp;giờ</option>
+                      <option value="3">3&nbsp;giờ</option>
+                      <option value="4">4&nbsp;giờ</option>
+                      <option value="5">5&nbsp;giờ</option>
+                      <option value="6">6&nbsp;giờ</option>
+                      <option value="7">7&nbsp;giờ</option>
+                      <option value="8">8&nbsp;giờ</option>
+                      <option value="9">9&nbsp;giờ</option>
+                      <option value="10">10&nbsp;giờ</option>
+                      <option value="11">11&nbsp;giờ</option>
+                      <option value="12">12&nbsp;giờ</option>
+                      <option value="13">13&nbsp;giờ</option>
+                      <option value="14">14&nbsp;giờ</option>
+                      <option value="15">15&nbsp;giờ</option>
+                      <option value="16">16&nbsp;giờ</option>
+                      <option value="17">17&nbsp;giờ</option>
+                      <option value="18">18&nbsp;giờ</option>
+                      <option value="19">19&nbsp;giờ</option>
+                      <option value="20">20&nbsp;giờ</option>
+                      <option value="21">21&nbsp;giờ</option>
+                      <option value="22">22&nbsp;giờ</option>
+                      <option value="23">23&nbsp;giờ</option>
+                      <option value="24">24&nbsp;giờ</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span>Chi phí</span>:</td>
+                  <td><input value="{{user.price*times|number}} VND" disabled style="border: none;background-color: white;"
+                      name="price"></td>
+                </tr>
+                <tr>
+                  <td><span>Số dư hiện tại</span>:</td>
+                  <td><span class="total-amount">0đ</span><span class="load-more-credit">+</span></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <textarea placeholder="Type a message ..." name="message" maxlength="255" type="text"
+                      class="form-control"></textarea>
+                    <p class="err-message"></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-fill btn btn-danger"><span>Thuê</span></button>
