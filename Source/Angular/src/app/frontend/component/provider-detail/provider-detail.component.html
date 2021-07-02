@@ -156,7 +156,7 @@
               <tr>
                 <td><span>Thời gian muốn thuê</span>:</td>
                 <td>
-                  <select name="timeRent" class="form-control">
+                  <select [(ngModel)]="time" class="form-control">
                     <option value="0.5">30&nbsp;phút</option>
                     <option value="1">1&nbsp;giờ</option>
                     <option value="2">2&nbsp;giờ</option>
@@ -187,7 +187,7 @@
               </tr>
               <tr>
                 <td><span>Chi phí</span>:</td>
-                <td><input value="{{user.price}}" style="border: none;background-color: white;" disabled >VND</td>
+                <td><input value="{{user.price*time}}" style="border: none;background-color: white;" disabled >VND</td>
               </tr>
               <tr>
                 <td><span>Số dư hiện tại</span>:</td>
