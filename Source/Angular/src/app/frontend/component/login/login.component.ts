@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    // private toastr: ToastrService,
+    private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
@@ -31,10 +31,9 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginForm.value);
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
-        // console.log(data.access.token);
-
         localStorage.setItem('token', data.access.token);
-        console.log(data.user);
+        this.toastr.success('Hello world!', 'Toastr fun!');
+        console.log(data.access.token+'login');
         this.router.navigate(['']);
       },
       error: (error: any) => {

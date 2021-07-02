@@ -5,45 +5,55 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
-
-const auth_token = localStorage.getItem('token');
-const reqHeader = new HttpHeaders({
-  'Content-Type': 'application/json',
-
-  'Authorization': 'Bearer ' + auth_token
-});
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  public user !: Observable<User>;
+  public user!: Observable<User>;
 
-  constructor(
-    private router: Router,
-    private http: HttpClient
-  ) {
-   }
+  constructor(private router: Router, private http: HttpClient) {}
 
-   register (user: User): Observable<any> {
-     return this.http.post(`${environment.base_Url}users/register`, user);
-   }
+  register(user: User): Observable<any> {
+    return this.http.post(`${environment.base_Url}users/register`, user);
+  }
 
-   login (user: User): Observable<any> {
-    console.log(auth_token);
-     return this.http.post(`${environment.base_Url}users/login`, user);
-   }
+  login(user: User): Observable<any> {
+    return this.http.post(`${environment.base_Url}users/login`, user);
+  }
 
-   logout (): Observable<any> {
+  logout(): Observable<any> {
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
 
-     return this.http.post(`${environment.base_Url}users/logout`, {headers: reqHeader });
-   }
-   profile(): Observable<any> {
+      Authorization: 'Bearer ' + auth_token,
+    });
+    console.log(auth_token+'logout');
+    return this.http.get(`${environment.base_Url}users/logout`, {
+      headers: reqHeader
+    });
+  }
+  profile(): Observable<any> {
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
 
-    return this.http.get(`${environment.base_Url}users/profile`,{headers: reqHeader });
-   }
-   updateUserProfile(id:number,user:any): Observable<any> {
+      Authorization: 'Bearer ' + auth_token,
+    });
+    // console.log(auth_token);
+    return this.http.get(`${environment.base_Url}users/profile`, {
+      headers: reqHeader
+    });
+  }
+  updateUserProfile(id: number, user: any): Observable<any> {
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
 
-     return this.http.post(`${environment.base_Url}users/update/${id}`,user, {headers: reqHeader });
-   }
+      Authorization: 'Bearer ' + auth_token,
+    });
+    return this.http.post(`${environment.base_Url}users/update/${id}`, user, {
+      headers: reqHeader,
+    });
+  }
 }

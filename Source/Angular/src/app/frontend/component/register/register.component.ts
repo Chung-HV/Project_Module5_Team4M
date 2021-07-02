@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 @Component({
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   }, { validators: this.checkPassword() });
 
   constructor(
-    // private toastr: ToastrService,
+    private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register(this.userForm.value).subscribe({
        next: () => {
-        // this.showSuccess();
+        this.showSuccess();
         this.router.navigate(['frontend/login'])
        },
        error: (error) => {
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  // showSuccess() {
-  //   this.toastr.success('Register successful!');
-  // }
+  showSuccess() {
+    this.toastr.success('Register successful!');
+  }
 }
