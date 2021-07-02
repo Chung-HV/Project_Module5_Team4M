@@ -43,7 +43,9 @@ Route::prefix('users')->group(function () {
 Route::get('/provider/{id}/approve', [ProviderController::class, 'approveProvider']);
 
 Route::get('provider/service', [ServiceController::class, 'getAll']);
+Route::get('provider/requesting', [ProviderController::class, 'getRequestingProvider']);
 Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);
 Route::post('provider/{id}/service/update', [ProviderController::class, 'setProvidingService']);
 Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomeProvider']);
+Route::get('provider/{id}/approve', [ProviderController::class, 'approveRequest']);
 

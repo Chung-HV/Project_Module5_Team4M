@@ -54,5 +54,15 @@ class ProviderController extends Controller
         return response()->json($user->is_service_provider,200);
     }
 
-    
+    public function getRequestingProvider(){
+        $users = DB::table('users')->where('is_service_provider','=',2)->get();
+        return response()->json($users,200);
+    }
+
+    public function approveRequest($id){
+        $user = User::findOrFail($id);
+        $user->is_service_provider = 1;
+        $user->save();
+        return response()->json('succes',200);
+    }
 }
