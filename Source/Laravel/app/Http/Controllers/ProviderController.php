@@ -45,4 +45,14 @@ class ProviderController extends Controller
         }
         return response()->json($request->services);
     }
+
+    public function requestBecomeProvider($id){
+        $user = User::findOrFail($id);
+        $user->is_service_provider = 2;
+        $user->save();
+        dd($user->is_service_provider);
+        return response()->json($user->is_service_provider,200);
+    }
+
+    
 }
