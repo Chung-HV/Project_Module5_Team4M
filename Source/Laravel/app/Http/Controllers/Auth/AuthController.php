@@ -61,6 +61,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken($request->email)->plainTextToken;
+        Storage::set('id', $user->id);
 
 
         return response()->json([

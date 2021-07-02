@@ -23,4 +23,8 @@ export class HomeService {
   getUser(id:any): Observable<any> {
     return this.http.get(`${baseUrl}/ ${id}`);
   }
+
+  orderServiceProvider(data:any): Observable<any> {
+    return this.http.get(`${baseUrl}/order_service_provider`);
+  }
 }

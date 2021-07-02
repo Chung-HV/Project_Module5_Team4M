@@ -144,14 +144,31 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
           </button>
-          <h4 class="modal-title"><span>Thuê player</span></h4>
+          <h4 class="modal-title"><span>Thuê Người Yêu</span></h4>
         </div>
         <div class="modal-body">
+          <form [formGroup]="orderForm">
           <table>
             <tbody>
               <tr>
-                <td>Lover:</td>
+                <td><input value="{{user_id}}"  name="user_id"></td>
+                <td><input value="{{user.id}}"  name="service_provider_id"></td>
+              </tr>
+              <tr>
+                <td>Người Yêu:</td>
                 <td>{{user.name}}</td>
+              </tr>
+              <tr>
+                <td>Ngày Đặt:</td>
+                <td><input type="date" class="form-control" name="start_at" formControlName="start_at"></td>
+              </tr>
+              <tr>
+                <td>Giờ Đặt:</td>
+                <td><input type="time" class="form-control" name="time" formControlName="time"></td>
+              </tr>
+              <tr>
+                <td>Địa Điểm:</td>
+                <td><input type="text" class="form-control" name="address" formControlName="address"></td>
               </tr>
               <tr>
                 <td><span>Thời gian muốn thuê</span>:</td>
@@ -187,7 +204,9 @@
               </tr>
               <tr>
                 <td><span>Chi phí</span>:</td>
-                <td><input value="{{user.price}}" style="border: none;background-color: white;" disabled >VND</td>
+                <td><input value="{{user.price|number}} VND" disabled
+                  style="border: none;background-color: white;"
+                   name="price"></td>
               </tr>
               <tr>
                 <td><span>Số dư hiện tại</span>:</td>
@@ -202,6 +221,7 @@
               </tr>
             </tbody>
           </table>
+        </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-fill btn btn-danger"><span>Thuê</span></button>
