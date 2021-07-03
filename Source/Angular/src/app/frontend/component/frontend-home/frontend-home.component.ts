@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
-import { ServiceProviderService } from '../../services/provider.service';
+import { ProviderService } from '../../services/provider.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -25,7 +25,7 @@ export class FrontendHomeComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private data: DataService,
-    private providerService: ServiceProviderService
+    private providerService: ProviderService
   ) {
     this.provider_id = localStorage.getItem('user_id');
   }

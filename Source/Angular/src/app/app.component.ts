@@ -21,16 +21,24 @@ export class AppComponent {
     'assets/frontend/static/css/header.css',
     'assets/frontend/static/css/9.3d8f0907.chunk.css',
     'assets/frontend/static/css/10.dd0ef9d4.chunk.css',
+    "assets/frontend/static/css/8.cf6fc409.chunk.css" ,
+    "assets/frontend/static/css/main.9256ead8.chunk.css" ,
+    "assets/frontend/static/css/13.a593b7f6.chunk.css",
+
   ];
 
   frontendScript = [
     "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
     'https://code.jquery.com/jquery-2.1.4.min.js',
+    "assets/frontend/static/js/0.f413a1f9.chunk.js",
+    "assets/frontend/static/js/13.53efd0c4.chunk.js",
+    "assets/frontend/static/js/4.67065a7e.chunk.js",
     'assets/frontend/static/js/0.0c136d1b.chunk.js',
     'assets/frontend/static/js/2.d2525480.chunk.js',
     'assets/frontend/static/js/5.9ed9d5b3.chunk.js',
     'assets/frontend/static/js/15.b5bdbea4.chunk.js',
+    "assets/frontend/static/js/10.fcc58758.chunk.js"
   ];
 
   backendStyle = [

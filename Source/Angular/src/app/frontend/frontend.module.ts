@@ -15,6 +15,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
 
 
 
@@ -38,7 +39,8 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
     RegisterComponent,
     
     ServiceProviderComponent,
-    ProviderDetailComponent
+    ProviderDetailComponent,
+    OrderHistoryComponent
 
   ],
   imports: [

@@ -8,7 +8,7 @@ const API_URL = `${environment.base_Url}`
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceProviderService {
+export class ProviderService {
 
   constructor(private http:HttpClient) { }
 

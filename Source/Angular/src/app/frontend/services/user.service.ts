@@ -58,4 +58,12 @@ export class UserService {
       headers: reqHeader,
     });
   }
+
+  getOrderHistory(user_id:any){
+    return this.http.get(`${environment.base_Url}users/${user_id}/profile/order-history`)
+  }
+
+  getById(user_id:any):Observable<any>{
+    return this.http.get<any>(`${environment.base_Url}${user_id}/provider`)
+  }
 }
