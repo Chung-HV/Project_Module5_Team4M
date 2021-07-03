@@ -50,7 +50,6 @@ class ProviderController extends Controller
         $user = User::findOrFail($id);
         $user->is_service_provider = 2;
         $user->save();
-        dd($user->is_service_provider);
         return response()->json($user->is_service_provider,200);
     }
 

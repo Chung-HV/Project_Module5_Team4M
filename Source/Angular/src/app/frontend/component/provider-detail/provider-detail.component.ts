@@ -13,6 +13,7 @@ export class ProviderDetailComponent implements OnInit {
   users!:any;
   price!:number;
   message = '';
+  time = 0.5;
   constructor(private homeService: HomeService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
