@@ -69,16 +69,18 @@ export class ProfileUserComponent implements OnInit {
     this.validateForm();
   }
 
-  getUserProfile() {
-    this.userService.profile().subscribe({
-      next: (data) => {
-        this.user = data;
-        // this.name = this.user.name;
+  getUserProfile()
+  {
+    this.userService.profile()
+      .subscribe({
+        next: (data)=>{
+          this.user = data;
+          this.id = this.user.id;
+          this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+          console.log(this.user);
 
-        this.id = this.user.id;
-        this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-      },
-    });
+        }
+      });
   }
 
   updateProfileUser() {

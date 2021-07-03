@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './backend/layout/dashboard/dashboard.component';
+import { LoginComponent } from './backend/login/login.component';
+import { ListComponent } from './backend/provider/list/list.component';
+import { RequestingComponent } from './backend/provider/requesting/requesting.component';
 
 const routes: Routes = [
   {
@@ -11,7 +15,10 @@ const routes: Routes = [
     path: 'frontend',
     loadChildren: () =>
       import('./frontend/frontend.module').then((m) => m.FrontendModule),
-  }
+  },
+ 
+  { path: 'admin', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule) }
+ 
 
 ];
 

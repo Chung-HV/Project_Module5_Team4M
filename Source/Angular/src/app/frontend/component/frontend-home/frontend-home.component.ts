@@ -1,15 +1,64 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { User } from '../../models/user';
+import { DataService } from '../../services/data.service';
+import { ServiceProviderService } from '../../services/provider.service';
 
 @Component({
   selector: 'app-frontend-home',
   templateUrl: './frontend-home.component.html',
-  styleUrls: ['./frontend-home.component.css']
+  styleUrls: ['./frontend-home.component.css'],
 })
 export class FrontendHomeComponent implements OnInit {
+  @Input()
+  check: any= this.data.currentCheck.subscribe(check =>this.check=check);
+  // user = localStorage.getItem('user');
 
-  constructor() { }
-
-  ngOnInit(): void {
+  provider_id:any 
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toastr: ToastrService,
+    private data: DataService,
+    private providerService: ServiceProviderService,
+  ) {
+  this.provider_id = localStorage.getItem('user_id');
   }
 
+  ngOnInit(): void {
+    this.isLogin();
+    console.log(localStorage.getItem('token'));
+
+  }
+
+  logOut() {
+    this.userService.logout().subscribe({
+      next: () => {
+        this.toastr.success('Logout successful!');
+        localStorage.clear();
+        this.data.changeCheck(true);
+        // this.data.currentCheck.subscribe(check =>this.check=check)
+        window.location.reload();
+        // this.router.navigate(['']);
+      },
+      error: () => {},
+    });
+  }
+  isLogin() {
+    if (localStorage.getItem('token') != null) {
+      this.check = false;
+    } else {
+      this.check = true;
+    }
+  }
+
+  requestProvide(){
+    console.log(localStorage.getItem('user_id'));
+    this.providerService.sendRequest(this.provider_id).subscribe({
+      next: ()=> this.toastr.success('Your request has been sent, please wait for Admin approvement'),
+      
+    })
+  }
 }

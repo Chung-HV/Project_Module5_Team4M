@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../models/user';
 import { UserDashboard } from '../../models/userDashboard';
 import { HomeService } from '../../services/home.service';
 
@@ -10,7 +11,9 @@ import { HomeService } from '../../services/home.service';
 })
 export class ProviderDetailComponent implements OnInit {
   users!:any;
+  price!:number;
   message = '';
+  time = 0.5;
   constructor(private homeService: HomeService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {

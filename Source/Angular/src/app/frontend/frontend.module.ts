@@ -13,7 +13,7 @@ import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/fron
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
 
 
@@ -36,6 +36,7 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
     DashboardComponent,
 
     RegisterComponent,
+    
     ServiceProviderComponent,
     ProviderDetailComponent
 
@@ -44,6 +45,7 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
     CommonModule,
     FrontendRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class FrontendModule { }

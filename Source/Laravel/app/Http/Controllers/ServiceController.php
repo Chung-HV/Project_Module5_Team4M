@@ -22,6 +22,5 @@ class ServiceController extends Controller
 
     public function getProvidingServices($provider_id){
         $provider = $this->providerController->findById($provider_id);
-        
     }
 }

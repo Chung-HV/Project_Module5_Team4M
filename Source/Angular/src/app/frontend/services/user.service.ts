@@ -23,87 +23,36 @@ export class UserService {
 
   logout(): Observable<any> {
     var auth_token = localStorage.getItem('token');
-    return this.http.post(`${environment.base_Url}users/logout`, auth_token);
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+
+      Authorization: 'Bearer ' + auth_token,
+    });
+    console.log(auth_token+'logout');
+    return this.http.get(`${environment.base_Url}users/logout`, {
+      headers: reqHeader
+    });
   }
   profile(): Observable<any> {
     var auth_token = localStorage.getItem('token');
-    // console.log(auth_token);
-
     var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
+
       Authorization: 'Bearer ' + auth_token,
     });
+    // console.log(auth_token);
     return this.http.get(`${environment.base_Url}users/profile`, {
-      headers: reqHeader,
+      headers: reqHeader
     });
   }
-
-  updateUserProfile(id:number,user: any): Observable<any> {
+  updateUserProfile(id: number, user: any): Observable<any> {
     var auth_token = localStorage.getItem('token');
-    // console.log(auth_token);
-
     var reqHeader = new HttpHeaders({
       // 'Content-Type': 'application/json',
+
       Authorization: 'Bearer ' + auth_token,
     });
-
-    
     return this.http.post(`${environment.base_Url}users/update/${id}`, user, {
-      headers: reqHeader,
-    });
-  }
-
-  public uploadImage(id:number,avatar: any,name:any,
-    birth_day:any,
-    gender:any,
-    city:any,
-    nation:any,
-    height:any,
-    weight:any,
-    hobby:any,
-    introducion:any,
-    requirement:any,
-    facebook:any,
-
-    ): Observable<any> {
-    var auth_token = localStorage.getItem('token');
-    // console.log(auth_token);
-
-    var reqHeader = new HttpHeaders({
-
-      Authorization: 'Bearer ' + auth_token,
-    });
-
-    const formData = new FormData();
-
-    formData.append('avatar', avatar);
-
-    formData.append('name', name);
-
-    formData.append('birth_day', birth_day);
-
-
-    formData.append('gender', gender);
-
-    formData.append('city', city);
-
-
-    formData.append('nation', nation);
-
-
-    formData.append('height', height);
-
-    formData.append('weight', weight);
-
-    formData.append('hobby', hobby);
-
-    formData.append('introducion', introducion);
-
-    formData.append('requirement', requirement);
-    formData.append('	facebook', facebook);
-
-
-    return this.http.post(`${environment.base_Url}users/update/${id}`, formData, {
       headers: reqHeader,
     });
   }
