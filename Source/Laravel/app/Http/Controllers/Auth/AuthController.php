@@ -95,19 +95,22 @@ class AuthController extends Controller
 
             $user = User::find($idUser);
             $user->fill($request->all());
-            if ($request->hasFile('avatar')) {
+            // $user->name = $request->name;
 
-                Storage::delete('public/' . $user->avatar);
-                $newAvatarName = time().'.'.$request->avatar->getClientOriginalExtension();
-                $request->avatar->storeAs('public/images/users', $newAvatarName);
-                $user->avatar = "images/users/" . $newAvatarName;
-            }
+                if ($request->avatar) {
+                    // Storage::delete('public/' . $user->avatar);
+
+                    $newAvatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+                    $request->avatar->storeAs('public/images/users', $newAvatarName);
+                    $user->avatar = "images/users/" . $newAvatarName;
+
+                }
+
             $user->save();
 
-
-            return response()->json($request,['message' => 'success']);
+            return response()->json($user);
         }catch(Exception $e){
-            return response()->json(['message' => 'error']);
+            return response()->json($e->getMessage());
         }
     }
 
