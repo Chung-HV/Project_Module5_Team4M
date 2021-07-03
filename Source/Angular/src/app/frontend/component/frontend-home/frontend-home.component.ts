@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
 import { ServiceProviderService } from '../../services/provider.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-frontend-home',
@@ -13,24 +14,26 @@ import { ServiceProviderService } from '../../services/provider.service';
 })
 export class FrontendHomeComponent implements OnInit {
   @Input()
-  check: any= this.data.currentCheck.subscribe(check =>this.check=check);
-  // user = localStorage.getItem('user');
+  check: any = this.data.currentCheck.subscribe(
+    (check) => (this.check = check)
+  );
+  user!: any;
 
-  provider_id:any 
+  provider_id: any;
   constructor(
     private userService: UserService,
     private router: Router,
     private toastr: ToastrService,
     private data: DataService,
-    private providerService: ServiceProviderService,
+    private providerService: ServiceProviderService
   ) {
-  this.provider_id = localStorage.getItem('user_id');
+    this.provider_id = localStorage.getItem('user_id');
   }
 
   ngOnInit(): void {
     this.isLogin();
     console.log(localStorage.getItem('token'));
-
+    this.getUser();
   }
 
   logOut() {
@@ -54,11 +57,25 @@ export class FrontendHomeComponent implements OnInit {
     }
   }
 
-  requestProvide(){
+  requestProvide() {
     console.log(localStorage.getItem('user_id'));
     this.providerService.sendRequest(this.provider_id).subscribe({
-      next: ()=> this.toastr.success('Your request has been sent, please wait for Admin approvement'),
-      
-    })
+      next: () =>
+        this.toastr.success(
+          'Your request has been sent, please wait for Admin approvement'
+        ),
+    });
+  }
+  getUser() {
+    this.userService.profile().subscribe({
+      next: (res: any) => {
+        this.user = res;
+
+        this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+        console.log(this.user.avatar);
+
+      },
+      error: (error: any) => {},
+    });
   }
 }
