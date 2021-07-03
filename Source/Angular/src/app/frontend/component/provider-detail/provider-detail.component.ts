@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 import {
   FormBuilder,
   FormGroup,
@@ -14,29 +16,31 @@ import { HomeService } from '../../services/home.service';
   styleUrls: ['./provider-detail.component.css'],
 })
 export class ProviderDetailComponent implements OnInit {
-  users!: any
-  user_id:any =localStorage.getItem('user_id');
-  times =0.5;
+  users!: any;
+  price!: number;
+  message = '';
+
+  user_id = localStorage.getItem('user_id');
+  user_server_provider!:any;
+  order = {
+    user_id: localStorage.getItem('user_id'),
+
+    address: '',
+    start_at: '',
+    time_rent: 0.5,
+  };
 
   constructor(
-    private fb: FormBuilder,
     private homeService: HomeService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
-  // orderForm = new FormGroup({
-  //   price: new FormControl(),
-  //   start_at: new FormControl(),
-  //   time: new FormControl(),
-  //   address: new FormControl(),
-  // });
-
   ngOnInit(): void {
-    console.log(this.times);
-
     this.getUser(this.route.snapshot.paramMap.get('id'));
-   // console.log(localStorage.getItem('user_id'));
+    // console.log(localStorage.getItem('user_id'));
+
+
   }
   getUser(id: any) {
     this.homeService.getUser(id).subscribe(
@@ -50,7 +54,29 @@ export class ProviderDetailComponent implements OnInit {
     );
   }
 
-  // onSubmit() {
-  //   console.log(this.orderForm.value);
-  // }
+  saveOrder(): void {
+    this.users.forEach((user: any) => {
+      this.user_server_provider=user.id;
+   });
+    const data = {
+      user_id:this.order.user_id,
+      service_provider_id:this.user_server_provider,
+      address: this.order.address,
+      time: this.order.time_rent,
+      start_at: this.order.start_at,
+    };
+    console.log(this.users);
+
+    console.log(data);
+
+
+    this.homeService.orderServiceProvider(data).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

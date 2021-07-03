@@ -35,6 +35,6 @@ class OrderController extends Controller
             DB::rollback();
             Session::flash('error', 'Có lỗi xảy ra vui lòng thử lại');
         }
-        return response()->json($orderDetail);
+        return response()->json($request);
     }
 }

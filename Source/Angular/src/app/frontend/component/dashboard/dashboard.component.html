@@ -206,7 +206,8 @@
                       Online</span></label></div>
               </td>
               <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button"
+                <div data-toggle="buttons" class="btn-group">
+                  <label type="button"
                     class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
                 </div>
               </td>
@@ -277,3 +278,11 @@
     </div>
   </div>
 </div>
+<script>
+  $('document').ready(function () {
+    $('button').click(function () {
+        $('button').removeClass('active');
+        $(this).addClass('active');
+    });
+});
+</script>
