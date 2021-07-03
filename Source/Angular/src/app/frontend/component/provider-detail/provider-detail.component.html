@@ -150,9 +150,6 @@
 
         <div class="modal-body">
           <table>
-            <td><input value="{{user_id}}" name="user_id" [(ngModel)]="order.user_id" hidden/></td>
-
-
             <tbody>
               <tr>
                 <td>Lover:</td>
@@ -163,7 +160,7 @@
                 <td><input type="text" class="form-control" [(ngModel)]="order.address" name="address"></td>
               </tr>
 
-       
+
               <tr>
                 <td><span>Đặt ngày hẹn:</span></td>
                 <td><input type="date" class="form-control" [(ngModel)]="order.start_at" name="created_at"></td>
@@ -207,7 +204,7 @@
               </tr>
               <tr>
                 <td><span>Số dư hiện tại</span>:</td>
-                <td><span class="total-amount">0đ</span><span class="load-more-credit">+</span></td>
+                <td><span class="total-amount">{{user_mooney|number}} VND</span><span class="load-more-credit">+</span></td>
               </tr>
               <tr>
                 <td colspan="2">

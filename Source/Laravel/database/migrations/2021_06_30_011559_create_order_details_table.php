@@ -18,7 +18,8 @@ class CreateOrderDetailsTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
             $table->string('address');
-            $table->integer('time');
+            $table->float('time');
+            $table->time("start_time");
             $table->date("start_at");
             $table->timestamps();
         });

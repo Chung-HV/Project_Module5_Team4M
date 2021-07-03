@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
         localStorage.setItem('user_id', data.user.id);
-        console.log(data.user.id);
+        localStorage.setItem('user_mooney', data.user.accounts.mooney);
+
+        console.log(data.user.accounts.mooney);
 
         localStorage.setItem('token', data.access.token);
         // sessionStorage.setItem('token', data.access.token );

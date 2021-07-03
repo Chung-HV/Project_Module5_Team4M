@@ -21,9 +21,9 @@ export class ProviderDetailComponent implements OnInit {
   message = '';
 
   user_id = localStorage.getItem('user_id');
+  user_mooney=localStorage.getItem('user_mooney');
   user_server_provider!:any;
   order = {
-    user_id: localStorage.getItem('user_id'),
 
     address: '',
     start_at: '',
@@ -59,7 +59,7 @@ export class ProviderDetailComponent implements OnInit {
       this.user_server_provider=user.id;
    });
     const data = {
-      user_id:this.order.user_id,
+      user_id:this.user_id,
       service_provider_id:this.user_server_provider,
       address: this.order.address,
       time: this.order.time_rent,

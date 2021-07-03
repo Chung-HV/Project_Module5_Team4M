@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -55,6 +56,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->email)->first();
+        $user->accounts ;
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
@@ -62,8 +64,6 @@ class AuthController extends Controller
 
         $token = $user->createToken($request->email)->plainTextToken;
         Storage::set('id', $user->id);
-
-
         return response()->json([
             'message' => 'User successfully logged in',
             'user' => $user,
