@@ -176,7 +176,7 @@
                 <form class="from-userinfo" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                   <div class="cropimg-avatar">
 
-                    <input type="file" name="avatar" (change) = "getImgFile($event)"/>
+                    <input type="file" name="avatar"  formControlName="avatar" (change) = "getImgFile($event)"/>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Full name (*)</p>
@@ -208,7 +208,7 @@
                     <div *ngIf = "myForm.get('birth_day')?.hasError('required')" class="invalid-feedback">
                       Date is required!
                     </div>
-                  
+
                   </div>
                   <div class="fieldGroup">
 
