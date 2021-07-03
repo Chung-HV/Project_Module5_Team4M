@@ -9,13 +9,21 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class UserService {
 
-  constructor(private htpp: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router) { }
+
+  getAllProviders(): Observable<any> {
+    return this.http.get<any>(`${environment.base_Url}provider`)
+  }
 
   getRequestingProvider(): Observable<any> {
-    return this.htpp.get<any>(`${environment.base_Url}provider/requesting`)
+    return this.http.get<any>(`${environment.base_Url}provider/requesting`)
   }
 
   approveRequest(provider_id:any): Observable<any>{
-    return this.htpp.get<any>(`${environment.base_Url}provider/${provider_id}/approve`)
+    return this.http.get<any>(`${environment.base_Url}provider/${provider_id}/approve`)
+  }
+
+  setVip(provider_id:any): Observable<any>{
+    return this.http.get<any>(`${environment.base_Url}provider/${provider_id}/setvip`)
   }
 }

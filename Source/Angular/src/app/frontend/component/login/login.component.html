@@ -1,28 +1,31 @@
 <body class="fixed-header" style="background-color: rgb(233, 235, 238) !important; margin-top: 75px;">
-<div class="wrapper">
-  <div class="container">
-    <div class="row login-page">
-      <div class="col-md-7 hidden-sm hidden-xs image-login"><img src="assets/frontend/favicons/banner_login.jpg"
-          class="" alt="PD"></div>
-      <div class="col-md-5  col-xs-12 form-content">
-        <div class="content-main">
-          <form method="post" class="colorlib-form" [formGroup] = "loginForm" (ngSubmit) = "onSubmit()">
-            <div class="fieldGroup "><input type="text" formControlName="email" placeholder="Nhập email"
-                maxlength="5000" autocomplete="false" value=""></div>
-            <div class="fieldGroup "><input type="password" formControlName="password" placeholder="Mật khẩu" maxlength="5000"
-                autocomplete="false" value=""></div>
-            <button type="submit"><span>Đăng nhập</span></button>
-          </form>
-          <div class="content-middle">
-            <p class="forgot-password"><a href="/login"><span>Quên mật khẩu?</span></a></p>
-          </div>
-          <a [routerLink]="['/frontend/register']" routerLinkActive="router-link-active" >
-            <button style="background-color: gray;"><span>Tạo tài khoản</span>
-            </button>
-          </a>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row login-page">
+                <div class="col-md-7 hidden-sm hidden-xs image-login"><img src="assets/frontend/favicons/banner_login.jpg" class="" alt="PD">
+                </div>
+                <div class="col-md-5  col-xs-12 form-content">
+                    <div class="content-main">
+                        <form method="post" class="colorlib-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div class="fieldGroup "><input type="text" formControlName="email" placeholder="Nhập email" maxlength="5000" autocomplete="false" value=""></div>
+                            <div class="fieldGroup "><input type="password" formControlName="password" placeholder="Mật khẩu" maxlength="5000" autocomplete="false" value=""></div>
+                            <button type="submit"><span>Đăng nhập</span></button>
+                        </form>
+                        <div class="content-middle">
+                            <p class="forgot-password">
+                                <a href="/login">
+                                    <span>Quên mật khẩu?</span>
+                                </a>
+                            </p>
+                        </div>
+                        <a [routerLink]="['/frontend/register']" routerLinkActive="router-link-active">
+                            <button style="background-color: gray;">
+                <span>Tạo tài khoản</span>
+              </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
-<div id="button-scroll-top" style="display: none;"><button><i class="fas fa-chevron-up"></i></button></div>
+    <div id="button-scroll-top" style="display: none;"><button><i class="fas fa-chevron-up"></i></button></div>

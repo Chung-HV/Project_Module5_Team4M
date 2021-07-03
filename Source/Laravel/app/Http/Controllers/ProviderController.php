@@ -65,4 +65,17 @@ class ProviderController extends Controller
         $user->save();
         return response()->json('succes',200);
     }
+
+    public function getAll(){
+        $providers = DB::table('users')->where('is_service_provider','=',1)->get();
+        return response()->json($providers,200);
+    }
+
+    public function setVip($id){
+        $provider = User::findOrFail($id);
+        $provider->is_vip = 1;
+        $provider->save();
+        return response()->json('succes',200);
+    }
 }
+

@@ -34,6 +34,7 @@ export class AppComponent {
   ];
 
   backendStyle = [
+    "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback",
     "assets/backend/dist/css/adminlte.min.css",
     "assets/backend/plugins/fontawesome-free/css/all.min.css",
     "assets/backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
