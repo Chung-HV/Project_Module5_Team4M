@@ -36,6 +36,7 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
     DashboardComponent,
 
     RegisterComponent,
+    
     ServiceProviderComponent,
     ProviderDetailComponent
 

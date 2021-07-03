@@ -11,6 +11,9 @@ import { DashboardComponent } from './backend/layout/dashboard/dashboard.compone
 import { FooterComponent } from './backend/layout/footer/footer.component';
 import { HeaderComponent } from './backend/layout/header/header.component';
 import { RequestingComponent } from './backend/provider/requesting/requesting.component';
+import { ListComponent } from './backend/provider/list/list.component';
+import { LoginComponent } from './backend/login/login.component';
+import { BackendModule } from './backend/backend.module';
 
 
 
@@ -21,6 +24,8 @@ import { RequestingComponent } from './backend/provider/requesting/requesting.co
     FooterComponent,
     HeaderComponent,
     RequestingComponent,
+    ListComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -31,7 +36,8 @@ import { RequestingComponent } from './backend/provider/requesting/requesting.co
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BackendModule
   ],
   providers: [],
   bootstrap: [AppComponent]

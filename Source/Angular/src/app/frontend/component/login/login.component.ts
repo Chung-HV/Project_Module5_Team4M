@@ -45,6 +45,8 @@ export class LoginComponent implements OnInit {
         console.log(data.user.accounts.mooney);
 
         localStorage.setItem('token', data.access.token);
+        localStorage.setItem('user_id', data.user.id);
+      
         // sessionStorage.setItem('token', data.access.token );
         // localStorage.setItem('user', data.user.name);
         this.data.changeCheck(false);

@@ -1,5 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { User } from '../../models/user';
@@ -8,41 +9,64 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-profile-user',
   templateUrl: './profile-user.component.html',
-  styleUrls: ['./profile-user.component.css']
+  styleUrls: ['./profile-user.component.css'],
 })
 export class ProfileUserComponent implements OnInit {
-
-  id!:number;
+  id!: number;
   user!: User;
-  avatar!:File;
-  myForm = this.fb.group({
-
-    name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
-    birth_day: ['', [Validators.required, Validators.pattern(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g
-    )]],
-
-    gender: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(5)]],
-    city: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
-    nation: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/), Validators.maxLength(30)]],
-    height: ['', [ Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-    weight: ['', [ Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-    introducion: ['', [  Validators.maxLength(50)]],
-    requirement: ['', [  Validators.maxLength(50)]],
-
-    hobby: ['', [  Validators.maxLength(30)]],
-    facebook: ['', [ Validators.maxLength(30)]],
-    avatar: ['' ,[Validators.pattern(/(.png|.jpg)/),Validators.maxLength(100)]],
-
-  })
+  avatar!: any;
+  myForm!: FormGroup;
+  // name!:string
 
 
-  constructor(private userService:UserService,private route: ActivatedRoute, private fb:FormBuilder) { }
+  validateForm() {
+    this.myForm = this.fb.group({
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^[a-zA-Z ]+$/),
+          Validators.maxLength(30),
+        ],
+      ],
+      birth_day: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      city: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^[a-zA-Z ]+$/),
+          Validators.maxLength(30),
+        ],
+      ],
+      nation: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^[a-zA-Z ]+$/),
+          Validators.maxLength(30),
+        ],
+      ],
+      height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      weight: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      introducion: ['', [Validators.maxLength(50)]],
+      requirement: ['', [Validators.maxLength(50)]],
+      hobby: ['', [Validators.maxLength(30)]],
+      facebook: ['', [Validators.maxLength(30)]],
+      avatar: [''],
+    });
+  }
+
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.getUserProfile();
-    // const data = new FormData();
-    // console.log(data.append('image', this.user.avatar));
-
+    this.validateForm();
   }
 
   getUserProfile()
@@ -58,25 +82,72 @@ export class ProfileUserComponent implements OnInit {
         }
       });
   }
+
   updateProfileUser() {
-    this.getUserProfile();
+    let data = this.myForm.value;
+    console.log(data);
+    let formData = new FormData();
 
-    this.userService.updateUserProfile(this.id,this.myForm.value)
-      .subscribe(data => {
-        // console.log(data);
+    formData.append('data', JSON.stringify(data));
+    // console.log(formData.get('data'));
+    if(this.avatar){
+      formData.append('avatar', this.avatar, this.avatar.name);
+    }
+    this.userService.updateUserProfile( this.id,formData).subscribe(
 
-      }, error => console.log(error));
-      // console.log(this.user);
+      (res) => {
+          console.log(res);
+          // if(res.status ==='success'){
+          //   this.router.navigate(['admin/book-list']);
+          //   this.toastr.success('Chỉnh Sửa sách thành công!', 'Thông báo');
+          // }
+          Object.keys(res).forEach((key) => {
+            // console.log(key);
+            // console.log(va);
+
+
+          });
+      },error => {
+        // this.toastr.error('Chỉnh Sửa sách thất bại. Vui lòng liên hệ admin!', 'Thông báo');
+      }
+    )
 
   }
 
-  onSubmit(){
+  // updateProfileUser() {
+
+
+  //   this.userService.uploadImage(
+  //     this.id,
+  //     this.avatar,
+  //     this.user.name,
+  //     this.user.birth_day,
+  //     this.user.gender,
+  //     this.user.city,
+  //     this.user.nation,
+  //     this.user.height,
+  //     this.user.weight,
+  //     this.user.hobby,
+  //     this.user.introducion,
+  //     this.user.requirement,
+  //     this.user.facebook,
+  //     ).subscribe
+  //     (res => {
+  //       console.log(res);
+  //       alert('Uploaded Successfully.');
+  //     });
+  // }
+
+  onSubmit() {
     this.updateProfileUser();
   }
 
-  // getImgFile($event: any) {
-  //   this.avatar = $event.target.files[0];
-  //   console.log(this.avatar);
+  getImgFile($event: any) {
 
-  // }
+    this.avatar = $event.target.files[0];
+    // console.log(this.avatar);
+
+  }
+
+
 }

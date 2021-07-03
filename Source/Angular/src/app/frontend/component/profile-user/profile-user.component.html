@@ -176,7 +176,7 @@
                 <form class="from-userinfo" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                   <div class="cropimg-avatar">
 
-                    <input type="file" name="avatar" />
+                    <input type="file" name="avatar"  formControlName="avatar" (change) = "getImgFile($event)"/>
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">Full name (*)</p>
@@ -208,31 +208,21 @@
                     <div *ngIf = "myForm.get('birth_day')?.hasError('required')" class="invalid-feedback">
                       Date is required!
                     </div>
-                    <div *ngIf = "myForm.get('birth_day')?.hasError('pattern')" class="invalid-feedback">
-                      Incorrect date format!
-                    </div>
+
                   </div>
                   <div class="fieldGroup">
+
                     <p class="control-label">Gender (*)</p>
-                    <input
-                    [class.is-invalid] = "myForm.get('gender')?.invalid && (myForm.get('gender')?.dirty || myForm.get('gender')?.touched)"
-                    formControlName="gender"
-                      type="text"
-                      name="gender"
-                      placeholder=""
-                      maxlength="5000"
-                      autocomplete="false"
-                      [(ngModel)]="user.gender"
-                    />
+                    <select name="gender" formControlName="gender" [(ngModel)]="user.gender">
+                      <option value="">---gender---</option>
+                      <option value="male">Male</option>
+                      <option value="Female">FeMale</option>
+                      <option value="lgbt">LGBT</option>
+                    </select>
                     <div *ngIf = "myForm.get('gender')?.hasError('required')" class="invalid-feedback">
                       Gender is required!
                     </div>
-                    <div *ngIf = "myForm.get('gender')?.hasError('maxlength')" class="invalid-feedback">
-                      Gender max 5 characters!
-                    </div>
-                    <div *ngIf = "myForm.get('gender')?.hasError('pattern')" class="invalid-feedback">
-                      Gender only alphabet!
-                    </div>
+
                   </div>
                   <div class="fieldGroup">
                     <p class="control-label">City (*)</p>

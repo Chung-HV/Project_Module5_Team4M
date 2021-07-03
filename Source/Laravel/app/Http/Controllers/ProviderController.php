@@ -50,9 +50,31 @@ class ProviderController extends Controller
         $user = User::findOrFail($id);
         $user->is_service_provider = 2;
         $user->save();
-        dd($user->is_service_provider);
         return response()->json($user->is_service_provider,200);
     }
 
-    
+    public function getRequestingProvider(){
+        $users = DB::table('users')->where('is_service_provider','=',2)->get();
+        return response()->json($users,200);
+    }
+
+    public function approveRequest($id){
+        $user = User::findOrFail($id);
+        $user->is_service_provider = 1;
+        $user->save();
+        return response()->json('succes',200);
+    }
+
+    public function getAll(){
+        $providers = DB::table('users')->where('is_service_provider','=',1)->get();
+        return response()->json($providers,200);
+    }
+
+    public function setVip($id){
+        $provider = User::findOrFail($id);
+        $provider->is_vip = 1;
+        $provider->save();
+        return response()->json('succes',200);
+    }
 }
+

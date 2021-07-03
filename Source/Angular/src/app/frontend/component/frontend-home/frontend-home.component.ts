@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
+import { ServiceProviderService } from '../../services/provider.service';
 
 @Component({
   selector: 'app-frontend-home',
@@ -14,12 +15,16 @@ export class FrontendHomeComponent implements OnInit {
   @Input()
   check: any= this.data.currentCheck.subscribe(check =>this.check=check);
   // user = localStorage.getItem('user');
+
+  provider_id:any 
   constructor(
     private userService: UserService,
     private router: Router,
     private toastr: ToastrService,
     private data: DataService,
+    private providerService: ServiceProviderService,
   ) {
+  this.provider_id = localStorage.getItem('user_id');
   }
 
   ngOnInit(): void {
@@ -47,5 +52,13 @@ export class FrontendHomeComponent implements OnInit {
     } else {
       this.check = true;
     }
+  }
+
+  requestProvide(){
+    console.log(localStorage.getItem('user_id'));
+    this.providerService.sendRequest(this.provider_id).subscribe({
+      next: ()=> this.toastr.success('Your request has been sent, please wait for Admin approvement'),
+      
+    })
   }
 }

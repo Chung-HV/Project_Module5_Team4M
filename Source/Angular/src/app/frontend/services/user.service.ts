@@ -48,7 +48,7 @@ export class UserService {
   updateUserProfile(id: number, user: any): Observable<any> {
     var auth_token = localStorage.getItem('token');
     var reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
 
       Authorization: 'Bearer ' + auth_token,
     });

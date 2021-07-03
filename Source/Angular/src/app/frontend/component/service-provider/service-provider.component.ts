@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from '../../models/service';
-import { ServiceProviderService } from '../../services/service-provider.service';
+import { ServiceProviderService } from '../../services/provider.service';
 
 @Component({
   selector: 'app-service-provider',

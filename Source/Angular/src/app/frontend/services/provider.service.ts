@@ -29,4 +29,8 @@ export class ServiceProviderService {
   getProvidingServices(provider_id:any):Observable<any>{
     return this.http.get<any>(`${API_URL}provider/${provider_id}/service`)
   }
+
+  sendRequest(provider_id:any): Observable<any>{
+    return this.http.get<any>(`${environment.base_Url}provider/${provider_id}/request`)
+  }
 }
