@@ -12,6 +12,8 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { DataService } from '../../services/data.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +30,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private data: DataService
   ) {}
 
   ngOnInit(): void {}
@@ -40,7 +43,10 @@ export class LoginComponent implements OnInit {
         console.log(data.user.id);
 
         localStorage.setItem('token', data.access.token);
+        // sessionStorage.setItem('token', data.access.token );
         // localStorage.setItem('user', data.user.name);
+        this.data.changeCheck(false);
+        // this.data.currentCheck.subscribe((check) => (this.check = check));
         this.toastr.success('Hello!', 'Welcome');
         this.router.navigate(['']);
       },
@@ -48,5 +54,6 @@ export class LoginComponent implements OnInit {
         console.log(error);
       },
     });
+    // window.location.reload();
   }
 }
