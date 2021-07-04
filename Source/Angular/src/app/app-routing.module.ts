@@ -12,6 +12,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'admin',
+    redirectTo: 'admin',
+    pathMatch: 'full',
+  },
+ 
+  {
     path: 'frontend',
     loadChildren: () =>
       import('./frontend/frontend.module').then((m) => m.FrontendModule),

@@ -9,6 +9,7 @@ import { ProviderService } from 'src/app/frontend/services/provider.service';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  provider:any
   provider_id: any
   provider_price: any
   orders: any
@@ -33,6 +34,7 @@ export class OrderListComponent implements OnInit {
         this.orders = data.orders;
         this.customers = data.customers;
         this.order_details = data.order_details;
+        this.provider = data.provider;
         console.log(this.order_details);
       }
     })

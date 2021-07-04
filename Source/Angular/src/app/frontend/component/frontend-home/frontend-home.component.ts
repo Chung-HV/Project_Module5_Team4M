@@ -36,6 +36,7 @@ export class FrontendHomeComponent implements OnInit {
     this.isLogin();
     console.log(localStorage.getItem('token'));
     this.getUser();
+  
   }
 
   logOut() {

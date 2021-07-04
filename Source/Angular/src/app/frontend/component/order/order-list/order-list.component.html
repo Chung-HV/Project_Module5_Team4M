@@ -134,14 +134,14 @@
                         <table class="table table-striped table-bordered table-condensed table-hover">
                             <thead>
                                 <tr>
-                                    <th> Customer</th>
-                                    <th>Date Address</th>
-                                    <th>How Long</th>
-                                    <th>Start time</th>
-                                    <th>Date</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Người thuê</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Thời gian thuê</th>
+                                    <th>Thời gian bắt đầu</th>
+                                    <th>Ngày</th>
+                                    <th>Thành tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
                                 </tr>
 
                             </thead>
@@ -152,7 +152,7 @@
                                     <td>{{order_details[i].time}}</td>
                                     <td>{{order_details[i].start_time}}</td>
                                     <td>{{order_details[i].start_at}}</td>
-                                    <td>{{provider_price}}</td>
+                                    <td>{{provider.price}}</td>
                                     <td>{{order.status}}</td>
                                     <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
                                     <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Get Money</button></td>

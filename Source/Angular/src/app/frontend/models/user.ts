@@ -18,4 +18,5 @@ export class User {
   facebook!:string;
   // created_at!:string;
   is_active!:number;
+  is_service_provider!:number;
 }
