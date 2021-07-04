@@ -50,12 +50,12 @@ export class ProfileUserComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      weight: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: ['', [Validators.maxLength(50)]],
-      requirement: ['', [Validators.maxLength(50)]],
-      hobby: ['', [Validators.maxLength(30)]],
-      facebook: ['', [Validators.maxLength(30)]],
+      height: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      weight: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      introducion: [[Validators.maxLength(50)]],
+      requirement: [ [Validators.maxLength(50)]],
+      hobby: [ [Validators.maxLength(30)]],
+      facebook: [ [Validators.maxLength(30)]],
       // avatar: [''],
     });
   }
@@ -90,7 +90,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   updateProfileUser() {
-    let data = this.myForm.value;
+    // let data = this.myForm.value;
     console.log(this.user.city);
 
 

@@ -13,12 +13,14 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./frontend-home.component.css'],
 })
 export class FrontendHomeComponent implements OnInit {
-  @Input()
   check: any = this.data.currentCheck.subscribe(
     (check) => (this.check = check)
   );
+  money: any = this.data.currentMoney.subscribe(
+    (money) => (this.money = money)
+  );
   user!: any;
-
+  // money = localStorage.getItem('user_mooney');
   provider_id: any;
   constructor(
     private userService: UserService,
@@ -43,8 +45,8 @@ export class FrontendHomeComponent implements OnInit {
         localStorage.clear();
         this.data.changeCheck(true);
         // this.data.currentCheck.subscribe(check =>this.check=check)
-        window.location.reload();
-        // this.router.navigate(['']);
+        // window.location.reload();
+        this.router.navigate(['']);
       },
       error: () => {},
     });
@@ -73,7 +75,6 @@ export class FrontendHomeComponent implements OnInit {
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
         console.log(this.user.avatar);
-
       },
       error: (error: any) => {},
     });

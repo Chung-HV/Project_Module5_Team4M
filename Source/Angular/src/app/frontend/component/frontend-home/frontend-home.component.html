@@ -1,23 +1,23 @@
 <header class="menu__header fix-menu" id="header-menu">
-    <div class="navbar-header">
-        <a class="logo" href="/">
-            <img src="https://files.playerduo.com/production/static-files/logo.png" />
-            <div class="text-logo">
-                <h4>PLAYERDUO</h4>
-                <p>GAME COMMUNITY</p>
-            </div>
-        </a>
-    </div>
-    <div class="navbar">
-        <ul class="nav navbar-nav navbar-left">
-            <li class="item false">
-                <a routerLink=""><span>Thuê người chơi</span></a>
-            </li>
-            <li class="item-search">
-                <nav class="Navbar__Item">
-                    <div class="Navbar__Link">
-                        <div class="Group-search visible">
-                            <span class="search input-group">
+  <div class="navbar-header">
+    <a class="logo" [routerLink]="['/frontend']" routerLinkActive="router-link-active">
+      <img src="https://files.playerduo.com/production/static-files/logo.png" />
+      <div class="text-logo">
+        <h4>PLAYERDUO</h4>
+        <p>GAME COMMUNITY</p>
+      </div>
+    </a>
+  </div>
+  <div class="navbar">
+    <ul class="nav navbar-nav navbar-left">
+      <li class="item false">
+        <a [routerLink]="['/frontend']" routerLinkActive="router-link-active" ><span>Thuê người chơi</span></a>
+      </li>
+      <li class="item-search">
+        <nav class="Navbar__Item">
+          <div class="Navbar__Link">
+            <div class="Group-search visible">
+              <span class="search input-group">
                 <input
                   placeholder="Nickname/Url ..."
                   type="text"
@@ -29,47 +29,76 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
                 </span>
-                            </span>
-                        </div>
-                    </div>
-                </nav>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="item-icon mobile-search">
-                <a class="dropdown-toggle">
-                    <div class="item-title"><i class="fas fa-bars"></i></div>
-                </a>
-            </li>
+              </span>
+            </div>
+          </div>
+        </nav>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="item-icon mobile-search">
+        <a class="dropdown-toggle">
+          <div class="item-title"><i class="fas fa-bars"></i></div>
+        </a>
+      </li>
 
-            <div *ngIf="check; then thenBlock; else elseBlock"></div>
-            <ng-template #thenBlock>
-                <li class="item-icon authent">
-                    <a class="money-user" routerLink="login"><span>Đăng nhập</span></a>
-                </li>
-            </ng-template>
-            <ng-template #elseBlock>
-                <li class="item-icon balance">
-                    <a class="money-user"><i class="fas fa-plus"></i> 1,000 đ</a>
-                </li>
-                <li class="item-icon item-avatar dropdown">
-                    <a id="header-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ user.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" /></a>
-                    <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
-                        <li role="presentation" class="page-user">
-                            <a role="menuitem" tabindex="-1" routerLink="user/profile">
-                                <img src="{{ user.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" />
-                                <div class="text-logo">
-                                    <h5>{{ user.name }}</h5>
-                                    <p>ID : <span>{{ user.id }}</span></p>
-                                    <p class="label-user-page">
-                                        <span>Xem trang cá nhân của bạn</span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li role="presentation" class="menu-item hidden-lg hidden-md">
-                            <a role="menuitem" tabindex="-1" href="#"><i class="fas fa-plus"></i> <span>Số dư</span> :
-                <span class="money">1,000 đ</span></a
+      <div *ngIf="check; then thenBlock; else elseBlock"></div>
+      <ng-template #thenBlock>
+        <li class="item-icon authent">
+          <a
+            class="money-user"
+            [routerLink]="['/frontend/login']"
+            routerLinkActive="router-link-active"
+            ><span>Đăng nhập</span></a
+          >
+        </li>
+      </ng-template>
+      <ng-template #elseBlock>
+        <li class="item-icon balance">
+          <a class="money-user"><i class="fas fa-plus"></i> {{ money }} đ</a>
+        </li>
+        <li class="item-icon item-avatar dropdown">
+          <a
+            id="header-nav-dropdown"
+            role="button"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><img
+              src="{{ user.avatar }}"
+              class="avt-img"
+              alt="PD"
+              style="object-fit: cover"
+          /></a>
+          <ul
+            role="menu"
+            class="dropdown-menu"
+            aria-labelledby="header-nav-dropdown"
+          >
+            <li role="presentation" class="page-user">
+              <a role="menuitem" tabindex="-1" [routerLink]="['/frontend/user/profile']" routerLinkActive="router-link-active">
+                <img
+                  src="{{ user.avatar }}"
+                  class="avt-img"
+                  alt="PD"
+                  style="object-fit: cover"
+                />
+                <div class="text-logo">
+                  <h5>{{ user.name }}</h5>
+                  <p>
+                    ID : <span>{{ user.id }}</span>
+                  </p>
+                  <p class="label-user-page">
+                    <span>Xem trang cá nhân của bạn</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+            <li role="presentation" class="menu-item hidden-lg hidden-md">
+              <a role="menuitem" tabindex="-1" href="#"
+                ><i class="fas fa-plus"></i> <span>Số dư</span> :
+                <span class="money">{{ money }} đ</span></a
               >
             </li>
 
