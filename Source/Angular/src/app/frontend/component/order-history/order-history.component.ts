@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { OrderService } from '../../services/order.service';
 import { ProviderService } from '../../services/provider.service';
 
@@ -9,25 +10,26 @@ import { ProviderService } from '../../services/provider.service';
 })
 export class OrderHistoryComponent implements OnInit {
   provider_id: any
-  provider_price:any
+  provider_price: any
   orders: any
   customers: any
   order_details: any
   constructor(
     private providerService: ProviderService,
-    private orderService: OrderService
-    ) {
+    private orderService: OrderService,
+    private toastr: ToastrService
+  ) {
     this.provider_id = localStorage.getItem('user_id');
     this.provider_price = localStorage.getItem('user_price');
     this.getOrders();
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  getOrders(){
+  getOrders() {
     this.providerService.getOrders(this.provider_id).subscribe({
-      next: (data:any) => { 
+      next: (data: any) => {
         this.orders = data.orders;
         this.customers = data.customers;
         this.order_details = data.order_details;
@@ -35,13 +37,16 @@ export class OrderHistoryComponent implements OnInit {
       }
     })
   }
- 
-  updateOrder(order_id:any,order_status:any){
-    this.orderService.updateOrder(order_id,order_status).subscribe({
-      next: (data)=>{
-        console.log(data);
-      }
 
+  updateOrder(order_id: any, order_status: any) {
+    this.orderService.updateOrder(order_id, order_status).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.toastr.success(
+          'Your request has been sent, please wait for Admin approvement'
+        ),
+        location.reload();
+      }
     })
 
   }
