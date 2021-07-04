@@ -40,18 +40,10 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
         localStorage.setItem('user_id', data.user.id);
-        localStorage.setItem('user_mooney', data.user.accounts.mooney);
-
-        console.log(data.user.accounts.mooney);
-
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
-      
-        // sessionStorage.setItem('token', data.access.token );
-        // localStorage.setItem('user', data.user.name);
         this.data.changeCheck(false);
-        // this.data.currentCheck.subscribe((check) => (this.check = check));
-        this.toastr.success('Hello!', 'Welcome');
+        this.toastr.success("Chào " + data.user.name + "", "Thông Báo");
         this.router.navigate(['']);
       },
       error: (error: any) => {

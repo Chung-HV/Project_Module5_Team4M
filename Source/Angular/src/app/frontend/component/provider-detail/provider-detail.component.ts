@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 import { HomeService } from '../../services/home.service';
 
 @Component({
@@ -21,26 +22,25 @@ export class ProviderDetailComponent implements OnInit {
   message = '';
 
   user_id = localStorage.getItem('user_id');
-  user_mooney=localStorage.getItem('user_mooney');
   user_server_provider!:any;
   order = {
 
     address: '',
     start_at: '',
+    start_time:'',
     time_rent: 0.5,
   };
 
   constructor(
     private homeService: HomeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private data: DataService
   ) {}
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
     // console.log(localStorage.getItem('user_id'));
-
-
   }
   getUser(id: any) {
     this.homeService.getUser(id).subscribe(
@@ -64,6 +64,7 @@ export class ProviderDetailComponent implements OnInit {
       address: this.order.address,
       time: this.order.time_rent,
       start_at: this.order.start_at,
+      start_time:this.order.start_time
     };
     console.log(this.users);
 

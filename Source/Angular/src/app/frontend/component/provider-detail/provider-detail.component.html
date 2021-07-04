@@ -166,6 +166,10 @@
                 <td><input type="date" class="form-control" [(ngModel)]="order.start_at" name="created_at"></td>
               </tr>
               <tr>
+                <td><span>Đặt giờ hẹn:</span></td>
+                <td><input type="time" class="form-control" [(ngModel)]="order.start_time" name="start_time"></td>
+              </tr>
+              <tr>
                 <td><span>Thời gian muốn thuê</span></td>
                 <td>
                   <select [(ngModel)]="order.time_rent" class="form-control">
@@ -204,12 +208,12 @@
               </tr>
               <tr>
                 <td><span>Số dư hiện tại</span>:</td>
-                <td><span class="total-amount">{{user_mooney|number}} VND</span><span class="load-more-credit">+</span></td>
+                <td><span class="total-amount"> VND</span><span class="load-more-credit">+</span></td>
               </tr>
               <tr>
                 <td colspan="2">
                   <textarea placeholder="Type a message ..." name="message" maxlength="255" type="text"
-                    class="form-control"></textarea>
+                    class="form-control" ></textarea>
                   <p class="err-message"></p>
                 </td>
               </tr>

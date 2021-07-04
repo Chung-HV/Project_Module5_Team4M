@@ -56,4 +56,7 @@ export class UserService {
       headers: reqHeader,
     });
   }
+  getUserMoney(id: any): Observable<any>{
+    return this.http.get(`${environment.base_Url}`);
+  }
 }

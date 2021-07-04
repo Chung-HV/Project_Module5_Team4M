@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,5 @@ class DashboardController extends Controller
         }
         return response()->json($user);
     }
-    public function getService($id){
 
-    }
 }

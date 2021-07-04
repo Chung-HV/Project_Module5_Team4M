@@ -16,7 +16,7 @@ export class FrontendHomeComponent implements OnInit {
   check: any= this.data.currentCheck.subscribe(check =>this.check=check);
   // user = localStorage.getItem('user');
 
-  provider_id:any 
+  provider_id:any
   constructor(
     private userService: UserService,
     private router: Router,
@@ -29,7 +29,7 @@ export class FrontendHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogin();
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
 
   }
 
@@ -55,10 +55,10 @@ export class FrontendHomeComponent implements OnInit {
   }
 
   requestProvide(){
-    console.log(localStorage.getItem('user_id'));
+    // console.log(localStorage.getItem('user_id'));
     this.providerService.sendRequest(this.provider_id).subscribe({
       next: ()=> this.toastr.success('Your request has been sent, please wait for Admin approvement'),
-      
+
     })
   }
 }
