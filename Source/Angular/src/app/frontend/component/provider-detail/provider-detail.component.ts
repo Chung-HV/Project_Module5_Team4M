@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 import { HomeService } from '../../services/home.service';
 
 @Component({
@@ -19,28 +20,27 @@ export class ProviderDetailComponent implements OnInit {
   users!: any;
   price!: number;
   message = '';
-
   user_id = localStorage.getItem('user_id');
-  user_mooney=localStorage.getItem('user_mooney');
-  user_server_provider!:any;
+  user_server_provider!: any;
   order = {
-
     address: '',
     start_at: '',
+    start_time: '',
     time_rent: 0.5,
   };
+  money: any;
 
   constructor(
     private homeService: HomeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private data: DataService
   ) {}
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
+    this.data.currentMoney.subscribe((money) => (this.money = money));
     // console.log(localStorage.getItem('user_id'));
-
-
   }
   getUser(id: any) {
     this.homeService.getUser(id).subscribe(
@@ -56,19 +56,19 @@ export class ProviderDetailComponent implements OnInit {
 
   saveOrder(): void {
     this.users.forEach((user: any) => {
-      this.user_server_provider=user.id;
-   });
+      this.user_server_provider = user.id;
+    });
     const data = {
-      user_id:this.user_id,
-      service_provider_id:this.user_server_provider,
+      user_id: this.user_id,
+      service_provider_id: this.user_server_provider,
       address: this.order.address,
       time: this.order.time_rent,
       start_at: this.order.start_at,
+      start_time: this.order.start_time,
     };
     console.log(this.users);
 
     console.log(data);
-
 
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {

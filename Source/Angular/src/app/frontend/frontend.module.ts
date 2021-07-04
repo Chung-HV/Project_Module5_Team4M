@@ -15,37 +15,30 @@ import { RegisterComponent } from './component/register/register.component';
 import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
-
-
-
-
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
 
 @NgModule({
   declarations: [
     FrontendHomeComponent,
     FrontendHeaderComponent,
     FrontendFooterComponent,
-    LoginComponent,
-
-     ProfileUserComponent,
-     FrontendUserHeaderComponent,
-
-
+    ProfileUserComponent,
+    FrontendUserHeaderComponent,
 
     LoginComponent,
     DashboardComponent,
 
     RegisterComponent,
-    
-    ServiceProviderComponent,
-    ProviderDetailComponent
 
+    ServiceProviderComponent,
+    ProviderDetailComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     CommonModule,
     FrontendRoutingModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class FrontendModule { }
+export class FrontendModule {}
