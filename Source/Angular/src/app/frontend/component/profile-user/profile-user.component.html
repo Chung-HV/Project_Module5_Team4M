@@ -169,8 +169,9 @@
 
                          <label class="switch form-group" >
                           <input type="checkbox" name="is_active "
-                          (change)="fieldsChange($event)"
+                          (change)="checkValueActive(user.is_active? 1: 0)"
                           (click)="requestActive()" [checked]="user.is_active"
+                          [(ngModel)]="user.is_active"
                           >
                           <span class="slider round"></span>
                         </label>

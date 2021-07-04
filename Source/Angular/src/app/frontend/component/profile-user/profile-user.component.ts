@@ -19,7 +19,7 @@ export class ProfileUserComponent implements OnInit {
   avatar!: any;
   myForm!: FormGroup;
   is_active!:number;
-  onOff:any;
+  onOff!:number;
 
 
 
@@ -141,36 +141,35 @@ export class ProfileUserComponent implements OnInit {
     // console.log(this.avatar);
   }
 
-  fieldsChange(values:any):void {
-    console.log(values.currentTarget.checked);
-    if(values.currentTarget.checked == true)
-    {
-        this.is_active = 1;
-        this.onOff = this.is_active;
-        // console.log(this.onOff );
-        this.toastr.success('Account active!', 'Notification');
+  // fieldsChange(values:any):void {
+  //   console.log();
+  //   if(values.currentTarget.checked == true)
+  //   {
+  //       this.is_active = 1;
+  //       this.onOff = this.is_active;
+  //       // console.log(this.onOff );
+  //       this.toastr.success('Account active!', 'Notification');
 
-    }else
-    {
-      this.is_active = 0;
-      this.onOff = this.is_active;
-      this.toastr.error('Account is not active!', 'Notification');
+  //   }else
+  //   {
+  //     this.is_active = 0;
+  //     this.onOff = this.is_active;
+  //     this.toastr.warning('Account is not active!', 'Notification');
 
-      // console.log(this.onOff  );
+  //     // console.log(this.onOff  );
 
-    }
-  }
+  //   }
+  // }
 
   requestActive(){
+   let statusActive = this.onOff;
+  //  console.log(statusActive);
 
-    this.userService.isActive(this.id,this.onOff).subscribe(
-      (res) => {
-          console.log(res);
-
-      },
-      (error) => {
-
-      }
-    );
+    this.userService.isActive(this.id,statusActive).subscribe();
   }
+
+  checkValueActive(event: number){
+    this.onOff = event;
+    console.log(this.onOff);
+ }
 }
