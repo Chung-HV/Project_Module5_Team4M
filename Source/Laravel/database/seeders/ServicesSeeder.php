@@ -15,98 +15,98 @@ class ServicesSeeder extends Seeder
     public function run()
     {
         $service = new Service();
-        $service->name = 'Meet family';
+        $service->name = 'Ra mắt người nhà';
         $service->type = 'default';
         $service->save();
         
         
         $service = new Service();
-        $service->name = 'Meet friends';
+        $service->name = 'Ra mắt bạn bè';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Travel with friends';
+        $service->name = 'Du lịch chung cùng nhóm bạn';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Travel together';
+        $service->name = 'Đi chơi chung';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Attend birthday party';
+        $service->name = 'Tham dự sinh nhật';
         $service->type = 'default';
         
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Chat offline';
+        $service->name = 'Trò chuyện offline';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Chat online';
+        $service->name = 'Trò chuyện online';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'New Year Eve together';
+        $service->name = 'Đi chơi tết';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Holliday together';
+        $service->name = 'Đi chơi ngày lễ';
         $service->type = 'default';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Hold hands';
+        $service->name = 'Nắm tay';
         $service->type = 'free';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Say "I love You"';
+        $service->name = 'Nói yêu';
         $service->type = 'free';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Eyes contact';
+        $service->name = 'Nhìn mắt';
         $service->type = 'free';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Kiss hand';
+        $service->name = 'Hôn tay';
         $service->type = 'extra';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Hug';
+        $service->name = 'Ôm';
         $service->type = 'extra';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Nagging';
+        $service->name = 'Nhõng nhẽo';
         $service->type = 'extra';
 
         $service->save();
 
         $service = new Service();
-        $service->name = 'Cuddle';
+        $service->name = 'Cử chỉ thân mật';
         $service->type = 'extra';
 
         $service->save();

@@ -74,7 +74,7 @@ export class FrontendHomeComponent implements OnInit {
         this.user = res;
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-        console.log(this.user.avatar);
+        console.log(this.user.is_service_provider);
       },
       error: (error: any) => {},
     });
