@@ -21,7 +21,7 @@ const routes: Routes = [
 
       { path: 'register', component: RegisterComponent },
       { path: 'user/profile', component: ProfileUserComponent },
-      { path: 'user/profile/order-history', component: OrderHistoryComponent },
+      { path: 'provider/orders', component: OrderHistoryComponent },
       { path: 'provider/:id/service', component: ServiceProviderComponent },
       { path: 'provider-detail/:id', component: ProviderDetailComponent },
     ],

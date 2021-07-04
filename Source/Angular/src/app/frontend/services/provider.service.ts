@@ -33,4 +33,9 @@ export class ProviderService {
   sendRequest(provider_id:any): Observable<any>{
     return this.http.get<any>(`${environment.base_Url}provider/${provider_id}/request`)
   }
+
+
+  getOrders(provider_id:any){
+    return this.http.get(`${environment.base_Url}provider/${provider_id}/orders`)
+  }
 }

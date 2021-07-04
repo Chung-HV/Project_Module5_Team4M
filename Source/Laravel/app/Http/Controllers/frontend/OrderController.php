@@ -50,4 +50,11 @@ class OrderController extends Controller
         return response()->json($data,200);
     }
 
+    public function updateOrder(Request $request){
+        $order = Order::findOrFail($request->order_id);
+        $order->status = $request->order_status;
+        $order->save();
+        return response()->json($request,200);
+    }
+
 }

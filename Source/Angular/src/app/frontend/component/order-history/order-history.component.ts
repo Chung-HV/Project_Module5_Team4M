@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../services/order.service';
 import { ProviderService } from '../../services/provider.service';
 import { UserService } from '../../services/user.service';
 
@@ -15,18 +16,19 @@ export class OrderHistoryComponent implements OnInit {
   order_details: any
   constructor(
     private userService: UserService,
-    private providerService: ProviderService
+    private providerService: ProviderService,
+    private orderService: OrderService
     ) {
     this.provider_id = localStorage.getItem('user_id');
     this.provider_price = localStorage.getItem('user_price');
-    this.getOrderHistory();
+    this.getOrders();
    }
 
   ngOnInit(): void {
   }
 
-  getOrderHistory(){
-    this.userService.getOrderHistory(this.provider_id).subscribe({
+  getOrders(){
+    this.providerService.getOrders(this.provider_id).subscribe({
       next: (data:any) => { 
         this.orders = data.orders;
         this.customers = data.customers;
@@ -35,7 +37,14 @@ export class OrderHistoryComponent implements OnInit {
       }
     })
   }
-  getCustomers(){
-    
+ 
+  updateOrder(order_id:any,order_status:any){
+    this.orderService.updateOrder(order_id,order_status).subscribe({
+      next: (data)=>{
+        console.log(data);
+      }
+
+    })
+
   }
 }
