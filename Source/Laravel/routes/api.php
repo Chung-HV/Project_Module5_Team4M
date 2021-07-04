@@ -26,7 +26,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('user_new', [DashboardController::class, 'showNewUser']);
     Route::get('/{id}', [DashboardController::class, 'getUser']);
 
-    Route::post('order_service_provider',[OrderController::class,'orderServiceProvider']);
+    Route::post('order_service_provider', [OrderController::class, 'orderServiceProvider']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -41,25 +41,22 @@ Route::prefix('users')->group(function () {
         Route::get('/logout', [AuthController::class, 'logout']);
         Route::get('/profile', [AuthController::class, 'profile']);
         Route::post('/update/{id}', [AuthController::class, 'update']);
+
     });
 });
 
-Route::get('provider/{id}/approve', [ProviderController::class, 'approveProvider']);
-
-Route::get('provider/service', [ServiceController::class, 'getAll']);
-Route::get('provider', [ProviderController::class, 'getAll']);
-Route::get('provider/{id}', [ProviderController::class, 'findById']);
-
+Route::get('admin/provider', [ProviderController::class, 'getAll']);
+Route::get('admin/provider/service', [ServiceController::class, 'getAll']);
 Route::get('admin/provider/requesting', [ProviderController::class, 'getRequestingProvider']);
+Route::get('admin/provider/{id}/approve', [ProviderController::class, 'approveRequest']);
+Route::get('admin/provider/{id}/setvip', [ProviderController::class, 'setVip']);
+
+Route::get('provider/{id}', [ProviderController::class, 'findById']);
 Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);
 Route::post('provider/{id}/service/update', [ProviderController::class, 'setProvidingService']);
 Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomeProvider']);
-Route::get('provider/{id}/approve', [ProviderController::class, 'approveRequest']);
-Route::get('provider/{id}/setvip', [ProviderController::class, 'setVip']);
 
-Route::get('provider/{id}/orders',[OrderController::class,'getOrderByProvider']);
-Route::get('users/{id}',[UserController::class,'getById']);
+Route::get('provider/{id}/orders', [OrderController::class, 'getOrderByProvider']);
+Route::get('users/{id}', [UserController::class, 'getById']);
 
-Route::post('orders/update',[OrderController::class,'updateOrder']);
-
-
+Route::post('orders/update', [OrderController::class, 'updateOrder']);
