@@ -63,4 +63,17 @@ export class UserService {
   getById(user_id:any):Observable<any>{
     return this.http.get<any>(`${environment.base_Url}${user_id}/provider`)
   }
+
+  isActive(id: number, status: any):Observable<any>{
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      // 'Content-Type': 'application/json',
+
+      Authorization: 'Bearer ' + auth_token,
+    });
+
+    return this.http.post(`${environment.base_Url}users/active/${id}`, status, {
+      headers: reqHeader,
+    });
+  }
 }

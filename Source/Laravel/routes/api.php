@@ -41,6 +41,7 @@ Route::prefix('users')->group(function () {
         Route::get('/logout', [AuthController::class, 'logout']);
         Route::get('/profile', [AuthController::class, 'profile']);
         Route::post('/update/{id}', [AuthController::class, 'update']);
+        Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
 
     });
 });

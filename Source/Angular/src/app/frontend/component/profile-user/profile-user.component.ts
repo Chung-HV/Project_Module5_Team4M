@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
+
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 
@@ -19,6 +20,8 @@ export class ProfileUserComponent implements OnInit {
   myForm!: FormGroup;
   user_is_provider: any;
 
+  is_active!:number;
+  onOff!:number;
 
 
 
@@ -69,7 +72,7 @@ export class ProfileUserComponent implements OnInit {
   ) {
     this.user_is_provider = localStorage.getItem('is_provider');
     console.log(this.user_is_provider);
-    
+
   }
 
   ngOnInit(): void {
@@ -82,6 +85,9 @@ export class ProfileUserComponent implements OnInit {
       next: (data) => {
         this.user = data;
         this.id = this.user.id;
+        this.is_active = this.user.is_active;
+        // console.log(this.user.is_active);
+
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
         // this.name = this.user.name;
         // console.log(this.user);
@@ -118,8 +124,7 @@ export class ProfileUserComponent implements OnInit {
     console.log(formData.has('avatar'));
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
-        // console.log(res);
-        // if(res.status ==='success'){
+
         //   this.router.navigate(['admin/book-list']);
         this.toastr.success('Upload successfully!', 'Notification');
         // formData.delete('city');
@@ -127,33 +132,11 @@ export class ProfileUserComponent implements OnInit {
         // }
       },
       (error) => {
-        // this.toastr.error('Chỉnh Sửa sách thất bại. Vui lòng liên hệ admin!', 'Thông báo');
+        this.toastr.error('Upload fail!', 'Notification');
       }
     );
   }
 
-  // updateProfileUser() {
-
-  //   this.userService.uploadImage(
-  //     this.id,
-  //     this.avatar,
-  //     this.user.name,
-  //     this.user.birth_day,
-  //     this.user.gender,
-  //     this.user.city,
-  //     this.user.nation,
-  //     this.user.height,
-  //     this.user.weight,
-  //     this.user.hobby,
-  //     this.user.introducion,
-  //     this.user.requirement,
-  //     this.user.facebook,
-  //     ).subscribe
-  //     (res => {
-  //       console.log(res);
-  //       alert('Uploaded Successfully.');
-  //     });
-  // }
 
   onSubmit() {
     this.updateProfileUser();
@@ -163,4 +146,36 @@ export class ProfileUserComponent implements OnInit {
     this.avatar = $event.target.files[0];
     // console.log(this.avatar);
   }
+
+  // fieldsChange(values:any):void {
+  //   console.log();
+  //   if(values.currentTarget.checked == true)
+  //   {
+  //       this.is_active = 1;
+  //       this.onOff = this.is_active;
+  //       // console.log(this.onOff );
+  //       this.toastr.success('Account active!', 'Notification');
+
+  //   }else
+  //   {
+  //     this.is_active = 0;
+  //     this.onOff = this.is_active;
+  //     this.toastr.warning('Account is not active!', 'Notification');
+
+  //     // console.log(this.onOff  );
+
+  //   }
+  // }
+
+  requestActive(){
+   let statusActive = this.onOff;
+  //  console.log(statusActive);
+
+    this.userService.isActive(this.id,statusActive).subscribe();
+  }
+
+  checkValueActive(event: number){
+    this.onOff = event;
+    console.log(this.onOff);
+ }
 }
