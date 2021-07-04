@@ -73,14 +73,14 @@
         <div class="title-player-profile row">
           <div class="col-md-12"><span>Thông tin</span></div>
         </div>
+
         <div class="content-player-profile">
           <p>Ơi ! Sun đây <strong>Playerunknown's Battlegrounds,Csgo</strong></p>
           <div class="album-of-player">
             <div>
-              <a href="static/images/8eaeaaf9-0b1b-4aec-abe5-f3438256fe8b__26fd9800-921e-11eb-838d-05ed4475c295__player_album.jpg"
-                style="display: block;">
+              <a href="https://bitly.com.vn/0ncpbq" style="display: block;">
                 <img
-                  src="static/images/8eaeaaf9-0b1b-4aec-abe5-f3438256fe8b__26fd9800-921e-11eb-838d-05ed4475c295__player_album.jpg"
+                  src="assets/frontend/static/images/8eaeaaf9-0b1b-4aec-abe5-f3438256fe8b__26fd9800-921e-11eb-838d-05ed4475c295__player_album.jpg"
                   class=""
                   alt="https://playerduo.com/api/upload-service/thumbs/medium/8eaeaaf9-0b1b-4aec-abe5-f3438256fe8b__26fd9800-921e-11eb-838d-05ed4475c295__player_album.jpg"></a>
 
@@ -92,11 +92,6 @@
 
           <h3 *ngFor="let sv of user.services">❤️ {{sv.name}}</h3>
         </div>
-        <div class="title-player-profile row">
-          <div class="col-md-12"><iframe title="youtube" width="100%" height="350px"
-              src="./SunKimochii on PlayerDuo_files/hCXgnHCB8VM.html" frameborder="0" allow="encrypted-media"
-              allowfullscreen=""></iframe></div>
-        </div>
         <hr>
         <div class="title-player-profile row">
           <div class="col-md-12"><span>Đánh giá</span></div>
@@ -106,8 +101,8 @@
             <div class="full-size">
               <div class="review-image-small">
                 <div class="avt avt-md"><img
-                    src="./SunKimochii on PlayerDuo_files/dc5657bd-49d6-4175-b5e8-ec889538e928+1585641127853.jpeg"
-                    class="avt-img" alt="PD"><img src="./SunKimochii on PlayerDuo_files/10.png"
+                    src="assets/frontend/SunKimochii on PlayerDuo_files/dc5657bd-49d6-4175-b5e8-ec889538e928+1585641127853.jpeg"
+                    class="avt-img" alt="PD"><img src="assets/frontend/SunKimochii on PlayerDuo_files/10.png"
                     class="vip-avatar undefined" alt="PD" style="height: 22px; width: 22px;"></div>
               </div>
               <div class="wrapper-content-rating">
@@ -137,95 +132,119 @@
 
   </div>
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="fade modal-donate in modal" id="rent" role="dialog" tabindex="-1" aria-labelledby="rent"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form >
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title"><span>Thuê Người Yêu</span></h4>
+      <form>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title"><span>Thuê Người Yêu</span></h4>
+          </div>
+
+          <div class="modal-body">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Lover:</td>
+                  <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                  <td><span>Điểm Hẹn:</span></td>
+                  <td><input type="text" class="form-control" [(ngModel)]="order.address" name="address"></td>
+                </tr>
+
+
+                <tr>
+                  <td><span>Đặt ngày hẹn:</span></td>
+                  <td><input type="date" class="form-control" [(ngModel)]="order.start_at" name="created_at"></td>
+                </tr>
+                <tr>
+                  <td><span>Đặt giờ hẹn:</span></td>
+                  <td><input type="time" class="form-control" [(ngModel)]="order.start_time" name="start_time"></td>
+                </tr>
+                <tr>
+                  <td><span>Thời gian muốn thuê</span></td>
+                  <td>
+                    <select [(ngModel)]="order.time_rent" class="form-control">
+                      <option value="0.5">30&nbsp;phút</option>
+                      <option value="1">1&nbsp;giờ</option>
+                      <option value="2">2&nbsp;giờ</option>
+                      <option value="3">3&nbsp;giờ</option>
+                      <option value="4">4&nbsp;giờ</option>
+                      <option value="5">5&nbsp;giờ</option>
+                      <option value="6">6&nbsp;giờ</option>
+                      <option value="7">7&nbsp;giờ</option>
+                      <option value="8">8&nbsp;giờ</option>
+                      <option value="9">9&nbsp;giờ</option>
+                      <option value="10">10&nbsp;giờ</option>
+                      <option value="11">11&nbsp;giờ</option>
+                      <option value="12">12&nbsp;giờ</option>
+                      <option value="13">13&nbsp;giờ</option>
+                      <option value="14">14&nbsp;giờ</option>
+                      <option value="15">15&nbsp;giờ</option>
+                      <option value="16">16&nbsp;giờ</option>
+                      <option value="17">17&nbsp;giờ</option>
+                      <option value="18">18&nbsp;giờ</option>
+                      <option value="19">19&nbsp;giờ</option>
+                      <option value="20">20&nbsp;giờ</option>
+                      <option value="21">21&nbsp;giờ</option>
+                      <option value="22">22&nbsp;giờ</option>
+                      <option value="23">23&nbsp;giờ</option>
+                      <option value="24">24&nbsp;giờ</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><span>Chi phí</span>:</td>
+                  <td><input value="{{user.price*order.time_rent|number }} VND"
+                      style="border: none;background-color: white;" disabled></td>
+                </tr>
+                <tr>
+                  <td><span>Số dư hiện tại</span>:</td>
+                  <td><span class="total-amount"> {{ money|number }} VND</span><span class="load-more-credit">+</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <textarea placeholder="Type a message ..." name="message" maxlength="255" type="text"
+                      class="form-control"></textarea>
+                    <p class="err-message"></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn-fill btn btn-danger" (click)="saveOrder()"><span>Thuê</span></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close"><span>Đóng</span></button>
+          </div>
         </div>
-
-        <div class="modal-body">
-          <table>
-            <tbody>
-              <tr>
-                <td>Lover:</td>
-                <td>{{user.name}}</td>
-              </tr>
-              <tr>
-                <td><span>Điểm Hẹn:</span></td>
-                <td><input type="text" class="form-control" [(ngModel)]="order.address" name="address"></td>
-              </tr>
-
-
-              <tr>
-                <td><span>Đặt ngày hẹn:</span></td>
-                <td><input type="date" class="form-control" [(ngModel)]="order.start_at" name="created_at"></td>
-              </tr>
-              <tr>
-                <td><span>Đặt giờ hẹn:</span></td>
-                <td><input type="time" class="form-control" [(ngModel)]="order.start_time" name="start_time"></td>
-              </tr>
-              <tr>
-                <td><span>Thời gian muốn thuê</span></td>
-                <td>
-                  <select [(ngModel)]="order.time_rent" class="form-control">
-                    <option value="0.5">30&nbsp;phút</option>
-                    <option value="1">1&nbsp;giờ</option>
-                    <option value="2">2&nbsp;giờ</option>
-                    <option value="3">3&nbsp;giờ</option>
-                    <option value="4">4&nbsp;giờ</option>
-                    <option value="5">5&nbsp;giờ</option>
-                    <option value="6">6&nbsp;giờ</option>
-                    <option value="7">7&nbsp;giờ</option>
-                    <option value="8">8&nbsp;giờ</option>
-                    <option value="9">9&nbsp;giờ</option>
-                    <option value="10">10&nbsp;giờ</option>
-                    <option value="11">11&nbsp;giờ</option>
-                    <option value="12">12&nbsp;giờ</option>
-                    <option value="13">13&nbsp;giờ</option>
-                    <option value="14">14&nbsp;giờ</option>
-                    <option value="15">15&nbsp;giờ</option>
-                    <option value="16">16&nbsp;giờ</option>
-                    <option value="17">17&nbsp;giờ</option>
-                    <option value="18">18&nbsp;giờ</option>
-                    <option value="19">19&nbsp;giờ</option>
-                    <option value="20">20&nbsp;giờ</option>
-                    <option value="21">21&nbsp;giờ</option>
-                    <option value="22">22&nbsp;giờ</option>
-                    <option value="23">23&nbsp;giờ</option>
-                    <option value="24">24&nbsp;giờ</option>
-                  </select>
-                </td>
-              </tr>
-
-              <tr>
-                <td><span>Chi phí</span>:</td>
-                <td><input value="{{user.price*order.time_rent}} VND" style="border: none;background-color: white;" disabled ></td>
-              </tr>
-              <tr>
-                <td><span>Số dư hiện tại</span>:</td>
-                <td><span class="total-amount"> {{ money }} VND</span><span class="load-more-credit">+</span></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <textarea placeholder="Type a message ..." name="message" maxlength="255" type="text"
-                    class="form-control" ></textarea>
-                  <p class="err-message"></p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn-fill btn btn-danger" (click)="saveOrder()"><span>Thuê</span></button>
-          <button type="button" class="btn btn-default"><span>Đóng</span></button>
-        </div>
-      </div>
-    </form>
+      </form>
     </div>
 
   </div>
