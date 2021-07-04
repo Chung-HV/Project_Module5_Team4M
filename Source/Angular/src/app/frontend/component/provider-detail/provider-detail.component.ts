@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { environment } from 'src/environments/environment.prod';
 
 import {
   FormBuilder,
@@ -20,6 +21,8 @@ export class ProviderDetailComponent implements OnInit {
   users!: any;
   price!: number;
   message = '';
+  base_Url_img=environment.base_Url_img;
+
   user_id = localStorage.getItem('user_id');
   user_server_provider!: any;
   order = {

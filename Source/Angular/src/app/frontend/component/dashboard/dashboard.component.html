@@ -40,7 +40,7 @@
           <div class="player-information-card-wrap" *ngFor="let user of vip_user">
             <div class="player-avatar">
               <img
-                src="http://127.0.0.1:8000/storage/{{user.avatar}}"
+                src="{{base_Url_img+user.avatar}}"
                 class="" alt="PD" id="avt-img-reponsiver">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
@@ -74,7 +74,7 @@
           <div class="player-information-card-wrap" *ngFor="let user of users">
             <div class="player-avatar">
               <img
-                src="http://127.0.0.1:8000/storage/{{user.avatar}}"
+                src="{{base_Url_img+user.avatar}}"
                 class="" alt="PD" id="avt-img-reponsiver">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
@@ -109,7 +109,7 @@
           <div class="player-information-card-wrap" *ngFor="let user of new_user">
             <div class="player-avatar">
               <img
-                src="http://127.0.0.1:8000/storage/{{user.avatar}}"
+                src="{{base_Url_img+user.avatar}}"
                 class="" alt="PD" id="avt-img-reponsiver">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
