@@ -52,11 +52,15 @@ export class UserService {
 
       Authorization: 'Bearer ' + auth_token,
     });
+    // console.log(user);
+
     return this.http.post(`${environment.base_Url}users/update/${id}`, user, {
       headers: reqHeader,
     });
   }
-  getUserMoney(id: any): Observable<any>{
-    return this.http.get(`${environment.base_Url}`);
+
+
+  getById(user_id:any):Observable<any>{
+    return this.http.get<any>(`${environment.base_Url}${user_id}/provider`)
   }
 }

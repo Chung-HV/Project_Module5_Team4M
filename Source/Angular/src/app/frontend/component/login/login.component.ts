@@ -39,7 +39,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
-        localStorage.setItem('user_id', data.user.id);
+        localStorage.setItem('user_price', data.user.price);
+        localStorage.setItem('user_mooney', data.user.accounts.mooney);
+
+        console.log(data.user.accounts.mooney);
+
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
         this.data.changeCheck(false);

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { FrontendHomeComponent } from './component/frontend-home/frontend-home.component';
 import { LoginComponent } from './component/login/login.component';
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
 
 import { ProfileUserComponent } from './component/profile-user/profile-user.component';
 import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
 
       { path: 'register', component: RegisterComponent },
       { path: 'user/profile', component: ProfileUserComponent },
+      { path: 'provider/orders', component: OrderHistoryComponent },
       { path: 'provider/:id/service', component: ServiceProviderComponent },
       { path: 'provider-detail/:id', component: ProviderDetailComponent },
     ],

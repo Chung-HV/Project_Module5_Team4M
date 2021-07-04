@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
@@ -16,7 +17,8 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   avatar!: any;
   myForm!: FormGroup;
-  // name!:string
+
+
 
 
   validateForm() {
@@ -53,7 +55,7 @@ export class ProfileUserComponent implements OnInit {
       requirement: ['', [Validators.maxLength(50)]],
       hobby: ['', [Validators.maxLength(30)]],
       facebook: ['', [Validators.maxLength(30)]],
-      avatar: [''],
+      // avatar: [''],
     });
   }
 
@@ -61,7 +63,8 @@ export class ProfileUserComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -69,53 +72,62 @@ export class ProfileUserComponent implements OnInit {
     this.validateForm();
   }
 
-  getUserProfile()
-  {
-    this.userService.profile()
-      .subscribe({
-        next: (data)=>{
-          this.user = data;
-          this.id = this.user.id;
-          this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-          console.log(this.user);
-
-        }
-      });
+  getUserProfile() {
+    this.userService.profile().subscribe({
+      next: (data) => {
+        this.user = data;
+        this.id = this.user.id;
+        this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+        // this.name = this.user.name;
+        // console.log(this.user);
+      },
+    });
   }
 
   updateProfileUser() {
     let data = this.myForm.value;
-    console.log(data);
+    console.log(this.user.city);
+
+
     let formData = new FormData();
 
-    formData.append('data', JSON.stringify(data));
-    // console.log(formData.get('data'));
-    if(this.avatar){
+
+    formData.append('name', this.user.name);
+    formData.append('birth_day', this.user.birth_day);
+    formData.append('gender', this.user.gender);
+    formData.append('city', this.user.city);
+    formData.append('nation', this.user.nation);
+    formData.append('height', this.user.height);
+    formData.append('weight', this.user.weight);
+    formData.append('hobby', this.user.hobby);
+    formData.append('introducion', this.user.introducion);
+    formData.append('requirement', this.user.requirement);
+    formData.append('facebook', this.user.facebook);
+
+    if (this.avatar) {
       formData.append('avatar', this.avatar, this.avatar.name);
     }
-    this.userService.updateUserProfile( this.id,formData).subscribe(
+    console.log(formData.has('city'));
 
+    console.log(formData.has('facebook'));
+    console.log(formData.has('avatar'));
+    this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
-          console.log(res);
-          // if(res.status ==='success'){
-          //   this.router.navigate(['admin/book-list']);
-          //   this.toastr.success('Chỉnh Sửa sách thành công!', 'Thông báo');
-          // }
-          Object.keys(res).forEach((key) => {
-            // console.log(key);
-            // console.log(va);
+        // console.log(res);
+        // if(res.status ==='success'){
+        //   this.router.navigate(['admin/book-list']);
+        this.toastr.success('Upload successfully!', 'Notification');
+        // formData.delete('city');
 
-
-          });
-      },error => {
+        // }
+      },
+      (error) => {
         // this.toastr.error('Chỉnh Sửa sách thất bại. Vui lòng liên hệ admin!', 'Thông báo');
       }
-    )
-
+    );
   }
 
   // updateProfileUser() {
-
 
   //   this.userService.uploadImage(
   //     this.id,
@@ -143,11 +155,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getImgFile($event: any) {
-
     this.avatar = $event.target.files[0];
     // console.log(this.avatar);
-
   }
-
-
 }

@@ -46,4 +46,24 @@ class OrderController extends Controller
         }
         return response()->json($user_account);
     }
+
+    public function getOrderByProvider($id){
+        $orders = Order::where('service_provider_id','=',$id)->get();
+        $customers = [];
+        $orderDetails = [];
+        foreach($orders as $order){
+            array_push($customers,$order->customer);
+            array_push($orderDetails,$order->order_detail);
+        }
+        $data = ['orders'=>$orders,'customers'=>$customers,'order_details'=>$orderDetails];
+        return response()->json($data,200);
+    }
+
+    public function updateOrder(Request $request){
+        $order = Order::findOrFail($request->order_id);
+        $order->status = $request->order_status;
+        $order->save();
+        return response()->json($request,200);
+    }
+
 }

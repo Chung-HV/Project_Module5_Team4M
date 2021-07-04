@@ -53,14 +53,14 @@
                     <a class="money-user"><i class="fas fa-plus"></i> 1,000 đ</a>
                 </li>
                 <li class="item-icon item-avatar dropdown">
-                    <a id="header-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://playerduo.com/api/upload-service/images/5ba2f695-9bcc-4091-a4a3-9b3a243ecfb8__dad78e20-dcc1-11ea-b386-575fea6f28e2__page_avatar.jpg" class="avt-img" alt="PD" /></a>
+                    <a id="header-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ user.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" /></a>
                     <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
                         <li role="presentation" class="page-user">
                             <a role="menuitem" tabindex="-1" routerLink="user/profile">
-                                <img src="https://playerduo.com/api/upload-service/images/5ba2f695-9bcc-4091-a4a3-9b3a243ecfb8__dad78e20-dcc1-11ea-b386-575fea6f28e2__page_avatar.jpg" class="avt-img" alt="PD" />
+                                <img src="{{ user.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" />
                                 <div class="text-logo">
-                                    <h5>Chung</h5>
-                                    <p>ID : <span>danbo</span></p>
+                                    <h5>{{ user.name }}</h5>
+                                    <p>ID : <span>{{ user.id }}</span></p>
                                     <p class="label-user-page">
                                         <span>Xem trang cá nhân của bạn</span>
                                     </p>

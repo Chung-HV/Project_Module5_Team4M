@@ -7,6 +7,7 @@ use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\OrderController;
+use App\Http\Controllers\frontend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,14 +44,22 @@ Route::prefix('users')->group(function () {
     });
 });
 
-Route::get('/provider/{id}/approve', [ProviderController::class, 'approveProvider']);
+Route::get('provider/{id}/approve', [ProviderController::class, 'approveProvider']);
 
 Route::get('provider/service', [ServiceController::class, 'getAll']);
 Route::get('provider', [ProviderController::class, 'getAll']);
+Route::get('provider/{id}', [ProviderController::class, 'findById']);
+
 Route::get('provider/requesting', [ProviderController::class, 'getRequestingProvider']);
 Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);
 Route::post('provider/{id}/service/update', [ProviderController::class, 'setProvidingService']);
 Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomeProvider']);
 Route::get('provider/{id}/approve', [ProviderController::class, 'approveRequest']);
 Route::get('provider/{id}/setvip', [ProviderController::class, 'setVip']);
+
+Route::get('provider/{id}/orders',[OrderController::class,'getOrderByProvider']);
+Route::get('users/{id}',[UserController::class,'getById']);
+
+Route::post('orders/update',[OrderController::class,'updateOrder']);
+
 
