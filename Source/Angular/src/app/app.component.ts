@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'Angular';
 
   frontendStyle = [
+
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css",
     'assets/frontend/font-awesome/css/all.css',
     'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i&amp;subset=vietnamese',
@@ -28,6 +29,7 @@ export class AppComponent {
   ];
 
   frontendScript = [
+    'https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js',
     "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
     'https://code.jquery.com/jquery-2.1.4.min.js',
@@ -38,7 +40,10 @@ export class AppComponent {
     'assets/frontend/static/js/2.d2525480.chunk.js',
     'assets/frontend/static/js/5.9ed9d5b3.chunk.js',
     'assets/frontend/static/js/15.b5bdbea4.chunk.js',
-    "assets/frontend/static/js/10.fcc58758.chunk.js"
+    'assets/frontend/static/js/15.6f4d05d1.chunk.js',
+    'assets/frontend/static/js/5.c4c18540.chunk.js',
+    'assets/frontend/static/js/0.47c80823.chunk.js',
+    'assets/frontend/static/js/1.86ca38df.chunk.js',
   ];
 
   backendStyle = [
