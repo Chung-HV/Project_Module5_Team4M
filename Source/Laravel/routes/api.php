@@ -49,7 +49,7 @@ Route::get('provider/service', [ServiceController::class, 'getAll']);
 Route::get('provider', [ProviderController::class, 'getAll']);
 Route::get('provider/{id}', [ProviderController::class, 'findById']);
 
-Route::get('provider/requesting', [ProviderController::class, 'getRequestingProvider']);
+Route::get('admin/provider/requesting', [ProviderController::class, 'getRequestingProvider']);
 Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);
 Route::post('provider/{id}/service/update', [ProviderController::class, 'setProvidingService']);
 Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomeProvider']);

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { ProviderService } from '../../services/provider.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-order-history',
@@ -15,7 +14,6 @@ export class OrderHistoryComponent implements OnInit {
   customers: any
   order_details: any
   constructor(
-    private userService: UserService,
     private providerService: ProviderService,
     private orderService: OrderService
     ) {

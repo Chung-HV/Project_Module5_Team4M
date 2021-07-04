@@ -1,6 +1,5 @@
 <body class="fixed-header" style="margin-top: 75px">
-  <noscript
-    >Bạn cần có cho phép Javascript hoạt động để chạy ứng dụng
+    <noscript>Bạn cần có cho phép Javascript hoạt động để chạy ứng dụng
     PlayerDuo.</noscript
   >
   <div id="root">
@@ -52,6 +51,26 @@
                           </div>
                         </div>
                       </div>
+                      <div class="menu__setting--sub panel panel-default" *ngIf="user_is_provider == 1">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/services']">
+                                    <i class="fas fa-sliders-h"></i> Dịch vụ cung cấp
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu__setting--sub panel panel-default" *ngIf="user_is_provider == 1">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/orders']">
+                                    <i class="fas fa-sliders-h"></i> Đơn thuê
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
                       <!-- <div class="menu__setting--sub panel panel-default">
                                    <div class="panel-heading">
                                       <div class="title-sub  panel-title"><a aria-expanded="true" class="" role="button" href="#"><i class="fas fa-cog"></i> lịch sử thuê <i class="fas fa-chevron-down"></i></a></div>

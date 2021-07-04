@@ -33,7 +33,7 @@ export class ServiceProviderComponent implements OnInit {
   ngOnInit(
   ):
     void {
-    this.provider_id = this.route.snapshot.paramMap.get('id');
+    this.provider_id = localStorage.getItem('user_id');
     this.getAll();
     this.getDefaultServices();
     this.getProvidingServices(this.provider_id);

@@ -8,7 +8,7 @@ import { RequestingComponent } from './provider/requesting/requesting.component'
 const routes: Routes = [
   { path: '', component: BackendComponent },
   {
-    path: 'provider/requesting',
+    path: 'admin/provider/requesting',
     component:RequestingComponent
   },
   {

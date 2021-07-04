@@ -16,7 +16,7 @@ export class UserService {
   }
 
   getRequestingProvider(): Observable<any> {
-    return this.http.get<any>(`${environment.base_Url}provider/requesting`)
+    return this.http.get<any>(`${environment.base_Url}admin/provider/requesting`)
   }
 
   approveRequest(provider_id:any): Observable<any>{

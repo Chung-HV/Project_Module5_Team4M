@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
+        localStorage.setItem('is_provider', data.user.is_service_provider);
       
         // sessionStorage.setItem('token', data.access.token );
         // localStorage.setItem('user', data.user.name);
