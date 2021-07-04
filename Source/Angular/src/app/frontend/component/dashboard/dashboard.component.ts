@@ -1,6 +1,7 @@
 import { Component, NgIterable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDashboard } from '../../models/userDashboard';
+import { environment } from 'src/environments/environment.prod';
 
 import { HomeService } from '../../services/home.service';
 
@@ -13,6 +14,7 @@ export class DashboardComponent implements OnInit {
   users!: UserDashboard[];
   vip_user!: UserDashboard[];
   new_user!: UserDashboard[];
+  base_Url_img=environment.base_Url_img;
   constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {
