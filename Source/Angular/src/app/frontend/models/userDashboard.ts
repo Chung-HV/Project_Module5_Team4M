@@ -4,6 +4,11 @@ export class UserDashboard {
   public email !: string;
   public price !: number;
   public avatar !: string;
+  public introducion !: string;
+  public hobby !: string;
+
+
+
 
 
 }

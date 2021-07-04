@@ -6,29 +6,29 @@
     <div class="player-profile-left-wrap col-md-3">
       <div class="avt avt-lg">
         <img src="{{base_Url_img+user.avatar}}"
-          class="avt-img" alt="PD">
+          class="avt-img" alt="PD" style="object-fit: cover;">
       </div>
       <div class="rent-time-wrap">
         <p class="ready">Đang sẵn sàng</p>
       </div>
-      <div class="social-icon">
+      <!-- <div class="social-icon">
         <div class="icon-wrap facebook"><a href="https://www.facebook.com/Leethiihoongcaam" target="_blank"
             rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></div>
         <div class="icon-wrap user-page"><a href="https://playerduo.com/sun21s" target="_blank"
             rel="noopener noreferrer">
             <img src="assets/frontend/static/icons/player-card.png" alt="PD" title="Trang cá nhân"
               class="option-icon img-rounded"></a></div>
-      </div>
-      <div class="member-since"><span>Ngày tham gia:</span><span><span>24/7/2018</span></span></div>
+      </div> -->
+      <div class="member-since"><span>Ngày tham gia:</span><span><span>{{ user.created_at|date }}</span></span></div>
       <div class="ui-category">
         <div class="border-category"> </div>
-        <div class="title-category"><span class="member-since-septem">Thành tích</span></div>
+        <div class="title-category"><span class="member-since-septem">Sở thích</span></div>
       </div>
       <table class="table-achievement table">
         <tbody>
           <tr style="display: flex; flex-direction: column;">
-            <td><i class="fas fa-award"></i> Chúng ta không có sau này :(</td>
-            <td>05-06-2020</td>
+            <td><i class="fas fa-award"></i>{{ user.hobby }}</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -36,11 +36,13 @@
     <div class="player-profile-right-wrap col-md-3 col-md-push-6">
       <div class="right-player-profile">
         <p class="price-player-profile">{{user.price|number}} đ/h</p>
-        <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+        <!-- <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
             class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>&nbsp;<span>216
-            <span>Đánh giá</span></span></div>
+            <span>Đánh giá</span></span></div> -->
         <div class="text-center"><button class="btn-my-style red" data-toggle="modal"
-            data-target="#rent">Thuê</button><button class="btn-my-style white">Donate</button><button
+            data-target="#rent">Thuê</button>
+            <!-- <button class="btn-my-style white">Donate</button> -->
+            <button
             class="btn-my-style gray"><i class="fas fa-comment-alt"></i>Chat</button></div>
       </div>
     </div>
@@ -48,11 +50,13 @@
       <div>
         <div class="row">
           <div class="center-item col-md-12"><span
-              class="name-player-profile hidden-over-name">{{user.name}}</span><button class="btn-follow-player"><i
-                class="fas fa-heart"></i>&nbsp;<span class="plus"><span>Theo dõi</span></span></button></div>
+              class="name-player-profile hidden-over-name">{{user.name}}</span>
+              <!-- <button class="btn-follow-player"><i
+                class="fas fa-heart"></i>&nbsp;<span class="plus"><span>Theo dõi</span></span></button> -->
+              </div>
         </div>
         <div class="nav-player-profile row">
-          <div class="col-md-3 col-xs-6">
+          <!-- <div class="col-md-3 col-xs-6">
             <div class="item-nav-name"><span>Số người theo dõi</span></div>
             <div class="item-nav-value">290 <span>người</span></div>
           </div>
@@ -63,7 +67,7 @@
           <div class="col-md-3 col-xs-6">
             <div class="item-nav-name"><span>Tỷ lệ hoàn thành</span></div>
             <div class="item-nav-value">90.11&nbsp;%</div>
-          </div>
+          </div> -->
           <div class="col-md-3 col-xs-6">
             <div class="item-nav-name"><span>Tình trạng thiết bị</span></div>
             <div class="item-nav-value"><i class="fas fa-camera"></i><i class="fas fa-microphone"></i></div>
@@ -71,11 +75,18 @@
         </div>
         <hr>
         <div class="title-player-profile row">
-          <div class="col-md-12"><span>Thông tin</span></div>
+          <div class="col-md-12"><span>Giới thiệu </span>
+            <p>{{ user.introducion }}</p>
+            <hr>
+          </div>
+
+          <div class="col-md-12"><span>Yêu cầu với người thuê</span>
+            <p>{{ user.requirement }}</p>
+          </div>
         </div>
 
         <div class="content-player-profile">
-          <p>Ơi ! Sun đây <strong>Playerunknown's Battlegrounds,Csgo</strong></p>
+
           <div class="album-of-player">
             <div>
               <a href="https://bitly.com.vn/0ncpbq" style="display: block;">
@@ -88,12 +99,12 @@
             </div>
           </div>
           <h3>❤️ Tên : {{user.name}}</h3>
-          <h1>♥♥♥ Dịch Vụ ♥♥♥</h1>
+          <h3>♥♥♥ Dịch Vụ ♥♥♥</h3>
 
           <h3 *ngFor="let sv of user.services">❤️ {{sv.name}}</h3>
         </div>
         <hr>
-        <div class="title-player-profile row">
+        <!-- <div class="title-player-profile row">
           <div class="col-md-12"><span>Đánh giá</span></div>
         </div>
         <div class="text-center review-duo-player row">
@@ -123,7 +134,7 @@
 
           </div>
 
-        </div>
+        </div> -->
       </div>
     </div>
 

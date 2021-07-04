@@ -41,7 +41,9 @@
             <div class="player-avatar">
               <img
                 src="{{base_Url_img+user.avatar}}"
-                class="" alt="PD" id="avt-img-reponsiver">
+                class="" alt="PD" id="avt-img-reponsiver"
+                style="object-fit: cover;"
+                >
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
@@ -55,11 +57,11 @@
                 <div class="player-status ready"> </div>
               </h3>
               <p class="player-title">123</p>
-              <div class="category">
+              <!-- <div class="category">
                 <div class="div--flex"><img
                     src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
                     alt="category logo"><span>Liên minh Huyền thoại</span></div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -75,26 +77,27 @@
             <div class="player-avatar">
               <img
                 src="{{base_Url_img+user.avatar}}"
-                class="" alt="PD" id="avt-img-reponsiver">
+                class="" alt="PD" id="avt-img-reponsiver"
+                style="object-fit: cover;"
+                >
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>Là shipper nhưng không thích ship đồ, chỉ thích ship trái tim em cho anh thôi
-                    :))<br></span></p>
+                <p><span>{{ user.introducion }}<br></span></p>
                 <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
                     rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
               <h3 class="player-name">
-                <a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">{{user.name}} 🍑</a>
+                <a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">{{user.name}} </a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">Em là tay to khá là hay ho</p>
-              <div class="category">
+              <p class="player-title">{{ user.hobby }}</p>
+              <!-- <div class="category">
                 <div class="div--flex"><img
                     src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
                     alt="category logo"><span>LOL - PUBGPC - CSGO - DTCL - VLR</span></div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -110,10 +113,12 @@
             <div class="player-avatar">
               <img
                 src="{{base_Url_img+user.avatar}}"
-                class="" alt="PD" id="avt-img-reponsiver">
+                class="" alt="PD" id="avt-img-reponsiver"
+                style="object-fit: cover;"
+                >
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
+                <p><span>{{ user.introducion }}<br></span></p>
                 <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
                     rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
               </div>
@@ -123,12 +128,12 @@
                 <a [routerLink]="['/provider-detail',user.id]">{{user.name}}</a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">123</p>
-              <div class="category">
+              <p class="player-title">{{ user.hobby }}</p>
+              <!-- <div class="category">
                 <div class="div--flex"><img
                     src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
                     alt="category logo"><span>Liên minh Huyền thoại</span></div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
