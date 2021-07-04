@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
         this.data.changeCheck(false);
-        this.data.changeMoney(99999);
+        this.data.changeMoney(data.user.accounts.mooney);
         this.toastr.success('Hello!', 'Welcome');
         this.router.navigate(['frontend']);
       },

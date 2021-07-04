@@ -52,6 +52,8 @@ export class UserService {
 
       Authorization: 'Bearer ' + auth_token,
     });
+    // console.log(user);
+
     return this.http.post(`${environment.base_Url}users/update/${id}`, user, {
       headers: reqHeader,
     });

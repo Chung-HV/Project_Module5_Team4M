@@ -5,13 +5,13 @@ export class User {
   email !: string;
   password !: string;
   password_confirmation!:string;
-  birth_day!:Date;
+  birth_day!:any;
   gender!:string;
   city!:string;
   nation!:string;
   avatar!:string;
-  height!:number;
-  weight!:number;
+  height!:any;
+  weight!:any;
   hobby!:string;
   introducion!:string;
   requirement!:string;
