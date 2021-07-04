@@ -8,7 +8,7 @@ const API_URL = `${environment.base_Url}`
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceProviderService {
+export class ProviderService {
 
   constructor(private http:HttpClient) { }
 
@@ -32,5 +32,10 @@ export class ServiceProviderService {
 
   sendRequest(provider_id:any): Observable<any>{
     return this.http.get<any>(`${environment.base_Url}provider/${provider_id}/request`)
+  }
+
+
+  getOrders(provider_id:any){
+    return this.http.get(`${environment.base_Url}provider/${provider_id}/orders`)
   }
 }

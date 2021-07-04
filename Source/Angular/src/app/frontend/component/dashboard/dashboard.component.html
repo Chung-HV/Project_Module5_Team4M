@@ -32,7 +32,7 @@
       <div>
         <section class="box vip-player">
           <h4 class="section-title">VIP PLAYER</h4>
-          <button class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
         </section>
         <div class="row flex-card">
@@ -45,7 +45,7 @@
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" target="_blank"
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
                     rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
               </div>
             </div>
@@ -67,7 +67,7 @@
       <div>
         <section class="hot-player">
           <h4 class="section-title">HOT PLAYER</h4>
-          <button class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
         </section>
         <div class="row flex-card">
@@ -80,13 +80,13 @@
               <div class="hidden-information">
                 <p><span>Là shipper nhưng không thích ship đồ, chỉ thích ship trái tim em cho anh thôi
                     :))<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" target="_blank"
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
                     rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
               <h3 class="player-name">
-                <a [routerLink]="['/frontend/provider-detail',user.id]">{{user.name}} 🍑</a>
+                <a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">{{user.name}} 🍑</a>
                 <div class="player-status ready"> </div>
               </h3>
               <p class="player-title">Em là tay to khá là hay ho</p>
@@ -101,8 +101,8 @@
       </div>
       <div>
         <section class="rent-player">
-          <h4 class="section-title"><span>Mới Tham Gia</span> (490)</h4>
-          <button class="refresh-btn"><i class="fas fa-sync fa-spin" aria-hidden="true"
+          <h4 class="section-title"><span>Mới Tham Gia</span></h4>
+          <button hidden class="refresh-btn"><i class="fas fa-sync fa-spin" aria-hidden="true"
               style="margin-right: 5px;"></i><span>Làm mới</span></button>
         </section>
         <div class="row flex-card">
@@ -114,7 +114,7 @@
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" target="_blank"
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
                     rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
               </div>
             </div>

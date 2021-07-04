@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from '../../models/service';
-import { ServiceProviderService } from '../../services/provider.service';
+import { ProviderService } from '../../services/provider.service';
 
 @Component({
   selector: 'app-service-provider',
@@ -25,7 +25,7 @@ export class ServiceProviderComponent implements OnInit {
   provider_id: any
   newProvidingServices: Service[] = [];
 
-  constructor(private serviceProvider: ServiceProviderService, private route: ActivatedRoute) {
+  constructor(private serviceProvider: ProviderService, private route: ActivatedRoute) {
 
     // this.getDefaultServices();
   }

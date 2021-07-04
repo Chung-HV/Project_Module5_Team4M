@@ -14,4 +14,13 @@ class Order extends Model
        'service_provider_id',
        'status'
     ];
+
+    public function customer(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function order_detail(){
+        return $this->hasOne(OrderDetail::class,'order_id','id');
+
+    }
 }

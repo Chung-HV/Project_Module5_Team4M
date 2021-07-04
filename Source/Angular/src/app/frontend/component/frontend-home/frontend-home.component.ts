@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
-import { ServiceProviderService } from '../../services/provider.service';
+import { ProviderService } from '../../services/provider.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -13,19 +13,21 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./frontend-home.component.css'],
 })
 export class FrontendHomeComponent implements OnInit {
-  @Input()
   check: any = this.data.currentCheck.subscribe(
     (check) => (this.check = check)
   );
+  money: any = this.data.currentMoney.subscribe(
+    (money) => (this.money = money)
+  );
   user!: any;
-
+  // money = localStorage.getItem('user_mooney');
   provider_id: any;
   constructor(
     private userService: UserService,
     private router: Router,
     private toastr: ToastrService,
     private data: DataService,
-    private providerService: ServiceProviderService
+    private providerService: ProviderService
   ) {
     this.provider_id = localStorage.getItem('user_id');
   }
@@ -43,8 +45,8 @@ export class FrontendHomeComponent implements OnInit {
         localStorage.clear();
         this.data.changeCheck(true);
         // this.data.currentCheck.subscribe(check =>this.check=check)
-        window.location.reload();
-        // this.router.navigate(['']);
+        // window.location.reload();
+        this.router.navigate(['']);
       },
       error: () => {},
     });
@@ -73,7 +75,6 @@ export class FrontendHomeComponent implements OnInit {
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
         console.log(this.user.avatar);
-
       },
       error: (error: any) => {},
     });

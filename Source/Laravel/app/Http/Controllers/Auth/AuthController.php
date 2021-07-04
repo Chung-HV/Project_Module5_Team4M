@@ -31,7 +31,10 @@ class AuthController extends Controller
             $validator->validated(),
             ['password' => bcrypt($request->password)]
         ));
-
+        $user_account = new Account();
+        $user_account->id=$user->id;
+        $user_account->mooney="99999999";
+        $user_account->save();
         $token = $user->createToken($request->email)->plainTextToken;
 
         return response()->json([

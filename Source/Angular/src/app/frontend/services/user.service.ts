@@ -58,4 +58,9 @@ export class UserService {
       headers: reqHeader,
     });
   }
+
+
+  getById(user_id:any):Observable<any>{
+    return this.http.get<any>(`${environment.base_Url}${user_id}/provider`)
+  }
 }
