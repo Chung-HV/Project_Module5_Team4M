@@ -1,6 +1,6 @@
 <header class="menu__header fix-menu" id="header-menu">
     <div class="navbar-header">
-        <a class="logo" href="/">
+        <a class="logo" routerLink="">
             <img src="https://files.playerduo.com/production/static-files/logo.png" />
             <div class="text-logo">
                 <h4>PLAYERDUO</h4>
@@ -11,7 +11,7 @@
     <div class="navbar">
         <ul class="nav navbar-nav navbar-left">
             <li class="item false">
-                <a routerLink=""><span>Thuê người chơi</span></a>
+                <a routerLink="" ><span>Thuê người chơi</span></a>
             </li>
             <li class="item-search">
                 <nav class="Navbar__Item">
@@ -45,7 +45,7 @@
             <div *ngIf="check; then thenBlock; else elseBlock"></div>
             <ng-template #thenBlock>
                 <li class="item-icon authent">
-                    <a class="money-user" routerLink="login"><span>Đăng nhập</span></a>
+                    <a class="money-user" [routerLink]="['/frontend/login']" routerLinkActive="router-link-active" ><span>Đăng nhập</span></a>
                 </li>
             </ng-template>
             <ng-template #elseBlock>
@@ -59,7 +59,7 @@
                             <a role="menuitem" tabindex="-1" routerLink="user/profile">
                                 <img src="https://playerduo.com/api/upload-service/images/5ba2f695-9bcc-4091-a4a3-9b3a243ecfb8__dad78e20-dcc1-11ea-b386-575fea6f28e2__page_avatar.jpg" class="avt-img" alt="PD" />
                                 <div class="text-logo">
-                                    <h5>Chung</h5>
+                                    <h5>{{ money }}</h5>
                                     <p>ID : <span>danbo</span></p>
                                     <p class="label-user-page">
                                         <span>Xem trang cá nhân của bạn</span>

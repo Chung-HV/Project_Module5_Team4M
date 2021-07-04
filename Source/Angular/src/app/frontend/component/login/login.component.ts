@@ -41,18 +41,13 @@ export class LoginComponent implements OnInit {
       next: (data: any) => {
         localStorage.setItem('user_id', data.user.id);
         localStorage.setItem('user_mooney', data.user.accounts.mooney);
-
         console.log(data.user.accounts.mooney);
-
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
-      
-        // sessionStorage.setItem('token', data.access.token );
-        // localStorage.setItem('user', data.user.name);
         this.data.changeCheck(false);
-        // this.data.currentCheck.subscribe((check) => (this.check = check));
+        this.data.changeMoney(99999);
         this.toastr.success('Hello!', 'Welcome');
-        this.router.navigate(['']);
+        this.router.navigate(['frontend']);
       },
       error: (error: any) => {
         console.log(error);

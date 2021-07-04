@@ -16,14 +16,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./frontend/frontend.module').then((m) => m.FrontendModule),
   },
- 
-  { path: 'admin', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule) }
- 
 
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./backend/backend.module').then((m) => m.BackendModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

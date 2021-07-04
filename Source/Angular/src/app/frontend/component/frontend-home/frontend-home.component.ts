@@ -14,9 +14,10 @@ import { ServiceProviderService } from '../../services/provider.service';
 export class FrontendHomeComponent implements OnInit {
   @Input()
   check: any= this.data.currentCheck.subscribe(check =>this.check=check);
+  money: any= this.data.currentMoney.subscribe(money =>this.money=money);
   // user = localStorage.getItem('user');
 
-  provider_id:any 
+  provider_id:any
   constructor(
     private userService: UserService,
     private router: Router,
@@ -30,7 +31,6 @@ export class FrontendHomeComponent implements OnInit {
   ngOnInit(): void {
     this.isLogin();
     console.log(localStorage.getItem('token'));
-
   }
 
   logOut() {
@@ -40,7 +40,7 @@ export class FrontendHomeComponent implements OnInit {
         localStorage.clear();
         this.data.changeCheck(true);
         // this.data.currentCheck.subscribe(check =>this.check=check)
-        window.location.reload();
+        // window.location.reload();
         // this.router.navigate(['']);
       },
       error: () => {},
@@ -58,7 +58,7 @@ export class FrontendHomeComponent implements OnInit {
     console.log(localStorage.getItem('user_id'));
     this.providerService.sendRequest(this.provider_id).subscribe({
       next: ()=> this.toastr.success('Your request has been sent, please wait for Admin approvement'),
-      
+
     })
   }
 }
