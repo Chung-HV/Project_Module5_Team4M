@@ -32,7 +32,7 @@ import { OrderHistoryComponent } from './component/order-history/order-history.c
 
     ServiceProviderComponent,
     ProviderDetailComponent,
-    OrderHistoryComponent,
+    OrderHistoryComponent
   ],
   imports: [
     CommonModule,
