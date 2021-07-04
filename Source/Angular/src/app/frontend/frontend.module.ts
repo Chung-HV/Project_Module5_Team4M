@@ -12,10 +12,10 @@ import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/fron
 
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
-import { ServiceProviderComponent } from './component/service-provider/service-provider.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
-import { OrderHistoryComponent } from './component/order-history/order-history.component';
+import { OrderListComponent } from './component/order/order-list/order-list.component';
+import { ServiceListComponent } from './component/provider/service-list/service-list.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +24,14 @@ import { OrderHistoryComponent } from './component/order-history/order-history.c
     FrontendFooterComponent,
     ProfileUserComponent,
     FrontendUserHeaderComponent,
-
+    ServiceListComponent,
     LoginComponent,
     DashboardComponent,
 
     RegisterComponent,
 
-    ServiceProviderComponent,
     ProviderDetailComponent,
-    OrderHistoryComponent
+    OrderListComponent,
   ],
   imports: [
     CommonModule,

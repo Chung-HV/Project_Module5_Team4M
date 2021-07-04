@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { OrderService } from '../../services/order.service';
-import { ProviderService } from '../../services/provider.service';
+import { OrderService } from 'src/app/frontend/services/order.service';
+import { ProviderService } from 'src/app/frontend/services/provider.service';
 
 @Component({
-  selector: 'app-order-history',
-  templateUrl: './order-history.component.html',
-  styleUrls: ['./order-history.component.css']
+  selector: 'app-order-list',
+  templateUrl: './order-list.component.html',
+  styleUrls: ['./order-list.component.css']
 })
-export class OrderHistoryComponent implements OnInit {
+export class OrderListComponent implements OnInit {
   provider_id: any
   provider_price: any
   orders: any

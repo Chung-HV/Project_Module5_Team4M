@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Service } from '../../models/service';
-import { ProviderService } from '../../services/provider.service';
+import { Service } from 'src/app/frontend/models/service';
+import { ProviderService } from 'src/app/frontend/services/provider.service';
 
 @Component({
-  selector: 'app-service-provider',
-  templateUrl: './service-provider.component.html',
-  styleUrls: ['./service-provider.component.css']
+  selector: 'app-service-list',
+  templateUrl: './service-list.component.html',
+  styleUrls: ['./service-list.component.css']
 })
-export class ServiceProviderComponent implements OnInit {
+export class ServiceListComponent implements OnInit {
 
   services: Service[] = [];
   defaultServices: Service[] = [];
   freeServices: Service[] = [];
   freeServiceIds: any[] = [];
   extraServices: Service[] = [];
+  is_active:any;
 
   providingServices: Service[] = [];
   providingExtraServiceIds: any[] = [];
