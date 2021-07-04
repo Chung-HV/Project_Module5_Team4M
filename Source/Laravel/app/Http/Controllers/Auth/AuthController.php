@@ -94,6 +94,7 @@ class AuthController extends Controller
 
             $user = User::find($idUser);
             $user->fill($request->all());
+            // dd($request->all());
             // $user->name = $request->name;
 
                 if ($request->avatar) {
