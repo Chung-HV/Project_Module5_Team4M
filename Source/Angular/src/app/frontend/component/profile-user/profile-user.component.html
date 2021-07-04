@@ -159,7 +159,7 @@
                   <span>0 Giờ</span>
                 </div>
               </div> -->
-              <!-- <table class="table">
+              <table class="table">
                 <tbody>
                    <tr>
                       <td class="tbleft">
@@ -168,13 +168,16 @@
                       <td class="tbright">
 
                          <label class="switch form-group" >
-                          <input type="checkbox" (change)="fieldsChange($event)" *ngIf="user.is_active ==1;     " >
+                          <input type="checkbox" name="is_active "
+                          (change)="fieldsChange($event)"
+                          (click)="requestActive()" [checked]="user.is_active"
+                          >
                           <span class="slider round"></span>
                         </label>
                       </td>
                    </tr>
                 </tbody>
-             </table> -->
+             </table>
             </div>
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">

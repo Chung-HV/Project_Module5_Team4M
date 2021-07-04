@@ -116,6 +116,21 @@ class AuthController extends Controller
             return response()->json($e->getMessage());
         }
     }
+    public function updateActiveUser(Request $request, $idUser){
 
+        try{
+
+            $user = User::find($idUser);
+            // dd('herhehhehe');
+            $user->is_active = $request->is_active;
+            // dd($user->is_active);
+
+            $user->save();
+
+            return response()->json($user);
+        }catch(Exception $e){
+            return response()->json($e->getMessage());
+        }
+    }
 
 }

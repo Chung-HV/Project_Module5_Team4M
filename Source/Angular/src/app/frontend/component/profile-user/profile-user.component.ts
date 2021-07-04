@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
+
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 
@@ -17,7 +18,8 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   avatar!: any;
   myForm!: FormGroup;
-  is_active!:any;
+  is_active!:number;
+  onOff:any;
 
 
 
@@ -116,8 +118,7 @@ export class ProfileUserComponent implements OnInit {
     console.log(formData.has('avatar'));
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
-        // console.log(res);
-        // if(res.status ==='success'){
+
         //   this.router.navigate(['admin/book-list']);
         this.toastr.success('Upload successfully!', 'Notification');
         // formData.delete('city');
@@ -125,33 +126,11 @@ export class ProfileUserComponent implements OnInit {
         // }
       },
       (error) => {
-        // this.toastr.error('Chỉnh Sửa sách thất bại. Vui lòng liên hệ admin!', 'Thông báo');
+        this.toastr.error('Upload fail!', 'Notification');
       }
     );
   }
 
-  // updateProfileUser() {
-
-  //   this.userService.uploadImage(
-  //     this.id,
-  //     this.avatar,
-  //     this.user.name,
-  //     this.user.birth_day,
-  //     this.user.gender,
-  //     this.user.city,
-  //     this.user.nation,
-  //     this.user.height,
-  //     this.user.weight,
-  //     this.user.hobby,
-  //     this.user.introducion,
-  //     this.user.requirement,
-  //     this.user.facebook,
-  //     ).subscribe
-  //     (res => {
-  //       console.log(res);
-  //       alert('Uploaded Successfully.');
-  //     });
-  // }
 
   onSubmit() {
     this.updateProfileUser();
@@ -162,10 +141,36 @@ export class ProfileUserComponent implements OnInit {
     // console.log(this.avatar);
   }
 
-  // fieldsChange(values:any):void {
-  //   console.log(values.currentTarget.checked);
-  //   console.log(this.is_active);
+  fieldsChange(values:any):void {
+    console.log(values.currentTarget.checked);
+    if(values.currentTarget.checked == true)
+    {
+        this.is_active = 1;
+        this.onOff = this.is_active;
+        // console.log(this.onOff );
+        this.toastr.success('Account active!', 'Notification');
 
+    }else
+    {
+      this.is_active = 0;
+      this.onOff = this.is_active;
+      this.toastr.error('Account is not active!', 'Notification');
 
-  // }
+      // console.log(this.onOff  );
+
+    }
+  }
+
+  requestActive(){
+
+    this.userService.isActive(this.id,this.onOff).subscribe(
+      (res) => {
+          console.log(res);
+
+      },
+      (error) => {
+
+      }
+    );
+  }
 }
