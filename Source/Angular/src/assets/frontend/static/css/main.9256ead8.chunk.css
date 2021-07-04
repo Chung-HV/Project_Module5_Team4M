@@ -15815,33 +15815,6 @@ body {
 	src: url(/fonts/SegoeUI-Bold.woff) format("woff")
 }
 
-@font-face {
-	font-family: Poppins;
-	font-style: normal;
-	font-weight: 500;
-	src: url(/fonts/Poppins.eot?#iefix) format("embedded-opentype"), url(/fonts/Poppins.woff) format("woff"), url(/fonts/Poppins.ttf) format("truetype"), url(/fonts/Poppins.svg#Poppins) format("svg")
-}
-
-@font-face {
-	font-family: Poppins;
-	font-style: normal;
-	font-weight: 600;
-	src: url(/fonts/PoppinsMedium.eot?#iefix) format("embedded-opentype"), url(/fonts/PoppinsMedium.woff) format("woff"), url(/fonts/PoppinsMedium.ttf) format("truetype"), url(/fonts/PoppinsMedium.svg#PoppinsMedium) format("svg")
-}
-
-@font-face {
-	font-family: Poppins;
-	font-style: normal;
-	font-weight: 700;
-	src: url(/fonts/PoppinsSemiBold.eot?#iefix) format("embedded-opentype"), url(/fonts/PoppinsSemiBold.woff) format("woff"), url(/fonts/PoppinsSemiBold.ttf) format("truetype"), url(/fonts/PoppinsSemiBold.svg#PoppinsSemiBold) format("svg")
-}
-
-@font-face {
-	font-family: Poppins;
-	font-style: normal;
-	font-weight: 800;
-	src: url(/fonts/PoppinsBold.eot?#iefix) format("embedded-opentype"), url(/fonts/PoppinsBold.woff) format("woff"), url(/fonts/PoppinsBold.ttf) format("truetype"), url(/fonts/PoppinsBold.svg#PoppinsBold) format("svg")
-}
 
 body {
 	font-family: Source Sans Pro;
