@@ -17,7 +17,7 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   avatar!: any;
   myForm!: FormGroup;
-
+  is_active!:any;
 
 
 
@@ -77,6 +77,9 @@ export class ProfileUserComponent implements OnInit {
       next: (data) => {
         this.user = data;
         this.id = this.user.id;
+        this.is_active = this.user.is_active;
+        // console.log(this.user.is_active);
+
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
         // this.name = this.user.name;
         // console.log(this.user);
@@ -158,4 +161,11 @@ export class ProfileUserComponent implements OnInit {
     this.avatar = $event.target.files[0];
     // console.log(this.avatar);
   }
+
+  // fieldsChange(values:any):void {
+  //   console.log(values.currentTarget.checked);
+  //   console.log(this.is_active);
+
+
+  // }
 }

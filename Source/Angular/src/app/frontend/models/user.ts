@@ -16,5 +16,6 @@ export class User {
   introducion!:string;
   requirement!:string;
   facebook!:string;
-  created_at!:string;
+  // created_at!:string;
+  is_active:any;
 }
