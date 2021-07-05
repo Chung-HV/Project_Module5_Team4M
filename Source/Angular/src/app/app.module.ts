@@ -7,25 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './backend/layout/dashboard/dashboard.component';
-import { FooterComponent } from './backend/layout/footer/footer.component';
-import { HeaderComponent } from './backend/layout/header/header.component';
-import { RequestingComponent } from './backend/provider/requesting/requesting.component';
-import { ListComponent } from './backend/provider/list/list.component';
-import { LoginComponent } from './backend/login/login.component';
-import { BackendModule } from './backend/backend.module';
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    FooterComponent,
-    HeaderComponent,
-    RequestingComponent,
-    ListComponent,
-    LoginComponent,
 
   ],
   imports: [
@@ -37,7 +23,6 @@ import { BackendModule } from './backend/backend.module';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BackendModule
   ],
   providers: [],
   bootstrap: [AppComponent]
