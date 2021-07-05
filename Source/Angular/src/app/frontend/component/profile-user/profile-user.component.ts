@@ -31,7 +31,6 @@ export class ProfileUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^[a-zA-Z ]+$/),
           Validators.maxLength(30),
         ],
       ],
@@ -41,7 +40,6 @@ export class ProfileUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^[a-zA-Z ]+$/),
           Validators.maxLength(30),
         ],
       ],
@@ -49,16 +47,15 @@ export class ProfileUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^[a-zA-Z ]+$/),
           Validators.maxLength(30),
         ],
       ],
       height: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
       weight: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: [[Validators.maxLength(50)]],
-      requirement: [ [Validators.maxLength(50)]],
-      hobby: [ [Validators.maxLength(30)]],
-      facebook: [ [Validators.maxLength(30)]],
+      introducion: [[Validators.maxLength(9000)]],
+      requirement: [ [Validators.maxLength(9000)]],
+      hobby: [ [Validators.maxLength(9000)]],
+      facebook: [ [Validators.maxLength(100)]],
       // avatar: [''],
     });
   }
