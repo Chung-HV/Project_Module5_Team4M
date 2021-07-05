@@ -36,13 +36,12 @@ export class FrontendHomeComponent implements OnInit {
     this.isLogin();
     console.log(localStorage.getItem('token'));
     this.getUser();
-  
   }
 
   logOut() {
     this.userService.logout().subscribe({
       next: () => {
-        this.toastr.success('Logout successful!');
+        // this.toastr.success('Logout successful!');
         localStorage.clear();
         this.data.changeCheck(true);
         // this.data.currentCheck.subscribe(check =>this.check=check)
