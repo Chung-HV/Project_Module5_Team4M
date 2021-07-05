@@ -17,7 +17,7 @@ export class UserService {
     return this.http.post(`${environment.base_Url}users/register`, user);
   }
 
-  login(user: User): Observable<any> {
+  login(user: User): Observable<Object> {
     return this.http.post(`${environment.base_Url}users/login`, user);
   }
 

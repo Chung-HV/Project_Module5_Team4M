@@ -2568,7 +2568,7 @@ html.ie8 .connect__view--middle .box-room-slot .slot-sub .slot-sub-bottom .displ
 
 .connect-modal input:disabled,
 .connect-modal select:disabled {
-	background-color: #f1f1f1;
+	background-color: #fffdfd;
 	cursor: not-allowed
 }
 

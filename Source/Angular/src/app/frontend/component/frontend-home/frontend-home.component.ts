@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
 import { ProviderService } from '../../services/provider.service';
 import { environment } from 'src/environments/environment.prod';
+import { UserDashboard } from '../../models/userDashboard';
 
 @Component({
   selector: 'app-frontend-home',
@@ -16,27 +17,23 @@ export class FrontendHomeComponent implements OnInit {
   check: any = this.data.currentCheck.subscribe(
     (check) => (this.check = check)
   );
-  // money: any = this.data.currentMoney.subscribe(
-  //   (money) => (this.money = money)
-  // );
-  user!: User;
-  // money = localStorage.getItem('user_mooney');
-  user_id =localStorage.getItem('user_id');
+  user!: any;
+  open:any = false;
+  user_id = localStorage.getItem('user_id');
   constructor(
     private userService: UserService,
     private router: Router,
     private toastr: ToastrService,
     private data: DataService,
-    private providerService: ProviderService
+    private providerService: ProviderService,
+    private route: ActivatedRoute
   ) {
-
   }
 
   ngOnInit(): void {
     this.isLogin();
-    this.getUser();
-    console.log(this.user);
-
+    this.user = localStorage.getItem('user');
+    this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
   }
 
   logOut() {
@@ -53,6 +50,11 @@ export class FrontendHomeComponent implements OnInit {
   isLogin() {
     if (localStorage.getItem('token') != null) {
       this.check = false;
+      this.user = this.data.currentUser.subscribe((user) => {
+        this.user = user;
+        this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+
+      });
     } else {
       this.check = true;
     }
@@ -73,9 +75,12 @@ export class FrontendHomeComponent implements OnInit {
         this.user = res;
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-        console.log(this.user.is_service_provider);
+        console.log(this.user);
       },
       error: (error: any) => {},
     });
   }
+clickEvent(){
+    this.open = !this.open;
+}
 }

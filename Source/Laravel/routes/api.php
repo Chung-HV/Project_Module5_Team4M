@@ -43,6 +43,9 @@ Route::prefix('users')->group(function () {
         Route::get('/profile', [AuthController::class, 'profile']);
         Route::post('/update/{id}', [AuthController::class, 'update']);
         Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
+        Route::get('/uploadimg/{id}', [AuthController::class, 'uploadImage']);
+
+
     });
 });
 
