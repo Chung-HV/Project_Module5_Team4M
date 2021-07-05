@@ -6,7 +6,7 @@ import { ListComponent } from './provider/list/list.component';
 import { RequestingComponent } from './provider/requesting/requesting.component';
 
 const routes: Routes = [
-  { path: '', component: BackendComponent },
+  { path: '', component: RequestingComponent },
   {
     path: 'admin/provider/requesting',
     component:RequestingComponent

@@ -29,7 +29,6 @@ export class AppComponent {
   ];
 
   frontendScript = [
-    'https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js',
     "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
     'https://code.jquery.com/jquery-2.1.4.min.js',
@@ -42,6 +41,8 @@ export class AppComponent {
     'assets/frontend/static/js/5.c4c18540.chunk.js',
     'assets/frontend/static/js/0.47c80823.chunk.js',
     'assets/frontend/static/js/1.86ca38df.chunk.js',
+    'https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js',
+
   ];
 
   backendStyle = [

@@ -51,7 +51,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="menu__setting--sub panel panel-default" *ngIf="user_is_provider == 1">
+                      <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
                         <div class="panel-heading">
                             <div class="panel-title">
                                 <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/services']">
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu__setting--sub panel panel-default" *ngIf="user_is_provider == 1">
+                    <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
                         <div class="panel-heading">
                             <div class="panel-title">
                                 <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/orders']">
