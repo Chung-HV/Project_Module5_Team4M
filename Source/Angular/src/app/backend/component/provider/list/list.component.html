@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Provider Requesting List </title>
+    <title>Provider List </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,9 +13,6 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
-        <app-header></app-header>
-
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -29,7 +25,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Requesting List</li>
+                                <li class="breadcrumb-item active">Providers List</li>
                             </ol>
                         </div>
                     </div>
@@ -46,7 +42,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Requesting List</h3>
+                                    <h3 class="card-title">Providers List</h3>
 
                                     <div class="card-tools">
                                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -68,6 +64,7 @@
                                                 <th>ID</th>
                                                 <th>User</th>
                                                 <th>Request Date</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -76,7 +73,11 @@
                                                 <td>{{provider.id}}</td>
                                                 <td>{{provider.name}}</td>
                                                 <td>{{provider.updated_at}}</td>
-                                                <td><button class="btn btn-success btn-sm" (click)="approveProvider(provider.id)">Approve</button></td>
+                                                <td *ngIf="provider.is_active == 1">Is Active</td>
+                                                <td *ngIf="provider.is_active == 0">Paused</td>
+                                                <td *ngIf="provider.is_vip == 0"><button class="btn btn-danger btn-sm" (click)="setVip(provider.id)">Set Vip</button></td>
+                                                <td *ngIf="provider.is_vip == 1"><button class="btn btn-info btn-sm" disabled>Vip</button></td>
+
                                             </tr>
 
                                         </tbody>
@@ -99,7 +100,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <app-footer></app-footer>
+
     </div>
 
     <script>
@@ -122,4 +123,3 @@
         });
     </script>
 
-</body>

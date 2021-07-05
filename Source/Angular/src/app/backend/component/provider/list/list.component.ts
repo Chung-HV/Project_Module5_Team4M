@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-list',
@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
          console.log(error);
        }
     });
-  
+
   }
 
 }
