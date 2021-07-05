@@ -18,7 +18,7 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   avatar!: any;
   myForm!: FormGroup;
-  user_is_provider: any;
+  is_provider: any;
 
   is_active!:number;
   onOff!:number;
@@ -67,9 +67,7 @@ export class ProfileUserComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService
   ) {
-    this.user_is_provider = localStorage.getItem('is_provider');
-    console.log(this.user_is_provider);
-
+   
   }
 
   ngOnInit(): void {
@@ -94,12 +92,8 @@ export class ProfileUserComponent implements OnInit {
 
   updateProfileUser() {
     // let data = this.myForm.value;
-    console.log(this.user.city);
-
-
     let formData = new FormData();
-
-
+    
     formData.append('name', this.user.name);
     formData.append('birth_day', this.user.birth_day);
     formData.append('gender', this.user.gender);

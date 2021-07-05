@@ -10,8 +10,9 @@ import { User } from '../models/user';
 })
 export class UserService {
   public user!: Observable<User>;
+  user_id:any = localStorage.getItem('user_id');
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   register(user: User): Observable<any> {
     return this.http.post(`${environment.base_Url}users/register`, user);
@@ -28,7 +29,7 @@ export class UserService {
 
       Authorization: 'Bearer ' + auth_token,
     });
-    console.log(auth_token+'logout');
+    console.log(auth_token + 'logout');
     return this.http.get(`${environment.base_Url}users/logout`, {
       headers: reqHeader
     });
@@ -59,11 +60,12 @@ export class UserService {
     });
   }
 
-  getById(user_id:any):Observable<any>{
+
+  getById(user_id: any): Observable<any> {
     return this.http.get<any>(`${environment.base_Url}${user_id}/provider`)
   }
 
-  isActive(id: number, status: any):Observable<any>{
+  isActive(id: number, status: any): Observable<any> {
     var auth_token = localStorage.getItem('token');
     var reqHeader = new HttpHeaders({
       // 'Content-Type': 'application/json',
@@ -73,6 +75,18 @@ export class UserService {
 
     return this.http.post(`${environment.base_Url}users/active/${id}`, status, {
       headers: reqHeader,
+    });
+  }
+
+  getOrders() {
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      // 'Content-Type': 'application/json',
+
+      Authorization: 'Bearer ' + auth_token,
+    });
+    return this.http.get(`${environment.base_Url}users/${this.user_id}/orders`, {
+      headers: reqHeader
     });
   }
 }
