@@ -52,6 +52,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
+
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -65,47 +68,7 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <div class="aside">
             <div class="row flowaccount">
-              <!-- <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>Tổng tiền</p>
-                  <span>0đ </span>
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>TỔNG TIỀN ĐÃ DONATE</p>
-                  <span>0đ </span>
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>SỐ GIỜ ĐÃ THUÊ</p>
-                  <span>0 Giờ</span>
-                </div>
-              </div> -->
-              <!-- <table class="table">
-                <tbody>
-                   <tr>
-                      <td class="tbleft">
-                         <p>Active account</p>
-                      </td>
-                      <td class="tbright">
-
-                         <label class="switch form-group" >
-                          <input type="checkbox" name="is_active "
-                          (change)="checkValueActive(user.is_active? 1: 0)"
-                          (click)="requestActive()" [checked]="user.is_active"
-                          [(ngModel)]="user.is_active"
-                          >
-                          <span class="slider round"></span>
-                        </label>
-                      </td>
-                   </tr>
-                </tbody>
-             </table> -->
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
+              <div class="col-sm-8">
                 <h3>Thông tin người dùng</h3>
                 <div class="d-flex img-avatar">
                   <img
@@ -117,6 +80,35 @@
                   />
 
                 </div>
+              </div>
+
+              <div class="col-sm-4">
+                <td class="tbright" *ngIf="user.is_service_provider == 1">
+                  <p>Active account</p>
+                   <label class="switch form-group" >
+                    <input type="checkbox" name="is_active "
+                    (change)="checkValueActive(user.is_active? 1: 0)"
+                    (click)="requestActive()" [checked]="user.is_active"
+                    [(ngModel)]="user.is_active"
+                    >
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </div>
+              <!-- <div class="col-sm-4 col-xs-12">
+                <div class="border">
+                  <p>SỐ GIỜ ĐÃ THUÊ</p>
+                  <span>0 Giờ</span>
+                </div>
+              </div> -->
+
+
+
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
+
                 <form class="from-userinfo" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                   <div class="fieldGroup">
                     <div class="cropimg-avatar">
@@ -206,6 +198,25 @@
 
                   </div>
                   <div class="fieldGroup">
+                    <p class="control-label">Giá thuê 1h</p>
+                    <input
+                    [class.is-invalid] = "myForm.get('price')?.invalid && (myForm.get('price')?.dirty || myForm.get('price')?.touched)"
+                    formControlName="price"
+                      type="number"
+                      name="price"
+
+                      [(ngModel)]="user.price"
+                    />
+
+                    <div *ngIf = "myForm.get('price')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
+                      Giá phải là chữ số!
+                    </div>
+                    <div *ngIf = "myForm.get('price')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
+                      Giá giới hạn 20 ký tự!
+                    </div>
+
+                  </div>
+                  <div class="fieldGroup">
                     <p class="control-label">Chiều cao</p>
                     <input
                     [class.is-invalid] = "myForm.get('height')?.invalid && (myForm.get('height')?.dirty || myForm.get('height')?.touched)"
@@ -231,9 +242,9 @@
                       [(ngModel)]="user.weight"
                     />
 
-                    <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
+                    <!-- <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
                       Cân nặng giới hạn 10 ký tự!
-                    </div>
+                    </div> -->
                     <div *ngIf = "myForm.get('weight')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
                       Cân nặng phải là chữ số!
                     </div>
@@ -299,6 +310,7 @@
                     </div>
 
                   </div>
+
                   <button type="submit" class="btn-update">Update</button>
                 </form>
               </div>

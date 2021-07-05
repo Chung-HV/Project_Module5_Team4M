@@ -50,12 +50,14 @@ export class ProfileUserComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      height: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      weight: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: [[Validators.maxLength(9000)]],
-      requirement: [ [Validators.maxLength(9000)]],
-      hobby: [ [Validators.maxLength(9000)]],
-      facebook: [ [Validators.maxLength(100)]],
+      height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      weight: ['',[Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      introducion: ['',[Validators.maxLength(9000)]],
+      requirement: [ '',[Validators.maxLength(9000)]],
+      hobby: ['', [Validators.maxLength(9000)]],
+      facebook: ['', [Validators.maxLength(100)]],
+      price: ['',[Validators.pattern(/^[0-9]+$/),Validators.maxLength(20)]],
+
       // avatar: [''],
     });
   }
@@ -83,7 +85,7 @@ export class ProfileUserComponent implements OnInit {
         this.user = data;
         this.id = this.user.id;
         this.is_active = this.user.is_active;
-        // console.log(this.user.is_active);
+        // console.log(this.user.price);
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
         // this.name = this.user.name;
@@ -111,6 +113,8 @@ export class ProfileUserComponent implements OnInit {
     formData.append('introducion', this.user.introducion);
     formData.append('requirement', this.user.requirement);
     formData.append('facebook', this.user.facebook);
+    formData.append('price', this.user.price);
+
 
     if (this.avatar) {
       formData.append('avatar', this.avatar, this.avatar.name);
