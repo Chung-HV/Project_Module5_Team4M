@@ -16,12 +16,12 @@ export class FrontendHomeComponent implements OnInit {
   check: any = this.data.currentCheck.subscribe(
     (check) => (this.check = check)
   );
-  money: any = this.data.currentMoney.subscribe(
-    (money) => (this.money = money)
-  );
-  user!: any;
+  // money: any = this.data.currentMoney.subscribe(
+  //   (money) => (this.money = money)
+  // );
+  user!: User;
   // money = localStorage.getItem('user_mooney');
-  provider_id: any;
+  user_id =localStorage.getItem('user_id');
   constructor(
     private userService: UserService,
     private router: Router,
@@ -29,19 +29,20 @@ export class FrontendHomeComponent implements OnInit {
     private data: DataService,
     private providerService: ProviderService
   ) {
-    this.provider_id = localStorage.getItem('user_id');
+
   }
 
   ngOnInit(): void {
     this.isLogin();
-    console.log(localStorage.getItem('token'));
     this.getUser();
-  
+    console.log(this.user);
+
   }
 
   logOut() {
     this.userService.logout().subscribe({
       next: () => {
+        // this.toastr.success('Logout successful!');
         localStorage.clear();
         this.data.changeCheck(true);
         this.router.navigate(['']);
@@ -59,7 +60,7 @@ export class FrontendHomeComponent implements OnInit {
 
   requestProvide() {
     console.log(localStorage.getItem('user_id'));
-    this.providerService.sendRequest(this.provider_id).subscribe({
+    this.providerService.sendRequest(this.user_id).subscribe({
       next: () =>
         this.toastr.success(
           'Your request has been sent, please wait for Admin approvement'
