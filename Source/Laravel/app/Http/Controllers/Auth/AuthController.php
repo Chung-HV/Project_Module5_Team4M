@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Album;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -133,4 +134,11 @@ class AuthController extends Controller
         }
     }
 
+    public function uploadImage (Request $request, $idUser){
+        $user = User::find($idUser);
+        $albums = Album::all();
+        $albums->filePath;
+
+        dd($albums->filePath);
+    }
 }
