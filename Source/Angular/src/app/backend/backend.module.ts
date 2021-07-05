@@ -8,6 +8,7 @@ import { HeaderComponent } from './component/layout/header/header.component';
 import { RequestingComponent } from './component/provider/requesting/requesting.component';
 import { ListComponent } from './component/provider/list/list.component';
 import { LoginComponent } from './component/login/login.component';
+import { HomeComponent } from './component/home/home.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { LoginComponent } from './component/login/login.component';
     RequestingComponent,
     ListComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
