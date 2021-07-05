@@ -41,11 +41,8 @@ export class FrontendHomeComponent implements OnInit {
   logOut() {
     this.userService.logout().subscribe({
       next: () => {
-        this.toastr.success('Logout successful!');
         localStorage.clear();
         this.data.changeCheck(true);
-        // this.data.currentCheck.subscribe(check =>this.check=check)
-        // window.location.reload();
         this.router.navigate(['']);
       },
       error: () => {},
