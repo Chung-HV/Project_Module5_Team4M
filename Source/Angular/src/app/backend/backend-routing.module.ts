@@ -1,28 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BackendComponent } from './backend.component';
-import { LoginComponent } from './login/login.component';
-import { ListComponent } from './provider/list/list.component';
-import { RequestingComponent } from './provider/requesting/requesting.component';
+import { HomeComponent } from './component/home/home.component';
+import { DashboardComponent } from './component/layout/dashboard/dashboard.component';
+
+import { LoginComponent } from './component/login/login.component';
+import { ListComponent } from './component/provider/list/list.component';
+import { RequestingComponent } from './component/provider/requesting/requesting.component';
 
 const routes: Routes = [
-  { path: '', component: RequestingComponent },
   {
-    path: 'admin/provider/requesting',
-    component:RequestingComponent
-  },
-  {
-    path: 'provider',
-    component: ListComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
+    path: '',
+    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'provider/requesting',
+        component: RequestingComponent,
+      },
+      {
+        path: 'provider',
+        component: ListComponent,
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class BackendRoutingModule { }
+export class BackendRoutingModule {}
