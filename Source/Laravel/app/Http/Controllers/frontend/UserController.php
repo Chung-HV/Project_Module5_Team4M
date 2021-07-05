@@ -12,4 +12,5 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         return response()->json($users,200);
     }
+
 }

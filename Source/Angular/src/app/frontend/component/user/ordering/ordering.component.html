@@ -78,12 +78,11 @@
                                 <table class="table table-striped table-bordered table-condensed table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Người thuê</th>
-                                            <th>Địa chỉ</th>
+                                            <th>Người yêu</th>
                                             <th>Thời gian thuê</th>
                                             <th>Thời gian bắt đầu</th>
                                             <th>Ngày</th>
-                                            <th>Thành tiền</th>
+                                            <th>Tổng tiền</th>
                                             <th>Trạng thái</th>
                                             <th>Hành động</th>
                                         </tr>
@@ -91,22 +90,21 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let order of orders,let i = index">
-                                            <td>{{customers[i].name}}</td>
-                                            <td>{{order_details[i].address}}</td>
-                                            <td>{{order_details[i].time}}</td>
+                                            <td>{{providers[i].name}}</td>
+                                            <td>{{order_details[i].time}} Giờ</td>
                                             <td>{{order_details[i].start_time}}</td>
                                             <td>{{order_details[i].start_at}}</td>
-                                            <td>{{provider.price}}</td>
+                                            <td>{{providers[i].price * order_details[i].time}} 000.d</td>
                                             <td>{{order.status}}</td>
-                                            <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
+                                            <!-- <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
                                             <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Get Money</button></td>
-                                            <td *ngIf="order.status=='done'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td>
+                                            <td *ngIf="order.status=='done'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td> -->
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="text-center mt-20 col-md-12"><span>Không có dữ liệu</span></div>
+                        <div class="text-center mt-20 col-md-12" *ngIf="orders == null"><span>Không có dữ liệu</span></div>
                     </div>
                 </div>
             </div>

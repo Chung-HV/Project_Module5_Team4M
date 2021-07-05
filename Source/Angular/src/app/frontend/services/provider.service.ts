@@ -17,7 +17,7 @@ export class ProviderService {
   }
 
   getById(provider_id:any):Observable<any>{
-    return this.http.get<any>(`${API_URL}${provider_id}provider`)
+    return this.http.get<any>(`${API_URL}provider/${provider_id}`)
   }
 
   updateProvidingServices(provider_id:any, services:any):Observable<any>{

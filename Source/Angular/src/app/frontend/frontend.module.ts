@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
 import { OrderListComponent } from './component/order/order-list/order-list.component';
 import { ServiceListComponent } from './component/provider/service-list/service-list.component';
+import { OrderingComponent } from './component/user/ordering/ordering.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ServiceListComponent } from './component/provider/service-list/service-
 
     ProviderDetailComponent,
     OrderListComponent,
+    OrderingComponent,
   ],
   imports: [
     CommonModule,
