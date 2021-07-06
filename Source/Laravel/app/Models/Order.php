@@ -19,6 +19,10 @@ class Order extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
+    public function provider(){
+        return $this->belongsTo(User::class,'service_provider_id','id');
+    }
+
     public function order_detail(){
         return $this->hasOne(OrderDetail::class,'order_id','id');
 

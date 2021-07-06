@@ -10,6 +10,7 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
 import { ServiceListComponent } from './component/provider/service-list/service-list.component';
 
 import { RegisterComponent } from './component/register/register.component';
+import { OrderingComponent } from './component/user/ordering/ordering.component';
 
 const routes: Routes = [
 
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'user/profile', component: ProfileUserComponent },
+      { path: 'user/orders', component: OrderingComponent },
       { path: 'provider/orders', component: OrderListComponent },
       { path: 'provider/services', component: ServiceListComponent },
       { path: 'provider-detail/:id', component: ProviderDetailComponent },

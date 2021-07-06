@@ -42,7 +42,7 @@ export class ProviderDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
-    this.data.currentMoney.subscribe((money) => (this.money = money));
+   
     // console.log(localStorage.getItem('user_id'));
   }
   getUser(id: any) {

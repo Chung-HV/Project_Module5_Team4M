@@ -18,8 +18,8 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   avatar!: any;
   myForm!: FormGroup;
-  user_is_provider: any;
-  // name!:string;
+  is_provider: any;
+
   is_active!:number;
   onOff!:number;
 
@@ -69,8 +69,6 @@ export class ProfileUserComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService
   ) {
-    this.user_is_provider = localStorage.getItem('is_provider');
-    console.log(this.user_is_provider);
 
   }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Message;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\User;
@@ -47,6 +48,11 @@ class OrderController extends Controller
         return response()->json($user_account);
     }
 
+    public function getByCustomer($id){
+        $orders = Order::where('user_id',$id)->get();
+        return response()->json($orders);
+    }
+
     public function getOrderByProvider($id){
         $provider = User::findOrFail($id);
         $orders = Order::where('service_provider_id','=',$id)->get();
@@ -63,8 +69,28 @@ class OrderController extends Controller
     public function updateOrder(Request $request){
         $order = Order::findOrFail($request->order_id);
         $order->status = $request->order_status;
+        if($order->status=="accepted"){
+            $message = new Message();
+            $message->user_id=$order->user_id;
+            $message->service_provider_id=$order->service_provider_id;
+            $message->message="Người yêu mà bạn thuê đã xác nhận đơn rồi";
+            $message->save();
+        }
         $order->save();
         return response()->json($request,200);
+    }
+
+    public function getOrderByCustomer($id){
+        $customer = User::findOrFail($id);
+        $orders = Order::where('user_id','=',$id)->get();
+        $providers = [];
+        $orderDetails = [];
+        foreach($orders as $order){
+            array_push($providers,$order->provider);
+            array_push($orderDetails,$order->order_detail);
+        }
+        $data = ['orders'=>$orders,'customer'=>$customer,'order_details'=>$orderDetails,'providers'=>$providers];
+        return response()->json($data,200);
     }
 
 }

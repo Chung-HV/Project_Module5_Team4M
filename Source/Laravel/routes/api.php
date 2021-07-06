@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\UserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('user_vip', [DashboardController::class, 'showVipUser']);
     Route::get('user_new', [DashboardController::class, 'showNewUser']);
     Route::get('/{id}', [DashboardController::class, 'getUser']);
-
+    Route::get('message/{id}', [UserController::class, 'getMessageUser']);
     Route::post('order_service_provider', [OrderController::class, 'orderServiceProvider']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -48,6 +49,7 @@ Route::prefix('users')->group(function () {
     });
 });
 
+
 Route::get('admin/provider', [ProviderController::class, 'getAll']);
 Route::get('admin/provider/service', [ServiceController::class, 'getAll']);
 Route::get('admin/provider/requesting', [ProviderController::class, 'getRequestingProvider']);
@@ -61,5 +63,6 @@ Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomePr
 
 Route::get('provider/{id}/orders', [OrderController::class, 'getOrderByProvider']);
 Route::get('users/{id}', [UserController::class, 'getById']);
+Route::get('users/{id}/orders', [OrderController::class, 'getOrderByCustomer']);
 
 Route::post('orders/update', [OrderController::class, 'updateOrder']);
