@@ -3,14 +3,13 @@ import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/frontend/services/order.service';
 import { ProviderService } from 'src/app/frontend/services/provider.service';
 import { UserService } from 'src/app/frontend/services/user.service';
-import { OrderListComponent } from '../../order/order-list/order-list.component';
 
 @Component({
-  selector: 'app-ordering',
-  templateUrl: './ordering.component.html',
-  styleUrls: ['./ordering.component.css']
+  selector: 'app-customer-orders',
+  templateUrl: './customer-orders.component.html',
+  styleUrls: ['./customer-orders.component.css']
 })
-export class OrderingComponent implements OnInit {
+export class CustomerOrdersComponent implements OnInit {
   order_details: any
   providers: any = [];
   orders: any;

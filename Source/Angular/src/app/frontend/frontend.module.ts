@@ -13,10 +13,10 @@ import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/fron
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProviderDetailComponent } from './component/provider-detail/provider-detail.component';
-import { OrderListComponent } from './component/order/order-list/order-list.component';
+import { ProviderDetailComponent } from './component/provider/provider-detail/provider-detail.component';
+import { ProviderOrdersComponent } from './component/order/provider-orders/provider-orders.component';
 import { ServiceListComponent } from './component/provider/service-list/service-list.component';
-import { OrderingComponent } from './component/user/ordering/ordering.component';
+import { CustomerOrdersComponent,} from './component/order/customer-order/customer-orders.component';
 import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user-profile-sidebar.component';
 
 @NgModule({
@@ -33,8 +33,8 @@ import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user
     RegisterComponent,
 
     ProviderDetailComponent,
-    OrderListComponent,
-    OrderingComponent,
+    ProviderOrdersComponent,
+    CustomerOrdersComponent,
     UserProfileSidebarComponent,
   ],
   imports: [
