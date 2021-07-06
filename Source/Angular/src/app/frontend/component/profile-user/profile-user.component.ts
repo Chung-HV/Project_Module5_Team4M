@@ -19,7 +19,8 @@ export class ProfileUserComponent implements OnInit {
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
-
+  url: any; //Angular 11, for stricter type
+	msg = "";
   is_active!: boolean;
   onOff!: number;
 
@@ -153,27 +154,8 @@ export class ProfileUserComponent implements OnInit {
   getImgFile($event: any) {
     this.avatar = $event.target.files[0];
     // console.log(this.avatar);
+
   }
-
-  // fieldsChange(values:any):void {
-  //   console.log();
-  //   if(values.currentTarget.checked == true)
-  //   {
-  //       this.is_active = 1;
-  //       this.onOff = this.is_active;
-  //       // console.log(this.onOff );
-  //       this.toastr.success('Account active!', 'Notification');
-
-  //   }else
-  //   {
-  //     this.is_active = 0;
-  //     this.onOff = this.is_active;
-  //     this.toastr.warning('Account is not active!', 'Notification');
-
-  //     // console.log(this.onOff  );
-
-  //   }
-  // }
 
   requestActive() {
     if (confirm('Bạn có chấp nhận thay đổi trạng thái ')) {
@@ -181,7 +163,7 @@ export class ProfileUserComponent implements OnInit {
       // console.log(statusActive);
 
       this.userService.isActive(this.id, statusActive).subscribe((res) => {
-        console.log(res);
+        // console.log(res);
 
         this.toastr.success('Changed Succesfully!');
       },
@@ -195,10 +177,5 @@ export class ProfileUserComponent implements OnInit {
     this.onOff = event;
     // console.log(this.onOff);
   }
-  //  changeActive(id:number){
 
-  //  }
-  // showModal(id:number){
-
-  // }
 }
