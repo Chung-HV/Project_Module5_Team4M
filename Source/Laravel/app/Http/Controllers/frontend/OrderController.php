@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Message;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\User;
@@ -63,6 +64,13 @@ class OrderController extends Controller
     public function updateOrder(Request $request){
         $order = Order::findOrFail($request->order_id);
         $order->status = $request->order_status;
+        if($order->status=="accepted"){
+            $message = new Message();
+            $message->user_id=$order->user_id;
+            $message->service_provider_id=$order->service_provider_id;
+            $message->message="Người yêu mà bạn thuê đã xác nhận đơn rồi";
+            $message->save();
+        }
         $order->save();
         return response()->json($request,200);
     }

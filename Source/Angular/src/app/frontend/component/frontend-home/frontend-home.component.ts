@@ -19,7 +19,12 @@ export class FrontendHomeComponent implements OnInit {
   money: any = this.data.currentMoney.subscribe(
     (money) => (this.money = money)
   );
+   base_Url_img=`${environment.base_Url_img}`;
   user!: any;
+  messages!:any;
+  countMessages!:number;
+
+
   // money = localStorage.getItem('user_mooney');
   provider_id: any;
   constructor(
@@ -34,8 +39,10 @@ export class FrontendHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogin();
-    console.log(localStorage.getItem('token'));
+    this.getMessageUser();
     this.getUser();
+    // console.log(localStorage.getItem('token'));
+
   }
 
   logOut() {
@@ -60,7 +67,7 @@ export class FrontendHomeComponent implements OnInit {
   }
 
   requestProvide() {
-    console.log(localStorage.getItem('user_id'));
+    // console.log(localStorage.getItem('user_id'));
     this.providerService.sendRequest(this.provider_id).subscribe({
       next: () =>
         this.toastr.success(
@@ -72,9 +79,20 @@ export class FrontendHomeComponent implements OnInit {
     this.userService.profile().subscribe({
       next: (res: any) => {
         this.user = res;
-
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-        console.log(this.user.is_service_provider);
+        // console.log(this.user.messages);
+      },
+      error: (error: any) => {},
+    });
+  }
+  getMessageUser(){
+    this.userService.getMessageUser(localStorage.getItem('user_id')).subscribe({
+      next: (res: any) => {
+        this.messages = res;
+        console.log(this.messages);
+        this.countMessages = Object.keys(this.messages).length;
+        console.log(this.countMessages);
+
       },
       error: (error: any) => {},
     });
