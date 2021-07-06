@@ -20,43 +20,23 @@ export class ProfileUserComponent implements OnInit {
   myForm!: FormGroup;
   is_provider: any;
 
-  is_active!:number;
-  onOff!:number;
-
-
+  is_active!: boolean;
+  onOff!: number;
 
   validateForm() {
     this.myForm = this.fb.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(30),
-        ],
-      ],
+      name: ['', [Validators.required, Validators.maxLength(30)]],
       birth_day: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      city: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(30),
-        ],
-      ],
-      nation: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(30),
-        ],
-      ],
+      city: ['', [Validators.required, Validators.maxLength(30)]],
+      nation: ['', [Validators.required, Validators.maxLength(30)]],
       height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      weight: ['',[Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: ['',[Validators.maxLength(9000)]],
-      requirement: [ '',[Validators.maxLength(9000)]],
+      weight: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      introducion: ['', [Validators.maxLength(9000)]],
+      requirement: ['', [Validators.maxLength(9000)]],
       hobby: ['', [Validators.maxLength(9000)]],
       facebook: ['', [Validators.maxLength(100)]],
-      price: ['',[Validators.pattern(/^[0-9]+$/),Validators.maxLength(20)]],
+      price: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(20)]],
 
       // avatar: [''],
     });
@@ -68,21 +48,16 @@ export class ProfileUserComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private toastr: ToastrService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getUserProfile();
     this.validateForm();
-
   }
-
 
   updateProfileUser() {
     // let data = this.myForm.value;
     // console.log(JSON.stringify(data));
-
 
     let formData = new FormData();
     // formData.append('data', data);
@@ -120,11 +95,6 @@ export class ProfileUserComponent implements OnInit {
     formData.append('facebook', this.myForm.get('facebook')?.value);
     formData.append('price', this.myForm.get('price')?.value);
 
-
-
-
-
-
     if (this.avatar) {
       formData.append('avatar', this.avatar, this.avatar.name);
     }
@@ -134,7 +104,6 @@ export class ProfileUserComponent implements OnInit {
     // console.log(formData.has('avatar'));
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
-
         //   this.router.navigate(['admin/book-list']);
         this.toastr.success('Upload successfully!', 'Notification');
         // formData.delete('city');
@@ -153,21 +122,19 @@ export class ProfileUserComponent implements OnInit {
         this.user = data;
 
         this.myForm.patchValue({
-          name:this.user.name,
-          birth_day:this.user.birth_day,
-          gender:this.user.gender,
-          city:this.user.city,
-          nation:this.user.nation,
-          price:this.user.price,
-          height:this.user.height,
-          weight:this.user.weight,
-          hobby:this.user.hobby,
-          introducion:this.user.introducion,
-          requirement:this.user.requirement,
-          facebook:this.user.facebook
-
-
-        })
+          name: this.user.name,
+          birth_day: this.user.birth_day,
+          gender: this.user.gender,
+          city: this.user.city,
+          nation: this.user.nation,
+          price: this.user.price,
+          height: this.user.height,
+          weight: this.user.weight,
+          hobby: this.user.hobby,
+          introducion: this.user.introducion,
+          requirement: this.user.requirement,
+          facebook: this.user.facebook,
+        });
         this.id = this.user.id;
         this.is_active = this.user.is_active;
         // console.log(this.user.price);
@@ -208,21 +175,30 @@ export class ProfileUserComponent implements OnInit {
   //   }
   // }
 
-  requestActive(){
-   let statusActive = this.onOff;
-  //  console.log(statusActive);
+  requestActive() {
+    if (confirm('Bạn có chấp nhận thay đổi trạng thái ')) {
+      let statusActive = this.onOff;
+      // console.log(statusActive);
 
-    this.userService.isActive(this.id,statusActive).subscribe();
+      this.userService.isActive(this.id, statusActive).subscribe((res) => {
+        console.log(res);
+
+        this.toastr.success('Changed Succesfully!');
+      },
+      (res) => {
+        this.toastr.error('Change fail. Try again!');
+      });
+    }
   }
 
-  checkValueActive(event: number){
+  checkValueActive(event: number) {
     this.onOff = event;
     // console.log(this.onOff);
- }
-//  changeActive(id:number){
+  }
+  //  changeActive(id:number){
 
-//  }
-// showModal(id:number){
+  //  }
+  // showModal(id:number){
 
-// }
+  // }
 }

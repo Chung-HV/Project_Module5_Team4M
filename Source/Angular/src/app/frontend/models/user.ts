@@ -17,7 +17,7 @@ export class User {
   requirement!:string;
   facebook!:string;
   // created_at!:string;
-  is_active!:number;
+  is_active!:boolean;
   price!:any;
   is_service_provider!:number;
 }
