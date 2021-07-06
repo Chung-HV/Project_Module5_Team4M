@@ -17,6 +17,7 @@ import { ProviderDetailComponent } from './component/provider-detail/provider-de
 import { OrderListComponent } from './component/order/order-list/order-list.component';
 import { ServiceListComponent } from './component/provider/service-list/service-list.component';
 import { OrderingComponent } from './component/user/ordering/ordering.component';
+import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user-profile-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { OrderingComponent } from './component/user/ordering/ordering.component'
     ProviderDetailComponent,
     OrderListComponent,
     OrderingComponent,
+    UserProfileSidebarComponent,
   ],
   imports: [
     CommonModule,
