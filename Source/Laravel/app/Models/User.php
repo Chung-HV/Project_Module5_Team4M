@@ -55,10 +55,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
 
     public function albums(){
         return $this->hasMany(Album::class);
+    }
+    public function messages(){
+        return $this->belongsToMany(Message::class,'id');
     }
     public function accounts(){
         return $this->hasOne(Account::class,'id');

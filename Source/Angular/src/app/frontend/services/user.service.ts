@@ -18,7 +18,7 @@ export class UserService {
     return this.http.post(`${environment.base_Url}users/register`, user);
   }
 
-  login(user: User): Observable<any> {
+  login(user: User): Observable<Object> {
     return this.http.post(`${environment.base_Url}users/login`, user);
   }
 
@@ -43,7 +43,7 @@ export class UserService {
     });
     // console.log(auth_token);
     return this.http.get(`${environment.base_Url}users/profile`, {
-      headers: reqHeader
+      headers: reqHeader,
     });
   }
   updateUserProfile(id: number, user: any): Observable<any> {
@@ -60,11 +60,12 @@ export class UserService {
     });
   }
 
-
   getById(user_id: any): Observable<any> {
-    return this.http.get<any>(`${environment.base_Url}${user_id}/provider`)
+    return this.http.get<any>(`${environment.base_Url}${user_id}/provider`);
   }
-
+  getMessageUser(user_id: any): Observable<any> {
+    return this.http.get(`${environment.base_Url}dashboard/message/${user_id}`);
+  }
   isActive(id: number, status: any): Observable<any> {
     var auth_token = localStorage.getItem('token');
     var reqHeader = new HttpHeaders({

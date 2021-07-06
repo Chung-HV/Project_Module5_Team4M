@@ -23,7 +23,6 @@ export class OrderService {
 
   updateOrder(order_id:any,order_status:any):Observable<any>{
     const data = {'order_id':order_id,'order_status':order_status};
-    console.log(data)
     return this.http.post<any>(`${environment.base_Url}orders/update`,data)
   }
 
