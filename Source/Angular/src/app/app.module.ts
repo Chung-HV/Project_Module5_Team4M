@@ -22,7 +22,13 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-bottom-right',
+      progressAnimation: 'decreasing',
+      preventDuplicates: true,
+    }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

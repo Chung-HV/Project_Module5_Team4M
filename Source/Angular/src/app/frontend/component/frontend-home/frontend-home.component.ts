@@ -38,6 +38,7 @@ export class FrontendHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.isLogin();
     this.getMessageUser();
     this.getUser();
