@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook')->nullable()->default('');
             $table->integer('is_admin')->default(0);
             $table->integer('is_service_provider')->default(0);
-            $table->integer('is_active')->default(1);
+            $table->boolean('is_active')->default(1);
             $table->integer('is_vip')->default(0);
             $table->string('price')->nullable()->default('');
             $table->timestamps();

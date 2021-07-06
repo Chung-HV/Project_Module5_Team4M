@@ -60,8 +60,12 @@ export class UserService {
     });
   }
 
+  getByProvider(provider_id: any): Observable<any> {
+    return this.http.get<any>(`${environment.base_Url}provider/${provider_id}`);
+  }
+
   getById(user_id: any): Observable<any> {
-    return this.http.get<any>(`${environment.base_Url}${user_id}/provider`);
+    return this.http.get<any>(`${environment.base_Url}users/${user_id}`);
   }
   getMessageUser(user_id: any): Observable<any> {
     return this.http.get(`${environment.base_Url}dashboard/message/${user_id}`);

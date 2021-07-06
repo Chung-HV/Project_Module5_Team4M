@@ -9,8 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from '../../services/data.service';
-import { HomeService } from '../../services/home.service';
+import { DataService } from '../../../services/data.service';
+import { HomeService } from '../../../services/home.service';
 
 @Component({
   selector: 'app-provider-detail',
