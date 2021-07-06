@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function showServiceUser()
     {
         $users = User::where('is_admin', '=', '0')
-        ->where('is_service_provider','=','1')
+        ->where('is_service_provider','=','1')->inRandomOrder()->limit(8)
         ->get();
         foreach($users as $key => $user){
             $user->services->all();
