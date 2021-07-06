@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Service } from 'src/app/frontend/models/service';
 import { ProviderService } from 'src/app/frontend/services/provider.service';
 
@@ -15,7 +16,7 @@ export class ServiceListComponent implements OnInit {
   freeServices: Service[] = [];
   freeServiceIds: any[] = [];
   extraServices: Service[] = [];
-  is_active:any;
+  is_active: any;
 
   providingServices: Service[] = [];
   providingExtraServiceIds: any[] = [];
@@ -26,7 +27,11 @@ export class ServiceListComponent implements OnInit {
   provider_id: any
   newProvidingServices: Service[] = [];
 
-  constructor(private serviceProvider: ProviderService, private route: ActivatedRoute) {
+  constructor(
+    private serviceProvider: ProviderService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService)
+     {
 
     // this.getDefaultServices();
   }
@@ -44,9 +49,9 @@ export class ServiceListComponent implements OnInit {
     this.serviceProvider.getServices().subscribe(
       services => {
         this.services = services,
-        this.getDefaultServices(),       
-        this.getFreeServices(),       
-        this.getExtraServices()
+          this.getDefaultServices(),
+          this.getFreeServices(),
+          this.getExtraServices()
       }
     );
   }
@@ -58,7 +63,7 @@ export class ServiceListComponent implements OnInit {
         this.newProvidingServices.push(service.id);
       }
     });
-    
+
   }
 
   getExtraServices() {
@@ -66,7 +71,7 @@ export class ServiceListComponent implements OnInit {
       if (service.type == 'extra') {
         this.extraServices.push(service);
       }
-    });    
+    });
   }
 
   getFreeServices() {
@@ -83,9 +88,9 @@ export class ServiceListComponent implements OnInit {
     this.serviceProvider.getProvidingServices(provider_id).subscribe(
       providingServices => {
         this.providingServices = providingServices,
-        // this.getDefaultServices(),       
-        this.getProvidingFreeServices(),       
-        this.getProvidingExtraServices()
+          // this.getDefaultServices(),       
+          this.getProvidingFreeServices(),
+          this.getProvidingExtraServices()
       }
     );
   }
@@ -97,7 +102,7 @@ export class ServiceListComponent implements OnInit {
         this.providingExtraServiceIds.push(service.id);
         this.newProvidingServices.push(service.id);
       }
-    });    
+    });
   }
 
   getProvidingFreeServices() {
@@ -127,11 +132,9 @@ export class ServiceListComponent implements OnInit {
   updateProvidingService(provider_id: any) {
     this.serviceProvider.updateProvidingServices(provider_id, this.newProvidingServices).subscribe(
       data => {
-        console.log(data);
+        this.toastr.success('Các dịch vụ đã được cập nhật')
       }
     );
-    alert('Services you want to provide have been set');
-    console.log(this.providingServices);
   };
 }
 
