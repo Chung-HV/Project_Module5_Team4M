@@ -14,7 +14,10 @@ export class DashboardComponent implements OnInit {
   users!: UserDashboard[];
   vip_user!: UserDashboard[];
   new_user!: UserDashboard[];
-  base_Url_img=environment.base_Url_img;
+  base_Url_img = environment.base_Url_img;
+  active1: boolean = false;
+  active2: boolean = false;
+
   constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {
@@ -54,5 +57,27 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  clickEvent1() {
+    if(this.active2){
+      this.active1 == false;
+    }
+    else{
+      this.active1=!this.active1
+    }
+  }
+  clickEvent2() {
+    if(this.active1){
+      this.active2 == false;
+    }
+    else{
+      this.active2=!this.active2
+    }
+  }
+  clickEvent3() {
+    this.active1 = false;
+    this.active2 = false;
+
+
   }
 }

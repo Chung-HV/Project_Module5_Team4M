@@ -2,6 +2,7 @@
   <div class="container container2">
     <div class="filter-player row">
       <div xl="12" class="col-lg-12 col-md-12 col-sm-12">
+
         <section id="search">
           <div class="player-select div-autoComplete-search">
             <label for="search-input"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search
@@ -22,7 +23,8 @@
               <div class="suggestion-game-hide"></div>
             </div>
           </div>
-          <div class="text-left col-md-3"><button class="btn btn-danger btn-filter" data-toggle="modal" data-target="#filter"><span>Bộ
+          <div class="text-left col-md-3"><button class="btn btn-danger btn-filter" data-toggle="modal"
+              data-target="#filter"><span>Bộ
                 lọc</span></button><button class="btn btn-success btn-search"><span>Tìm
                 kiếm</span>&nbsp;</button></div>
         </section>
@@ -32,23 +34,21 @@
       <div>
         <section class="box vip-player">
           <h4 class="section-title">VIP PLAYER</h4>
-          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
+              style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
         </section>
         <div class="row flex-card">
 
           <div class="player-information-card-wrap" *ngFor="let user of vip_user">
             <div class="player-avatar">
-              <img
-                src="{{base_Url_img+user.avatar}}"
-                class="" alt="PD" id="avt-img-reponsiver"
-                style="object-fit: cover;"
-                >
+              <img src="{{base_Url_img+user.avatar}}" class="" alt="PD" id="avt-img-reponsiver"
+                style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
-                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                    <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
@@ -69,22 +69,20 @@
       <div>
         <section class="hot-player">
           <h4 class="section-title">HOT PLAYER</h4>
-          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
+              style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
         </section>
         <div class="row flex-card">
           <div class="player-information-card-wrap" *ngFor="let user of users">
             <div class="player-avatar">
-              <img
-                src="{{base_Url_img+user.avatar}}"
-                class="" alt="PD" id="avt-img-reponsiver"
-                style="object-fit: cover;"
-                >
+              <img src="{{base_Url_img+user.avatar}}" class="" alt="PD" id="avt-img-reponsiver"
+                style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>{{ user.introducion }}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
-                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                    <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
@@ -111,16 +109,13 @@
         <div class="row flex-card">
           <div class="player-information-card-wrap" *ngFor="let user of new_user">
             <div class="player-avatar">
-              <img
-                src="{{base_Url_img+user.avatar}}"
-                class="" alt="PD" id="avt-img-reponsiver"
-                style="object-fit: cover;"
-                >
+              <img src="{{base_Url_img+user.avatar}}" class="" alt="PD" id="avt-img-reponsiver"
+                style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>{{ user.introducion }}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
-                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                    <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
@@ -155,96 +150,65 @@
           <span aria-hidden="true">&times;</span>
 
         </button>
-        <h4 class="modal-title"><span>Tôi muốn tìm player với điều kiện</span></h4>
+        <h4 class="modal-title"><span>Tôi muốn đối tác với điều kiện</span></h4>
       </div>
       <div class="content modal-body">
         <table class="table">
           <tbody>
+
             <tr>
               <td class="text-left"><span>Giới tính là</span></td>
               <td class="text-right">
-                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><span><i
-                        class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Nam</span></span></label><label
-                    type="button" class="btn btn-default"><span><i class="fa fa-user-secret"
-                        aria-hidden="true"></i>&nbsp;<span>Nữ</span></span></label></div>
-              </td>
-              <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button"
-                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left"><span>Hiện đang là</span></td>
-              <td class="text-right">
-                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><span><i
-                        class="fa fa-user-circle" aria-hidden="true"></i>
-                      new</span></label><label type="button" class="btn btn-default"><span><i class="fa fa-user-secret"
-                        aria-hidden="true"></i> hot</span></label><label type="button" class="btn btn-default"><span><i
-                        class="fa fa-user-md" aria-hidden="true"></i> vip</span></label></div>
-              </td>
-              <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button"
-                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left"><span>Trạng thái là</span></td>
-              <td class="text-right">
-                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><input
-                      name="status" type="radio" value="ready"><span><i class="fa fa-spinner"
-                        aria-hidden="true"></i>&nbsp;<span><span>Sẵn
-                          sàng</span></span></span></label></div>
-              </td>
-              <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button"
-                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left"><span>Đang online</span></td>
-              <td class="text-right">
-                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default"><span><i
-                        class="fas fa-globe-africa"></i>&nbsp;
-                      Online</span></label></div>
-              </td>
-              <td>
                 <div data-toggle="buttons" class="btn-group">
-                  <label type="button"
-                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  <label type="button" class="btn btn-default" (click)="clickEvent1()"
+                    [ngClass]="active1 ? 'active' : 'null'">
+                    <span>
+                      <i class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Nam</span></span></label>
+
+                  <label type="button" class="btn btn-default" (click)="clickEvent2()"
+                    [ngClass]="active2 ? 'active' : 'null'"><span><i class="fa fa-user-secret"
+                        aria-hidden="true"></i>&nbsp;<span>Nữ</span></span></label>
+                </div>
+              </td>
+              <td>
+                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                    (click)="clickEvent3()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
                 </div>
               </td>
             </tr>
+
+
             <tr>
               <td class="text-left"><span>Khoảng giá thuê</span></td>
               <td class="text-right">
-                <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal">
-                  <div class="noUi-base">
-                    <div class="noUi-connects">
-                      <div class="noUi-connect" style="transform: translate(0%, 0px) scale(1, 1);"></div>
+                  <!-- <div id="skipstep">
+                    <div class="noUi-base">
+                      <div class="noUi-connects">
+                        <div class="noUi-connect" style="transform: translate(0%, 0px) scale(1, 1);"></div>
+                      </div>
+                      <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
+                        <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider"
+                          aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0"
+                          aria-valuenow="5000.0" aria-valuetext="5000.00"></div>
+                      </div>
+                      <div class="noUi-origin" style="transform: translate(0%, 0px); z-index: 4;">
+                        <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider"
+                          aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0"
+                          aria-valuenow="5000000.0" aria-valuetext="5000000.00"></div>
+                      </div>
                     </div>
-                    <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
-                      <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider"
-                        aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0"
-                        aria-valuenow="5000.0" aria-valuetext="5000.00"></div>
-                    </div>
-                    <div class="noUi-origin" style="transform: translate(0%, 0px); z-index: 4;">
-                      <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider"
-                        aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0"
-                        aria-valuenow="5000000.0" aria-valuetext="5000000.00"></div>
-                    </div>
-                  </div>
-                </div>
+
+
+                  </div> -->
                 <div class="mt-10 row">
-                  <div class="text-left col-xs-4"><span class="example-val" id="skip-value-lower">5,000</span>
-                  </div>
-                  <div class="text-center col-xs-4"><span class="example-val"
-                      id="skip-value-lower"><span>đến</span></span></div>
-                  <div class="col-xs-4"><span class="example-val" id="skip-value-upper">5,000,000</span>
-                  </div>
+              
+                  <input type="range" >
+                  <span class="example-val" id="skip-value-lower">0</span>
+                    <span class="example-val" id="skip-value-upper">5,000,000</span>
+
+
                 </div>
+
               </td>
               <td></td>
             </tr>
@@ -286,8 +250,8 @@
 <script>
   $('document').ready(function () {
     $('button').click(function () {
-        $('button').removeClass('active');
-        $(this).addClass('active');
+      $('button').removeClass('active');
+      $(this).addClass('active');
     });
-});
+  });
 </script>
