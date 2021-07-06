@@ -12,7 +12,9 @@ class DashboardController extends Controller
     public function showServiceUser()
     {
         $users = User::where('is_admin', '=', '0')
-        ->where('is_service_provider','=','1')->inRandomOrder()->limit(8)
+        ->where('is_service_provider','=','1')
+        ->where('is_active', '=', '1')
+        ->inRandomOrder()->limit(8)
         ->get();
         foreach($users as $key => $user){
             $user->services->all();
@@ -21,7 +23,7 @@ class DashboardController extends Controller
     }
     public function showVipUser()
     {
-        $users = User::where('is_admin', '=', '0')->where('is_vip', '=', '1')->where('is_service_provider','=','1')->get();
+        $users = User::where('is_admin', '=', '0')->where('is_vip', '=', '1')->where('is_service_provider','=','1')->where('is_active', '=', '1')->get();
         foreach($users as $key => $user){
             $user->services->all();
         }
@@ -29,7 +31,7 @@ class DashboardController extends Controller
     }
     public function showNewUser()
     {
-        $users = User::where('is_admin', '=', '0')->where('is_service_provider','=','1')->latest()->take(3)->get();
+        $users = User::where('is_admin', '=', '0')->where('is_service_provider','=','1')->where('is_active', '=', '1')->latest()->take(3)->get();
         foreach($users as $key => $user){
             $user->services->all();
         }
@@ -38,7 +40,8 @@ class DashboardController extends Controller
     public function getUser($id){
         $user = User::where('id','=',$id)
         ->where('is_admin', '=', '0')
-        ->where('is_service_provider','=','1')->get();
+        ->where('is_service_provider','=','1')
+        ->get();
         foreach($user as $key => $sv){
             $sv->services->all();
         }

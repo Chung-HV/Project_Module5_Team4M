@@ -9,71 +9,9 @@
     <div></div>
     <div class="wrapper">
       <div class="setting__main row">
-        <div class="setting__main--menu col-lg-3 col-md-3 col-sm-12 col-xs-12">
-          <div class="menu">
-            <div class="menu__setting panel-group">
-              <div class="menu__setting--main panel panel-default">
-                <div class="panel-heading">
-                  <div class="panel-title">
-                    <a aria-expanded="true" class="" role="button" href="#"
-                      >TÀI KHOẢN
-                    </a>
-                  </div>
-                </div>
-                <div class="panel-collapse collapse in">
-                  <div class="panel-body">
-                    <div class="panel-group">
-                      <div class="menu__setting--sub panel panel-default">
-                        <div class="panel-heading">
-                          <div class="active panel-title">
-                            <a role="menuitem" tabindex="-1" [routerLink]="['../../user/profile']">
-                              <i class="fas fa-user-tie"></i> Thông tin người dùng
-                          </a>
-                          </div>
-                        </div>
-                      </div>
+       
+        <app-user-profile-sidebar></app-user-profile-sidebar>
 
-                      <div class="menu__setting--sub panel panel-default">
-                        <div class="panel-heading">
-                            <div class="panel-title">
-                                <a role="menuitem" tabindex="-1" [routerLink]="['../orders']">
-                                    <i class="fas fa-sliders-h"></i> Đơn thuê
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                      <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
-                        <div class="panel-heading">
-                            <div class="panel-title">
-                                <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/services']">
-                                    <i class="fas fa-sliders-h"></i> Dịch vụ cung cấp
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
-                        <div class="panel-heading">
-                            <div class="panel-title">
-                                <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/orders']">
-                                    <i class="fas fa-sliders-h"></i> Đơn được thuê
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
-
-                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="btn-drawer-setting visible-xs">
-              <i class="fas fa-chevron-right"></i>
-            </div>
-          </div>
-        </div>
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <div class="aside">
             <div class="row flowaccount">
