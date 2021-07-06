@@ -4,11 +4,11 @@ import { OrderService } from 'src/app/frontend/services/order.service';
 import { ProviderService } from 'src/app/frontend/services/provider.service';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+  selector: 'app-provider-orders',
+  templateUrl: './provider-orders.component.html',
+  styleUrls: ['./provider-orders.component.css']
 })
-export class OrderListComponent implements OnInit {
+export class ProviderOrdersComponent implements OnInit {
   provider:any
   provider_id: any
   provider_price: any

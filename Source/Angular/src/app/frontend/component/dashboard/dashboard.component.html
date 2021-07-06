@@ -46,7 +46,7 @@
                 >
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>cái gì cũng hay nhưng ko giỏi<br></span></p>
+                <p><span>{{user.introducion}}<br></span></p>
                 <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
                     rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
               </div>
@@ -56,7 +56,7 @@
                 <a [routerLink]="['/frontend/provider-detail',user.id]">{{user.name}}</a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">123</p>
+              <p class="player-title">{{ user.hobby }}</p>
               <!-- <div class="category">
                 <div class="div--flex"><img
                     src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
