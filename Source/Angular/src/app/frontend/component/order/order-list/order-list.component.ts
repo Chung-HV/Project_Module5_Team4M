@@ -46,10 +46,9 @@ export class OrderListComponent implements OnInit {
         console.log(data);
         this.toastr.success(
           'Your request has been sent, please wait for Admin approvement'
-        ),
-        location.reload();
+        )
+        // location.reload();
       }
     })
-
   }
 }
