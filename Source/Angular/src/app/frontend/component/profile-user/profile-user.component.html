@@ -89,11 +89,12 @@
                     <input type="checkbox" name="is_active "
                     (change)="checkValueActive(user.is_active? 1: 0)"
                     (click)="requestActive()" [checked]="user.is_active"
-                    [(ngModel)]="user.is_active"
+
                     >
                     <span class="slider round"></span>
                   </label>
                 </td>
+
               </div>
               <!-- <div class="col-sm-4 col-xs-12">
                 <div class="border">
@@ -126,7 +127,7 @@
                       type="text"
                       name="name"
                       autocomplete="false"
-                      [(ngModel)]="user.name"
+
                     />
                     <div *ngIf = "myForm.get('name')?.hasError('required')" class="invalid-feedback" class="text-danger">
                       Tên không được để trống!
@@ -139,7 +140,7 @@
 
                   <div class="fieldGroup">
                     <p class="control-label">Ngày sinh <span class="starred">(*)</span></p>
-                    <input [class.is-invalid] = "myForm.get('birth_day')?.invalid && (myForm.get('birth_day')?.dirty || myForm.get('birth_day')?.touched)" type="date" formControlName="birth_day" [(ngModel)]="user.birth_day" />
+                    <input [class.is-invalid] = "myForm.get('birth_day')?.invalid && (myForm.get('birth_day')?.dirty || myForm.get('birth_day')?.touched)" type="date" formControlName="birth_day"  />
                     <div *ngIf = "myForm.get('birth_day')?.hasError('required')" class="invalid-feedback" class="text-danger">
                       Ngày sinh không được để trống!
                     </div>
@@ -148,7 +149,7 @@
                   <div class="fieldGroup">
 
                     <p class="control-label">Giới tính <span class="starred">(*)</span></p>
-                    <select name="gender" formControlName="gender" [(ngModel)]="user.gender" style="background-color: white;">
+                    <select name="gender" formControlName="gender"  style="background-color: white;">
                       <option value="" selected>---giới tính---</option>
                       <option value="male">Nam</option>
                       <option value="Female">Nữ</option>
@@ -167,7 +168,7 @@
                       type="text"
                       name="city"
                       autocomplete="false"
-                      [(ngModel)]="user.city"
+
 
                     />
                     <div *ngIf = "myForm.get('city')?.hasError('required')" class="invalid-feedback" class="text-danger">
@@ -186,7 +187,7 @@
                       type="text"
                       name="nation"
                       autocomplete="false"
-                      [(ngModel)]="user.nation"
+
 
                     />
                     <div *ngIf = "myForm.get('nation')?.hasError('required')" class="invalid-feedback" class="text-danger">
@@ -205,7 +206,7 @@
                       type="number"
                       name="price"
 
-                      [(ngModel)]="user.price"
+
                     />
 
                     <div *ngIf = "myForm.get('price')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
@@ -222,7 +223,7 @@
                     [class.is-invalid] = "myForm.get('height')?.invalid && (myForm.get('height')?.dirty || myForm.get('height')?.touched)"
                      type="number"
                       formControlName="height"
-                      [(ngModel)]="user.height"/>
+                      />
 
                       <div *ngIf = "myForm.get('height')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
                         Chiều cao giới hạn 10 ký tự!
@@ -239,7 +240,7 @@
                       type="number"
                       name="weight"
                       autocomplete="false"
-                      [(ngModel)]="user.weight"
+
                     />
 
                     <!-- <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
@@ -271,7 +272,7 @@
                     [class.is-invalid] = "myForm.get('introducion')?.invalid && (myForm.get('introducion')?.dirty || myForm.get('introducion')?.touched)"
                       name="introducion"
                       formControlName="introducion"
-                      [(ngModel)]="user.introducion" >
+                       >
 
                     </textarea>
 
@@ -286,7 +287,7 @@
                     [class.is-invalid] = "myForm.get('requirement')?.invalid && (myForm.get('requirement')?.dirty || myForm.get('requirement')?.touched)"
                      name="requirement"
                      formControlName="requirement"
-                     [(ngModel)]="user.requirement">
+                     >
 
 
                     </textarea>
@@ -303,7 +304,7 @@
                       type="text"
                       name="facebook"
                       autocomplete="false"
-                      [(ngModel)]="user.facebook"
+
                     />
                     <div *ngIf = "myForm.get('facebook')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
                       Facebook giới hạn 100 ký tự!
