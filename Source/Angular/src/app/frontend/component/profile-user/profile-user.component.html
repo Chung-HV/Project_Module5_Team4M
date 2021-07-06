@@ -61,6 +61,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
+
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -74,47 +77,7 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <div class="aside">
             <div class="row flowaccount">
-              <!-- <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>Tổng tiền</p>
-                  <span>0đ </span>
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>TỔNG TIỀN ĐÃ DONATE</p>
-                  <span>0đ </span>
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>SỐ GIỜ ĐÃ THUÊ</p>
-                  <span>0 Giờ</span>
-                </div>
-              </div> -->
-              <!-- <table class="table">
-                <tbody>
-                   <tr>
-                      <td class="tbleft">
-                         <p>Active account</p>
-                      </td>
-                      <td class="tbright">
-
-                         <label class="switch form-group" >
-                          <input type="checkbox" name="is_active "
-                          (change)="checkValueActive(user.is_active? 1: 0)"
-                          (click)="requestActive()" [checked]="user.is_active"
-                          [(ngModel)]="user.is_active"
-                          >
-                          <span class="slider round"></span>
-                        </label>
-                      </td>
-                   </tr>
-                </tbody>
-             </table> -->
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
+              <div class="col-sm-8">
                 <h3>Thông tin người dùng</h3>
                 <div class="d-flex img-avatar">
                   <img
@@ -126,6 +89,36 @@
                   />
 
                 </div>
+              </div>
+
+              <div class="col-sm-4">
+                <td class="tbright" *ngIf="user.is_service_provider == 1">
+                  <p>Active account</p>
+                   <label class="switch form-group" >
+                    <input type="checkbox" name="is_active "
+                    (change)="checkValueActive(user.is_active? 1: 0)"
+                    (click)="requestActive()" [checked]="user.is_active"
+
+                    >
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+
+              </div>
+              <!-- <div class="col-sm-4 col-xs-12">
+                <div class="border">
+                  <p>SỐ GIỜ ĐÃ THUÊ</p>
+                  <span>0 Giờ</span>
+                </div>
+              </div> -->
+
+
+
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
+
                 <form class="from-userinfo" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                   <div class="fieldGroup">
                     <div class="cropimg-avatar">
@@ -143,7 +136,7 @@
                       type="text"
                       name="name"
                       autocomplete="false"
-                      [(ngModel)]="user.name"
+
                     />
                     <div *ngIf = "myForm.get('name')?.hasError('required')" class="invalid-feedback" class="text-danger">
                       Tên không được để trống!
@@ -156,7 +149,7 @@
 
                   <div class="fieldGroup">
                     <p class="control-label">Ngày sinh <span class="starred">(*)</span></p>
-                    <input [class.is-invalid] = "myForm.get('birth_day')?.invalid && (myForm.get('birth_day')?.dirty || myForm.get('birth_day')?.touched)" type="date" formControlName="birth_day" [(ngModel)]="user.birth_day" />
+                    <input [class.is-invalid] = "myForm.get('birth_day')?.invalid && (myForm.get('birth_day')?.dirty || myForm.get('birth_day')?.touched)" type="date" formControlName="birth_day"  />
                     <div *ngIf = "myForm.get('birth_day')?.hasError('required')" class="invalid-feedback" class="text-danger">
                       Ngày sinh không được để trống!
                     </div>
@@ -165,7 +158,7 @@
                   <div class="fieldGroup">
 
                     <p class="control-label">Giới tính <span class="starred">(*)</span></p>
-                    <select name="gender" formControlName="gender" [(ngModel)]="user.gender" style="background-color: white;">
+                    <select name="gender" formControlName="gender"  style="background-color: white;">
                       <option value="" selected>---giới tính---</option>
                       <option value="male">Nam</option>
                       <option value="Female">Nữ</option>
@@ -184,7 +177,7 @@
                       type="text"
                       name="city"
                       autocomplete="false"
-                      [(ngModel)]="user.city"
+
 
                     />
                     <div *ngIf = "myForm.get('city')?.hasError('required')" class="invalid-feedback" class="text-danger">
@@ -203,7 +196,7 @@
                       type="text"
                       name="nation"
                       autocomplete="false"
-                      [(ngModel)]="user.nation"
+
 
                     />
                     <div *ngIf = "myForm.get('nation')?.hasError('required')" class="invalid-feedback" class="text-danger">
@@ -215,12 +208,31 @@
 
                   </div>
                   <div class="fieldGroup">
+                    <p class="control-label">Giá thuê theo giờ</p>
+                    <input
+                    [class.is-invalid] = "myForm.get('price')?.invalid && (myForm.get('price')?.dirty || myForm.get('price')?.touched)"
+                    formControlName="price"
+                      type="number"
+                      name="price"
+
+
+                    />
+
+                    <div *ngIf = "myForm.get('price')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
+                      Giá phải là chữ số!
+                    </div>
+                    <div *ngIf = "myForm.get('price')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
+                      Giá giới hạn 20 ký tự!
+                    </div>
+
+                  </div>
+                  <div class="fieldGroup">
                     <p class="control-label">Chiều cao</p>
                     <input
                     [class.is-invalid] = "myForm.get('height')?.invalid && (myForm.get('height')?.dirty || myForm.get('height')?.touched)"
                      type="number"
                       formControlName="height"
-                      [(ngModel)]="user.height"/>
+                      />
 
                       <div *ngIf = "myForm.get('height')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
                         Chiều cao giới hạn 10 ký tự!
@@ -237,12 +249,12 @@
                       type="number"
                       name="weight"
                       autocomplete="false"
-                      [(ngModel)]="user.weight"
+
                     />
 
-                    <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
+                    <!-- <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
                       Cân nặng giới hạn 10 ký tự!
-                    </div>
+                    </div> -->
                     <div *ngIf = "myForm.get('weight')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
                       Cân nặng phải là chữ số!
                     </div>
@@ -269,7 +281,7 @@
                     [class.is-invalid] = "myForm.get('introducion')?.invalid && (myForm.get('introducion')?.dirty || myForm.get('introducion')?.touched)"
                       name="introducion"
                       formControlName="introducion"
-                      [(ngModel)]="user.introducion" >
+                       >
 
                     </textarea>
 
@@ -284,7 +296,7 @@
                     [class.is-invalid] = "myForm.get('requirement')?.invalid && (myForm.get('requirement')?.dirty || myForm.get('requirement')?.touched)"
                      name="requirement"
                      formControlName="requirement"
-                     [(ngModel)]="user.requirement">
+                     >
 
 
                     </textarea>
@@ -301,13 +313,14 @@
                       type="text"
                       name="facebook"
                       autocomplete="false"
-                      [(ngModel)]="user.facebook"
+
                     />
                     <div *ngIf = "myForm.get('facebook')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
                       Facebook giới hạn 100 ký tự!
                     </div>
 
                   </div>
+
                   <button type="submit" class="btn-update">Update</button>
                 </form>
               </div>

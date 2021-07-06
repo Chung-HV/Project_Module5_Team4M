@@ -56,7 +56,7 @@
 
 .flowaccount {
 	justify-content: space-around;
-	display: flex
+	/* display: flex */
 }
 
 .flowaccount .border {

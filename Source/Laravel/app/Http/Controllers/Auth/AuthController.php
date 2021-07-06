@@ -134,11 +134,11 @@ class AuthController extends Controller
         }
     }
 
-    public function uploadImage (Request $request, $idUser){
-        $user = User::find($idUser);
-        $albums = Album::all();
-        $albums->filePath;
+    // public function uploadImage (Request $request, $idUser){
+    //     $user = User::find($idUser);
+    //     $albums = Album::all();
+    //     $albums->filePath;
 
-        dd($albums->filePath);
-    }
+    //     dd($albums->filePath);
+    // }
 }

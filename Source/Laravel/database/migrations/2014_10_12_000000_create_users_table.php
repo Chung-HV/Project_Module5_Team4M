@@ -25,17 +25,17 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('nation')->nullable();
             $table->string('avatar')->nullable();
-            $table->float('height')->nullable();
-            $table->float('weight')->nullable();
-            $table->string('hobby')->nullable();
-            $table->string('introducion')->nullable();
-            $table->string('requirement')->nullable();
-            $table->string('facebook')->nullable();
+            $table->string('height')->nullable()->default('');
+            $table->string('weight')->nullable()->default('');
+            $table->string('hobby')->nullable()->default('');
+            $table->string('introducion')->nullable()->default('');
+            $table->string('requirement')->nullable()->default('');
+            $table->string('facebook')->nullable()->default('');
             $table->integer('is_admin')->default(0);
             $table->integer('is_service_provider')->default(0);
             $table->integer('is_active')->default(1);
             $table->integer('is_vip')->default(0);
-            $table->float('price')->nullable();
+            $table->string('price')->nullable()->default('');
             $table->timestamps();
         });
     }
