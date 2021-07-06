@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/frontend/services/order.service';
 import { ProviderService } from 'src/app/frontend/services/provider.service';
 import { UserService } from 'src/app/frontend/services/user.service';
+import { OrderListComponent } from '../../order/order-list/order-list.component';
 
 @Component({
   selector: 'app-ordering',
@@ -19,6 +21,7 @@ export class OrderingComponent implements OnInit {
     private orderService: OrderService,
     private providerService: ProviderService,
     private order: OrderService,
+    private toastr: ToastrService
   ) {
     this.getOrders();
 
@@ -32,12 +35,12 @@ export class OrderingComponent implements OnInit {
 
   getOrders() {
     this.userService.getOrders().subscribe({
-      next: (data:any) => {
+      next: (data: any) => {
         this.orders = data.orders,
-        this.providers = data.providers,
-        this.order_details = data.order_details
+          this.providers = data.providers,
+          this.order_details = data.order_details
         // console.log(data);
-        
+
       }
     })
   }
@@ -46,8 +49,20 @@ export class OrderingComponent implements OnInit {
     this.providerService.getById(provider_id).subscribe({
       next: provider => {
         this.providers = this.providers.push(provider),
-        console.log(this.providers);
+          console.log(this.providers);
       }
     })
+  }
+
+  updateOrder(order_id: any, order_status: any) {
+    this.orderService.updateOrder(order_id, order_status).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.toastr.success(
+          'Your request has been sent, please wait for Admin approvement'
+        )
+        // location.reload();
+      }
+    });
   }
 }
