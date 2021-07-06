@@ -19,8 +19,7 @@ export class ProfileUserComponent implements OnInit {
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
-  url: any; //Angular 11, for stricter type
-	msg = "";
+  
   is_active!: boolean;
   onOff!: number;
 
