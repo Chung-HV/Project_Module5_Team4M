@@ -7,6 +7,7 @@ import { DataService } from '../../services/data.service';
 import { ProviderService } from '../../services/provider.service';
 import { environment } from 'src/environments/environment.prod';
 import { UserDashboard } from '../../models/userDashboard';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-frontend-home',
@@ -14,6 +15,7 @@ import { UserDashboard } from '../../models/userDashboard';
   styleUrls: ['./frontend-home.component.css'],
 })
 export class FrontendHomeComponent implements OnInit {
+
   check: any = this.data.currentCheck.subscribe(
     (check) => (this.check = check)
   );
@@ -27,18 +29,21 @@ export class FrontendHomeComponent implements OnInit {
   user!: any;
   open:any = false;
   user_id = localStorage.getItem('user_id');
+
+
   constructor(
     private userService: UserService,
     private router: Router,
     private toastr: ToastrService,
     private data: DataService,
     private providerService: ProviderService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    fb: FormBuilder
   ) {
   }
 
   ngOnInit(): void {
-    
+
     this.isLogin();
     this.getMessageUser();
     this.getUser();
@@ -96,9 +101,6 @@ export class FrontendHomeComponent implements OnInit {
       next: (res: any) => {
         this.messages = res;
         this.countMessages = Object.keys(this.messages).length;
-        console.log(this.countMessages);
-
-        console.log(this.user);
       },
       error: (error: any) => {},
     });

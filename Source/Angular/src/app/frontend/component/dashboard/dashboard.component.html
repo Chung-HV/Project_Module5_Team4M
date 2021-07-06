@@ -47,8 +47,8 @@
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
                 <p><span>{{user.introducion}}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]"
-                    rel="noopener noreferrer"> <span>Thuê ngay</span></a></div>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                    <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
@@ -144,6 +144,7 @@
 <div class="fade search-index-modal in modal" id="filter" tabindex="-1" role="dialog" aria-labelledby="filter"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
+    <form>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -151,36 +152,42 @@
 
         </button>
         <h4 class="modal-title"><span>Tôi muốn đối tác với điều kiện</span></h4>
+
       </div>
+
       <div class="content modal-body">
-        <table class="table">
-          <tbody>
 
-            <tr>
-              <td class="text-left"><span>Giới tính là</span></td>
-              <td class="text-right">
-                <div data-toggle="buttons" class="btn-group">
-                  <label type="button" class="btn btn-default" (click)="clickEvent1()"
-                    [ngClass]="active1 ? 'active' : 'null'">
-                    <span>
-                      <i class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Nam</span></span></label>
+          <table class="table">
 
-                  <label type="button" class="btn btn-default" (click)="clickEvent2()"
-                    [ngClass]="active2 ? 'active' : 'null'"><span><i class="fa fa-user-secret"
-                        aria-hidden="true"></i>&nbsp;<span>Nữ</span></span></label>
-                </div>
-              </td>
-              <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
-                    (click)="clickEvent3()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                </div>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td class="text-left"><span>Giới tính là</span></td>
+                <td class="text-right">
+                  <div data-toggle="buttons" class="btn-group">
+                    <label type="button" class="btn btn-default" (click)="clickEvent1()"
+                      [ngClass]="active1 ? 'active' : 'null'" id="Male" value="Male">
+                      <span>
+                        <i class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Nam</span>
+                      </span>
+
+                    </label>
+
+                    <label type="button" class="btn btn-default" (click)="clickEvent2()"
+                      [ngClass]="active2 ? 'active' : 'null'" id="Female" value="Female"><span><i
+                          class="fa fa-user-secret" aria-hidden="true"></i>&nbsp;<span>Nữ</span></span></label>
+                  </div>
+                </td>
+                <td>
+                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                      (click)="clickEvent3()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  </div>
+                </td>
+              </tr>
 
 
-            <tr>
-              <td class="text-left"><span>Khoảng giá thuê</span></td>
-              <td class="text-right">
+              <tr>
+                <td class="text-left"><span>Khoảng giá thuê</span></td>
+                <td class="text-right">
                   <!-- <div id="skipstep">
                     <div class="noUi-base">
                       <div class="noUi-connects">
@@ -200,51 +207,56 @@
 
 
                   </div> -->
-                <div class="mt-10 row">
+                  <div class="mt-10 row">
 
-                  <input type="range" >
-                  <span class="example-val" id="skip-value-lower">0</span>
+                    <input type="range">
+                    <span class="example-val" id="skip-value-lower">0</span>
                     <span class="example-val" id="skip-value-upper">5,000,000</span>
 
 
-                </div>
+                  </div>
 
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="text-left"><span>Sống tại</span></td>
-              <td class="text-right">
-                <div class="mb-4"></div>
-                <div class="player-select div-autoComplete-search">
-                  <input class="filter-modal" name="citySelect" type="text" value="">
-                  <div class="suggestion-game-hide"></div>
-                </div>
-              </td>
-              <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button"
-                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left"><span>Tên</span>/Url player:</td>
-              <td class="text-right">
-                <div class="player-select div-autoComplete-search"><input class="filter-modal" name="nickName"
-                    type="text" autocomplete="off" maxlength="32" value=""></div>
-              </td>
-              <td>
-                <div data-toggle="buttons" class="btn-group"><label type="button"
-                    class="btn btn-default active"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="text-left"><span>Sống tại</span></td>
+                <td class="text-right">
+                  <div class="mb-4"></div>
+                  <div class="player-select div-autoComplete-search">
+                    <input class="filter-modal" name="citySelect" type="text" [(ngModel)]="filter.city">
+                    <div class="suggestion-game-hide"></div>
+                  </div>
+                </td>
+                <td>
+                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                      (click)="removeCity()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left"><span>Tên</span>/Url player:</td>
+                <td class="text-right">
+                  <div class="player-select div-autoComplete-search"><input class="filter-modal" name="nickName"
+                      type="text" autocomplete="off" maxlength="32" [(ngModel)]="filter.name"></div>
+                </td>
+                <td>
+                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                      (click)="removeName()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
       </div>
-      <div class="text-center modal-footer"><button class="btn btn-danger"><span>Bộ lọc</span></button>
+
+      <div class="text-center modal-footer"><button type="submit" class="btn btn-danger" (click)="saveFilter()"><span>Bộ
+            lọc</span></button>
       </div>
+
     </div>
+  </form>
   </div>
 </div>
 <script>

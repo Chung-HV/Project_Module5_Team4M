@@ -51,6 +51,7 @@ class DashboardController extends Controller
     }
     public function findUser(Request $request)
     {
+
         $name = $request->name;
         $gender = $request->gender;
         $city = $request->city;
@@ -58,6 +59,9 @@ class DashboardController extends Controller
 
         $users = User::where(function ($query) use ($name, $gender,$city,$price) {
             $query->where('name', 'like', '%' . $name . '%')
+            ->where('is_admin', '=', '0')
+            ->where('is_service_provider','=','1')
+            ->where('is_active', '=', '1')
                 ->when($gender, function ($query, $gender) {
                     return $query->where('gender',$gender);
                 })
