@@ -18,7 +18,7 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   avatar!: any;
   myForm!: FormGroup;
-  user_is_provider: any;
+  is_provider: any;
 
   is_active!:number;
   onOff!:number;
@@ -31,7 +31,6 @@ export class ProfileUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^[a-zA-Z ]+$/),
           Validators.maxLength(30),
         ],
       ],
@@ -41,7 +40,6 @@ export class ProfileUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^[a-zA-Z ]+$/),
           Validators.maxLength(30),
         ],
       ],
@@ -49,16 +47,15 @@ export class ProfileUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^[a-zA-Z ]+$/),
           Validators.maxLength(30),
         ],
       ],
       height: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
       weight: [ [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: [[Validators.maxLength(50)]],
-      requirement: [ [Validators.maxLength(50)]],
-      hobby: [ [Validators.maxLength(30)]],
-      facebook: [ [Validators.maxLength(30)]],
+      introducion: [[Validators.maxLength(9000)]],
+      requirement: [ [Validators.maxLength(9000)]],
+      hobby: [ [Validators.maxLength(9000)]],
+      facebook: [ [Validators.maxLength(100)]],
       // avatar: [''],
     });
   }
@@ -70,9 +67,7 @@ export class ProfileUserComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService
   ) {
-    this.user_is_provider = localStorage.getItem('is_provider');
-    console.log(this.user_is_provider);
-
+   
   }
 
   ngOnInit(): void {
@@ -97,12 +92,8 @@ export class ProfileUserComponent implements OnInit {
 
   updateProfileUser() {
     // let data = this.myForm.value;
-    console.log(this.user.city);
-
-
     let formData = new FormData();
-
-
+    
     formData.append('name', this.user.name);
     formData.append('birth_day', this.user.birth_day);
     formData.append('gender', this.user.gender);

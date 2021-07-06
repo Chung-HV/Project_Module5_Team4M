@@ -26,38 +26,29 @@
                       <div class="menu__setting--sub panel panel-default">
                         <div class="panel-heading">
                           <div class="active panel-title">
-                            <i class="fas fa-user-tie"></i> Thông tin cá nhân
+                            <a role="menuitem" tabindex="-1" [routerLink]="['../../user/profile']">
+                              <i class="fas fa-user-tie"></i> Thông tin người dùng
+                          </a>
                           </div>
                         </div>
                       </div>
+
                       <div class="menu__setting--sub panel panel-default">
                         <div class="panel-heading">
-                          <div class="panel-title">
-                            <i class="fas fa-sliders-h"></i> Thống kê
-                          </div>
+                            <div class="panel-title">
+                                <a role="menuitem" tabindex="-1" [routerLink]="['../orders']">
+                                    <i class="fas fa-sliders-h"></i> Đơn thuê
+                                </a>
+                            </div>
                         </div>
-                      </div>
-                      <div class="menu__setting--sub panel panel-default">
-                        <div class="panel-heading">
-                          <div class="panel-title">
-                            <i class="fas fa-sliders-h"></i> Lịch sử thuê
-                          </div>
-                        </div>
-                      </div>
-                      <div class="menu__setting--sub panel panel-default">
-                        <div class="panel-heading">
-                          <div class="panel-title">
-                            <i class="fas fa-sliders-h"></i> Người thuê
-                          </div>
-                        </div>
-                      </div>
+                    </div>
+
                       <div class="menu__setting--sub panel panel-default" *ngIf="user.is_service_provider == 1">
                         <div class="panel-heading">
                             <div class="panel-title">
                                 <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/services']">
                                     <i class="fas fa-sliders-h"></i> Dịch vụ cung cấp
                                 </a>
-
                             </div>
                         </div>
                     </div>
@@ -65,92 +56,15 @@
                         <div class="panel-heading">
                             <div class="panel-title">
                                 <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/orders']">
-                                    <i class="fas fa-sliders-h"></i> Đơn thuê
+                                    <i class="fas fa-sliders-h"></i> Đơn được thuê
                                 </a>
-
                             </div>
                         </div>
                     </div>
-                      <!-- <div class="menu__setting--sub panel panel-default">
-                                   <div class="panel-heading">
-                                      <div class="title-sub  panel-title"><a aria-expanded="true" class="" role="button" href="#"><i class="fas fa-cog"></i> lịch sử thuê <i class="fas fa-chevron-down"></i></a></div>
-                                   </div>
-                                   <div class="panel-collapse collapse in" style="">
-                                      <div class="panel-body">
-                                         <div class="panel-group">
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Email</div>
-                                               </div>
-                                            </div>
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Tài khoản và mật khẩu</div>
-                                               </div>
-                                            </div>
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Khoá bảo vệ</div>
-                                               </div>
-                                            </div>
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Vip</div>
-                                               </div>
-                                            </div>
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Hiển thị</div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div> -->
-                      <!--
-                                <div class="menu__setting--sub panel panel-default">
-                                   <div class="panel-heading">
-                                      <div class="  panel-title"><i class="fas fa-wallet"></i> Ví </div>
-                                   </div>
-                                </div> -->
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- <div class="menu__setting--main panel panel-default">
-                       <div class="panel-heading">
-                          <div class="panel-title"><a aria-expanded="false" class="collapsed" role="button" href="#">TRANG CÁ NHÂN <i class="fas fa-chevron-right"></i></a></div>
-                       </div>
-                       <div class="panel-collapse collapse">
-                          <div class="panel-body">
-                             <div class="panel-group">
-                                <div class="menu__setting--sub panel panel-default">
-                                   <div class="panel-heading">
-                                      <div class="title-sub  panel-title"><a aria-expanded="false" class="collapsed" role="button" href="#"><i class="fas fa-tags"></i> Hashtags <i class="fas fa-chevron-right"></i></a></div>
-                                   </div>
-                                   <div class="panel-collapse collapse">
-                                      <div class="panel-body">
-                                         <div class="panel-group">
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Dành cho sáng tạo nội dung</div>
-                                               </div>
-                                            </div>
-                                            <div class="menu__setting--last panel panel-default">
-                                               <div class="panel-heading">
-                                                  <div class="panel-title">Dành cho người xem</div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-
-
-                             </div>
-                          </div>
-                       </div>
-                    </div> -->
             </div>
             <div class="btn-drawer-setting visible-xs">
               <i class="fas fa-chevron-right"></i>
@@ -160,9 +74,9 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <div class="aside">
             <div class="row flowaccount">
-              <div class="col-sm-4 col-xs-12">
+              <!-- <div class="col-sm-4 col-xs-12">
                 <div class="border">
-                  <p>total money</p>
+                  <p>Tổng tiền</p>
                   <span>0đ </span>
                 </div>
               </div>
@@ -177,7 +91,7 @@
                   <p>SỐ GIỜ ĐÃ THUÊ</p>
                   <span>0 Giờ</span>
                 </div>
-              </div>
+              </div> -->
               <!-- <table class="table">
                 <tbody>
                    <tr>
@@ -201,7 +115,7 @@
             </div>
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
-                <h3>User Information</h3>
+                <h3>Thông tin người dùng</h3>
                 <div class="d-flex img-avatar">
                   <img
                     src="{{ user.avatar }}"
@@ -222,99 +136,86 @@
 
 
                   <div class="fieldGroup">
-                    <p class="control-label">Full name <span class="starred">(*)</span></p>
+                    <p class="control-label">Tên người dùng <span class="starred">(*)</span></p>
                     <input
                     [class.is-invalid] = "myForm.get('name')?.invalid && (myForm.get('name')?.dirty || myForm.get('name')?.touched)"
                     formControlName="name"
                       type="text"
                       name="name"
-                      placeholder=""
-                      maxlength="5000"
                       autocomplete="false"
                       [(ngModel)]="user.name"
                     />
                     <div *ngIf = "myForm.get('name')?.hasError('required')" class="invalid-feedback" class="text-danger">
-                      Name is required!
+                      Tên không được để trống!
                     </div>
                     <div *ngIf = "myForm.get('name')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Name max 30 characters!
-                    </div>
-                    <div *ngIf = "myForm.get('name')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
-                      Name only alphabet!
+                      Tên giới hạn 30 ký tự!
                     </div>
                   </div>
 
 
                   <div class="fieldGroup">
-                    <p class="control-label">Date of birth <span class="starred">(*)</span></p>
+                    <p class="control-label">Ngày sinh <span class="starred">(*)</span></p>
                     <input [class.is-invalid] = "myForm.get('birth_day')?.invalid && (myForm.get('birth_day')?.dirty || myForm.get('birth_day')?.touched)" type="date" formControlName="birth_day" [(ngModel)]="user.birth_day" />
                     <div *ngIf = "myForm.get('birth_day')?.hasError('required')" class="invalid-feedback" class="text-danger">
-                      Date is required!
+                      Ngày sinh không được để trống!
                     </div>
 
                   </div>
                   <div class="fieldGroup">
 
-                    <p class="control-label">Gender <span class="starred">(*)</span></p>
-                    <select name="gender" formControlName="gender" [(ngModel)]="user.gender">
-                      <option value="" selected>---gender---</option>
-                      <option value="male">Male</option>
-                      <option value="Female">FeMale</option>
+                    <p class="control-label">Giới tính <span class="starred">(*)</span></p>
+                    <select name="gender" formControlName="gender" [(ngModel)]="user.gender" style="background-color: white;">
+                      <option value="" selected>---giới tính---</option>
+                      <option value="male">Nam</option>
+                      <option value="Female">Nữ</option>
                       <option value="lgbt">LGBT</option>
                     </select>
                     <div *ngIf = "myForm.get('gender')?.hasError('required')" class="invalid-feedback" class="text-danger">
-                      Gender is required!
+                      Giới tính không được để trống!
                     </div>
 
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">City <span class="starred">(*)</span></p>
+                    <p class="control-label">Thành phố <span class="starred">(*)</span></p>
                     <input
                     [class.is-invalid] = "myForm.get('city')?.invalid && (myForm.get('city')?.dirty || myForm.get('city')?.touched)"
                     formControlName="city"
                       type="text"
                       name="city"
-                      placeholder=""
-                      maxlength="5000"
                       autocomplete="false"
                       [(ngModel)]="user.city"
 
                     />
                     <div *ngIf = "myForm.get('city')?.hasError('required')" class="invalid-feedback" class="text-danger">
-                      City is required!
+                      Thành phố không được để trống!
                     </div>
                     <div *ngIf = "myForm.get('city')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      City max 30 characters!
+                      Thành phố giới hạn 30 ký tự!
                     </div>
-                    <div *ngIf = "myForm.get('city')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
-                      City only alphabet!
-                    </div>
+
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Nation <span class="starred">(*)</span></p>
+                    <p class="control-label">Quốc tịch <span class="starred">(*)</span></p>
                     <input
                     [class.is-invalid] = "myForm.get('nation')?.invalid && (myForm.get('nation')?.dirty || myForm.get('nation')?.touched)"
                     formControlName="nation"
                       type="text"
                       name="nation"
-                      placeholder=""
-                      maxlength="5000"
                       autocomplete="false"
                       [(ngModel)]="user.nation"
 
                     />
                     <div *ngIf = "myForm.get('nation')?.hasError('required')" class="invalid-feedback" class="text-danger">
-                      Nation is required!
+                      Quốc tịch không được để trống!
                     </div>
                     <div *ngIf = "myForm.get('nation')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Nation max 30 characters!
+                      Quốc tịch giới hạn 30 ký tự!
                     </div>
-                    <div *ngIf = "myForm.get('nation')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
-                      Nation only alphabet!
-                    </div>
+
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Height</p>
+                    <p class="control-label">Chiều cao</p>
                     <input
                     [class.is-invalid] = "myForm.get('height')?.invalid && (myForm.get('height')?.dirty || myForm.get('height')?.touched)"
                      type="number"
@@ -322,52 +223,48 @@
                       [(ngModel)]="user.height"/>
 
                       <div *ngIf = "myForm.get('height')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                        Height max 10 characters!
+                        Chiều cao giới hạn 10 ký tự!
                       </div>
                       <div *ngIf = "myForm.get('height')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
-                        Height must be numeric!
+                        Chiều cao phải là chữ số!
                       </div>
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">weight</p>
+                    <p class="control-label">Cân nặng</p>
                     <input
                     [class.is-invalid] = "myForm.get('weight')?.invalid && (myForm.get('weight')?.dirty || myForm.get('weight')?.touched)"
                     formControlName="weight"
                       type="number"
                       name="weight"
-                      placeholder=""
-
                       autocomplete="false"
                       [(ngModel)]="user.weight"
                     />
 
                     <div *ngIf = "myForm.get('weight')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Weight max 10 characters!
+                      Cân nặng giới hạn 10 ký tự!
                     </div>
                     <div *ngIf = "myForm.get('weight')?.hasError('pattern')" class="invalid-feedback" class="text-danger">
-                      Weight must be numeric!
+                      Cân nặng phải là chữ số!
                     </div>
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Hobby</p>
+                    <p class="control-label">Sở thích</p>
                     <input
                     [class.is-invalid] = "myForm.get('hobby')?.invalid && (myForm.get('hobby')?.dirty || myForm.get('hobby')?.touched)"
                     formControlName="hobby"
                       type="text"
                       name="hobby"
-                      placeholder=""
-                      maxlength="5000"
                       autocomplete="false"
                       [(ngModel)]="user.hobby"
                     />
 
                     <div *ngIf = "myForm.get('hobby')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Hobby max 30 characters!
+                      Sở thích giới hạn 9000 ký tự!
                     </div>
 
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Introducion</p>
+                    <p class="control-label">Giới thiệu</p>
                     <textarea
                     [class.is-invalid] = "myForm.get('introducion')?.invalid && (myForm.get('introducion')?.dirty || myForm.get('introducion')?.touched)"
                       name="introducion"
@@ -377,12 +274,12 @@
                     </textarea>
 
                     <div *ngIf = "myForm.get('introducion')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Introducion max 50 characters!
+                      Giới thiệu giới hạn 9000 ký tự!
                     </div>
 
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Requirement</p>
+                    <p class="control-label">Yêu cầu với người thuê</p>
                     <textarea
                     [class.is-invalid] = "myForm.get('requirement')?.invalid && (myForm.get('requirement')?.dirty || myForm.get('requirement')?.touched)"
                      name="requirement"
@@ -392,7 +289,7 @@
 
                     </textarea>
                     <div *ngIf = "myForm.get('requirement')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Requirement max 50 characters!
+                      Yêu cầu giới hạn 9000 ký tự!
                     </div>
 
                   </div>
@@ -403,13 +300,11 @@
                     formControlName="facebook"
                       type="text"
                       name="facebook"
-                      placeholder=""
-                      maxlength="5000"
                       autocomplete="false"
                       [(ngModel)]="user.facebook"
                     />
                     <div *ngIf = "myForm.get('facebook')?.hasError('maxlength')" class="invalid-feedback" class="text-danger">
-                      Facebook max 30 characters!
+                      Facebook giới hạn 100 ký tự!
                     </div>
 
                   </div>

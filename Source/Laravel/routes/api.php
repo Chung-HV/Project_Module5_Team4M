@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\UserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,12 @@ Route::prefix('users')->group(function () {
         Route::get('/profile', [AuthController::class, 'profile']);
         Route::post('/update/{id}', [AuthController::class, 'update']);
         Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
+        Route::get('/uploadimg/{id}', [AuthController::class, 'uploadImage']);
+
 
     });
 });
+
 
 Route::get('admin/provider', [ProviderController::class, 'getAll']);
 Route::get('admin/provider/service', [ServiceController::class, 'getAll']);
@@ -59,5 +63,6 @@ Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomePr
 
 Route::get('provider/{id}/orders', [OrderController::class, 'getOrderByProvider']);
 Route::get('users/{id}', [UserController::class, 'getById']);
+Route::get('users/{id}/orders', [OrderController::class, 'getOrderByCustomer']);
 
 Route::post('orders/update', [OrderController::class, 'updateOrder']);

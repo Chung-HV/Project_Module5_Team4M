@@ -69,74 +69,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="wrapper col-md-8">
-                    <div class="container">
-                        <div class="user__profile row">
-                            <div class="group-main-wrap col-md-8">
-                                <div class="publish-post-wrap">
 
-                                    <div class="header">
-                                        <h3 style="text-align: center;">Chọn dịch vụ bạn muốn cung cấp </h3>
-                                    </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="aside">
+                        <h3>Danh sách đơn thuê</h3>
+                        <div class="transaction-table">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-condensed table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Người yêu</th>
+                                            <th>Thời gian thuê</th>
+                                            <th>Thời gian bắt đầu</th>
+                                            <th>Ngày</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái</th>
+                                            <th>Hành động</th>
+                                        </tr>
 
-                                    <div class="footer">
-                                        <div class="footer-bottom">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="card-header">
-                                                        <p>Các dịch vụ cơ bản</p>
-                                                    </div>
-                                                    <div *ngFor="let service of defaultServices">
-                                                        <label class="check_box">
-                              <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;" checked disabled
-                                (change)="getNewProvidingServices(service.id)">
-                              <span>{{service.name}}</span>
-                            </label>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-sm-4">
-                                                    <div class="card-header">
-                                                        <p>Dịch vụ miễn phí</p>
-                                                    </div>
-                                                    <div *ngFor="let service of freeServices">
-                                                        <label class="check_box">
-                              <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                [checked]="providingFreeServiceIds.indexOf(service.id) !== -1"
-                                (change)="getNewProvidingServices(service.id)">
-                              <span>{{service.name}}</span>
-                            </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <div class="card-header">
-                                                        <p>Dịch vụ mở rộng</p>
-                                                    </div>
-                                                    <div *ngFor="let service of extraServices">
-                                                        <label class="check_box">
-                              <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                [checked]="providingExtraServiceIds.indexOf(service.id) !== -1"
-                                (change)="getNewProvidingServices(service.id)">
-                              <span>{{service.name}}</span>
-                            </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <button type="button" class="btn-fill btn btn-sm btn-default" (click)="updateProvidingService(provider_id)">
-                          <span>Xác nhận</span>
-                        </button>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let order of orders,let i = index">
+                                            <td>{{providers[i].name}}</td>
+                                            <td>{{order_details[i].time}} Giờ</td>
+                                            <td>{{order_details[i].start_time}}</td>
+                                            <td>{{order_details[i].start_at}}</td>
+                                            <td>{{providers[i].price * order_details[i].time}} 000.d</td>
+                                            <td>{{order.status}}</td>
+                                            <!-- <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
+                                            <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Get Money</button></td>
+                                            <td *ngIf="order.status=='done'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td> -->
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-
                         </div>
+                        <div class="text-center mt-20 col-md-12" *ngIf="orders == null"><span>Không có dữ liệu</span></div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <header class="menu__header fix-menu" id="header-menu">
   <div class="navbar-header">
-    <a class="logo" href="/">
+    <a class="logo" routerLink="">
       <img src="https://files.playerduo.com/production/static-files/logo.png" />
       <div class="text-logo">
         <h4>PLAYERDUO</h4>
@@ -36,7 +36,6 @@
           <div class="item-title"><i class="fas fa-bars"></i></div>
         </a>
       </li>
-
       <div *ngIf="check; then thenBlock; else elseBlock"></div>
       <ng-template #thenBlock>
         <li class="item-icon authent">
@@ -46,70 +45,74 @@
       <ng-template #elseBlock>
         <li class="item-icon notificate dropdown">
           <!-- <div class="dropdown">
-            <button class="dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-comment"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div> -->
-          <a id="basic-nav-dropdown" role="button" class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <button class="dropdown-toggle" type="button" id="dropdownMenuButton"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <i class="fas fa-comment"></i>
+                 </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   <a class="dropdown-item" href="#">Action</a>
+                   <a class="dropdown-item" href="#">Another action</a>
+                   <a class="dropdown-item" href="#">Something else here</a>
+                 </div>
+                 </div> -->
+          <a id="basic-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             <div class="item-title"><i class="fas fa-comment"></i><span>{{countMessages }}</span></div>
-
           </a>
           <ul role="menu" class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
             <div class="content ">
               <div class="tab-notif-common">
                 <h5>Tin Nhắn</h5>
               </div>
-              <div class="infinite-scroll-component " style="height: 500px; overflow: auto;" >
+              <div class="infinite-scroll-component " style="height: 500px; overflow: auto;">
                 <a href="">
-
-                   <li class="notification-item" style="background-color: rgb(243, 243, 243);" *ngFor="let mes of messages">
-                      <div class="msg">
-                         <div class="avt avt-md"><img src="{{base_Url_img+mes.users.avatar}}" class="avt-img" alt="PD"></div>
-                         <div class="detail">
-                            <p><strong>{{mes.users.name}}</strong></p>
-                            <p style="color: rgb(51, 51, 51); text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 350px;">{{mes.message}}</p>
-                         </div>
+                  <li class="notification-item" style="background-color: rgb(243, 243, 243);"
+                    *ngFor="let mes of messages">
+                    <div class="msg">
+                      <div class="avt avt-md"><img src="{{base_Url_img+mes.users.avatar}}" class="avt-img" alt="PD">
                       </div>
-                   </li>
+                      <div class="detail">
+                        <p><strong>{{mes.users.name}}</strong></p>
+                        <p
+                          style="color: rgb(51, 51, 51); text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 350px;">
+                          {{mes.message}}</p>
+                      </div>
+                    </div>
+                  </li>
                 </a>
                 <a href="/messages">
-                   <li class="view-all-mess">
-                      <div class="msg"><span>Xem tất cả</span> »</div>
-                   </li>
+                  <li class="view-all-mess">
+                    <div class="msg"><span>Xem tất cả</span> »</div>
+                  </li>
                 </a>
-             </div>
+              </div>
               <div>
                 <div class="infinite-scroll-component " style="height: 30px; overflow: auto;">
-                   <a href="/messages">
-                      <li class="view-all-mess">
-                         <div class="msg"><span>Xem tất cả</span> »</div>
-                      </li>
-                   </a>
+                  <a href="/messages">
+                    <li class="view-all-mess">
+                      <div class="msg"><span>Xem tất cả</span> »</div>
+                    </li>
+                  </a>
                 </div>
-             </div>
+              </div>
             </div>
           </ul>
         </li>
         <li class="item-icon balance">
           <a class="money-user"><i class="fas fa-plus"></i> 1,000 đ</a>
         </li>
-        <li class="item-icon item-avatar dropdown">
+        <li class="item-icon item-avatar dropdown" (click)="clickEvent()" [ngClass]="open ? 'open' : 'null'">
           <a id="header-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false"><img src="{{ user.avatar }}" class="avt-img" alt="PD"
-              style="object-fit: cover;" /></a>
+            aria-expanded="false">
+            <img src="{{ user?.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" />
+          </a>
           <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
             <li role="presentation" class="page-user">
               <a role="menuitem" tabindex="-1" routerLink="user/profile">
-                <img src="{{ user.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" />
+                <img src="{{ user?.avatar }}" class="avt-img" alt="PD" style="object-fit: cover;" />
                 <div class="text-logo">
-                  <h5>{{ user.name }}</h5>
-                  <p>ID : <span>{{ user.id }}</span></p>
+                  <h5>{{ user?.name }}</h5>
+                  <p>ID : <span>{{ user?.id }}</span></p>
                   <p class="label-user-page">
                     <span>Xem trang cá nhân của bạn</span>
                   </p>
@@ -121,26 +124,23 @@
                 <span class="money">1,000 đ</span></a>
             </li>
 
-            <li role="presentation" class="menu-item" *ngIf="user.is_service_provider === 0">
+            <li role="presentation" class="menu-item" *ngIf="user?.is_service_provider === 0">
               <a role="menuitem" tabindex="-1" (click)="requestProvide()"><i class="fas fa-user-lock"></i>
-                <span>Đăng ký làm hàng</span></a>
+                <span>Đăng ký làm đối tác</span></a>
             </li>
 
-            <li role="presentation" class="menu-item" *ngIf="user.is_service_provider === 2">
+            <li role="presentation" class="menu-item" *ngIf="user?.is_service_provider === 2">
               <a role="menuitem" tabindex="-1" (click)="requestProvide()"><i class="fas fa-user-lock"></i>
-                <span>Đang chờ Admin duyệt hàng</span></a>
+                <span>Đang chờ Admin duyệt đăng ký</span></a>
             </li>
 
-            <li role="presentation" class="menu-item" *ngIf="user.is_service_provider === 1 ">
+            <li role="presentation" class="menu-item" *ngIf="user?.is_service_provider === 1 ">
               <a role="menuitem" tabindex="-1" routerLink="provider/orders">
                 <i class="fas fa-user-lock"></i>
-                <span>Trang hàng</span></a>
+                <span>Trang quản lý của đối tác</span></a>
             </li>
             <li role="presentation" class="menu-item">
               <a role="menuitem" tabindex="-1" href="#"><i class="fas fa-clock"></i> <span>Lịch sử dual</span></a>
-            </li>
-            <li role="presentation" class="menu-item">
-              <a role="menuitem" tabindex="-1" href="#"><i class="fas fa-cogs"></i> <span>Cài đặt tài khoản</span></a>
             </li>
             <li role="presentation" class="menu-item">
               <a role="menuitem" tabindex="-1" (click)="logOut()"><i class="fas fa-power-off"></i> <span>Đăng

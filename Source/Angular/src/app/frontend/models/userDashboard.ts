@@ -6,9 +6,4 @@ export class UserDashboard {
   public avatar !: string;
   public introducion !: string;
   public hobby !: string;
-
-
-
-
-
 }

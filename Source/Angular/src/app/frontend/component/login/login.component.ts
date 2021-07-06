@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 
 import { DataService } from '../../services/data.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
+  user!:any;
 
   constructor(
     private toastr: ToastrService,
@@ -41,12 +43,17 @@ export class LoginComponent implements OnInit {
       next: (data: any) => {
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
-        // sessionStorage.setItem('token', data.access.token );
-        // localStorage.setItem('user', data.user.name);
+        localStorage.setItem('is_provider', data.user.is_service_provider);
+        localStorage.setItem('user', data.user);
+
+        localStorage.setItem('userName', data.user.name);
         this.data.changeCheck(false);
-        this.data.changeMoney(data.user.accounts.mooney);
-        this.toastr.success("Chào " + data.user.name + "", "Thông Báo");
+        this.data.getCurentUser(data.user);
+        // this.data.changeMoney(data.user.accounts.mooney);
         this.router.navigate(['']);
+        // window.location.href=""
+        console.log(this.user);
+
       },
       error: (error: any) => {
         console.log(error);

@@ -26,4 +26,5 @@ class UserController extends Controller
         // ->join('user', 'user.id', '=', "messages.$message->service_provider_id");
         return response()->json($message_user);
     }
+
 }
