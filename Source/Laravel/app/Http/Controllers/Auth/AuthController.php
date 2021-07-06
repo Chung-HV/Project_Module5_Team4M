@@ -122,10 +122,8 @@ class AuthController extends Controller
         try{
 
             $user = User::find($idUser);
-            // dd('herhehhehe');
-            $user->is_active = $request->is_active;
-            // dd($user->is_active);
-
+            // dd($idUser);
+            $user->is_active = $user->is_active  === 0?1:0;
             $user->save();
 
             return response()->json($user);
