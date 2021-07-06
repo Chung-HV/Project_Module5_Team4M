@@ -19,9 +19,11 @@ export class ProfileUserComponent implements OnInit {
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
-  
+  isShowOleImage = true;
   is_active!: boolean;
   onOff!: number;
+  image_path = environment.base_Url_img;
+  imgSrc = '';
 
   validateForm() {
     this.myForm = this.fb.group({
@@ -151,24 +153,35 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getImgFile($event: any) {
-    this.avatar = $event.target.files[0];
+    // this.avatar = $event.target.files[0];
     // console.log(this.avatar);
+    const reader = new FileReader();
+    if ($event.target.files.length && $event.target.files) {
+      this.avatar = $event.target.files[0];
+      // console.log(this.imgFile);
 
+      reader.readAsDataURL($event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.imgSrc = e.target.result;
+        this.isShowOleImage = false;
+      };
+    }
   }
-
   requestActive() {
     if (confirm('Bạn có chấp nhận thay đổi trạng thái ')) {
       let statusActive = this.onOff;
       // console.log(statusActive);
 
-      this.userService.isActive(this.id, statusActive).subscribe((res) => {
-        // console.log(res);
+      this.userService.isActive(this.id, statusActive).subscribe(
+        (res) => {
+          // console.log(res);
 
-        this.toastr.success('Changed Succesfully!');
-      },
-      (res) => {
-        this.toastr.error('Change fail. Try again!');
-      });
+          this.toastr.success('Thay đổi thành công!');
+        },
+        (res) => {
+          this.toastr.error('Thay đổi thất bại!');
+        }
+      );
     }
   }
 
@@ -176,5 +189,4 @@ export class ProfileUserComponent implements OnInit {
     this.onOff = event;
     // console.log(this.onOff);
   }
-
 }

@@ -20,13 +20,13 @@
               <div class="col-sm-8">
                 <h3>Thông tin người dùng</h3>
                 <div class="d-flex img-avatar">
-                  <img
-                    src="{{ user.avatar }}"
-                    class=""
-                    alt="avatar"
-                    sizes="sm"
-                    style="object-fit: cover"
-                  />
+
+                  <div class="form-group" *ngIf="isShowOleImage">
+                    <img src="{{user.avatar}}" alt="image" style="object-fit: cover">
+                  </div>
+                  <div class="form-group" *ngIf="imgSrc">
+                    <img [src]="imgSrc" style="object-fit: cover">
+                  </div>
                 </div>
               </div>
 
@@ -45,12 +45,7 @@
                   </label>
                 </td>
               </div>
-              <!-- <div class="col-sm-4 col-xs-12">
-                <div class="border">
-                  <p>SỐ GIỜ ĐÃ THUÊ</p>
-                  <span>0 Giờ</span>
-                </div>
-              </div> -->
+
             </div>
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
@@ -62,11 +57,13 @@
                   <div class="fieldGroup">
                     <div class="cropimg-avatar">
                       <input
+                        class="uploadAvatar"
                         type="file"
                         name="avatar"
                         formControlName="avatar"
                         (change)="getImgFile($event)"
                       />
+
                     </div>
                   </div>
 
@@ -134,7 +131,6 @@
                       <option value="" selected>---giới tính---</option>
                       <option value="male">Nam</option>
                       <option value="Female">Nữ</option>
-                      <option value="lgbt">LGBT</option>
                     </select>
                     <div
                       *ngIf="myForm.get('gender')?.hasError('required')"
@@ -383,4 +379,5 @@
     </div>
   </div>
   <app-frontend-footer></app-frontend-footer>
+
 </body>
