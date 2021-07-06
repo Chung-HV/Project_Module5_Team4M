@@ -57,14 +57,14 @@
                  </div> -->
           <a id="basic-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            <div class="item-title"><i class="fas fa-comment"></i><span>{{countMessages }}</span></div>
+            <div class="item-title"><i class="fas fa-bell"></i><span>{{countMessages }}</span></div>
           </a>
           <ul role="menu" class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
             <div class="content ">
               <div class="tab-notif-common">
                 <h5>Tin Nhắn</h5>
               </div>
-              <div class="infinite-scroll-component " style="height: 500px; overflow: auto;">
+              <div class="infinite-scroll-component " style="height: auto; overflow: auto;">
                 <a href="">
                   <li class="notification-item" style="background-color: rgb(243, 243, 243);"
                     *ngFor="let mes of messages">

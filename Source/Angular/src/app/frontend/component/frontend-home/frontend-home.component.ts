@@ -94,7 +94,6 @@ export class FrontendHomeComponent implements OnInit {
     this.userService.getMessageUser(localStorage.getItem('user_id')).subscribe({
       next: (res: any) => {
         this.messages = res;
-        console.log(this.messages);
         this.countMessages = Object.keys(this.messages).length;
         console.log(this.countMessages);
 
