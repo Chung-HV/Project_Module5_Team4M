@@ -20,10 +20,16 @@ import { HomeService } from '../../../services/home.service';
 export class ProviderDetailComponent implements OnInit {
   users!: any;
   price!: number;
+  albums!:any;
   message = '';
   base_Url_img = environment.base_Url_img;
+  // base_Url_img=environment.base_Url_img;
+  // base_Url_album=environment.base_Url_img;
+
 
   user_id = localStorage.getItem('user_id');
+
+
   user_server_provider!: any;
   count_view!: any;
   order = {
@@ -43,7 +49,7 @@ export class ProviderDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
-
+    this.getAlbum(this.route.snapshot.paramMap.get('id'));
     // console.log(localStorage.getItem('user_id'));
   }
   getUser(id: any) {
@@ -81,5 +87,16 @@ export class ProviderDetailComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  getAlbum(id:any){
+    this.homeService.getAlbumByUser(id).subscribe(
+      (data) => {
+        this.albums = data
+      console.log(this.albums);
+    },
+    (error) => {
+      console.log(error);
+    });
   }
 }

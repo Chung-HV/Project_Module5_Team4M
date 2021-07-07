@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PaginationInstance } from 'ngx-pagination';
 import { OrderService } from 'src/app/backend/services/order.service';
 
 @Component({
@@ -12,7 +11,6 @@ export class OrderListComponent implements OnInit {
   order_details:any
   customers:any
   providers:any
-  private paginate!: PaginationInstance;
   constructor(
     private orderService: OrderService,
     ) { }
@@ -30,7 +28,7 @@ export class OrderListComponent implements OnInit {
         this.customers = this.orders.data.customers,
         this.order_details = this.orders.data.order_details,
         console.log(this.order_details);
-        
+
       }
     })
   }

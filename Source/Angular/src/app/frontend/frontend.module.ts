@@ -18,6 +18,8 @@ import { ProviderOrdersComponent } from './component/order/provider-orders/provi
 import { ServiceListComponent } from './component/provider/service-list/service-list.component';
 import { CustomerOrdersComponent,} from './component/order/customer-order/customer-orders.component';
 import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user-profile-sidebar.component';
+import { CreateAlbumComponent } from './component/user-album/create-album/create-album.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user
     ProviderOrdersComponent,
     CustomerOrdersComponent,
     UserProfileSidebarComponent,
+    CreateAlbumComponent,
+    
   ],
   imports: [
     CommonModule,
