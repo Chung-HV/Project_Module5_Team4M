@@ -36,12 +36,15 @@
                                             <td>{{order_details[i].start_time}}</td>
                                             <td>{{order_details[i].start_at}}</td>
                                             <td>{{providers[i].price * order_details[i].time}} 000.d</td>
-                                            <td *ngIf="order.status == 'pending'">Chờ phản hồi</td>
-                                            <td *ngIf="order.status == 'accepted'">Đã nhận</td>
+                                            <td *ngIf="order.status == 'pending'">Chờ {{providers[i].name}} phản hồi</td>
+                                            <td *ngIf="order.status == 'accepted'">Đang tiến hành</td>
+                                            <td *ngIf="order.status == 'request done'">Chờ xác nhận</td>
+
                                             <td *ngIf="order.status == 'done'">Đã hoàn thành</td>
                                             <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                             <!-- <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td> -->
                                             <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Hoàn thành</button></td>
+                                            <td *ngIf="order.status=='request done'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Hoàn thành</button></td>
                                             <!-- <td *ngIf="order.status=='done'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td> -->
                                         </tr>
                                     </tbody>
