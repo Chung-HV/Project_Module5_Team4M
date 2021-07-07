@@ -1,4 +1,4 @@
-import { Component, NgIterable, OnInit } from '@angular/core';
+import { Component, EventEmitter, NgIterable, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDashboard } from '../../models/userDashboard';
 import { environment } from 'src/environments/environment.prod';
@@ -12,12 +12,15 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  @Output() closeModalEvent = new EventEmitter<boolean>();
   filter = {
     gender: '',
     city: '',
-    price: '',
+    price: '500000' ,
     name: '',
   };
+  count_filter: any = 0;
+  filter_user: any = null;
   users!: UserDashboard[];
   vip_user!: UserDashboard[];
   new_user!: UserDashboard[];
@@ -64,9 +67,9 @@ export class DashboardComponent implements OnInit {
   }
   clickEvent1() {
     if (this.active1 == false) {
-      this.filter.gender ='male';
+      this.filter.gender = 'male';
     } else {
-      this.filter.gender ='';
+      this.filter.gender = '';
     }
     if (this.active2) {
       this.active1 = !this.active1;
@@ -80,9 +83,9 @@ export class DashboardComponent implements OnInit {
   clickEvent2() {
     // this.gender!=document.getElementById('Female')?.getAttribute('value');
     if (this.active2 == false) {
-      this.filter.gender ='Female';
+      this.filter.gender = 'Female';
     } else {
-      this.filter.gender ='';
+      this.filter.gender = '';
     }
     if (this.active1) {
       this.active1 = false;
@@ -92,33 +95,42 @@ export class DashboardComponent implements OnInit {
     }
   }
   clickEvent3() {
-    this.filter.gender ='';
+    this.filter.gender = '';
     this.active1 = false;
     this.active2 = false;
   }
   removeName() {
-    this.filter.name ='';
+    this.filter.name = '';
   }
   removeCity() {
     this.filter.city = '';
   }
+  removePrice(){
+    this.filter.price = '';
+  }
   saveFilter() {
+
     // console.log(this.filter.gender);
     // console.log(this.filter.city);
     // console.log(this.filter.name);
     const data = {
       name: this.filter.name,
       gender: this.filter.gender,
-      // "price": this.filter.price,
-      // "city": this.filter.city,
+      price: this.filter.price,
+      city: this.filter.city,
     };
-    console.log(data);
-
     // console.log(data);
 
     this.homeService.getFilter(data).subscribe(
       (response) => {
-        console.log(response);
+        //console.log(response);
+        this.filter_user = response;
+        if (Object.keys(this.filter_user).length == 0) {
+          this.count_filter = 0;
+        } else {
+          this.count_filter = 1;
+        }
+
       },
       (error) => {
         console.log(error);

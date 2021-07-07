@@ -25,7 +25,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('', [DashboardController::class, 'showServiceUser']);
     Route::get('user_vip', [DashboardController::class, 'showVipUser']);
     Route::get('user_new', [DashboardController::class, 'showNewUser']);
-    Route::get('filter', [DashboardController::class, 'findUser']);
+    Route::post('filter', [DashboardController::class, 'findUser']);
     Route::get('/{id}', [DashboardController::class, 'getUser']);
     Route::get('message/{id}', [UserController::class, 'getMessageUser']);
     Route::post('order_service_provider', [OrderController::class, 'orderServiceProvider']);

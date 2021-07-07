@@ -40,6 +40,9 @@
                                             <td>{{order_details[i].start_at}}</td>
                                             <td>{{provider.price}}</td>
                                             <td *ngIf="order.status == 'pending'">Chờ phản hồi</td>
+                                            <td *ngIf="order.status == 'pending'">Chờ phản hồi</td>
+                                            <td *ngIf="order.status == 'pending'">Chờ phản hồi</td>
+
                                             <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
                                             <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Get Money</button></td>
                                             <td *ngIf="order.status=='done'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td>

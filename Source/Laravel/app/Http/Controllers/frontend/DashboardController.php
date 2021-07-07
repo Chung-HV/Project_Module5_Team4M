@@ -69,7 +69,8 @@ class DashboardController extends Controller
                 return $query->where('city',$city);
             })
             ->when( $price , function ($query,  $price) {
-                return $query->where('price',$price);
+                return $query->where('price','>','0')
+                ->where('price','<=',$price);
             })->get();
         })
             ->get();
