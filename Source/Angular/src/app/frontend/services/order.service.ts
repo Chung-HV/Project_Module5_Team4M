@@ -27,7 +27,7 @@ export class OrderService {
   }
 
   getByCustomer(customer_id:any){
-    return this.http.get<any>(`${environment.base_Url}orders/customer/${customer_id}`,{headers: this.reqHeader})
+    return this.http.get<any>(`${environment.base_Url}users/${customer_id}/orders`,{headers: this.reqHeader})
   }
 
   
