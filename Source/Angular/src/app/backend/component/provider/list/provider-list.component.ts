@@ -3,11 +3,11 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-provider-list',
+  templateUrl: './provider-list.component.html',
+  styleUrls: ['./provider-list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ProviderListComponent implements OnInit {
   providers: any[] = [];
   status:any
   constructor(private userService: UserService,

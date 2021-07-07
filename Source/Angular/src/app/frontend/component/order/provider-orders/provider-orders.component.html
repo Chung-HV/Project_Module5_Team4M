@@ -45,7 +45,7 @@
                                             <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                             <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
                                             <td *ngIf="order.status=='done'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'can report')">Get Money</button></td>
-                                            <td *ngIf="order.status=='can report'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td>
+                                            <td *ngIf="order.status=='can report'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'reported')">Report</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

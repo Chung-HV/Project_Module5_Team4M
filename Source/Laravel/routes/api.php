@@ -55,6 +55,7 @@ Route::get('admin/provider/service', [ServiceController::class, 'getAll']);
 Route::get('admin/provider/requesting', [ProviderController::class, 'getRequestingProvider']);
 Route::get('admin/provider/{id}/approve', [ProviderController::class, 'approveRequest']);
 Route::get('admin/provider/{id}/setvip', [ProviderController::class, 'setVip']);
+Route::get('admin/orders', [OrderController::class, 'getAll']);
 
 Route::get('provider/{id}', [ProviderController::class, 'findById']);
 Route::get('provider/{provider_id}/service', [ProviderController::class, 'getProvidingService']);

@@ -48,11 +48,6 @@ class OrderController extends Controller
         return response()->json($user_account);
     }
 
-    public function getByCustomer($id){
-        $orders = Order::where('user_id',$id)->get();
-        return response()->json($orders);
-    }
-
     public function getOrderByProvider($id){
         $provider = User::findOrFail($id);
         $orders = Order::where('service_provider_id','=',$id)->get();
@@ -91,6 +86,21 @@ class OrderController extends Controller
         }
         $data = ['orders'=>$orders,'customer'=>$customer,'order_details'=>$orderDetails,'providers'=>$providers];
         return response()->json($data,200);
+    }
+
+    public function getAll(){
+        $orders = Order::all();
+        $providers = [];
+        $customers = [];
+        $orderDetails = [];
+        foreach($orders as $order){
+            array_push($providers,$order->provider);
+            array_push($customers,$order->customer);
+            array_push($orderDetails,$order->order_detail);
+        }
+        $data = ['orders'=>$orders,'customers'=>$customers,'order_details'=>$orderDetails,'providers'=>$providers];
+        return response()->json($data,200);
+
     }
 
 }

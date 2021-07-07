@@ -6,9 +6,12 @@ import { DashboardComponent } from './component/layout/dashboard/dashboard.compo
 import { FooterComponent } from './component/layout/footer/footer.component';
 import { HeaderComponent } from './component/layout/header/header.component';
 import { RequestingComponent } from './component/provider/requesting/requesting.component';
-import { ListComponent } from './component/provider/list/list.component';
+import { ProviderListComponent } from './component/provider/list/provider-list.component';
+import { OrderListComponent } from './component/order/list/list.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -17,13 +20,15 @@ import { HomeComponent } from './component/home/home.component';
     FooterComponent,
     HeaderComponent,
     RequestingComponent,
-    ListComponent,
+    ProviderListComponent,
+    OrderListComponent,
     LoginComponent,
     HomeComponent,
   ],
   imports: [
     CommonModule,
-    BackendRoutingModule
+    BackendRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class BackendModule { }
