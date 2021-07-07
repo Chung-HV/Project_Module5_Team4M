@@ -22,16 +22,16 @@
                 <div class="d-flex img-avatar">
 
                   <div class="form-group" *ngIf="isShowOleImage">
-                    <img src="{{user.avatar}}" alt="image" style="object-fit: cover">
+                    <img src="{{base_Url_img+avatar}}" alt="image" style="object-fit: cover">
                   </div>
                   <div class="form-group" *ngIf="imgSrc">
-                    <img [src]="imgSrc" style="object-fit: cover">
+                    <img [src]="base_Url_img+imgSrc" style="object-fit: cover">
                   </div>
                 </div>
               </div>
 
               <div class="col-sm-4">
-                <td class="tbright" *ngIf="user.is_service_provider == 1">
+                <td class="tbright" *ngIf="is_service_provider == 1">
                   <p>Active account</p>
                   <label class="switch form-group">
                     <input

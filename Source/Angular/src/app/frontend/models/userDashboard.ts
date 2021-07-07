@@ -8,5 +8,4 @@ export class UserDashboard {
   public hobby !: string;
   public count_view !: any;
   public count_rent !: any;
-
 }

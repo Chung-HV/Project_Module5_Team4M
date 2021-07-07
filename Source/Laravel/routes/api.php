@@ -28,6 +28,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('user_new', [DashboardController::class, 'showNewUser']);
     Route::post('filter', [DashboardController::class, 'filterUser']);
     Route::get('/{id}', [DashboardController::class, 'getUser']);
+    Route::get('user/{id}', [DashboardController::class, 'getUser']);
     Route::post('/view', [DashboardController::class, 'increaseView']);
     Route::get('message/{id}', [UserController::class, 'getMessageUser']);
     Route::post('order_service_provider', [OrderController::class, 'orderServiceProvider']);
