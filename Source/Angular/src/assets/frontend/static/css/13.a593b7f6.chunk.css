@@ -81,6 +81,14 @@
 	outline: none
 }
 
+.cropimg-avatar .uploadAvatar
+{
+  width: 40%;
+  height: 30%;
+  padding: 0;
+  font-size: 16px;
+}
+
 .aside .example-custom-input,
 .aside input,
 .aside select {
