@@ -186,6 +186,9 @@ export class DashboardComponent implements OnInit {
   removePrice() {
     this.filter.price = '';
   }
+  removeFilter(){
+    this.filter_user = null;
+  }
   saveFilter() {
     const data = {
       name: this.filter.name,

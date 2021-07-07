@@ -34,8 +34,11 @@
       <div *ngIf="filter_user !== null">
         <section class="box vip-player">
           <h4 class="section-title">Kết quả tìm kiếm theo bộ lọc ({{this.count_filter}})</h4>
-          <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
-              style="margin-right: 5px;"></i><span>Làm mới</span></button>
+          <button class="refresh-btn" (click)="removeFilter()"><i class="fas fa-sync fa-spin" aria-hidden="true"
+              style="margin-right: 5px;" >
+            </i>
+              <span>Thoát khỏi bộ lọc</span>
+            </button>
         </section>
         <div class="row flex-card" *ngIf="count_filter >0">
 
