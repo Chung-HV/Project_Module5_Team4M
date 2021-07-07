@@ -30,13 +30,13 @@ export class ProfileUserComponent implements OnInit {
       name: ['', [Validators.required, Validators.maxLength(30)]],
       birth_day: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      city: ['', [Validators.required, Validators.maxLength(30)]],
+      city: ['', [Validators.required, Validators.maxLength(15)]],
       nation: ['', [Validators.required, Validators.maxLength(30)]],
       height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
       weight: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: ['', [Validators.maxLength(9000)]],
-      requirement: ['', [Validators.maxLength(9000)]],
-      hobby: ['', [Validators.maxLength(9000)]],
+      introducion: ['', [Validators.maxLength(225)]],
+      requirement: ['', [Validators.maxLength(225)]],
+      hobby: ['', [Validators.maxLength(225)]],
       facebook: ['', [Validators.maxLength(100)]],
       price: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(20)]],
 
@@ -87,13 +87,19 @@ export class ProfileUserComponent implements OnInit {
     }
 
     this.userService.updateUserProfile(this.id, formData).subscribe(
-      (res) => {
-
-        this.toastr.success('Cập nhật thành công!', 'Thông báo');
-
-      },
-      (error) => {
-        this.toastr.error('Cập nhật thất bại!', 'Thông báo');
+      {
+        next: (res) => {
+          // thong bao thanh cong
+          this.toastr.success('Cập nhật thành công!','Thông báo');
+          //reset form
+          Object.keys(this.myForm.controls).forEach((key) => {
+            this.myForm.get(key)?.setValue('');
+            this.myForm.get(key)?.setErrors(null);
+          });
+        },
+        error: () => {
+          this.toastr.error('Cập nhật thất bại!','Thông báo');
+        }
       }
     );
   }
@@ -166,5 +172,9 @@ export class ProfileUserComponent implements OnInit {
   checkValueActive(event: number) {
     this.onOff = event;
     // console.log(this.onOff);
+  }
+
+  get getControl() {
+    return this.myForm.controls;
   }
 }
