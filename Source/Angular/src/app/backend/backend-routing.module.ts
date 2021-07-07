@@ -4,7 +4,8 @@ import { HomeComponent } from './component/home/home.component';
 import { DashboardComponent } from './component/layout/dashboard/dashboard.component';
 
 import { LoginComponent } from './component/login/login.component';
-import { ListComponent } from './component/provider/list/list.component';
+import { OrderListComponent } from './component/order/list/list.component';
+import { ProviderListComponent } from './component/provider/list/provider-list.component';
 import { RequestingComponent } from './component/provider/requesting/requesting.component';
 
 const routes: Routes = [
@@ -22,11 +23,15 @@ const routes: Routes = [
       },
       {
         path: 'provider',
-        component: ListComponent,
+        component: ProviderListComponent,
       },
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'orders',
+        component: OrderListComponent,
       },
     ],
   },

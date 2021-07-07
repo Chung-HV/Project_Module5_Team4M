@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './backend/component/layout/dashboard/dashboard.component';
 import { LoginComponent } from './backend/component/login/login.component';
-import { ListComponent } from './backend/component/provider/list/list.component';
+import { ProviderListComponent } from './backend/component/provider/list/provider-list.component';
 import { RequestingComponent } from './backend/component/provider/requesting/requesting.component';
 
 const routes: Routes = [
