@@ -5,8 +5,7 @@
   <div class="container">
     <div class="player-profile-left-wrap col-md-3">
       <div class="avt avt-lg">
-        <img src="{{base_Url_img+user.avatar}}"
-          class="avt-img" alt="PD" style="object-fit: cover;">
+        <img src="{{base_Url_img+user.avatar}}" class="avt-img" alt="PD" style="object-fit: cover;">
       </div>
       <div class="rent-time-wrap">
         <p class="ready">Đang sẵn sàng</p>
@@ -39,23 +38,39 @@
         <!-- <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
             class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>&nbsp;<span>216
             <span>Đánh giá</span></span></div> -->
-        <div class="text-center"><button class="btn-my-style red" data-toggle="modal"
-            data-target="#rent">Thuê</button>
-            <!-- <button class="btn-my-style white">Donate</button> -->
-            <button
-            class="btn-my-style gray"><i class="fas fa-comment-alt"></i>Chat</button></div>
+        <div class="text-center"><button class="btn-my-style red" data-toggle="modal" data-target="#rent">Thuê</button>
+          <!-- <button class="btn-my-style white">Donate</button> -->
+          <button class="btn-my-style gray"><i class="fas fa-comment-alt"></i>Chat</button>
+        </div>
       </div>
     </div>
     <div class="player-profile-main-wrap col-md-6 col-md-pull-3">
       <div>
         <div class="row">
-          <div class="center-item col-md-12"><span
-              class="name-player-profile hidden-over-name">{{user.name}}</span>
-              <!-- <button class="btn-follow-player"><i
-                class="fas fa-heart"></i>&nbsp;<span class="plus"><span>Theo dõi</span></span></button> -->
-              </div>
+          <div class="center-item col-md-12"><span class="name-player-profile hidden-over-name">{{user.name}}</span><button class="btn-follow-player"><i class="fas fa-heart"></i>&nbsp;<span class="plus"><span>Theo dõi</span></span></button></div>
+       </div>
+       <div class="nav-player-profile row">
+        <div class="col-md-3 col-xs-6">
+           <div class="item-nav-name"><span>Lượt view</span></div>
+           <div class="item-nav-value">{{user.count_view }} &nbsp; <span>người</span></div>
         </div>
-        
+        <div class="col-md-3 col-xs-6">
+          <div class="item-nav-name"><span>Lượt thuê</span></div>
+          <div class="item-nav-value">{{user.count_rent }} &nbsp; <span>lần</span></div>
+       </div>
+        <!-- <div class="col-md-3 col-xs-6">
+           <div class="item-nav-name"><span>Đã được thuê</span></div>
+           <div class="item-nav-value">2962&nbsp;<span>giờ</span></div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+           <div class="item-nav-name"><span>Tỷ lệ hoàn thành</span></div>
+           <div class="item-nav-value">98.1&nbsp;%</div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+           <div class="item-nav-name"><span>Tình trạng thiết bị</span></div>
+           <div class="item-nav-value"><i class="fas fa-ban"></i></div>
+        </div> -->
+     </div>
         <hr>
         <div class="title-player-profile row">
           <div class="col-md-12"><span>Giới thiệu </span>
@@ -235,7 +250,8 @@
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn-fill btn btn-danger" (click)="saveOrder()"><span>Thuê</span></button>
-            <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close"><span>Đóng</span></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"
+              aria-label="Close"><span>Đóng</span></button>
           </div>
         </div>
       </form>

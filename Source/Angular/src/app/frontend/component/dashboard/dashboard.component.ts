@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
     price: '500000' ,
     name: '',
   };
+  count_view!:number;
   count_filter: any = 0;
   filter_user: any = null;
   users!: UserDashboard[];
@@ -39,6 +40,9 @@ export class DashboardComponent implements OnInit {
     this.homeService.getAll().subscribe(
       (data) => {
         this.users = data;
+        console.log(this.users);
+
+
       },
       (error) => {
         console.log(error);
@@ -136,5 +140,19 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  increaseView($id:any){
+    const data={
+      id: $id,
+      user_id:localStorage.getItem('user_id')
+    }
+    this.homeService.increaseView(data).subscribe(
+      (response) =>{
+
+        },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 }

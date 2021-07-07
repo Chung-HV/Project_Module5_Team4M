@@ -44,19 +44,25 @@ class DashboardController extends Controller
         ->where('is_admin', '=', '0')
         ->where('is_service_provider','=','1')
         ->get();
+
         foreach($user as $key => $sv){
             $sv->services->all();
         }
         return response()->json($user);
     }
-    public function findUser(Request $request)
+    public function filterUser(Request $request)
     {
 
         $name = $request->name;
         $gender = $request->gender;
         $city = $request->city;
         $price = $request->price;
-
+        // $count_view='DESC';
+        // if($request->count_view == "min"){
+        //     $count_view ='ASC';
+        // }
+        // $user = User::orderBy('count_view',$count_view)->get();
+        // return response()->json($user);
         $users = User::where(function ($query) use ($name, $gender,$city,$price) {
             $query->where('name', 'like', '%' . $name . '%')
             ->where('is_admin', '=', '0')
@@ -68,6 +74,7 @@ class DashboardController extends Controller
             ->when($city , function ($query, $city) {
                 return $query->where('city',$city);
             })
+
             ->when( $price , function ($query,  $price) {
                 return $query->where('price','>','0')
                 ->where('price','<=',$price);
@@ -78,5 +85,20 @@ class DashboardController extends Controller
                 $user->services->all();
             }
         return response()->json($users);
+    }
+    public function increaseView(Request $request){
+
+        if($request->id !=$request->user_id){
+            $user = User::find($request->id);
+            $count = $user->count_view;
+           $user->count_view =$count+1;
+           $user->save();
+           return response()->json("ss");
+        }
+        else{
+            return response()->json("khong the tang view ban than");
+        }
+
+
     }
 }

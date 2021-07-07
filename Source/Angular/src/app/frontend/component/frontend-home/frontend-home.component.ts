@@ -101,6 +101,7 @@ export class FrontendHomeComponent implements OnInit {
       next: (res: any) => {
         this.messages = res;
         this.countMessages = Object.keys(this.messages).length;
+
       },
       error: (error: any) => {},
     });

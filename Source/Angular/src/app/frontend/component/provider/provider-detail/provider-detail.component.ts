@@ -21,10 +21,11 @@ export class ProviderDetailComponent implements OnInit {
   users!: any;
   price!: number;
   message = '';
-  base_Url_img=environment.base_Url_img;
+  base_Url_img = environment.base_Url_img;
 
   user_id = localStorage.getItem('user_id');
   user_server_provider!: any;
+  count_view!: any;
   order = {
     address: '',
     start_at: '',
@@ -42,14 +43,13 @@ export class ProviderDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
-   
+
     // console.log(localStorage.getItem('user_id'));
   }
   getUser(id: any) {
     this.homeService.getUser(id).subscribe(
       (data) => {
         this.users = data;
-        console.log(data);
       },
       (error) => {
         console.log(error);

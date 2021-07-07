@@ -45,8 +45,12 @@
                 style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>{{user.introducion}}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                <p>
+                  <span>{{user.count_view}} &nbsp;<i class="fas fa-eye"></i></span>
+                  <span>{{user.count_rent}} &nbsp;<i class="fa fa-download"></i><br></span>
+                </p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer"
+                    (click)="increaseView(user.id)">
                     <span>Thuê ngay</span></a></div>
               </div>
             </div>
@@ -83,22 +87,28 @@
                 style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>{{user.introducion}}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                <p>
+                  <span>{{user.count_view}} &nbsp;<i class="fas fa-eye"></i> &nbsp;</span>
+                  <span>{{user.count_rent}} &nbsp;<i class="fa fa-download"></i><br></span>
+
+                </p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer"
+                    (click)="increaseView(user.id)">
                     <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
               <h3 class="player-name">
-                <a [routerLink]="['/frontend/provider-detail',user.id]">{{user.name}}</a>
+                <a [routerLink]="['/frontend/provider-detail',user.id]"
+                  (click)="increaseView(user.id)">{{user.name}}</a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">{{ user.hobby }}</p>
-              <!-- <div class="category">
+              <p class="player-title">{{ user.introducion }}</p>
+              <div class="category">
                 <div class="div--flex"><img
                     src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
-                    alt="category logo"><span>Liên minh Huyền thoại</span></div>
-              </div> -->
+                    alt="category logo"><span>{{ user.hobby }}</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -117,14 +127,19 @@
                 style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>{{ user.introducion }}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                <p>
+                  <span>{{user.count_view}} &nbsp;<i class="fas fa-eye"></i></span>
+                  <span>{{user.count_rent}} &nbsp;<i class="fa fa-download"></i><br></span>
+                </p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer"
+                    (click)="increaseView(user.id)">
                     <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
               <h3 class="player-name">
-                <a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">{{user.name}} </a>
+                <a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer"
+                  (click)="increaseView(user.id)">{{user.name}} </a>
                 <div class="player-status ready"> </div>
               </h3>
               <p class="player-title">{{ user.hobby }}</p>
@@ -140,8 +155,8 @@
       <div>
         <section class="rent-player">
           <h4 class="section-title"><span>Mới Tham Gia</span></h4>
-          <button hidden class="refresh-btn"><i class="fas fa-sync fa-spin" aria-hidden="true"
-              style="margin-right: 5px;"></i><span>Làm mới</span></button>
+          <button hidden class="refresh-btn"><i aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
+              mới</span></button>
         </section>
         <div class="row flex-card">
           <div class="player-information-card-wrap" *ngFor="let user of new_user">
@@ -150,14 +165,18 @@
                 style="object-fit: cover;">
               <div class="player-price">{{user.price|number}} đ/h</div>
               <div class="hidden-information">
-                <p><span>{{ user.introducion }}<br></span></p>
-                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer">
+                <p>
+                  <span>{{user.count_view}} &nbsp;<i class="fas fa-eye"></i></span>
+                  <span>{{user.count_rent}} &nbsp;<i class="fa fa-download"></i><br></span>
+                </p>
+                <div class="rent"><a [routerLink]="['/frontend/provider-detail',user.id]" rel="noopener noreferrer"
+                    (click)="increaseView(user.id)">
                     <span>Thuê ngay</span></a></div>
               </div>
             </div>
             <div class="player-information">
               <h3 class="player-name">
-                <a [routerLink]="['/provider-detail',user.id]">{{user.name}}</a>
+                <a [routerLink]="['/provider-detail',user.id]" (click)="increaseView(user.id)">{{user.name}}</a>
                 <div class="player-status ready"> </div>
               </h3>
               <p class="player-title">{{ user.hobby }}</p>
@@ -224,13 +243,14 @@
                 <td class="text-left"><span>Giá Thuê</span></td>
                 <td class="text-right">
                   <div class="mb-4"></div>
-                   <div class="player-select div-autoComplete-search">
+                  <div class="player-select div-autoComplete-search">
                     <input class="filter-modal" name="price" type="text" [ngModel]="filter.price | number" disabled>
                     <div class="suggestion-game-hide"></div>
                   </div>
 
-                    <input  id="rangeInput" type="range" ng-model="model.range" min="0" max="10000000" step="100000" [(ngModel)]="filter.price">
-                    <!-- <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal">
+                  <input id="rangeInput" type="range" ng-model="model.range" min="0" max="10000000" step="100000"
+                    [(ngModel)]="filter.price">
+                  <!-- <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal">
                       <div class="noUi-base">
                          <div class="noUi-connects">
                             <div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.5, 1);"></div>
@@ -283,8 +303,8 @@
 
         </div>
 
-        <div class="text-center modal-footer"><button type="submit" class="btn btn-danger"
-            (click)="saveFilter()" data-dismiss="modal" aria-label="Close"><span>Bộ
+        <div class="text-center modal-footer"><button type="submit" class="btn btn-danger" (click)="saveFilter()"
+            data-dismiss="modal" aria-label="Close"><span>Bộ
               lọc</span></button>
         </div>
 
