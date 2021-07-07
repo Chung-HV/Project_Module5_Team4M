@@ -26,6 +26,7 @@ export class ProviderDetailComponent implements OnInit {
 
   user_id = localStorage.getItem('user_id');
   user_server_provider!: any;
+  count_view!: any;
   order = {
     address: '',
     start_at: '',
@@ -51,7 +52,6 @@ export class ProviderDetailComponent implements OnInit {
     this.homeService.getUser(id).subscribe(
       (data) => {
         this.users = data;
-        console.log(data);
       },
       (error) => {
         console.log(error);
