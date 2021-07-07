@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/frontend/services/order.service';
 import { ProviderService } from 'src/app/frontend/services/provider.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-provider-orders',
@@ -15,6 +16,10 @@ export class ProviderOrdersComponent implements OnInit {
   orders: any
   customers: any
   order_details: any
+  base_Url_img = environment.base_Url_img;
+
+
+  order_detail:any = [];
   constructor(
     private providerService: ProviderService,
     private orderService: OrderService,
@@ -35,7 +40,6 @@ export class ProviderOrdersComponent implements OnInit {
         this.customers = data.customers;
         this.order_details = data.order_details;
         this.provider = data.provider;
-        console.log(this.order_details);
       }
     })
   }
@@ -50,5 +54,24 @@ export class ProviderOrdersComponent implements OnInit {
         // location.reload();
       }
     })
+  }
+
+  setOrderDetailData(i:any){
+    const data:any = {
+      'id': this.orders[i].id,
+      'customer': this.customers[i].name,
+      'avatar': this.base_Url_img+this.customers[i].avatar,
+      'address': this.order_details[i].address,
+      'time': this.order_details[i].time,
+      'start_time': this.order_details[i].start_time,
+      'date': this.order_details[i].start_at,
+      'cost': this.customers[i].price*this.order_details[i].time,
+      'status': this.orders[i].status,
+      'report': 'report',
+    }
+    this.order_detail = [];
+    this.order_detail.push(data);
+    console.log(data.id);
+    
   }
 }

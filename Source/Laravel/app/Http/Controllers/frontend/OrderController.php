@@ -50,7 +50,7 @@ class OrderController extends Controller
 
     public function getOrderByProvider($id){
         $provider = User::findOrFail($id);
-        $orders = Order::where('service_provider_id','=',$id)->get();
+        $orders = Order::where('service_provider_id','=',$id)->orderBy('created_at','desc')->get();
         $customers = [];
         $orderDetails = [];
         foreach($orders as $order){
@@ -77,7 +77,7 @@ class OrderController extends Controller
 
     public function getOrderByCustomer($id){
         $customer = User::findOrFail($id);
-        $orders = Order::where('user_id','=',$id)->get();
+        $orders = Order::where('user_id','=',$id)->orderBy('created_at','desc')->get();
         $providers = [];
         $orderDetails = [];
         foreach($orders as $order){
@@ -89,7 +89,7 @@ class OrderController extends Controller
     }
 
     public function getAll(){
-        $orders = Order::all();
+        $orders = Order::orderBy('created_at','desc')->paginate(50);
         $providers = [];
         $customers = [];
         $orderDetails = [];

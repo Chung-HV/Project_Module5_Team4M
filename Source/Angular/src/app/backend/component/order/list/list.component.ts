@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaginationInstance } from 'ngx-pagination';
 import { OrderService } from 'src/app/backend/services/order.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class OrderListComponent implements OnInit {
   order_details:any
   customers:any
   providers:any
-  constructor(private orderService: OrderService) { }
+  private paginate!: PaginationInstance;
+  constructor(
+    private orderService: OrderService,
+    ) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -21,9 +25,10 @@ export class OrderListComponent implements OnInit {
     this.orderService.getAll().subscribe({
       next: (data:any)=>{
         this.orders = data.orders,
-        this.providers = data.providers,
-        this.customers = data.customers,
-        this.order_details = data.order_details,
+
+        this.providers = this.orders.data.providers,
+        this.customers = this.orders.data.customers,
+        this.order_details = this.orders.data.order_details,
         console.log(this.order_details);
         
       }

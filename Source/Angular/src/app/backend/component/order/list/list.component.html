@@ -48,8 +48,8 @@
 
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                                    <i class="fas fa-search"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -68,21 +68,28 @@
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let order of orders, let i = index">
+                                        <tbody *ngFor="let order of orders.data, let i = index">
                                             <tr>
-                                                <td>{{i + 1}}</td>
+                                                <td>{{i+1}}</td>
                                                 <td>{{order.provider.name}}</td>
-                                                <td>{{customers[i].name}}</td>
-                                                <td>{{order_details[i].start_at}}</td>
-                                                <td>{{order_details[i].time*providers[i].price}}</td>
-                                                <td>{{order.status}}</td>
+                                                <td>{{order.customer.name}}</td>
+                                                <td>{{order.order_detail.start_at}}</td>
+                                                <td>{{order.order_detail.time*order.provider.price}}</td>
+                                                <td *ngIf="order.status == 'pending'">Chờ phản hồi</td>
+                                                <td *ngIf="order.status == 'accepted'">Đang tiến hành</td>
+                                                <td *ngIf="order.status == 'done'">Đã hoàn thành</td>
+                                                <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                                 <td *ngIf="order.status == 'reported'"><button class="btn btn-block btn-small btn-danger"></button>Duyệt</td>
                                                 <!-- <td *ngIf="provider.is_active == 0">Paused</td>
                                                 <td *ngIf="provider.is_vip == 0"><button class="btn btn-danger btn-sm" (click)="setVip(provider.id)">Set Vip</button></td>
                                                 <td *ngIf="provider.is_vip == 1"><button class="btn btn-info btn-sm" disabled>Vip</button></td> -->
                                             </tr>
 
+
                                         </tbody>
+                                        <tfoot>
+
+                                        </tfoot>
 
                                     </table>
                                 </div>
