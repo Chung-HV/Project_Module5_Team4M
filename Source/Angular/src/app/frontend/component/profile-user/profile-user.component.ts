@@ -6,6 +6,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 
 import { User } from '../../models/user';
+import { DataService } from '../../services/data.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,7 +16,7 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileUserComponent implements OnInit {
   id!: number;
-  user!: User;
+  user!: any;
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
@@ -49,7 +50,9 @@ export class ProfileUserComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private data: DataService
+
   ) {}
 
   ngOnInit(): void {
@@ -106,6 +109,7 @@ export class ProfileUserComponent implements OnInit {
     // console.log(formData.has('avatar'));
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
+        this.user = this.data.getCurentUser(res)
         //   this.router.navigate(['admin/book-list']);
         this.toastr.success('Cập nhật thông tin thành công', 'Thông báo');
         // formData.delete('city');
@@ -150,7 +154,7 @@ export class ProfileUserComponent implements OnInit {
 
   onSubmit() {
     this.updateProfileUser();
-    window.location.reload();
+
   }
 
   getImgFile($event: any) {
