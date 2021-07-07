@@ -20,7 +20,7 @@
               <div class="col-sm-8">
                 <h3>Thêm mới album ảnh</h3>
                 <div class="d-flex img-avatar">
-                  <img *ngFor='let url of images'  [src]="url" style="margin: 3px; border-radius: 5px;">
+                  <img *ngFor='let url of images'  [src]="url" style="margin: 3px; border-radius: 5px;object-fit: cover;">
                   <!-- <div class="form-group" *ngIf="isShowOleImage">
                     <img src="{{user.avatar}}" alt="image" style="object-fit: cover">
                   </div>
@@ -30,29 +30,13 @@
                 </div>
               </div>
 
-              <div class="col-sm-4">
-                <!-- <td class="tbright" *ngIf="user.is_service_provider == 1">
-                  <p>Active account</p>
-                  <label class="switch form-group">
-                    <input
-                      type="checkbox"
-                      name="is_active "
-                      (change)="checkValueActive(user.is_active ? 1 : 0)"
-                      (click)="requestActive()"
-                      [checked]="user.is_active"
-                    />
-                    <span class="slider round"></span>
-                  </label>
-                </td> -->
-              </div>
-
             </div>
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
                 <form
                   class="from-userinfo"
-                  [formGroup]="myForm"
-                  (ngSubmit)="onSubmit()"
+
+                  (ngSubmit)="onSubmited()"
                 >
 
                   <div class="fieldGroup">
@@ -65,7 +49,7 @@
                         formControlName="filePath"
                         (change)="onFileChange($event)"
                       />
-                      <!-- (change)="getImgFile($event)" -->
+
                     </div>
                   </div>
 
@@ -84,5 +68,5 @@
     </div>
   </div>
   <app-frontend-footer></app-frontend-footer>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
 </body>

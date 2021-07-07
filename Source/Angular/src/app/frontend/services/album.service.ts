@@ -27,6 +27,10 @@ export class AlbumService {
     });
   }
 
+  getById(user_id: any): Observable<any> {
+    return this.http.get<any>(`${environment.base_Url}users/${user_id}`);
+  }
+
   createAlbum(id: number, album: any): Observable<any> {
     var auth_token = localStorage.getItem('token');
     var reqHeader = new HttpHeaders({
@@ -36,8 +40,10 @@ export class AlbumService {
     });
 
 
-    return this.http.post(`${environment.base_Url}album/create/${id}`, album, {
+    return this.http.post(`${environment.base_Url}users/album/create/${id}`, album, {
       headers: reqHeader,
     });
   }
+
+  
 }

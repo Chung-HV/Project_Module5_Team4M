@@ -46,6 +46,7 @@ Route::prefix('users')->group(function () {
         Route::post('/update/{id}', [AuthController::class, 'update']);
         Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
         Route::post('/album/create/{id}', [AlbumController::class, 'create']);
+        Route::get('/album/{id}', [AlbumController::class, 'getAlbumById']);
 
 
     });

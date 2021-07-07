@@ -55,7 +55,7 @@
                 class="fas fa-heart"></i>&nbsp;<span class="plus"><span>Theo dõi</span></span></button> -->
               </div>
         </div>
-        
+
         <hr>
         <div class="title-player-profile row">
           <div class="col-md-12"><span>Giới thiệu </span>
@@ -71,12 +71,14 @@
         <div class="content-player-profile">
 
           <div class="album-of-player">
-            <div>
-              <a href="https://bitly.com.vn/0ncpbq" style="display: block;">
+            <div *ngFor="let album of albums" >
+
+              <a  style="display: block;">
                 <img
-                  src="assets/frontend/static/images/8eaeaaf9-0b1b-4aec-abe5-f3438256fe8b__26fd9800-921e-11eb-838d-05ed4475c295__player_album.jpg"
+                  src="{{base_Url_img+album}}"
                   class=""
-                  alt="https://playerduo.com/api/upload-service/thumbs/medium/8eaeaaf9-0b1b-4aec-abe5-f3438256fe8b__26fd9800-921e-11eb-838d-05ed4475c295__player_album.jpg"></a>
+                  alt="">
+              </a>
 
               <div class="clearfix"></div>
             </div>
