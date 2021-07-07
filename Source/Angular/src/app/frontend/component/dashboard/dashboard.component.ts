@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
   active_min: boolean = false;
   active_max_rent: boolean = false;
   active_min_rent: boolean = false;
-
   constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {
@@ -51,7 +50,6 @@ export class DashboardComponent implements OnInit {
     this.homeService.getAll().subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users);
       },
       (error) => {
         console.log(error);
@@ -108,9 +106,9 @@ export class DashboardComponent implements OnInit {
       this.active_min_rent = !this.active_min_rent;
     }
   }
-  clearRent(){
-    this.active_max_rent=false;
-    this.active_max_rent=false;
+  clearRent() {
+    this.active_max_rent = false;
+    this.active_max_rent = false;
   }
   clickMaxView() {
     this.clearRent();
@@ -186,7 +184,7 @@ export class DashboardComponent implements OnInit {
   removePrice() {
     this.filter.price = '';
   }
-  removeFilter(){
+  removeFilter() {
     this.filter_user = null;
   }
   saveFilter() {

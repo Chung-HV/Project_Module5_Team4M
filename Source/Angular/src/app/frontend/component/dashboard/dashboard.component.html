@@ -254,20 +254,6 @@
 
                   <input id="rangeInput" type="range" ng-model="model.range" min="0" max="10000000" step="100000"
                     [(ngModel)]="filter.price">
-                  <!-- <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal">
-                      <div class="noUi-base">
-                         <div class="noUi-connects">
-                            <div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.5, 1);"></div>
-                         </div>
-                         <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
-                            <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="100000.0" aria-valuenow="5000.0" aria-valuetext="5000.00"></div>
-                         </div>
-                         <div class="noUi-origin" style="transform: translate(-50%, 0px); z-index: 6;">
-                            <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="5000.0" aria-valuemax="5000000.0" aria-valuenow="100000.0" aria-valuetext="100000.00"></div>
-                         </div>
-                      </div>
-                   </div> -->
-
                 </td>
                 <td>
                   <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
@@ -279,16 +265,20 @@
                 <td class="text-left"><span>Sống tại</span></td>
                 <td class="text-right">
                   <div class="mb-4"></div>
-                  <div class="player-select div-autoComplete-search">
-                    <input class="filter-modal" name="citySelect" type="text" [(ngModel)]="filter.city">
-                    <div class="suggestion-game-hide"></div>
+                  <div class="filter-modal">
+                    <select [(ngModel)]="filter.city" class="form-control">
+                      <option value="Hà Nội">Hà Nội</option>
+                      <option value="Hồ Chí Minh">Hồ Chí Minh"</option>
+                      <option value="Đà Nẵng">Đà Nẵng"</option>
+                      <option value="">Khác</option>
+                    </select>
                   </div>
                 </td>
-                <td>
-                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
-                      (click)="removeCity()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                  </div>
-                </td>
+                  <td>
+                    <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                        (click)="removeCity()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                    </div>
+                  </td>
               </tr>
               <tr>
                 <td class="text-left"><span>Tên</span>/Người yêu:</td>
