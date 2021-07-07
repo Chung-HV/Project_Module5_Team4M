@@ -202,7 +202,7 @@ export class DashboardComponent implements OnInit {
         if (Object.keys(this.filter_user).length == 0) {
           this.count_filter = 0;
         } else {
-          this.count_filter = 1;
+          this.count_filter = Object.keys(this.filter_user).length;
         }
       },
       (error) => {
