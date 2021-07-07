@@ -73,13 +73,13 @@
         </div>
       </div>
       <div>
-        <section class="box vip-player">
+        <section class="box vip-player" *ngIf="filter_user == null">
           <h4 class="section-title">VIP PLAYER</h4>
           <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
               style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
         </section>
-        <div class="row flex-card">
+        <div class="row flex-card" *ngIf="filter_user == null">
 
           <div class="player-information-card-wrap" *ngFor="let user of vip_user">
             <div class="player-avatar">
@@ -113,7 +113,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div *ngIf="filter_user == null">
         <section class="hot-player">
           <h4 class="section-title">HOT PLAYER</h4>
           <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
@@ -153,12 +153,12 @@
         </div>
       </div>
       <div>
-        <section class="rent-player">
+        <section class="rent-player" *ngIf="filter_user == null">
           <h4 class="section-title"><span>Mới Tham Gia</span></h4>
           <button hidden class="refresh-btn"><i aria-hidden="true" style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
         </section>
-        <div class="row flex-card">
+        <div class="row flex-card" *ngIf="filter_user == null">
           <div class="player-information-card-wrap" *ngFor="let user of new_user">
             <div class="player-avatar">
               <img src="{{base_Url_img+user.avatar}}" class="" alt="PD" id="avt-img-reponsiver"
@@ -233,6 +233,7 @@
                           class="fa fa-user-secret" aria-hidden="true"></i>&nbsp;<span>Nữ</span></span></label>
                   </div>
                 </td>
+
                 <td>
                   <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
                       (click)="clickEvent3()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
@@ -298,6 +299,54 @@
                   </div>
                 </td>
               </tr>
+              <tr>
+                <td class="text-left"><span>Lượt xem</span></td>
+                <td class="text-right">
+                  <div data-toggle="buttons" class="btn-group">
+                    <label type="button" class="btn btn-default" (click)="clickMaxView()"
+                      [ngClass]="active_max ? 'active' : 'null'" id="max_view">
+                      <span>
+                        <i class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Cao nhất</span>
+                      </span>
+
+                    </label>
+
+                    <label type="button" class="btn btn-default" (click)="clickMinView()"
+                      [ngClass]="active_min ? 'active' : 'null'" id="min_view"><span><i class="fa fa-user-secret"
+                          aria-hidden="true"></i>&nbsp;<span>Thấp Nhất</span></span></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                      (click)="clearView()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left"><span>Lượt thuê</span></td>
+                <td class="text-right">
+                  <div data-toggle="buttons" class="btn-group">
+                    <label type="button" class="btn btn-default" (click)="clickMaxRent()"
+                      [ngClass]="active_max_rent ? 'active' : 'null'" id="max_rent">
+                      <span>
+                        <i class="fa fa-mars" aria-hidden="true"></i>&nbsp;<span>Cao nhất</span>
+                      </span>
+
+                    </label>
+
+                    <label type="button" class="btn btn-default" (click)="clickMinRent()"
+                      [ngClass]="active_min_rent ? 'active' : 'null'" id="min_rent"><span><i class="fa fa-user-secret"
+                          aria-hidden="true"></i>&nbsp;<span>Thấp Nhất</span></span></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                      (click)="clearRent()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -312,11 +361,4 @@
     </form>
   </div>
 </div>
-<script>
-  $('document').ready(function () {
-    $('button').click(function () {
-      $('button').removeClass('active');
-      $(this).addClass('active');
-    });
-  });
-</script>
+

@@ -22,6 +22,7 @@ export class ProviderDetailComponent implements OnInit {
   price!: number;
   message = '';
   base_Url_img = environment.base_Url_img;
+  submitted = false;
 
   user_id = localStorage.getItem('user_id');
   user_server_provider!: any;
@@ -58,6 +59,7 @@ export class ProviderDetailComponent implements OnInit {
   }
 
   saveOrder(): void {
+    this.submitted = true;
     this.users.forEach((user: any) => {
       this.user_server_provider = user.id;
     });
@@ -76,6 +78,7 @@ export class ProviderDetailComponent implements OnInit {
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {
         console.log(response);
+        // this.router.navigate(['frontend/user/orders'])
       },
       (error) => {
         console.log(error);

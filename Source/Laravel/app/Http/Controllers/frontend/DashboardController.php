@@ -57,12 +57,23 @@ class DashboardController extends Controller
         $gender = $request->gender;
         $city = $request->city;
         $price = $request->price;
-        // $count_view='DESC';
-        // if($request->count_view == "min"){
-        //     $count_view ='ASC';
-        // }
-        // $user = User::orderBy('count_view',$count_view)->get();
-        // return response()->json($user);
+        $count='count_view';
+        $sort = 'DESC';
+        if($request->count_view){
+            $count = 'count_view';
+            if($request->count_view=='max'){
+                $sort='DESC';
+            }else{
+                $sort ='ASC';
+            }
+        }else if($request->count_rent){
+            $count='count_rent';
+            if($request->count_rent=='max'){
+                $sort='DESC';
+            }else{
+                $sort ='ASC';
+            }
+        }
         $users = User::where(function ($query) use ($name, $gender,$city,$price) {
             $query->where('name', 'like', '%' . $name . '%')
             ->where('is_admin', '=', '0')
@@ -74,13 +85,13 @@ class DashboardController extends Controller
             ->when($city , function ($query, $city) {
                 return $query->where('city',$city);
             })
-
             ->when( $price , function ($query,  $price) {
                 return $query->where('price','>','0')
                 ->where('price','<=',$price);
             })->get();
         })
-            ->get();
+        ->orderBy("$count",$sort)
+        ->get();
             foreach ($users as $key => $user) {
                 $user->services->all();
             }

@@ -183,7 +183,8 @@
                 </tr>
                 <tr>
                   <td><span>Điểm Hẹn:</span></td>
-                  <td><input type="text" class="form-control" [(ngModel)]="order.address" name="address"></td>
+                  <td><input type="text" class="form-control" required [(ngModel)]="order.address" name="address"></td>
+           
                 </tr>
 
 
@@ -249,7 +250,7 @@
             </table>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn-fill btn btn-danger" (click)="saveOrder()"><span>Thuê</span></button>
+            <button type="submit" class="btn-fill btn btn-danger" (click)="saveOrder()"  ><span>Thuê</span></button>
             <button type="button" class="btn btn-default" data-dismiss="modal"
               aria-label="Close"><span>Đóng</span></button>
           </div>
