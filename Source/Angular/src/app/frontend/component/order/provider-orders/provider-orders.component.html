@@ -33,7 +33,7 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let order of orders,let i = index">
-                                            <td>{{customers[i].name}}</td>
+                                            <td><a data-toggle="modal" data-target="#filter" (click)="setOrderDetailData(i)">{{customers[i].name}}</a></td>
                                             <td>{{order_details[i].address}}</td>
                                             <td>{{order_details[i].time}}</td>
                                             <td>{{order_details[i].start_time}}</td>
@@ -44,14 +44,15 @@
                                             <td *ngIf="order.status == 'done'">Đã hoàn thành</td>
                                             <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                             <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td>
+                                            <td *ngIf="order.status=='accepted'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'request done')">Done</button></td>
                                             <td *ngIf="order.status=='done'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'can report')">Get Money</button></td>
-                                            <td *ngIf="order.status=='can report'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td>
+                                            <td *ngIf="order.status=='can report'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'reported')">Report</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="text-center mt-20 col-md-12"><span>Không có dữ liệu</span></div>
+                        <div class="text-center mt-20 col-md-12" *ngIf="orders=='null'"><span>Không có dữ liệu</span></div>
                     </div>
                 </div>
             </div>
@@ -59,6 +60,61 @@
 
         <div id="button-scroll-top" style="display: none">
             <button><i class="fas fa-chevron-up"></i></button>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <div class="fade search-index-modal in modal" id="filter" tabindex="-1" role="dialog" aria-labelledby="filter" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+
+        </button>
+                        <h4 class="modal-title"><span>Chi tiết đơn </span></h4>
+
+                    </div>
+
+                    <div class="content modal-body" *ngFor="let data of order_detail">
+                        <h3>Tên người thuê: {{data.customer}}</h3>
+                        <img src="{{data.avatar}}">
+                        <h3>Địa chỉ hẹn: {{data.address}}</h3>
+                        <h3>Thời gian thuê: {{data.time}}</h3>
+                        <h3>Thời gian bắt đầu: {{data.start_time}}</h3>
+                        <h3>Ngày: {{data.date}}</h3>
+                        <h3>Thành tiền: {{data.cost}}</h3>
+                        <h3>Trạng thái: {{data.status}}</h3>
+                        <h3>Phản hồi về người thuê: {{data.report}}</h3>
+                        <td *ngIf="data.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(data.id,'accepted')">Accept</button></td>
+
+                        <!-- <table class="table">
+                            <th></th>
+                            <th>Địa chỉ hẹn</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Trạng thái</th>
+                            <th></th>
+
+                            <tbody>
+                                <tr>
+                                    <td>{{data.customer}}</td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+
+                    </div>
+
+                    <!-- <div class="text-center modal-footer"><button type="submit" class="btn btn-danger"
+          (click)="saveFilter()" data-dismiss="modal" aria-label="Close"><span>Bộ
+            lọc</span></button>
+      </div> -->
+
+                </div>
+            </form>
         </div>
     </div>
     <app-frontend-footer></app-frontend-footer>

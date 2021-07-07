@@ -28,7 +28,6 @@ import { CommonModule } from '@angular/common';
       progressAnimation: 'decreasing',
       preventDuplicates: true,
     }),
-
   ],
   providers: [],
   bootstrap: [AppComponent]
