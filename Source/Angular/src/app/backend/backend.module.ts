@@ -10,8 +10,6 @@ import { ProviderListComponent } from './component/provider/list/provider-list.c
 import { OrderListComponent } from './component/order/list/list.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-
 
 
 @NgModule({
@@ -28,7 +26,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     BackendRoutingModule,
-    NgxPaginationModule
   ]
 })
 export class BackendModule { }

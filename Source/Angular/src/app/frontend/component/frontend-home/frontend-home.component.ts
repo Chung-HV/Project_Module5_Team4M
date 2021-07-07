@@ -82,7 +82,7 @@ export class FrontendHomeComponent implements OnInit {
     this.providerService.sendRequest(this.user_id).subscribe({
       next: () =>
         this.toastr.success(
-          'Your request has been sent, please wait for Admin approvement'
+          'Yêu cầu đăng ký làm cộng tác viên của bạn đã được gửi đi, vui lòng chờ admin xác nhận'
         ),
     });
   }

@@ -52,6 +52,6 @@ export class RegisterComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Register successful!');
+    this.toastr.success('Đăng ký tài khoản thành công!');
   }
 }

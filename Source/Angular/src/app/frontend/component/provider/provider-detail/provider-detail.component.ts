@@ -11,6 +11,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { HomeService } from '../../../services/home.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-provider-detail',
@@ -21,7 +22,7 @@ export class ProviderDetailComponent implements OnInit {
   users!: any;
   price!: number;
   message = '';
-  base_Url_img=environment.base_Url_img;
+  base_Url_img = environment.base_Url_img;
 
   user_id = localStorage.getItem('user_id');
   user_server_provider!: any;
@@ -37,12 +38,13 @@ export class ProviderDetailComponent implements OnInit {
     private homeService: HomeService,
     private router: Router,
     private route: ActivatedRoute,
-    private data: DataService
+    private data: DataService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
-   
+
     // console.log(localStorage.getItem('user_id'));
   }
   getUser(id: any) {
@@ -75,6 +77,7 @@ export class ProviderDetailComponent implements OnInit {
 
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {
+        this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
         console.log(response);
       },
       (error) => {

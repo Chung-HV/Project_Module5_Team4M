@@ -107,13 +107,13 @@ export class ProfileUserComponent implements OnInit {
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
         //   this.router.navigate(['admin/book-list']);
-        this.toastr.success('Upload successfully!', 'Notification');
+        this.toastr.success('Cập nhật thông tin thành công', 'Thông báo');
         // formData.delete('city');
 
         // }
       },
       (error) => {
-        this.toastr.error('Upload fail!', 'Notification');
+        this.toastr.error('Cập nhật thất bại', 'Thông báo');
       }
     );
   }
@@ -150,6 +150,7 @@ export class ProfileUserComponent implements OnInit {
 
   onSubmit() {
     this.updateProfileUser();
+    window.location.reload();
   }
 
   getImgFile($event: any) {
