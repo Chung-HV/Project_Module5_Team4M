@@ -72,6 +72,6 @@ export class ProviderOrdersComponent implements OnInit {
     }
     this.order_detail = [];
     this.order_detail.push(data);
-    
+
   }
 }
