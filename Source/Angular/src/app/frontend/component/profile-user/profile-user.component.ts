@@ -2,9 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
-
+import { CommonModule, CurrencyPipe} from '@angular/common';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
 import { UserService } from '../../services/user.service';
@@ -26,19 +27,20 @@ export class ProfileUserComponent implements OnInit {
   onOff!: number;
   base_Url_img = `${environment.base_Url_img}`;
   imgSrc = this.avatar;
+  // formattedAmount!: any;
 
   validateForm() {
     this.myForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(30)]],
       birth_day: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      city: ['', [Validators.required, Validators.maxLength(30)]],
+      city: ['', [Validators.required, Validators.maxLength(15)]],
       nation: ['', [Validators.required, Validators.maxLength(30)]],
       height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
       weight: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      introducion: ['', [Validators.maxLength(9000)]],
-      requirement: ['', [Validators.maxLength(9000)]],
-      hobby: ['', [Validators.maxLength(9000)]],
+      introducion: ['', [Validators.maxLength(225)]],
+      requirement: ['', [Validators.maxLength(225)]],
+      hobby: ['', [Validators.maxLength(225)]],
       facebook: ['', [Validators.maxLength(100)]],
       price: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(20)]],
 
@@ -52,8 +54,8 @@ export class ProfileUserComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private toastr: ToastrService,
-    private data: DataService
-
+    private data: DataService,
+    private currencyPipe : CurrencyPipe
   ) {}
 
   ngOnInit(): void {
@@ -91,12 +93,17 @@ export class ProfileUserComponent implements OnInit {
     }
 
     this.userService.updateUserProfile(this.id, formData).subscribe(
-      (res) => {
-        this.user = this.data.getCurentUser(res)
-        this.toastr.success('Cập nhật thông tin thành công', 'Thông báo');
-      },
-      (error) => {
-        this.toastr.error('Cập nhật thất bại', 'Thông báo');
+      {
+        next: (res) => {
+          // thong bao thanh cong
+            this.getUserProfile();
+            this.data.getCurentUser(res);
+            this.toastr.success('Cập nhật thành công!','Thông báo');
+
+        },
+        error: () => {
+          this.toastr.error('Cập nhật thất bại!','Thông báo');
+        }
       }
     );
   }
@@ -151,9 +158,8 @@ export class ProfileUserComponent implements OnInit {
     }
   }
   requestActive() {
-    if (confirm('Bạn có chấp nhận thay đổi trạng thái ')) {
+
       let statusActive = this.onOff;
-      // console.log(statusActive);
 
       this.userService.isActive(this.id, statusActive).subscribe(
         (res) => {
@@ -165,11 +171,23 @@ export class ProfileUserComponent implements OnInit {
           this.toastr.error('Thay đổi thất bại!');
         }
       );
-    }
+
+
   }
 
   checkValueActive(event: number) {
     this.onOff = event;
     // console.log(this.onOff);
   }
+
+  get getControl() {
+    return this.myForm.controls;
+  }
+
+//   transformAmount(element:any){
+//     this.formattedAmount = this.currencyPipe.transform(this.formattedAmount, '$');
+//     console.log(this.formattedAmount);
+
+//     element.target.value = this.formattedAmount;
+// }
 }

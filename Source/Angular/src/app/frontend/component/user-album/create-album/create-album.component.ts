@@ -38,7 +38,7 @@ export class CreateAlbumComponent implements OnInit {
   getUserId() {
     this.albumService.profile().subscribe({
       next: (data) => {
-        this.user_id = data.id;
+        this.user_id= data.user.id;
         // console.log(this.user_id);
       },
     });
