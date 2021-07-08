@@ -29,7 +29,6 @@ export class CustomerOrdersComponent implements OnInit {
   ngOnInit(): void {
   }
   getOrderDetetail() {
-
   }
 
   getOrders() {

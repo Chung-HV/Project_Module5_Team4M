@@ -15,7 +15,7 @@ class DashboardController extends Controller
     {
         $users = User::where('is_admin', '=', '0')
             ->where('is_service_provider', '=', '1')
-            ->where('is_active', '=', '1')
+            ->where('is_active', '=', '1')->orderBy('count_view','DESC')
             ->inRandomOrder()->limit(8)
             ->get();
         foreach ($users as $key => $user) {
@@ -81,10 +81,7 @@ class DashboardController extends Controller
                 ->where('is_admin', '=', '0')
                 ->where('is_service_provider', '=', '1')
                 ->where('is_active', '=', '1')
-
                 ->when($price, function ($query,  $price) {
-                    // return $query->where('price', '>', '0')
-                    //     ->where('price', '<', $price);
                     return $query->whereBetween('price', [0, $price]);
                 })
 
@@ -116,4 +113,12 @@ class DashboardController extends Controller
             return response()->json("khong the tang view ban than");
         }
     }
+    public function searchUserName(Request $request){
+        $search_user_name = User::where('name','like', '%' . $request->search_user_name. '%')
+        ->where('is_admin', '=', '0')
+        ->where('is_service_provider', '=', '1')
+        ->where('is_active', '=', '1')->get();
+        return response()->json($search_user_name);
+    }
+
 }

@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
     count_view: '',
     count_rent: '',
   };
+  search_user_name!:any;
   count_filter: any = 0;
   filter_user: any = null;
   users!: UserDashboard[];
@@ -200,6 +201,26 @@ console.log(data);
     this.homeService.getFilter(data).subscribe(
       (response) => {
         this.filter_user = response;
+        if (Object.keys(this.filter_user).length == 0) {
+          this.count_filter = 0;
+        } else {
+          this.count_filter = Object.keys(this.filter_user).length;
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  searchUserName(){
+    const data ={
+      search_user_name : this.search_user_name,
+    }
+    this.homeService.getUserName(data).subscribe(
+      (response) => {
+        this.filter_user = response;
+        console.log(this.filter_user);
+
         if (Object.keys(this.filter_user).length == 0) {
           this.count_filter = 0;
         } else {

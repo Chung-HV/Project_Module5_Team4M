@@ -26,6 +26,10 @@ export class HomeService {
   getFilter(data:any): Observable<any>{
     return this.http.post(`${baseUrl}/filter`,data);
   }
+  getUserName(data:any): Observable<any>{
+    return this.http.post(`${baseUrl}/searchUser`,data);
+  }
+
 
   orderServiceProvider(data:any): Observable<any> {
     var reqHeader = new HttpHeaders({
