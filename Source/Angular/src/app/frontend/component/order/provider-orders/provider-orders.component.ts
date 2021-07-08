@@ -37,6 +37,7 @@ export class ProviderOrdersComponent implements OnInit {
     this.providerService.getOrders(this.provider_id).subscribe({
       next: (data: any) => {
         this.orders = data.orders;
+        console.log(this.orders);
         this.customers = data.customers;
         this.order_details = data.order_details;
         this.provider = data.provider;
@@ -71,6 +72,6 @@ export class ProviderOrdersComponent implements OnInit {
     }
     this.order_detail = [];
     this.order_detail.push(data);
-    
+
   }
 }
