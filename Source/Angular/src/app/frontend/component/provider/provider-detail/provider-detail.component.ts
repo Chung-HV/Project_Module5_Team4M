@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { HomeService } from '../../../services/home.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/frontend/services/user.service';
+
 
 @Component({
   selector: 'app-provider-detail',
@@ -28,7 +30,6 @@ export class ProviderDetailComponent implements OnInit {
 
   user_id = localStorage.getItem('user_id');
 
-
   user_server_provider!: any;
   count_view!: any;
   order = {
@@ -40,6 +41,7 @@ export class ProviderDetailComponent implements OnInit {
   money: any;
 
   constructor(
+    private userService: UserService,
     private homeService: HomeService,
     private router: Router,
     private route: ActivatedRoute,
@@ -50,12 +52,14 @@ export class ProviderDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
     this.getAlbum(this.route.snapshot.paramMap.get('id'));
+    this.getAuthMoney();
     // console.log(localStorage.getItem('user_id'));
   }
   getUser(id: any) {
     this.homeService.getUser(id).subscribe(
       (data) => {
         this.users = data;
+
       },
       (error) => {
         console.log(error);
@@ -76,14 +80,10 @@ export class ProviderDetailComponent implements OnInit {
       start_at: this.order.start_at,
       start_time: this.order.start_time,
     };
-    console.log(this.users);
-
-    console.log(data);
 
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {
         this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
-        console.log(response);
         // this.router.navigate(['frontend/user/orders'])
       },
       (error) => {
@@ -91,15 +91,34 @@ export class ProviderDetailComponent implements OnInit {
       }
     );
   }
+  changeMoney(){
+    const money = this.money - (this.users.price*this.order.time_rent);
+    var cost:any = this.users.price*this.order.time_rent;
+    localStorage.setItem('cost', cost);
+    this.userService.changeMoney(money).subscribe(
+      (res) => {
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
 
   getAlbum(id:any){
     this.homeService.getAlbumByUser(id).subscribe(
       (data) => {
         this.albums = data
-      console.log(this.albums);
     },
     (error) => {
       console.log(error);
+    });
+  }
+  getAuthMoney(){
+    this.userService.profile().subscribe({
+      next: (res: any) => {
+        this.money = res.money;
+      },
+      error: (error: any) => {},
     });
   }
 }

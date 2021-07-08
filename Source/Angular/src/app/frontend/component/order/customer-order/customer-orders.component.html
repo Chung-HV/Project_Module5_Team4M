@@ -43,8 +43,8 @@
                                             <td *ngIf="order.status == 'done'">Đã hoàn thành</td>
                                             <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                             <!-- <td *ngIf="order.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(order.id,'accepted')">Accept</button></td> -->
-                                            <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Hoàn thành</button></td>
-                                            <td *ngIf="order.status=='request done'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')">Hoàn thành</button></td>
+                                            <td *ngIf="order.status=='accepted'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')" (click)="changeMoney(i)">Hoàn thành</button></td>
+                                            <td *ngIf="order.status=='request done'"><button class="btn btn-info btn-sm btn-block" (click)="updateOrder(order.id,'done')" (click)="changeMoney(i)">Hoàn thành</button></td>
                                             <!-- <td *ngIf="order.status=='done'"><button class="btn btn-danger btn-sm btn-block" (click)="updateOrder(order.id,'report')">Report</button></td> -->
                                         </tr>
                                     </tbody>

@@ -89,9 +89,9 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        $money =auth()->user()->accounts->mooney;
+        $money = auth()->user()->accounts->mooney;
 
-        return response()->json(['user'=>auth()->user(),'money'=>$money]);
+        return response()->json(['user' => auth()->user(), 'money' => $money]);
     }
 
     public function update(Request $request, $idUser)
@@ -135,5 +135,14 @@ class AuthController extends Controller
         }
     }
 
+    public function updateMoney(Request $request, $id){
+        try{
+            $account = Account::find($id);
+            $account->update($request->all());
+        } catch(Exception $e){
+            return response()->json($e->getMessage());
+        }
+        return response()->json($account);
+    }
 
 }

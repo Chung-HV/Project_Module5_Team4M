@@ -10,9 +10,9 @@ import { User } from '../models/user';
 })
 export class UserService {
   public user!: Observable<User>;
-  user_id:any = localStorage.getItem('user_id');
+  user_id: any = localStorage.getItem('user_id');
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   register(user: User): Observable<any> {
     return this.http.post(`${environment.base_Url}users/register`, user);
@@ -31,7 +31,7 @@ export class UserService {
     });
     console.log(auth_token + 'logout');
     return this.http.get(`${environment.base_Url}users/logout`, {
-      headers: reqHeader
+      headers: reqHeader,
     });
   }
   profile(): Observable<any> {
@@ -70,7 +70,7 @@ export class UserService {
   getMessageUser(user_id: any): Observable<any> {
     return this.http.get(`${environment.base_Url}dashboard/message/${user_id}`);
   }
-  getUser(id:any): Observable<any> {
+  getUser(id: any): Observable<any> {
     return this.http.get(`${environment.base_Url}dashboard/user/${id}`);
   }
   isActive(id: number, status: any): Observable<any> {
@@ -93,8 +93,26 @@ export class UserService {
 
       Authorization: 'Bearer ' + auth_token,
     });
-    return this.http.get(`${environment.base_Url}users/${this.user_id}/orders`, {
-      headers: reqHeader
+    return this.http.get(
+      `${environment.base_Url}users/${this.user_id}/orders`,
+      {
+        headers: reqHeader,
+      }
+    );
+  }
+
+  changeMoney(data:any) {
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      // 'Content-Type': 'application/json',
+
+      Authorization: 'Bearer ' + auth_token,
     });
+    return this.http.post(
+      `${environment.base_Url}users/${this.user_id}`, data,
+      {
+        headers: reqHeader,
+      }
+    );
   }
 }

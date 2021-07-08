@@ -104,7 +104,7 @@ export class ProfileUserComponent implements OnInit {
   getUserProfile() {
     this.userService.profile().subscribe({
       next: (data) => {
-        this.user = data;
+        this.user = data.user;
         this.is_service_provider = this.user.is_service_provider;
         this.avatar = this.user.avatar;
         this.myForm.patchValue({

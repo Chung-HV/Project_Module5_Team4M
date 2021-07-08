@@ -51,8 +51,7 @@ Route::prefix('users')->group(function () {
         Route::get('/{id}/orders', [OrderController::class, 'getOrderByCustomer']);
         Route::post('/album/create/{id}', [AlbumController::class, 'create']);
         Route::get('/album/{id}', [AlbumController::class, 'getAlbumById']);
-
-
+        Route::post('/money/{id}', [AuthController::class, 'updateMoney']);
     });
 });
 
