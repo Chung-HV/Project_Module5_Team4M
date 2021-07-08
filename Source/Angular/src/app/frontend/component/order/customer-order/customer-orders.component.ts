@@ -40,8 +40,7 @@ export class CustomerOrdersComponent implements OnInit {
   getOrders() {
     this.orderService.getByCustomer(this.user_id).subscribe({
       next: (data: any) => {
-        console.log(data.orders)
-        this.orders = data.orders,
+        this.orders = data.orders.data,
           this.providers = data.providers,
           this.order_details = data.order_details
       }
@@ -87,4 +86,30 @@ export class CustomerOrdersComponent implements OnInit {
     console.log(this.order_detail);
 
   }
+  // changeMoney(i:any){
+  //   var provider_id = this.orders[i].service_provider_id;
+  //   this.getMoney(provider_id);
+
+  //   this.money = localStorage.getItem('cost');
+  //   console.log(this.money);
+
+
+  //   var totalMoney = this.userMoney + this.money
+  //   this.userService.changeMoney(totalMoney).subscribe(
+  //     (res)=>{
+
+  //     },
+  //     (error)=>{
+
+  //     }
+  //   )
+  // }
+  // getMoney(i:any){
+  //   this.userService.getUser(i).subscribe({
+  //     next: (res: any) => {
+  //       this.userMoney = res[0].accounts.mooney;
+  //     },
+  //     error: (error: any) => {},
+  //   });
+  // }
 }
