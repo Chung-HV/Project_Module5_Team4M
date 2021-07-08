@@ -41,8 +41,6 @@ export class AppComponent {
     'assets/frontend/static/js/5.c4c18540.chunk.js',
     'assets/frontend/static/js/0.47c80823.chunk.js',
     'assets/frontend/static/js/1.86ca38df.chunk.js',
-    'https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js',
-
   ];
 
   backendStyle = [

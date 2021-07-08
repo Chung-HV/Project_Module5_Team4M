@@ -97,11 +97,10 @@ export class DashboardComponent implements OnInit {
     } else {
       this.filter.count_rent = '';
     }
-    console.log(this.filter.count_rent);
-
     if (this.active_max_rent) {
       this.active_max_rent = false;
       this.active_min_rent = !this.active_min_rent;
+
     } else {
       this.active_min_rent = !this.active_min_rent;
     }
@@ -196,6 +195,7 @@ export class DashboardComponent implements OnInit {
       count_view: this.filter.count_view,
       count_rent: this.filter.count_rent,
     };
+console.log(data);
 
     this.homeService.getFilter(data).subscribe(
       (response) => {

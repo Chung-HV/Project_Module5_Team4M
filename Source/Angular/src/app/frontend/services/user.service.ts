@@ -70,6 +70,9 @@ export class UserService {
   getMessageUser(user_id: any): Observable<any> {
     return this.http.get(`${environment.base_Url}dashboard/message/${user_id}`);
   }
+  getUser(id:any): Observable<any> {
+    return this.http.get(`${environment.base_Url}dashboard/user/${id}`);
+  }
   isActive(id: number, status: any): Observable<any> {
     var auth_token = localStorage.getItem('token');
     var reqHeader = new HttpHeaders({

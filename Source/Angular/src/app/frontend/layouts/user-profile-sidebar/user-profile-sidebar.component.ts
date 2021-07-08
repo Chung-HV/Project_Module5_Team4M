@@ -8,7 +8,8 @@ import { UserService } from '../../services/user.service';
 })
 
 export class UserProfileSidebarComponent implements OnInit {
-  user: any
+  user: any;
+  is_service_provider:any;
   user_id:any = localStorage.getItem('user_id')
   constructor(
     private userService: UserService
@@ -23,6 +24,8 @@ export class UserProfileSidebarComponent implements OnInit {
     this.userService.getById(this.user_id).subscribe({
       next: user=>{
         this.user = user
+        this.is_service_provider=this.user.is_service_provider;
+
       }
     })
   }

@@ -43,15 +43,9 @@ export class LoginComponent implements OnInit {
       next: (data: any) => {
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
-        localStorage.setItem('is_provider', data.user.is_service_provider);
-        localStorage.setItem('user', data.user);
-
-        localStorage.setItem('userName', data.user.name);
         this.data.changeCheck(false);
         this.data.getCurentUser(data.user);
-        // this.data.changeMoney(data.user.accounts.mooney);
         this.router.navigate(['']);
-        // window.location.href=""
         console.log(this.user);
 
       },
