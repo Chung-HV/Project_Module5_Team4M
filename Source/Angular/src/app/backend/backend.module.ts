@@ -11,6 +11,7 @@ import { OrderListComponent } from './component/order/list/list.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AngularFireModule } from '@angular/fire';
 
 
 
@@ -28,7 +29,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     BackendRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFireModule,
+    
   ]
 })
 export class BackendModule { }

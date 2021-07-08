@@ -84,7 +84,7 @@
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let order of orders.data, let i = index">
+                                        <tbody *ngFor="let order of orders.data | paginate:{itemsPerPage: 20,currentPage : currentPage}, let i = index">
                                             <tr>
                                                 <td>{{i+1}}</td>
                                                 <td>
@@ -97,18 +97,14 @@
                                                 <td *ngIf="order.status == 'done'">Đã hoàn thành</td>
                                                 <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                                 <td *ngIf="order.status == 'reported'"><button class="btn btn-block btn-small btn-danger"></button>Duyệt</td>
+                                                <td></td>
                                                 <!-- <td *ngIf="provider.is_active == 0">Paused</td>
                                                 <td *ngIf="provider.is_vip == 0"><button class="btn btn-danger btn-sm" (click)="setVip(provider.id)">Set Vip</button></td>
                                                 <td *ngIf="provider.is_vip == 1"><button class="btn btn-info btn-sm" disabled>Vip</button></td> -->
                                             </tr>
-
-
                                         </tbody>
-                                        <tfoot>
-
-                                        </tfoot>
-
                                     </table>
+                                    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

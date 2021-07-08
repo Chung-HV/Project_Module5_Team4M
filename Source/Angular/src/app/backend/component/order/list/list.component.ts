@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
 import { PaginationInstance } from 'ngx-pagination';
 import { OrderService } from 'src/app/backend/services/order.service';
 import { environment } from 'src/environments/environment.prod';
@@ -17,6 +18,7 @@ export class OrderListComponent implements OnInit {
 
   order_detail: any
   base_Url_img = environment.base_Url_img;
+  currentPage: any
   constructor(
     private orderService: OrderService,
     ) { }
@@ -67,5 +69,13 @@ export class OrderListComponent implements OnInit {
         console.log(this.order_details);  
       }
     })
+  }
+
+  nextPage(){
+   
+  }
+
+  prevPage(){
+   
   }
 }

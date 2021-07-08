@@ -89,7 +89,7 @@ class OrderController extends Controller
     }
 
     public function getAll(){
-        $orders = Order::orderBy('created_at','desc')->paginate(50);
+        $orders = Order::orderBy('created_at','desc')->paginate(20);
         $providers = [];
         $customers = [];
         $orderDetails = [];
@@ -104,7 +104,7 @@ class OrderController extends Controller
     }
 
     public function getByStatus($status){
-        $orders = Order::where('status',$status)->orderBy('created_at','desc')->paginate(50);
+        $orders = Order::where('status',$status)->orderBy('created_at','desc')->paginate(20);
         $providers = [];
         $customers = [];
         $orderDetails = [];

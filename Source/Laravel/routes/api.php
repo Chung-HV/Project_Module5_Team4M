@@ -45,8 +45,7 @@ Route::prefix('users')->group(function () {
         Route::post('/update/{id}', [AuthController::class, 'update']);
         Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
         Route::get('/uploadimg/{id}', [AuthController::class, 'uploadImage']);
-
-
+        Route::get('/{id}/orders', [OrderController::class, 'getOrderByCustomer']);
     });
 });
 
@@ -67,6 +66,5 @@ Route::get('provider/{id}/request', [ProviderController::class, 'requestBecomePr
 
 Route::get('provider/{id}/orders', [OrderController::class, 'getOrderByProvider']);
 Route::get('users/{id}', [UserController::class, 'getById']);
-Route::get('users/{id}/orders', [OrderController::class, 'getOrderByCustomer']);
 
 Route::post('orders/update', [OrderController::class, 'updateOrder']);
