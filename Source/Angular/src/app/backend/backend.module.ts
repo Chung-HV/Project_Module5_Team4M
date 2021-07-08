@@ -31,7 +31,7 @@ import { AngularFireModule } from '@angular/fire';
     BackendRoutingModule,
     NgxPaginationModule,
     AngularFireModule,
-    
+
   ]
 })
 export class BackendModule {}
