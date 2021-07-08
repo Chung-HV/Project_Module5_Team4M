@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ConfirmBoxInitializer, DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
+
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 import { CommonModule, CurrencyPipe} from '@angular/common';
