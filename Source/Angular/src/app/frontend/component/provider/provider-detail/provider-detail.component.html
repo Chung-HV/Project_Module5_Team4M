@@ -15,14 +15,6 @@
       <div class="rent-time-wrap">
         <p class="ready">Đang sẵn sàng</p>
       </div>
-      <!-- <div class="social-icon">
-        <div class="icon-wrap facebook"><a href="https://www.facebook.com/Leethiihoongcaam" target="_blank"
-            rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></div>
-        <div class="icon-wrap user-page"><a href="https://playerduo.com/sun21s" target="_blank"
-            rel="noopener noreferrer">
-            <img src="assets/frontend/static/icons/player-card.png" alt="PD" title="Trang cá nhân"
-              class="option-icon img-rounded"></a></div>
-      </div> -->
       <div class="member-since">
         <span>Ngày tham gia:</span
         ><span
@@ -47,9 +39,6 @@
     <div class="player-profile-right-wrap col-md-3 col-md-push-6">
       <div class="right-player-profile">
         <p class="price-player-profile">{{ user.price | number }} đ/h</p>
-        <!-- <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>&nbsp;<span>216
-            <span>Đánh giá</span></span></div> -->
         <div class="text-center">
           <button
             class="btn-my-style red"
@@ -58,7 +47,6 @@
           >
             Thuê
           </button>
-          <!-- <button class="btn-my-style white">Donate</button> -->
           <button class="btn-my-style gray">
             <i class="fas fa-comment-alt"></i>Chat
           </button>
@@ -123,37 +111,7 @@
           <h3 *ngFor="let sv of user.services">❤️ {{ sv.name }}</h3>
         </div>
         <hr />
-        <!-- <div class="title-player-profile row">
-          <div class="col-md-12"><span>Đánh giá</span></div>
-        </div>
-        <div class="text-center review-duo-player row">
-          <div class="col-md-12">
-            <div class="full-size">
-              <div class="review-image-small">
-                <div class="avt avt-md"><img
-                    src="assets/frontend/SunKimochii on PlayerDuo_files/dc5657bd-49d6-4175-b5e8-ec889538e928+1585641127853.jpeg"
-                    class="avt-img" alt="PD"><img src="assets/frontend/SunKimochii on PlayerDuo_files/10.png"
-                    class="vip-avatar undefined" alt="PD" style="height: 22px; width: 22px;"></div>
-              </div>
-              <div class="wrapper-content-rating">
-                <div class="review-content">
-                  <a target="_blank" href="https://playerduo.com/page5b99fd276ccbeb40c667cda8">
-                    <p class="name-player-review hidden-over-name color-vip-10">slutte</p>
-                  </a>
-                  <p class="time-player-review"><span>14:07:36, 27/3/2020</span></p>
-                </div>
-                <div class="review-rating">
-                  <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                      class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>&nbsp;</div>
-                  <span class="time-rent-review">(<span>Thuê</span>&nbsp;1h)</span>
-                </div>
-                <p class="content-player-review">aaaaaaaaaaaaa</p>
-              </div>
-            </div>
 
-          </div>
-
-        </div> -->
       </div>
     </div>
   </div>
