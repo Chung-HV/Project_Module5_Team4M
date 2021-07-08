@@ -14,6 +14,7 @@ class AlbumController extends Controller
     public function create(Request $request, $idUser)
     {
         try {
+            
             foreach ($request->files as $key => $file) {
                 foreach ($file as $key => $value) {
                     $name = time() . $key . '.' . $value->getClientOriginalExtension();
