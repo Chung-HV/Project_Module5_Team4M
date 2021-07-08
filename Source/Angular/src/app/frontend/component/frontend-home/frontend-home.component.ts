@@ -15,21 +15,19 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./frontend-home.component.css'],
 })
 export class FrontendHomeComponent implements OnInit {
-
   check: any = this.data.currentCheck.subscribe(
     (check) => (this.check = check)
   );
-   base_Url_img=`${environment.base_Url_img}`;
-  messages!:any;
-  countMessages!:number;
-
-
-  // money = localStorage.getItem('user_mooney');
+  base_Url_img = `${environment.base_Url_img}`;
+  messages!: any;
+  countMessages!: number;
+  is_service_provider!:any;
   provider_id: any;
   user!: any;
-  open:any = false;
+  money!:any;
+  user_main: any =[];
+  open: any = false;
   user_id = localStorage.getItem('user_id');
-
 
   constructor(
     private userService: UserService,
@@ -39,24 +37,26 @@ export class FrontendHomeComponent implements OnInit {
     private providerService: ProviderService,
     private route: ActivatedRoute,
     fb: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-
     this.isLogin();
     this.getMessageUser();
     this.getUser();
-    // console.log(localStorage.getItem('token'));
-
-    this.user = localStorage.getItem('user');
-    this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+    this.open;
   }
-
+  findUser() {
+    this.userService.getUser(this.user_id).subscribe({
+      next: (response) => {
+        this.user_main = response;
+        this.is_service_provider = this.user_main[0].is_service_provider;
+      },
+      error: () => {},
+    });
+  }
   logOut() {
     this.userService.logout().subscribe({
       next: () => {
-        // this.toastr.success('Logout successful!');
         localStorage.clear();
         this.data.changeCheck(true);
         this.router.navigate(['']);
@@ -70,7 +70,6 @@ export class FrontendHomeComponent implements OnInit {
       this.user = this.data.currentUser.subscribe((user) => {
         this.user = user;
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-
       });
     } else {
       this.check = true;
@@ -78,7 +77,6 @@ export class FrontendHomeComponent implements OnInit {
   }
 
   requestProvide() {
-    console.log(localStorage.getItem('user_id'));
     this.providerService.sendRequest(this.user_id).subscribe({
       next: () =>
         this.toastr.success(
@@ -89,24 +87,23 @@ export class FrontendHomeComponent implements OnInit {
   getUser() {
     this.userService.profile().subscribe({
       next: (res: any) => {
-        this.user = res;
+        this.user = res.user;
+        this.money = res.money;
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-        // console.log(this.user.messages);
       },
       error: (error: any) => {},
     });
   }
-  getMessageUser(){
+  getMessageUser() {
     this.userService.getMessageUser(localStorage.getItem('user_id')).subscribe({
       next: (res: any) => {
         this.messages = res;
         this.countMessages = Object.keys(this.messages).length;
-
       },
       error: (error: any) => {},
     });
   }
-clickEvent(){
+  clickEvent() {
     this.open = !this.open;
-}
+  }
 }

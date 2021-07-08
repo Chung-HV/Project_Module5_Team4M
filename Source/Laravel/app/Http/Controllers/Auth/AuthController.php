@@ -89,7 +89,9 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        return response()->json(auth()->user());
+        $money =auth()->user()->accounts->mooney;
+
+        return response()->json(['user'=>auth()->user(),'money'=>$money]);
     }
 
     public function update(Request $request, $idUser)
@@ -133,5 +135,5 @@ class AuthController extends Controller
         }
     }
 
-    
+
 }

@@ -24,9 +24,6 @@ import { HomeComponent } from './component/home/home.component';
     LoginComponent,
     HomeComponent,
   ],
-  imports: [
-    CommonModule,
-    BackendRoutingModule,
-  ]
+  imports: [CommonModule, BackendRoutingModule],
 })
-export class BackendModule { }
+export class BackendModule {}

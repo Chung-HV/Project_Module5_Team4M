@@ -24,9 +24,7 @@ export class ProviderDetailComponent implements OnInit {
   albums!:any;
   message = '';
   base_Url_img = environment.base_Url_img;
-  // base_Url_img=environment.base_Url_img;
-  // base_Url_album=environment.base_Url_img;
-
+  submitted = false;
 
   user_id = localStorage.getItem('user_id');
 
@@ -66,6 +64,7 @@ export class ProviderDetailComponent implements OnInit {
   }
 
   saveOrder(): void {
+    this.submitted = true;
     this.users.forEach((user: any) => {
       this.user_server_provider = user.id;
     });
@@ -85,6 +84,7 @@ export class ProviderDetailComponent implements OnInit {
       (response) => {
         this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
         console.log(response);
+        // this.router.navigate(['frontend/user/orders'])
       },
       (error) => {
         console.log(error);

@@ -20,11 +20,12 @@ export class ProfileUserComponent implements OnInit {
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
+  is_service_provider:any;
   isShowOleImage = true;
   is_active!: boolean;
   onOff!: number;
-  image_path = environment.base_Url_img;
-  imgSrc = '';
+  base_Url_img = `${environment.base_Url_img}`;
+  imgSrc = this.avatar;
 
   validateForm() {
     this.myForm = this.fb.group({
@@ -86,18 +87,13 @@ export class ProfileUserComponent implements OnInit {
     formData.append('price', this.myForm.get('price')?.value);
 
     if (this.avatar) {
-      formData.append('avatar', this.avatar, this.avatar.name);
+      formData.append('avatar', this.avatar);
     }
 
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
         this.user = this.data.getCurentUser(res)
-        //   this.router.navigate(['admin/book-list']);
         this.toastr.success('Cập nhật thông tin thành công', 'Thông báo');
-        // formData.delete('city');
-
-        this.toastr.success('Cập nhật thành công!', 'Thông báo');
-
       },
       (error) => {
         this.toastr.error('Cập nhật thất bại', 'Thông báo');
@@ -109,7 +105,8 @@ export class ProfileUserComponent implements OnInit {
     this.userService.profile().subscribe({
       next: (data) => {
         this.user = data;
-
+        this.is_service_provider = this.user.is_service_provider;
+        this.avatar = this.user.avatar;
         this.myForm.patchValue({
           name: this.user.name,
           birth_day: this.user.birth_day,
