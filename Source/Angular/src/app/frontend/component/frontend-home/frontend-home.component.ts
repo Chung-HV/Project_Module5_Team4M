@@ -24,6 +24,7 @@ export class FrontendHomeComponent implements OnInit {
   is_service_provider!:any;
   provider_id: any;
   user!: any;
+  money!:any;
   user_main: any =[];
   open: any = false;
   user_id = localStorage.getItem('user_id');
@@ -41,13 +42,8 @@ export class FrontendHomeComponent implements OnInit {
   ngOnInit(): void {
     this.isLogin();
     this.getMessageUser();
-
-    this.findUser();
-    // this.getUser();
-    // console.log(localStorage.getItem('token'));
-
-    // this.user = localStorage.getItem('user');
-    // this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+    this.getUser();
+    this.open;
   }
   findUser() {
     this.userService.getUser(this.user_id).subscribe({
@@ -61,7 +57,6 @@ export class FrontendHomeComponent implements OnInit {
   logOut() {
     this.userService.logout().subscribe({
       next: () => {
-        // this.toastr.success('Logout successful!');
         localStorage.clear();
         this.data.changeCheck(true);
         this.router.navigate(['']);
@@ -82,24 +77,23 @@ export class FrontendHomeComponent implements OnInit {
   }
 
   requestProvide() {
-    console.log(localStorage.getItem('user_id'));
     this.providerService.sendRequest(this.user_id).subscribe({
       next: () =>
         this.toastr.success(
-          'Your request has been sent, please wait for Admin approvement'
+          'Yêu cầu đăng ký làm cộng tác viên của bạn đã được gửi đi, vui lòng chờ admin xác nhận'
         ),
     });
   }
-  // getUser() {
-  //   this.userService.profile().subscribe({
-  //     next: (res: any) => {
-  //       this.user = res;
-  //       this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-  //       // console.log(this.user.messages);
-  //     },
-  //     error: (error: any) => {},
-  //   });
-  // }
+  getUser() {
+    this.userService.profile().subscribe({
+      next: (res: any) => {
+        this.user = res.user;
+        this.money = res.money;
+        this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
+      },
+      error: (error: any) => {},
+    });
+  }
   getMessageUser() {
     this.userService.getMessageUser(localStorage.getItem('user_id')).subscribe({
       next: (res: any) => {

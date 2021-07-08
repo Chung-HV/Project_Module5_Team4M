@@ -95,17 +95,17 @@
                         </div>
                     </ul>
                 </li>
-                <li class="item-icon balance" *ngFor="let user of user_main">
-                    <a class="money-user"><i class="fas fa-plus"></i> {{user.accounts.mooney|number}}</a>
+                <li class="item-icon balance">
+                    <a class="money-user">{{ money|number }}</a>
                 </li>
-                <li class="item-icon item-avatar dropdown" (click)="clickEvent()" [ngClass]="open ? 'open' : 'null'" *ngFor="let user of user_main">
+                <li class="item-icon item-avatar dropdown" (click)="clickEvent()" [ngClass]="open ? 'open' : 'null'">
                     <a id="header-nav-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ base_Url_img+user.avatar}}" class="avt-img" alt="PD" style="object-fit: cover;" />
+                        <img src="{{user.avatar}}" class="avt-img" alt="PD" style="object-fit: cover;" />
                     </a>
                     <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
                         <li role="presentation" class="page-user">
                             <a role="menuitem" tabindex="-1" routerLink="user/profile">
-                                <img src="{{ base_Url_img+user.avatar}}" class="avt-img" alt="PD" style="object-fit: cover;" />
+                                <img src="{{ user.avatar}}" class="avt-img" alt="PD" style="object-fit: cover;" />
                                 <div class="text-logo">
                                     <h5>{{ user.name }}</h5>
                                     <p>ID : <span>{{ user.id }}</span></p>
@@ -117,27 +117,24 @@
                         </li>
                         <li role="presentation" class="menu-item hidden-lg hidden-md">
                             <a role="menuitem" tabindex="-1" href="#"><i class="fas fa-plus"></i> <span>Số dư</span> :
-                <span class="money">1,000 đ</span></a>
+                <span class="money"></span>{{ money | number }}</a>
                         </li>
 
-                        <li role="presentation" class="menu-item" *ngIf="is_service_provider == 0">
+                        <li role="presentation" class="menu-item" *ngIf="user.is_service_provider == 0">
                             <a role="menuitem" tabindex="-1" (click)="requestProvide()"><i class="fas fa-user-lock"></i>
                 <span>Đăng ký làm đối tác</span></a>
                         </li>
 
-                        <li role="presentation" class="menu-item" *ngIf="is_service_provider === 2">
+                        <li role="presentation" class="menu-item" *ngIf="user.is_service_provider === 2">
                             <a role="menuitem" tabindex="-1" (click)="requestProvide()"><i class="fas fa-user-lock"></i>
                 <span>Đang chờ Admin duyệt đăng ký</span></a>
                         </li>
 
-                        <li role="presentation" class="menu-item" *ngIf="is_service_provider === 1 ">
+                        <li role="presentation" class="menu-item" *ngIf="user.is_service_provider === 1 ">
                             <a role="menuitem" tabindex="-1" routerLink="provider/orders">
                                 <i class="fas fa-user-lock"></i>
                                 <span>Trang quản lý của đối tác</span></a>
-                        </li>
-                        <li role="presentation" class="menu-item">
-                            <a role="menuitem" tabindex="-1" href="#"><i class="fas fa-clock"></i> <span>Lịch sử dual</span></a>
-                        </li>
+                            </li>
                         <li role="presentation" class="menu-item">
                             <a role="menuitem" tabindex="-1" (click)="logOut()"><i class="fas fa-power-off"></i> <span>Đăng
                   xuất</span></a>

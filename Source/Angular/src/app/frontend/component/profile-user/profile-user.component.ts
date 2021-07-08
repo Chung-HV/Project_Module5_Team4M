@@ -7,6 +7,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 
 import { User } from '../../models/user';
+import { DataService } from '../../services/data.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -16,7 +17,7 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileUserComponent implements OnInit {
   id!: number;
-  user!: User;
+  user!: any;
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
@@ -25,7 +26,7 @@ export class ProfileUserComponent implements OnInit {
   is_active!: boolean;
   onOff!: number;
   base_Url_img = `${environment.base_Url_img}`;
-  imgSrc = '';
+  imgSrc = this.avatar;
 
   validateForm() {
     this.myForm = this.fb.group({
@@ -51,7 +52,9 @@ export class ProfileUserComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private data: DataService
+
   ) {}
 
   ngOnInit(): void {
@@ -92,9 +95,10 @@ export class ProfileUserComponent implements OnInit {
       {
         next: (res) => {
           // thong bao thanh cong
-          if(res.status === 'success'){
+
+            this.data.getCurentUser(res);
             this.toastr.success('Cập nhật thành công!','Thông báo');
-          }
+
         },
         error: () => {
           this.toastr.error('Cập nhật thất bại!','Thông báo');
@@ -106,7 +110,7 @@ export class ProfileUserComponent implements OnInit {
   getUserProfile() {
     this.userService.profile().subscribe({
       next: (data) => {
-        this.user = data;
+        this.user = data.user;
         this.is_service_provider = this.user.is_service_provider;
         this.avatar = this.user.avatar;
         this.myForm.patchValue({
@@ -134,6 +138,7 @@ export class ProfileUserComponent implements OnInit {
 
   onSubmit() {
     this.updateProfileUser();
+
   }
 
   getImgFile($event: any) {

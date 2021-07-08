@@ -11,6 +11,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { HomeService } from '../../../services/home.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-provider-detail',
@@ -42,7 +43,8 @@ export class ProviderDetailComponent implements OnInit {
     private homeService: HomeService,
     private router: Router,
     private route: ActivatedRoute,
-    private data: DataService
+    private data: DataService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -80,6 +82,7 @@ export class ProviderDetailComponent implements OnInit {
 
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {
+        this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
         console.log(response);
         // this.router.navigate(['frontend/user/orders'])
       },

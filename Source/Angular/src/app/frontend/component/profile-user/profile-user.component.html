@@ -21,14 +21,10 @@
                 <h3>Thông tin người dùng</h3>
                 <div class="d-flex img-avatar">
                   <div class="form-group" *ngIf="isShowOleImage">
-                    <img
-                      src="{{ user.avatar }}"
-                      alt="image"
-                      style="object-fit: cover"
-                    />
+                    <img src="{{user.avatar}}" alt="image" style="object-fit: cover">
                   </div>
                   <div class="form-group" *ngIf="imgSrc">
-                    <img [src]="imgSrc" style="object-fit: cover" />
+                    <img [src]="imgSrc" style="object-fit: cover">
                   </div>
                 </div>
               </div>
@@ -355,10 +351,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div id="button-scroll-top" style="display: none">
-      <button><i class="fas fa-chevron-up"></i></button>
     </div>
   </div>
   <app-frontend-footer></app-frontend-footer>

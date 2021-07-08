@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
-  user!:any;
+  user!: any;
 
   constructor(
     private toastr: ToastrService,
@@ -46,8 +46,6 @@ export class LoginComponent implements OnInit {
         this.data.changeCheck(false);
         this.data.getCurentUser(data.user);
         this.router.navigate(['']);
-        console.log(this.user);
-
       },
       error: (error: any) => {
         console.log(error);

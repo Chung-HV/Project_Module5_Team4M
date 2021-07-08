@@ -31,7 +31,7 @@ class AuthController extends Controller
         $user = User::create(array_merge(
             $validator->validated(),
             ['password' => bcrypt($request->password)]
-        )); 
+        ));
         $user_account = new Account();
         $user_account->id = $user->id;
         $user_account->mooney = "99999999";
@@ -89,7 +89,9 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        return response()->json(auth()->user());
+        $money =auth()->user()->accounts->mooney;
+
+        return response()->json(['user'=>auth()->user(),'money'=>$money]);
     }
 
     public function update(Request $request, $idUser)
@@ -133,5 +135,5 @@ class AuthController extends Controller
         }
     }
 
-    
+
 }
