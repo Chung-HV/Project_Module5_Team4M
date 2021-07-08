@@ -54,4 +54,8 @@ export class RegisterComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Đăng ký tài khoản thành công!');
   }
+
+  get getControl() {
+    return this.userForm.controls;
+  }
 }

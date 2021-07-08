@@ -48,6 +48,7 @@ export class ProviderOrdersComponent implements OnInit {
     this.orderService.updateOrder(order_id, order_status).subscribe({
       next: (data) => {
         console.log(data);
+        this.getOrders();
         this.toastr.success(
           'Yêu cầu của bạn đã được gủi đi, vui lòng chờ xác nhận'
         )
@@ -71,6 +72,6 @@ export class ProviderOrdersComponent implements OnInit {
     }
     this.order_detail = [];
     this.order_detail.push(data);
-    
+
   }
 }

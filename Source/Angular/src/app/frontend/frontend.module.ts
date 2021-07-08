@@ -19,7 +19,7 @@ import { ServiceListComponent } from './component/provider/service-list/service-
 import { CustomerOrdersComponent,} from './component/order/customer-order/customer-orders.component';
 import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user-profile-sidebar.component';
 import { CreateAlbumComponent } from './component/user-album/create-album/create-album.component';
-
+import { CurrencyPipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,13 +39,15 @@ import { CreateAlbumComponent } from './component/user-album/create-album/create
     CustomerOrdersComponent,
     UserProfileSidebarComponent,
     CreateAlbumComponent,
-    
+
   ],
   imports: [
     CommonModule,
     FrontendRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+
   ],
+  providers: [CurrencyPipe]
 })
 export class FrontendModule {}
