@@ -33,8 +33,8 @@ class AuthController extends Controller
             ['password' => bcrypt($request->password)]
         ));
         $user_account = new Account();
-        $user_account->id=$user->id;
-        $user_account->mooney="99999999";
+        $user_account->id = $user->id;
+        $user_account->mooney = "99999999";
         $user_account->save();
         $token = $user->createToken($request->email)->plainTextToken;
 
@@ -89,54 +89,51 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        return response()->json(auth()->user());
+        $money =auth()->user()->accounts->mooney;
+
+        return response()->json(['user'=>auth()->user(),'money'=>$money]);
     }
 
-    public function update(Request $request, $idUser){
+    public function update(Request $request, $idUser)
+    {
 
-        try{
+        try {
 
             $user = User::find($idUser);
             $user->fill($request->all());
             // dd($request->all());
             // $user->name = $request->name;
 
-                if ($request->avatar) {
-                    // Storage::delete('public/' . $user->avatar);
+            if ($request->avatar) {
+                // Storage::delete('public/' . $user->avatar);
 
-                    $newAvatarName = time().'.'.$request->avatar->getClientOriginalExtension();
-                    $request->avatar->storeAs('public/images/users', $newAvatarName);
-                    $user->avatar = "images/users/" . $newAvatarName;
-
-                }
+                $newAvatarName = time() . '.' . $request->avatar->getClientOriginalExtension();
+                $request->avatar->storeAs('public/images/users', $newAvatarName);
+                $user->avatar = "images/users/" . $newAvatarName;
+            }
 
             $user->save();
 
             return response()->json($user);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return response()->json($e->getMessage());
         }
     }
-    public function updateActiveUser(Request $request, $idUser){
+    public function updateActiveUser(Request $request, $idUser)
+    {
 
-        try{
+        try {
 
             $user = User::find($idUser);
             // dd($idUser);
-            $user->is_active = $user->is_active  === 0?1:0;
+            $user->is_active = $user->is_active  === 0 ? 1 : 0;
             $user->save();
 
             return response()->json($user);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return response()->json($e->getMessage());
         }
     }
 
-    // public function uploadImage (Request $request, $idUser){
-    //     $user = User::find($idUser);
-    //     $albums = Album::all();
-    //     $albums->filePath;
 
-    //     dd($albums->filePath);
-    // }
 }

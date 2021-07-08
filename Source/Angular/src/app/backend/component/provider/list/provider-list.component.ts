@@ -26,7 +26,7 @@ export class ProviderListComponent implements OnInit {
   setVip(provider_id:any){
     this.userService.setVip(provider_id).subscribe({
       next: ()=>{
-        this.toastr.success('set VIP successful!');
+        this.toastr.success('Đặt tài khoản VIP thành công!');
        },
        error: (error) => {
          console.log(error);

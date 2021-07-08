@@ -1,4 +1,10 @@
-import { Component, EventEmitter, NgIterable, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  NgIterable,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDashboard } from '../../models/userDashboard';
 import { environment } from 'src/environments/environment.prod';
@@ -16,8 +22,10 @@ export class DashboardComponent implements OnInit {
   filter = {
     gender: '',
     city: '',
-    price: '500000' ,
+    price: '500000',
     name: '',
+    count_view: '',
+    count_rent: '',
   };
   count_filter: any = 0;
   filter_user: any = null;
@@ -27,7 +35,10 @@ export class DashboardComponent implements OnInit {
   base_Url_img = environment.base_Url_img;
   active1: boolean = false;
   active2: boolean = false;
-
+  active_max: boolean = false;
+  active_min: boolean = false;
+  active_max_rent: boolean = false;
+  active_min_rent: boolean = false;
   constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {
@@ -65,6 +76,72 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+  clickMaxRent() {
+    this.clearView();
+    if (this.active_max_rent == false) {
+      this.filter.count_rent = 'max';
+    } else {
+      this.filter.count_rent = '';
+    }
+    if (this.active_min_rent) {
+      this.active_max_rent = !this.active_max_rent;
+      this.active_min_rent = false;
+    } else {
+      this.active_max_rent = !this.active_max_rent;
+    }
+  }
+  clickMinRent() {
+    this.clearView();
+    if (this.active_min_rent == false) {
+      this.filter.count_rent = 'min';
+    } else {
+      this.filter.count_rent = '';
+    }
+    if (this.active_max_rent) {
+      this.active_max_rent = false;
+      this.active_min_rent = !this.active_min_rent;
+
+    } else {
+      this.active_min_rent = !this.active_min_rent;
+    }
+  }
+  clearRent() {
+    this.active_max_rent = false;
+    this.active_max_rent = false;
+  }
+  clickMaxView() {
+    this.clearRent();
+    if (this.active_max == false) {
+      this.filter.count_view = 'max';
+    } else {
+      this.filter.count_view = '';
+    }
+    if (this.active_min) {
+      this.active_max = !this.active_max;
+      this.active_min = false;
+    } else {
+      this.active_max = !this.active_max;
+    }
+  }
+  clickMinView() {
+    this.clearRent();
+    if (this.active_min == false) {
+      this.filter.count_view = 'min';
+    } else {
+      this.filter.count_view = '';
+    }
+
+    if (this.active_max) {
+      this.active_max = false;
+      this.active_min = !this.active_min;
+    } else {
+      this.active_min = !this.active_min;
+    }
+  }
+  clearView() {
+    this.active_max = false;
+    this.active_min = false;
+  }
   clickEvent1() {
     if (this.active1 == false) {
       this.filter.gender = 'male';
@@ -77,8 +154,6 @@ export class DashboardComponent implements OnInit {
     } else {
       this.active1 = !this.active1;
     }
-
-    console.log();
   }
   clickEvent2() {
     // this.gender!=document.getElementById('Female')?.getAttribute('value');
@@ -95,7 +170,7 @@ export class DashboardComponent implements OnInit {
     }
   }
   clickEvent3() {
-    this.filter.gender = '';
+    this.filter.count_view = '';
     this.active1 = false;
     this.active2 = false;
   }
@@ -105,33 +180,44 @@ export class DashboardComponent implements OnInit {
   removeCity() {
     this.filter.city = '';
   }
-  removePrice(){
+  removePrice() {
     this.filter.price = '';
   }
+  removeFilter() {
+    this.filter_user = null;
+  }
   saveFilter() {
-
-    // console.log(this.filter.gender);
-    // console.log(this.filter.city);
-    // console.log(this.filter.name);
     const data = {
       name: this.filter.name,
       gender: this.filter.gender,
       price: this.filter.price,
       city: this.filter.city,
+      count_view: this.filter.count_view,
+      count_rent: this.filter.count_rent,
     };
-    // console.log(data);
+console.log(data);
 
     this.homeService.getFilter(data).subscribe(
       (response) => {
-        //console.log(response);
         this.filter_user = response;
         if (Object.keys(this.filter_user).length == 0) {
           this.count_filter = 0;
         } else {
-          this.count_filter = 1;
+          this.count_filter = Object.keys(this.filter_user).length;
         }
-
       },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  increaseView($id: any) {
+    const data = {
+      id: $id,
+      user_id: localStorage.getItem('user_id'),
+    };
+    this.homeService.increaseView(data).subscribe(
+      (response) => {},
       (error) => {
         console.log(error);
       }

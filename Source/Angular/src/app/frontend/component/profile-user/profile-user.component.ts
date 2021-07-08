@@ -6,6 +6,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 
 import { User } from '../../models/user';
+import { DataService } from '../../services/data.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,15 +16,16 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileUserComponent implements OnInit {
   id!: number;
-  user!: User;
+  user!: any;
   avatar!: any;
   myForm!: FormGroup;
   is_provider: any;
+  is_service_provider:any;
   isShowOleImage = true;
   is_active!: boolean;
   onOff!: number;
-  image_path = environment.base_Url_img;
-  imgSrc = '';
+  base_Url_img = `${environment.base_Url_img}`;
+  imgSrc = this.avatar;
 
   validateForm() {
     this.myForm = this.fb.group({
@@ -49,7 +51,9 @@ export class ProfileUserComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private data: DataService
+
   ) {}
 
   ngOnInit(): void {
@@ -58,24 +62,9 @@ export class ProfileUserComponent implements OnInit {
   }
 
   updateProfileUser() {
-    // let data = this.myForm.value;
-    // console.log(JSON.stringify(data));
 
     let formData = new FormData();
-    // formData.append('data', data);
 
-    // formData.append('name', this.user.name);
-    // formData.append('birth_day', this.user.birth_day);
-    // formData.append('gender', this.user.gender);
-    // formData.append('city', this.user.city);
-    // formData.append('nation', this.user.nation);
-    // formData.append('height', this.user.height);
-    // formData.append('weight', this.user.weight);
-    // formData.append('hobby', this.user.hobby);
-    // formData.append('introducion', this.user.introducion);
-    // formData.append('requirement', this.user.requirement);
-    // formData.append('facebook', this.user.facebook);
-    // formData.append('price', this.user.price);
     formData.append('name', this.myForm.get('name')?.value);
     formData.append('birth_day', this.myForm.get('birth_day')?.value);
 
@@ -98,22 +87,16 @@ export class ProfileUserComponent implements OnInit {
     formData.append('price', this.myForm.get('price')?.value);
 
     if (this.avatar) {
-      formData.append('avatar', this.avatar, this.avatar.name);
+      formData.append('avatar', this.avatar);
     }
-    // console.log(formData.has('city'));
 
-    // console.log(formData.has('facebook'));
-    // console.log(formData.has('avatar'));
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
-        //   this.router.navigate(['admin/book-list']);
-        this.toastr.success('Upload successfully!', 'Notification');
-        // formData.delete('city');
-
-        // }
+        this.user = this.data.getCurentUser(res)
+        this.toastr.success('Cập nhật thông tin thành công', 'Thông báo');
       },
       (error) => {
-        this.toastr.error('Upload fail!', 'Notification');
+        this.toastr.error('Cập nhật thất bại', 'Thông báo');
       }
     );
   }
@@ -122,7 +105,8 @@ export class ProfileUserComponent implements OnInit {
     this.userService.profile().subscribe({
       next: (data) => {
         this.user = data;
-
+        this.is_service_provider = this.user.is_service_provider;
+        this.avatar = this.user.avatar;
         this.myForm.patchValue({
           name: this.user.name,
           birth_day: this.user.birth_day,
@@ -139,17 +123,16 @@ export class ProfileUserComponent implements OnInit {
         });
         this.id = this.user.id;
         this.is_active = this.user.is_active;
-        // console.log(this.user.price);
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-        // this.name = this.user.name;
-        // console.log(this.user);
+
       },
     });
   }
 
   onSubmit() {
     this.updateProfileUser();
+
   }
 
   getImgFile($event: any) {

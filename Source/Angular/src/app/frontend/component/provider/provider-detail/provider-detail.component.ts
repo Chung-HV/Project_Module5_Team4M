@@ -11,6 +11,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { HomeService } from '../../../services/home.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-provider-detail',
@@ -20,11 +21,16 @@ import { HomeService } from '../../../services/home.service';
 export class ProviderDetailComponent implements OnInit {
   users!: any;
   price!: number;
+  albums!:any;
   message = '';
-  base_Url_img=environment.base_Url_img;
+  base_Url_img = environment.base_Url_img;
+  submitted = false;
 
   user_id = localStorage.getItem('user_id');
+
+
   user_server_provider!: any;
+  count_view!: any;
   order = {
     address: '',
     start_at: '',
@@ -37,19 +43,19 @@ export class ProviderDetailComponent implements OnInit {
     private homeService: HomeService,
     private router: Router,
     private route: ActivatedRoute,
-    private data: DataService
+    private data: DataService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.paramMap.get('id'));
-   
+    this.getAlbum(this.route.snapshot.paramMap.get('id'));
     // console.log(localStorage.getItem('user_id'));
   }
   getUser(id: any) {
     this.homeService.getUser(id).subscribe(
       (data) => {
         this.users = data;
-        console.log(data);
       },
       (error) => {
         console.log(error);
@@ -58,6 +64,7 @@ export class ProviderDetailComponent implements OnInit {
   }
 
   saveOrder(): void {
+    this.submitted = true;
     this.users.forEach((user: any) => {
       this.user_server_provider = user.id;
     });
@@ -75,11 +82,24 @@ export class ProviderDetailComponent implements OnInit {
 
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {
+        this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
         console.log(response);
+        // this.router.navigate(['frontend/user/orders'])
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  getAlbum(id:any){
+    this.homeService.getAlbumByUser(id).subscribe(
+      (data) => {
+        this.albums = data
+      console.log(this.albums);
+    },
+    (error) => {
+      console.log(error);
+    });
   }
 }

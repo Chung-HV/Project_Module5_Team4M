@@ -1,0 +1,72 @@
+<body class="fixed-header" style="margin-top: 75px">
+  <noscript
+    >Bạn cần có cho phép Javascript hoạt động để chạy ứng dụng
+    PlayerDuo.</noscript
+  >
+  <div id="root">
+    <!-- <app-frontend-user-header></app-frontend-user-header> -->
+
+    <div class="notifications-wrapper"></div>
+    <div></div>
+    <div class="wrapper">
+      <div class="setting__main row">
+        <div class="setting__main--menu col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <app-user-profile-sidebar></app-user-profile-sidebar>
+        </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <div class="aside">
+            <div class="row flowaccount">
+              <div class="col-sm-8">
+                <h3>Thêm mới album ảnh</h3>
+                <div class="d-flex img-avatar">
+                  <img *ngFor='let url of images'  [src]="url" style="margin: 3px; border-radius: 5px;object-fit: cover;">
+                  <!-- <div class="form-group" *ngIf="isShowOleImage">
+                    <img src="{{user.avatar}}" alt="image" style="object-fit: cover">
+                  </div>
+                  <div class="form-group" *ngIf="imgSrc">
+                    <img [src]="imgSrc" style="object-fit: cover">
+                  </div> -->
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 personalinfo">
+                <form
+                  class="from-userinfo"
+
+                  (ngSubmit)="onSubmited()"
+                >
+
+                  <div class="fieldGroup">
+                    <div class="cropimg-avatar">
+                      <input
+                        multiple=""
+                        class="uploadAvatar"
+                        type="file"
+                        name="filePath"
+                        formControlName="filePath"
+                        (change)="onFileChange($event)"
+                      />
+
+                    </div>
+                  </div>
+
+
+                  <button type="submit" class="btn-update">Tạo mới</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="button-scroll-top" style="display: none">
+      <button><i class="fas fa-chevron-up"></i></button>
+    </div>
+  </div>
+  <app-frontend-footer></app-frontend-footer>
+
+</body>

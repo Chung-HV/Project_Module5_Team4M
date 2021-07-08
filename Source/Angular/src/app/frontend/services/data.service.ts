@@ -14,6 +14,9 @@ export class DataService {
   user = new BehaviorSubject<any>({});
   currentUser = this.user.asObservable();
 
+  money = new BehaviorSubject<any>(0);
+  currentMoney = this.money.asObservable();
+
 
 
   // có thể subcribe theo dõi thay đổi value của biến này thay cho messageSource
@@ -26,5 +29,9 @@ export class DataService {
 
   getCurentUser(user:any) {
     this.user.next(user);
+  }
+
+  setCurrenMoney(money:any){
+    this.money.next(money);
   }
 }

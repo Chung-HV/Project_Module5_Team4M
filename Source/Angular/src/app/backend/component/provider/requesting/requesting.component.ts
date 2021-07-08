@@ -26,7 +26,7 @@ export class RequestingComponent implements OnInit {
   approveProvider(provider_id: any) {
     this.userService.approveRequest(provider_id).subscribe({
       next: () => {
-        this.toastr.success('Approved');
+        this.toastr.success('Bạn xác nhận người dùng thành cộng tác viên');
       }
     });
   }

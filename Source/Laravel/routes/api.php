@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\frontend\AlbumController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\UserController;
@@ -25,8 +26,10 @@ Route::prefix('dashboard')->group(function () {
     Route::get('', [DashboardController::class, 'showServiceUser']);
     Route::get('user_vip', [DashboardController::class, 'showVipUser']);
     Route::get('user_new', [DashboardController::class, 'showNewUser']);
-    Route::post('filter', [DashboardController::class, 'findUser']);
+    Route::post('filter', [DashboardController::class, 'filterUser']);
     Route::get('/{id}', [DashboardController::class, 'getUser']);
+    Route::get('user/{id}', [DashboardController::class, 'getUser']);
+    Route::post('/view', [DashboardController::class, 'increaseView']);
     Route::get('message/{id}', [UserController::class, 'getMessageUser']);
     Route::post('order_service_provider', [OrderController::class, 'orderServiceProvider']);
 });
@@ -46,6 +49,10 @@ Route::prefix('users')->group(function () {
         Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
         Route::get('/uploadimg/{id}', [AuthController::class, 'uploadImage']);
         Route::get('/{id}/orders', [OrderController::class, 'getOrderByCustomer']);
+        Route::post('/album/create/{id}', [AlbumController::class, 'create']);
+        Route::get('/album/{id}', [AlbumController::class, 'getAlbumById']);
+
+
     });
 });
 

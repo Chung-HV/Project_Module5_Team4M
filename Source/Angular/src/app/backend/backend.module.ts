@@ -34,4 +34,4 @@ import { AngularFireModule } from '@angular/fire';
     
   ]
 })
-export class BackendModule { }
+export class BackendModule {}

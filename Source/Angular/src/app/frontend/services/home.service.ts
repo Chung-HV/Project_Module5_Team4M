@@ -33,5 +33,19 @@ export class HomeService {
     });
     return this.http.post(`${baseUrl}/order_service_provider`, data, {headers:reqHeader});
   }
+  increaseView(data:any):Observable<any>{
+
+    return this.http.post(`${baseUrl}/view`,data,);
+  }
+  getAlbumByUser(id: number): Observable<any> {
+    var auth_token = localStorage.getItem('token');
+    var reqHeader = new HttpHeaders({
+      Authorization: 'Bearer ' + auth_token,
+    });
+
+    return this.http.get(`${environment.base_Url}users/album/${id}`, {
+      headers: reqHeader,
+    });
+  }
 
 }

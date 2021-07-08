@@ -61,7 +61,7 @@ export class CustomerOrdersComponent implements OnInit {
       next: (data) => {
         console.log(data);
         this.toastr.success(
-          'Your request has been sent, please wait for Admin approvement'
+          'Yêu cầu của bạn đã được gủi đi, vui lòng chờ xác nhận'
         )
         // location.reload();
       }

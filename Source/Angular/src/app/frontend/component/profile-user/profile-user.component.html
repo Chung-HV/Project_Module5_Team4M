@@ -31,7 +31,7 @@
               </div>
 
               <div class="col-sm-4">
-                <td class="tbright" *ngIf="user.is_service_provider == 1">
+                <td class="tbright" *ngIf="is_service_provider == 1">
                   <p>Active account</p>
                   <label class="switch form-group">
                     <input
@@ -365,17 +365,13 @@
                     </div>
                   </div>
 
-                  <button type="submit" class="btn-update">Update</button>
+                  <button type="submit" class="btn-update">Cập nhật</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div id="button-scroll-top" style="display: none">
-      <button><i class="fas fa-chevron-up"></i></button>
     </div>
   </div>
   <app-frontend-footer></app-frontend-footer>

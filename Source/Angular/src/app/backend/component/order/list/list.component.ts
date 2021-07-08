@@ -36,7 +36,7 @@ export class OrderListComponent implements OnInit {
         this.customers = this.orders.data.customers,
         this.order_details = this.orders.data.order_details,
         console.log(this.order_details);
-        
+
       }
     })
   }

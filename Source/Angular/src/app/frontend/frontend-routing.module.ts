@@ -11,6 +11,7 @@ import { ServiceListComponent } from './component/provider/service-list/service-
 
 import { RegisterComponent } from './component/register/register.component';
 import { CustomerOrdersComponent } from './component/order/customer-order/customer-orders.component';
+import { CreateAlbumComponent } from './component/user-album/create-album/create-album.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'user/profile', component: ProfileUserComponent },
+      { path: 'user/album', component: CreateAlbumComponent },
       { path: 'user/orders', component: CustomerOrdersComponent },
       { path: 'provider/orders', component: ProviderOrdersComponent },
       { path: 'provider/services', component: ServiceListComponent },
