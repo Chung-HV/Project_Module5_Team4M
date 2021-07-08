@@ -1,6 +1,6 @@
 <body class="fixed-header" style="margin-top: 75px">
     <noscript>Bạn cần có cho phép Javascript hoạt động để chạy ứng dụng
-    PlayerDuo.</noscript>
+        PlayerDuo.</noscript>
     <div id="root">
         <!-- <app-frontend-user-header></app-frontend-user-header> -->
 
@@ -9,13 +9,13 @@
         <div class="wrapper">
             <div class="setting__main row">
                 <div class="setting__main--menu col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                  <app-user-profile-sidebar></app-user-profile-sidebar>
+                    <app-user-profile-sidebar></app-user-profile-sidebar>
                 </div>
                 <div class="wrapper col-md-8">
                     <div class="container">
                         <div class="user__profile row">
-                            <div class="group-main-wrap col-md-8">
-                                <div class="publish-post-wrap">
+                            <div class="group-main-wrap col-md-10">
+                                <div class="publish-post-wrap" style="border: none;">
 
                                     <div class="header">
                                         <h3 style="text-align: center;">Chọn dịch vụ bạn muốn cung cấp </h3>
@@ -30,10 +30,11 @@
                                                     </div>
                                                     <div *ngFor="let service of defaultServices">
                                                         <label class="check_box">
-                              <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;" checked disabled
-                                (change)="getNewProvidingServices(service.id)">
-                              <span>{{service.name}}</span>
-                            </label>
+                                                            <input type="checkbox" value="{{service.id}}"
+                                                                style="margin-right: 10px;" checked disabled
+                                                                (change)="getNewProvidingServices(service.id)">
+                                                            <span>{{service.name}}</span>
+                                                        </label>
                                                     </div>
                                                 </div>
 
@@ -44,11 +45,12 @@
                                                     </div>
                                                     <div *ngFor="let service of freeServices">
                                                         <label class="check_box">
-                              <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                [checked]="providingFreeServiceIds.indexOf(service.id) !== -1"
-                                (change)="getNewProvidingServices(service.id)">
-                              <span>{{service.name}}</span>
-                            </label>
+                                                            <input type="checkbox" value="{{service.id}}"
+                                                                style="margin-right: 10px;"
+                                                                [checked]="providingFreeServiceIds.indexOf(service.id) !== -1"
+                                                                (change)="getNewProvidingServices(service.id)">
+                                                            <span>{{service.name}}</span>
+                                                        </label>
                                                     </div>
                                                 </div>
 
@@ -58,18 +60,19 @@
                                                     </div>
                                                     <div *ngFor="let service of extraServices">
                                                         <label class="check_box">
-                              <input type="checkbox" value="{{service.id}}" style="margin-right: 10px;"
-                                [checked]="providingExtraServiceIds.indexOf(service.id) !== -1"
-                                (change)="getNewProvidingServices(service.id)">
-                              <span>{{service.name}}</span>
-                            </label>
+                                                            <input type="checkbox" value="{{service.id}}"
+                                                                style="margin-right: 10px;"
+                                                                [checked]="providingExtraServiceIds.indexOf(service.id) !== -1"
+                                                                (change)="getNewProvidingServices(service.id)">
+                                                            <span>{{service.name}}</span>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div style="align-items: center;">
                                                 <button type="button" class="btn-fill btn btn-sm btn-default" (click)="updateProvidingService(provider_id)">
-                          <span>Xác nhận</span>
-                        </button>
+                                                    <span>Xác nhận</span>
+                                                </button>
                                                 <br>
                                             </div>
                                         </div>

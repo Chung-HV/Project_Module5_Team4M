@@ -65,13 +65,12 @@ export class ProviderOrdersComponent implements OnInit {
       'time': this.order_details[i].time,
       'start_time': this.order_details[i].start_time,
       'date': this.order_details[i].start_at,
-      'cost': this.customers[i].price*this.order_details[i].time,
+      'cost': this.provider.price*this.order_details[i].time,
       'status': this.orders[i].status,
       'report': 'report',
     }
     this.order_detail = [];
     this.order_detail.push(data);
-    console.log(data.id);
-
+    
   }
 }

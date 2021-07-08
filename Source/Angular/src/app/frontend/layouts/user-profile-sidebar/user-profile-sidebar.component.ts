@@ -65,4 +65,5 @@ export class UserProfileSidebarComponent implements OnInit {
     this.active_service = false;
     this.active_rent = false;
   }
+
 }

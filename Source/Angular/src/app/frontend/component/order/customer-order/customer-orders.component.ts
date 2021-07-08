@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/frontend/services/order.service';
 import { ProviderService } from 'src/app/frontend/services/provider.service';
 import { UserService } from 'src/app/frontend/services/user.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-customer-orders',
@@ -13,6 +14,8 @@ export class CustomerOrdersComponent implements OnInit {
   order_details: any
   providers: any = [];
   orders: any;
+  order_detail: any
+  base_Url_img = environment.base_Url_img;
 
   user_id = localStorage.getItem('user_id');
   constructor(
@@ -28,11 +31,9 @@ export class CustomerOrdersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getOrderDetetail() {
-  }
 
   getOrders() {
-    this.userService.getOrders().subscribe({
+    this.orderService.getByCustomer(this.user_id).subscribe({
       next: (data: any) => {
         this.orders = data.orders,
           this.providers = data.providers,
@@ -62,5 +63,24 @@ export class CustomerOrdersComponent implements OnInit {
         // location.reload();
       }
     });
+  }
+
+  setOrderDetailData(i:any){
+    const data:any = {
+      'id': this.orders[i].id,
+      'provider': this.providers[i].name,
+      'avatar': this.base_Url_img+this.providers[i].avatar,
+      'address': this.order_details[i].address,
+      'time': this.order_details[i].time,
+      'start_time': this.order_details[i].start_time,
+      'date': this.order_details[i].start_at,
+      'cost': this.providers[i].price*this.order_details[i].time,
+      'status': this.orders[i].status,
+      'report': 'report',
+    }
+    this.order_detail = [];
+    this.order_detail.push(data);
+    console.log(this.order_detail);
+
   }
 }

@@ -35,7 +35,7 @@
                                         <tr *ngFor="let order of orders,let i = index">
                                             <td><a data-toggle="modal" data-target="#filter" (click)="setOrderDetailData(i)">{{customers[i].name}}</a></td>
                                             <td>{{order_details[i].address}}</td>
-                                            <td>{{order_details[i].time}}</td>
+                                            <td>{{order_details[i].time}} Giờ</td>
                                             <td>{{order_details[i].start_time}}</td>
                                             <td>{{order_details[i].start_at}}</td>
                                             <td>{{provider.price}}</td>
@@ -84,7 +84,7 @@
                             <div class="col-sm-6">
                                 <h6>Tên người thuê: {{data.customer}}</h6>
                                 <h6>Địa chỉ hẹn: {{data.address}}</h6>
-                                <h6>Thời gian thuê: {{data.time}}</h6>
+                                <h6>Thời gian thuê: {{data.time}} Giờ</h6>
                                 <h6>Thời gian bắt đầu: {{data.start_time}}</h6>
                                 <h6>Ngày: {{data.date}}</h6>
                                 <h6>Thành tiền: {{data.cost}}</h6>

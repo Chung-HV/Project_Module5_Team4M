@@ -23,7 +23,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Providers List</li>
+                                <li class="breadcrumb-item active">Danh sách đơn thuê</li>
                             </ol>
                         </div>
                     </div>
@@ -39,10 +39,26 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Providers List</h3>
+                                <div class="card-header row">
+                                    <div class="col-sm-7">
+                                        <h3 class="card-title" style="padding: auto;">Danh sách đơn thuê</h3>
+                                    </div>
+                                    <div class="col-sm-5 row" style="justify-content: right;">
+                                        <div class="col-sm-7">
+                                            <p style="margin-top: 4px;float: right; margin-right: 5px;">Trạng thái</p>
+                                        </div>
 
-                                    <div class="card-tools">
+                                        <div class="styled" dir="ltr">
+                                            <select #selectedStatus (change)="getByStatus(selectedStatus.value)">
+                                                <option selected value="">Toàn bộ</option>
+                                                <option value="pending">Chờ phản hồi</option>
+                                                <option value="accepted">Đang tiến hành</option>
+                                                <option value="done">Đã hoàn thành</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="card-tools col-sm-3">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -52,7 +68,8 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
@@ -68,10 +85,12 @@
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let order of orders.data, let i = index">
+                                        <tbody *ngFor="let order of orders.data | paginate:{itemsPerPage: 20,currentPage : currentPage}, let i = index">
                                             <tr>
                                                 <td>{{i+1}}</td>
-                                                <td>{{order.provider.name}}</td>
+                                                <td>
+                                                    <a data-toggle="modal" data-target="#order-detail-modal" (click)="setOrderDetailData(i)">{{order.provider.name}}</a>
+                                                </td>
                                                 <td>{{order.customer.name}}</td>
                                                 <td>{{order.order_detail.start_at}}</td>
                                                 <td>{{order.order_detail.time*order.provider.price}}</td>
@@ -80,18 +99,14 @@
                                                 <td *ngIf="order.status == 'done'">Đã hoàn thành</td>
                                                 <td *ngIf="order.status == 'can report'">Đã hoàn thành</td>
                                                 <td *ngIf="order.status == 'reported'"><button class="btn btn-block btn-small btn-danger"></button>Duyệt</td>
+                                                <td></td>
                                                 <!-- <td *ngIf="provider.is_active == 0">Paused</td>
                                                 <td *ngIf="provider.is_vip == 0"><button class="btn btn-danger btn-sm" (click)="setVip(provider.id)">Set Vip</button></td>
                                                 <td *ngIf="provider.is_vip == 1"><button class="btn btn-info btn-sm" disabled>Vip</button></td> -->
                                             </tr>
-
-
                                         </tbody>
-                                        <tfoot>
-
-                                        </tfoot>
-
                                     </table>
+                                    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Trước" nextLabel="Sau"></pagination-controls>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -109,9 +124,49 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-
     </div>
+
+    <!-- /.modal -->
+
+    <div class="modal fade" id="order-detail-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- <div class="overlay">
+                    <i class="fas fa-2x fa-sync fa-spin"></i>
+                </div> -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Oder Detail</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" *ngFor="let data of order_detail">
+                    <div class="row">
+                        <!-- <div class="col-sm-6"><img src="{{data.avatar}}"></div> -->
+                        <div class="col-sm-6">
+                            <h6>Tên người CCDV: {{data.provider}}</h6>
+                            <h6>Tên người thuê: {{data.customer}}</h6>
+                            <h6>Địa chỉ hẹn: {{data.address}}</h6>
+                            <h6>Thời gian thuê: {{data.time}} Giờ</h6>
+                            <h6>Thời gian bắt đầu: {{data.start_time}}</h6>
+                            <h6>Ngày: {{data.date}}</h6>
+                            <h6>Thành tiền: {{data.cost}}</h6>
+                            <h6>Trạng thái: {{data.status}}</h6>
+                            <h6>Phản hồi về người thuê:: {{data.report}}</h6>
+                            <!-- <td *ngIf="data.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(data.id,'accepted')">Accept</button></td> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     <script>
         $(function() {
@@ -129,6 +184,160 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            $('.swalDefaultSuccess').click(function() {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.swalDefaultInfo').click(function() {
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.swalDefaultError').click(function() {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.swalDefaultWarning').click(function() {
+                Toast.fire({
+                    icon: 'warning',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.swalDefaultQuestion').click(function() {
+                Toast.fire({
+                    icon: 'question',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+
+            $('.toastrDefaultSuccess').click(function() {
+                toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+            });
+            $('.toastrDefaultInfo').click(function() {
+                toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+            });
+            $('.toastrDefaultError').click(function() {
+                toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+            });
+            $('.toastrDefaultWarning').click(function() {
+                toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+            });
+
+            $('.toastsDefaultDefault').click(function() {
+                $(document).Toasts('create', {
+                    title: 'Toast Title',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultTopLeft').click(function() {
+                $(document).Toasts('create', {
+                    title: 'Toast Title',
+                    position: 'topLeft',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultBottomRight').click(function() {
+                $(document).Toasts('create', {
+                    title: 'Toast Title',
+                    position: 'bottomRight',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultBottomLeft').click(function() {
+                $(document).Toasts('create', {
+                    title: 'Toast Title',
+                    position: 'bottomLeft',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultAutohide').click(function() {
+                $(document).Toasts('create', {
+                    title: 'Toast Title',
+                    autohide: true,
+                    delay: 750,
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultNotFixed').click(function() {
+                $(document).Toasts('create', {
+                    title: 'Toast Title',
+                    fixed: false,
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultFull').click(function() {
+                $(document).Toasts('create', {
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    icon: 'fas fa-envelope fa-lg',
+                })
+            });
+            $('.toastsDefaultFullImage').click(function() {
+                $(document).Toasts('create', {
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    image: '../../dist/img/user3-128x128.jpg',
+                    imageAlt: 'User Picture',
+                })
+            });
+            $('.toastsDefaultSuccess').click(function() {
+                $(document).Toasts('create', {
+                    class: 'bg-success',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultInfo').click(function() {
+                $(document).Toasts('create', {
+                    class: 'bg-info',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultWarning').click(function() {
+                $(document).Toasts('create', {
+                    class: 'bg-warning',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultDanger').click(function() {
+                $(document).Toasts('create', {
+                    class: 'bg-danger',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.toastsDefaultMaroon').click(function() {
+                $(document).Toasts('create', {
+                    class: 'bg-maroon',
+                    title: 'Toast Title',
+                    subtitle: 'Subtitle',
+                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
             });
         });
     </script>
