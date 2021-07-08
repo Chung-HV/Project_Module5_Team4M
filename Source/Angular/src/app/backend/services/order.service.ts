@@ -21,4 +21,8 @@ export class OrderService {
   getAll():Observable<any>{
     return this.http.get<any>(`${environment.base_Url}admin/orders`,{headers: this.reqHeader})
   }
+
+  getByStatus(status:any){
+    return this.http.get<any>(`${environment.base_Url}admin/orders/${status}`)
+  }
 }

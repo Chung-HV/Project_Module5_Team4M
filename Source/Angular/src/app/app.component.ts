@@ -67,6 +67,8 @@ export class AppComponent {
     "assets/backend/plugins/jquery/jquery.min.js",
     "assets/backend/plugins/jquery-ui/jquery-ui.min.js",
     "assets/backend/plugins/bootstrap/js/bootstrap.bundle.min.js",
+    "assets/backend/plugins/sweetalert2/sweetalert2.min.js",
+    "assets/backend/plugins/toastr/toastr.min.js",
     "assets/backend/plugins/chart.js/Chart.min.js",
     "assets/backend/plugins/sparklines/sparkline.js",
     "assets/backend/plugins/jqvmap/jquery.vmap.min.js",

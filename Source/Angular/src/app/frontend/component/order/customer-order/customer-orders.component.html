@@ -84,13 +84,13 @@
                             <div class="col-sm-6"><img src="{{data.avatar}}"></div>
                             <div class="col-sm-6">
                                 <h6>Tên người CCDV: {{data.provider}}</h6>
+                                <h6>Tên người thuê: {{data.customer}}</h6>
                                 <h6>Địa chỉ hẹn: {{data.address}}</h6>
                                 <h6>Thời gian thuê: {{data.time}} Giờ</h6>
                                 <h6>Thời gian bắt đầu: {{data.start_time}}</h6>
                                 <h6>Ngày: {{data.date}}</h6>
                                 <h6>Thành tiền: {{data.cost}}</h6>
                                 <h6>Trạng thái: {{data.status}}</h6>
-                                <h6>Phản hồi về người CCDV: {{data.report}}</h6>
                                 <td *ngIf="data.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(data.id,'accepted')">Accept</button></td>
                             </div>
                         </div>

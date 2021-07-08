@@ -103,4 +103,18 @@ class OrderController extends Controller
 
     }
 
+    public function getByStatus($status){
+        $orders = Order::where('status',$status)->orderBy('created_at','desc')->paginate(50);
+        $providers = [];
+        $customers = [];
+        $orderDetails = [];
+        foreach($orders as $order){
+            array_push($providers,$order->provider);
+            array_push($customers,$order->customer);
+            array_push($orderDetails,$order->order_detail);
+        }
+        $data = ['orders'=>$orders,'customers'=>$customers,'order_details'=>$orderDetails,'providers'=>$providers];
+        return response()->json($data,200);
+    }
+
 }

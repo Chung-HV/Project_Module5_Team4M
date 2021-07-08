@@ -39,10 +39,10 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Providers List</h3>
+                                <div class="card-header row">
+                                    <h3 class="card-title col-sm-3">Orders List</h3>
 
-                                    <div class="card-tools">
+                                    <div class="card-tools col-sm-3">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -50,6 +50,22 @@
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fas fa-search"></i>
                                                 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 row">
+                                        <div class="col-sm-3 row">
+                                            <p>Sort by status</p>
+                                        </div>
+                                        <div class="col-sm-9 row">
+                                            <div class="styled" dir="ltr">
+                                                <select #selectedStatus (change)="getByStatus(selectedStatus.value)">
+                                                    <option selected value="">Toàn bộ</option>
+                                                    <option value="pending">Chờ phản hồi</option>
+                                                    <option value="accepted">Đang tiến hành</option>
+                                                    <option value="done">Đã hoàn thành</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -117,36 +133,36 @@
     <div class="modal fade" id="order-detail-modal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="overlay">
+                <!-- <div class="overlay">
                     <i class="fas fa-2x fa-sync fa-spin"></i>
-                </div>
+                </div> -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Default Modal</h4>
+                    <h4 class="modal-title">Oder Detail</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
                 </div>
                 <div class="modal-body" *ngFor="let data of order_detail">
-                    <p>lon</p>
-                    <!-- <div class="row">
-                        <div class="col-sm-6"><img src="{{data.avatar}}"></div>
+                    <div class="row">
+                        <!-- <div class="col-sm-6"><img src="{{data.avatar}}"></div> -->
                         <div class="col-sm-6">
                             <h6>Tên người CCDV: {{data.provider}}</h6>
+                            <h6>Tên người thuê: {{data.customer}}</h6>
                             <h6>Địa chỉ hẹn: {{data.address}}</h6>
                             <h6>Thời gian thuê: {{data.time}} Giờ</h6>
                             <h6>Thời gian bắt đầu: {{data.start_time}}</h6>
                             <h6>Ngày: {{data.date}}</h6>
                             <h6>Thành tiền: {{data.cost}}</h6>
                             <h6>Trạng thái: {{data.status}}</h6>
-                            <h6>Phản hồi về người CCDV: {{data.report}}</h6>
-                            <td *ngIf="data.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(data.id,'accepted')">Accept</button></td>
+                            <h6>Phản hồi về người thuê:: {{data.report}}</h6>
+                            <!-- <td *ngIf="data.status=='pending'"><button class="btn btn-success btn-sm btn-block" (click)="updateOrder(data.id,'accepted')">Accept</button></td> -->
                         </div>
-                    </div> -->
+                    </div>
                 </div>
-                <div class="modal-footer justify-content-between">
+                <!-- <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div> -->
             </div>
             <!-- /.modal-content -->
         </div>

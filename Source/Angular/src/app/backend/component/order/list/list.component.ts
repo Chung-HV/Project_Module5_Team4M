@@ -40,21 +40,32 @@ export class OrderListComponent implements OnInit {
   }
 
   setOrderDetailData(i:any){
+
     const data:any = {
-      'id': this.orders[i].id,
-      'customer': this.customers[i].name,
-      'avatar': this.base_Url_img+this.customers[i].avatar,
-      'address': this.order_details[i].address,
-      'time': this.order_details[i].time,
-      'start_time': this.order_details[i].start_time,
-      'date': this.order_details[i].start_at,
-      'cost': this.providers[i].price*this.order_details[i].time,
-      'status': this.orders[i].status,
+      'id': this.orders.data[i].id,
+      'customer': this.orders.data[i].customer.name,
+      'provider': this.orders.data[i].provider.name,
+      'address': this.orders.data[i].order_detail.address,
+      'time': this.orders.data[i].order_detail.time,
+      'start_time': this.orders.data[i].order_detail.start_time,
+      'date': this.orders.data[i].order_detail.start_at,
+      'cost': this.orders.data[i].provider.price*this.orders.data[i].order_detail.time,
+      'status': this.orders.data[i].status,
       'report': 'report',
     }
     this.order_detail = [];
     this.order_detail.push(data);
-    console.log(this.customers);
-    
+  }
+
+  getByStatus(status:any){
+    this.orderService.getByStatus(status).subscribe({
+      next: (data:any)=>{
+        this.orders = data.orders,
+        this.providers = this.orders.data.providers,
+        this.customers = this.orders.data.customers,
+        this.order_details = this.orders.data.order_details,
+        console.log(this.order_details);  
+      }
+    })
   }
 }
