@@ -108,7 +108,8 @@ export class DashboardComponent implements OnInit {
   }
   clearRent() {
     this.active_max_rent = false;
-    this.active_max_rent = false;
+    this.active_min_rent = false;
+    this.filter.count_rent = '';
   }
   clickMaxView() {
     this.clearRent();
@@ -142,6 +143,7 @@ export class DashboardComponent implements OnInit {
   clearView() {
     this.active_max = false;
     this.active_min = false;
+    this.filter.count_view = '';
   }
   clickEvent1() {
     if (this.active1 == false) {

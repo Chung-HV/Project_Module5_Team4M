@@ -187,7 +187,7 @@
                     </div>
                   </div>
                   <div class="fieldGroup">
-                    <p class="control-label">Giá thuê theo giờ (VND)</p>
+                    <p class="control-label">Giá thuê theo giờ (VND) <span class="starred">(*)</span></p>
                     <input
 
                       formControlName="price"
@@ -203,6 +203,9 @@
                       "
                       class="text-danger"
                     >
+                      <div *ngIf="getControl.price.errors?.required">
+                      Giá không được để trống!
+                      </div>
                       <div *ngIf="getControl.price.errors?.pattern">
                         Giá phải là chữ số!
                       </div>

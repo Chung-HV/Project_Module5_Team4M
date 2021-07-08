@@ -19,7 +19,7 @@ import { ServiceListComponent } from './component/provider/service-list/service-
 import { CustomerOrdersComponent,} from './component/order/customer-order/customer-orders.component';
 import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user-profile-sidebar.component';
 import { CreateAlbumComponent } from './component/user-album/create-album/create-album.component';
-import { CurrencyPipe} from '@angular/common';
+
 import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/frontend-user-header.component';
 
 @NgModule({
@@ -49,6 +49,6 @@ import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/fron
     FormsModule,
 
   ],
-  providers: [CurrencyPipe]
+  providers: []
 })
 export class FrontendModule {}

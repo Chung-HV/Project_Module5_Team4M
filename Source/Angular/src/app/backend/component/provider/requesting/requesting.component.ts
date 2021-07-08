@@ -12,6 +12,13 @@ export class RequestingComponent implements OnInit {
   constructor(private userService: UserService,
     private toastr: ToastrService,
   ) {
+    this.getRequest();
+  }
+  ngOnInit(): void {
+
+  }
+
+  getRequest(){
     this.userService.getRequestingProvider().subscribe(
       providers => {
         this.providers = providers;
@@ -19,13 +26,10 @@ export class RequestingComponent implements OnInit {
       }
     )
   }
-  ngOnInit(): void {
-
-  }
-
   approveProvider(provider_id: any) {
     this.userService.approveRequest(provider_id).subscribe({
       next: () => {
+        this.getRequest();
         this.toastr.success('Bạn xác nhận người dùng thành cộng tác viên');
       }
     });

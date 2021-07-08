@@ -25,7 +25,7 @@ class DashboardController extends Controller
     }
     public function showVipUser()
     {
-        $users = User::where('is_admin', '=', '0')->where('is_vip', '=', '1')->where('is_service_provider', '=', '1')->where('is_active', '=', '1')->get();
+        $users = User::where('is_admin', '=', '0')->where('is_vip', '=', '1')->where('is_service_provider', '=', '1')->where('is_active', '=', '1')->limit(8)->get();
         foreach ($users as $key => $user) {
             $user->services->all();
         }
@@ -33,7 +33,7 @@ class DashboardController extends Controller
     }
     public function showNewUser()
     {
-        $users = User::where('is_admin', '=', '0')->where('is_service_provider', '=', '1')->where('is_active', '=', '1')->latest()->take(3)->get();
+        $users = User::where('is_admin', '=', '0')->where('is_service_provider', '=', '1')->where('is_active', '=', '1')->latest()->take(4)->get();
         foreach ($users as $key => $user) {
             $user->services->all();
         }

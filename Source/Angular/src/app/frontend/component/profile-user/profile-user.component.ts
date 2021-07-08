@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
-import { CommonModule, CurrencyPipe} from '@angular/common';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
 import { UserService } from '../../services/user.service';
@@ -36,13 +35,13 @@ export class ProfileUserComponent implements OnInit {
       gender: ['', [Validators.required]],
       city: ['', [Validators.required, Validators.maxLength(15)]],
       nation: ['', [Validators.required, Validators.maxLength(30)]],
-      height: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
-      weight: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(10)]],
+      height: ['', [ Validators.maxLength(10)]],
+      weight: ['', [ Validators.maxLength(10)]],
       introducion: ['', [Validators.maxLength(225)]],
       requirement: ['', [Validators.maxLength(225)]],
       hobby: ['', [Validators.maxLength(225)]],
       facebook: ['', [Validators.maxLength(100)]],
-      price: ['', [Validators.pattern(/^[0-9]+$/), Validators.maxLength(20)]],
+      price: ['', [Validators.required, Validators.maxLength(20)]],
 
       // avatar: [''],
     });
@@ -55,7 +54,7 @@ export class ProfileUserComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService,
     private data: DataService,
-    private currencyPipe : CurrencyPipe
+
   ) {}
 
   ngOnInit(): void {
@@ -96,7 +95,6 @@ export class ProfileUserComponent implements OnInit {
       {
         next: (res) => {
           // thong bao thanh cong
-            this.getUserProfile();
             this.data.getCurentUser(res);
             this.toastr.success('Cập nhật thành công!','Thông báo');
 
@@ -113,8 +111,11 @@ export class ProfileUserComponent implements OnInit {
       next: (data) => {
         this.user = data.user;
         this.is_service_provider = this.user.is_service_provider;
-        this.avatar = this.user.avatar;
+        // this.avatar = this.user.avatar;
+        console.log(this.user.avatar);
+
         this.myForm.patchValue({
+          avatar:this.user.avatar,
           name: this.user.name,
           birth_day: this.user.birth_day,
           gender: this.user.gender,
@@ -165,10 +166,10 @@ export class ProfileUserComponent implements OnInit {
         (res) => {
           // console.log(res);
 
-          this.toastr.success('Thay đổi thành công!');
+          this.toastr.success('Thay đổi trạng thái thành công!');
         },
         (res) => {
-          this.toastr.error('Thay đổi thất bại!');
+          this.toastr.error('Thay đổi trạng thái thất bại!');
         }
       );
 
