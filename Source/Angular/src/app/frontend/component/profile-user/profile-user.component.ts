@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmBoxInitializer, DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
-
+import { CommonModule, CurrencyPipe} from '@angular/common';
 import { User } from '../../models/user';
 import { DataService } from '../../services/data.service';
 import { UserService } from '../../services/user.service';
@@ -27,6 +27,7 @@ export class ProfileUserComponent implements OnInit {
   onOff!: number;
   base_Url_img = `${environment.base_Url_img}`;
   imgSrc = this.avatar;
+  // formattedAmount!: any;
 
   validateForm() {
     this.myForm = this.fb.group({
@@ -53,8 +54,8 @@ export class ProfileUserComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private toastr: ToastrService,
-    private data: DataService
-
+    private data: DataService,
+    private currencyPipe : CurrencyPipe
   ) {}
 
   ngOnInit(): void {
@@ -182,4 +183,11 @@ export class ProfileUserComponent implements OnInit {
   get getControl() {
     return this.myForm.controls;
   }
+
+//   transformAmount(element:any){
+//     this.formattedAmount = this.currencyPipe.transform(this.formattedAmount, '$');
+//     console.log(this.formattedAmount);
+
+//     element.target.value = this.formattedAmount;
+// }
 }
