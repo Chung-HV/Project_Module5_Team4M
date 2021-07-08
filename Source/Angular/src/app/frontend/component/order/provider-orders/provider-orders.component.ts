@@ -36,7 +36,7 @@ export class ProviderOrdersComponent implements OnInit {
   getOrders() {
     this.providerService.getOrders(this.provider_id).subscribe({
       next: (data: any) => {
-        this.orders = data.orders;
+        this.orders = data.orders.data;
         this.customers = data.customers;
         this.order_details = data.order_details;
         this.provider = data.provider;
