@@ -11,6 +11,7 @@ export class UserProfileSidebarComponent implements OnInit {
   user: any;
   is_service_provider:any;
   user_id:any = localStorage.getItem('user_id')
+  activeLink:any = false;
   constructor(
     private userService: UserService
   ) {
@@ -29,4 +30,5 @@ export class UserProfileSidebarComponent implements OnInit {
       }
     })
   }
+
 }

@@ -10,12 +10,14 @@ import { UserService } from '../../../services/user.service';
 export class ProviderListComponent implements OnInit {
   providers: any[] = [];
   status:any
+  currentPage: any
+
   constructor(private userService: UserService,
     private toastr: ToastrService,
   ) {
     this.userService.getAllProviders().subscribe(
       providers => {
-        this.providers = providers;
+        this.providers = providers.data;
         console.log(this.providers);
       }
     )
