@@ -41,8 +41,8 @@
                       type="checkbox"
                       name="is_active "
                       (change)="checkValueActive(user.is_active ? 1 : 0)"
-                      (click)="requestActive()"
                       [checked]="user.is_active"
+                      (click)="requestActive()"
                     />
                     <span class="slider round"></span>
                   </label>
@@ -143,31 +143,7 @@
                     <p class="control-label">
                       Thành phố <span class="starred">(*)</span>
                     </p>
-                    <!-- <input
-                      [class.is-invalid]="
-                        myForm.get('city')?.invalid &&
-                        (myForm.get('city')?.dirty ||
-                          myForm.get('city')?.touched)
-                      "
-                      formControlName="city"
-                      type="text"
-                      name="city"
-                      autocomplete="false"
-                    />
-                    <div
-                      *ngIf="myForm.get('city')?.hasError('required')"
-                      class="invalid-feedback"
-                      class="text-danger"
-                    >
-                      Thành phố không được để trống!
-                    </div>
-                    <div
-                      *ngIf="myForm.get('city')?.hasError('maxlength')"
-                      class="invalid-feedback"
-                      class="text-danger"
-                    >
-                      Thành phố giới hạn 30 ký tự!
-                    </div> -->
+
                     <input
                       type="text"
                       formControlName="city"
@@ -386,4 +362,8 @@
     </div>
   </div>
   <app-frontend-footer></app-frontend-footer>
+
+
+
+
 </body>

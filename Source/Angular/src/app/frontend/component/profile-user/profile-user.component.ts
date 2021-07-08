@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ConfirmBoxInitializer, DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 
@@ -24,7 +25,7 @@ export class ProfileUserComponent implements OnInit {
   is_active!: boolean;
   onOff!: number;
   base_Url_img = `${environment.base_Url_img}`;
-  imgSrc = this.avatar;
+  imgSrc = '';
 
   validateForm() {
     this.myForm = this.fb.group({
@@ -84,19 +85,16 @@ export class ProfileUserComponent implements OnInit {
     formData.append('price', this.myForm.get('price')?.value);
 
     if (this.avatar) {
-      formData.append('avatar', this.avatar, this.avatar.name);
+      formData.append('avatar', this.avatar);
     }
 
     this.userService.updateUserProfile(this.id, formData).subscribe(
       {
         next: (res) => {
           // thong bao thanh cong
-          this.toastr.success('Cập nhật thành công!','Thông báo');
-          //reset form
-          Object.keys(this.myForm.controls).forEach((key) => {
-            this.myForm.get(key)?.setValue('');
-            this.myForm.get(key)?.setErrors(null);
-          });
+          if(res.status === 'success'){
+            this.toastr.success('Cập nhật thành công!','Thông báo');
+          }
         },
         error: () => {
           this.toastr.error('Cập nhật thất bại!','Thông báo');
@@ -154,9 +152,8 @@ export class ProfileUserComponent implements OnInit {
     }
   }
   requestActive() {
-    if (confirm('Bạn có chấp nhận thay đổi trạng thái ')) {
+
       let statusActive = this.onOff;
-      // console.log(statusActive);
 
       this.userService.isActive(this.id, statusActive).subscribe(
         (res) => {
@@ -168,7 +165,8 @@ export class ProfileUserComponent implements OnInit {
           this.toastr.error('Thay đổi thất bại!');
         }
       );
-    }
+
+
   }
 
   checkValueActive(event: number) {

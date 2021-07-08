@@ -39,13 +39,14 @@ import { CreateAlbumComponent } from './component/user-album/create-album/create
     CustomerOrdersComponent,
     UserProfileSidebarComponent,
     CreateAlbumComponent,
-    
+
   ],
   imports: [
     CommonModule,
     FrontendRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+
   ],
 })
 export class FrontendModule {}
