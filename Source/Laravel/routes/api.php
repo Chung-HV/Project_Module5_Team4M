@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\frontend\AlbumController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\UserController;
@@ -45,7 +46,8 @@ Route::prefix('users')->group(function () {
         Route::get('/profile', [AuthController::class, 'profile']);
         Route::post('/update/{id}', [AuthController::class, 'update']);
         Route::post('/active/{id}', [AuthController::class, 'updateActiveUser']);
-        Route::get('/uploadimg/{id}', [AuthController::class, 'uploadImage']);
+        Route::post('/album/create/{id}', [AlbumController::class, 'create']);
+        Route::get('/album/{id}', [AlbumController::class, 'getAlbumById']);
 
 
     });

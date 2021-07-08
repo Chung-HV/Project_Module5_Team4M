@@ -61,24 +61,9 @@ export class ProfileUserComponent implements OnInit {
   }
 
   updateProfileUser() {
-    // let data = this.myForm.value;
-    // console.log(JSON.stringify(data));
 
     let formData = new FormData();
-    // formData.append('data', data);
 
-    // formData.append('name', this.user.name);
-    // formData.append('birth_day', this.user.birth_day);
-    // formData.append('gender', this.user.gender);
-    // formData.append('city', this.user.city);
-    // formData.append('nation', this.user.nation);
-    // formData.append('height', this.user.height);
-    // formData.append('weight', this.user.weight);
-    // formData.append('hobby', this.user.hobby);
-    // formData.append('introducion', this.user.introducion);
-    // formData.append('requirement', this.user.requirement);
-    // formData.append('facebook', this.user.facebook);
-    // formData.append('price', this.user.price);
     formData.append('name', this.myForm.get('name')?.value);
     formData.append('birth_day', this.myForm.get('birth_day')?.value);
 
@@ -103,10 +88,7 @@ export class ProfileUserComponent implements OnInit {
     if (this.avatar) {
       formData.append('avatar', this.avatar, this.avatar.name);
     }
-    // console.log(formData.has('city'));
 
-    // console.log(formData.has('facebook'));
-    // console.log(formData.has('avatar'));
     this.userService.updateUserProfile(this.id, formData).subscribe(
       (res) => {
         this.user = this.data.getCurentUser(res)
@@ -114,7 +96,8 @@ export class ProfileUserComponent implements OnInit {
         this.toastr.success('Cập nhật thông tin thành công', 'Thông báo');
         // formData.delete('city');
 
-        // }
+        this.toastr.success('Cập nhật thành công!', 'Thông báo');
+
       },
       (error) => {
         this.toastr.error('Cập nhật thất bại', 'Thông báo');
@@ -143,11 +126,9 @@ export class ProfileUserComponent implements OnInit {
         });
         this.id = this.user.id;
         this.is_active = this.user.is_active;
-        // console.log(this.user.price);
 
         this.user.avatar = `${environment.base_Url_img}${this.user.avatar}`;
-        // this.name = this.user.name;
-        // console.log(this.user);
+
       },
     });
   }
