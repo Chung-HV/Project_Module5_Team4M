@@ -80,9 +80,11 @@ export class ProviderDetailComponent implements OnInit {
       start_at: this.order.start_at,
       start_time: this.order.start_time,
     };
-
+    
     this.homeService.orderServiceProvider(data).subscribe(
       (response) => {
+        console.log(response);
+        
         this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
         // this.router.navigate(['frontend/user/orders'])
       },
@@ -92,16 +94,16 @@ export class ProviderDetailComponent implements OnInit {
     );
   }
   changeMoney(){
-    const money = this.money - (this.users.price*this.order.time_rent);
-    var cost:any = this.users.price*this.order.time_rent;
-    localStorage.setItem('cost', cost);
-    this.userService.changeMoney(money).subscribe(
-      (res) => {
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
+    // const money = this.money - (this.users.price*this.order.time_rent);
+    // var cost:any = this.users.price*this.order.time_rent;
+    // localStorage.setItem('cost', cost);
+    // this.userService.changeMoney(money).subscribe(
+    //   (res) => {
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // )
   }
 
   getAlbum(id:any){

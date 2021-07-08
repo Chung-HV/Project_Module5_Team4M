@@ -2,20 +2,15 @@
 <div></div>
 
 <div class="wrapper" *ngFor="let user of users">
-  <div class="container">
-    <div class="player-profile-left-wrap col-md-3">
-      <div class="avt avt-lg">
-        <img
-          src="{{ base_Url_img + user.avatar }}"
-          class="avt-img"
-          alt="PD"
-          style="object-fit: cover"
-        />
-      </div>
-      <div class="rent-time-wrap">
-        <p class="ready">Đang sẵn sàng</p>
-      </div>
-      <!-- <div class="social-icon">
+    <div class="container">
+        <div class="player-profile-left-wrap col-md-3">
+            <div class="avt avt-lg">
+                <img src="{{ base_Url_img + user.avatar }}" class="avt-img" alt="PD" style="object-fit: cover" />
+            </div>
+            <div class="rent-time-wrap">
+                <p class="ready">Đang sẵn sàng</p>
+            </div>
+            <!-- <div class="social-icon">
         <div class="icon-wrap facebook"><a href="https://www.facebook.com/Leethiihoongcaam" target="_blank"
             rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></div>
         <div class="icon-wrap user-page"><a href="https://playerduo.com/sun21s" target="_blank"
@@ -23,107 +18,101 @@
             <img src="assets/frontend/static/icons/player-card.png" alt="PD" title="Trang cá nhân"
               class="option-icon img-rounded"></a></div>
       </div> -->
-      <div class="member-since">
-        <span>Ngày tham gia:</span
+            <div class="member-since">
+                <span>Ngày tham gia:</span
         ><span
-          ><span>{{ user.created_at | date }}</span></span
-        >
-      </div>
-      <div class="ui-category">
-        <div class="border-category"></div>
-        <div class="title-category">
-          <span class="member-since-septem">Sở thích</span>
+          ><span>{{ user.created_at | date }}</span></span>
+            </div>
+            <div class="ui-category">
+                <div class="border-category"></div>
+                <div class="title-category">
+                    <span class="member-since-septem">Sở thích</span>
+                </div>
+            </div>
+            <table class="table-achievement table">
+                <tbody>
+                    <tr style="display: flex; flex-direction: column">
+                        <td><i class="fas fa-award"></i>{{ user.hobby }}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
-      <table class="table-achievement table">
-        <tbody>
-          <tr style="display: flex; flex-direction: column">
-            <td><i class="fas fa-award"></i>{{ user.hobby }}</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="player-profile-right-wrap col-md-3 col-md-push-6">
-      <div class="right-player-profile">
-        <p class="price-player-profile">{{ user.price | number }} đ/h</p>
-        <!-- <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+        <div class="player-profile-right-wrap col-md-3 col-md-push-6">
+            <div class="right-player-profile">
+                <p class="price-player-profile">{{ user.price | number }} đ/h</p>
+                <!-- <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
             class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>&nbsp;<span>216
             <span>Đánh giá</span></span></div> -->
-        <div class="text-center">
-          <button
-            class="btn-my-style red"
-            data-toggle="modal"
-            data-target="#rent"
-          >
+                <div class="text-center">
+                    <button class="btn-my-style red" data-toggle="modal" data-target="#rent">
             Thuê
           </button>
-          <!-- <button class="btn-my-style white">Donate</button> -->
-          <button class="btn-my-style gray">
+                    <!-- <button class="btn-my-style white">Donate</button> -->
+                    <button class="btn-my-style gray">
             <i class="fas fa-comment-alt"></i>Chat
           </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="player-profile-main-wrap col-md-6 col-md-pull-3">
-      <div>
-        <div class="row">
-          <div class="center-item col-md-12">
-            <span class="name-player-profile hidden-over-name">{{
+        <div class="player-profile-main-wrap col-md-6 col-md-pull-3">
+            <div>
+                <div class="row">
+                    <div class="center-item col-md-12">
+                        <span class="name-player-profile hidden-over-name">{{
               user.name
             }}</span
             ><button class="btn-follow-player">
               <i class="fas fa-heart"></i>&nbsp;<span class="plus"
-                ><span>Theo dõi</span></span
-              >
-            </button>
-          </div>
-        </div>
-        <div class="nav-player-profile row">
-          <div class="col-md-3 col-xs-6">
-            <div class="item-nav-name"><span>Lượt view</span></div>
-            <div class="item-nav-value">
-              {{ user.count_view }} &nbsp; <span>người</span>
-            </div>
-          </div>
-          <div class="col-md-3 col-xs-6">
-            <div class="item-nav-name"><span>Lượt thuê</span></div>
-            <div class="item-nav-value">
-              {{ user.count_rent }} &nbsp; <span>lần</span>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div class="title-player-profile row">
-          <div class="col-md-12">
-            <span>Giới thiệu </span>
-            <p>{{ user.introducion }}</p>
-            <hr />
-          </div>
+                ><span>Theo dõi</span></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="nav-player-profile row">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="item-nav-name"><span>Lượt view</span></div>
+                        <div class="item-nav-value">
+                            {{ user.count_view }} &nbsp; <span>người</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <div class="item-nav-name"><span>Lượt thuê</span></div>
+                        <div class="item-nav-value">
+                            {{ user.count_rent }} &nbsp; <span>lần</span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="title-player-profile row">
+                    <div class="col-md-12">
+                        <span>Giới thiệu </span>
+                        <p>{{ user.introducion }}</p>
+                        <hr />
+                    </div>
 
-          <div class="col-md-12">
-            <span>Yêu cầu với người thuê</span>
-            <p>{{ user.requirement }}</p>
-          </div>
-        </div>
-        <hr />
-        <div class="content-player-profile">
-          <div class="album-of-player">
-            <div *ngFor="let album of albums">
-              <a style="display: block">
-                <img src="{{ base_Url_img + album }}" class="" alt="" />
-              </a>
+                    <div class="col-md-12">
+                        <span>Yêu cầu với người thuê</span>
+                        <p>{{ user.requirement }}</p>
+                    </div>
+                </div>
+                <hr />
+                <div class="content-player-profile">
+                    <div class="album-of-player">
+                        <div *ngFor="let album of albums">
+                            <a style="display: block">
+                                <img src="{{ base_Url_img + album }}" class="" alt="" />
+                            </a>
 
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <h3>❤️ Tên : {{ user.name }}</h3>
-          <h3>♥♥♥ Dịch Vụ ♥♥♥</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <h3>❤️ Tên : {{ user.name }}</h3>
+                    <h3>♥♥♥ Dịch Vụ ♥♥♥</h3>
 
-          <h3 *ngFor="let sv of user.services">❤️ {{ sv.name }}</h3>
-        </div>
-        <hr />
-        <!-- <div class="title-player-profile row">
+                    <h3 *ngFor="let sv of user.services">❤️ {{ sv.name }}</h3>
+                </div>
+                <hr />
+                <!-- <div class="title-player-profile row">
           <div class="col-md-12"><span>Đánh giá</span></div>
         </div>
         <div class="text-center review-duo-player row">
@@ -154,110 +143,71 @@
           </div>
 
         </div> -->
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <div
-    class="fade modal-donate in modal"
-    id="rent"
-    role="dialog"
-    tabindex="-1"
-    aria-labelledby="rent"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <form>
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+    <div class="fade modal-donate in modal" id="rent" role="dialog" tabindex="-1" aria-labelledby="rent" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
-            <h4 class="modal-title"><span>Thuê Người Yêu</span></h4>
-          </div>
+                        <h4 class="modal-title"><span>Thuê Người Yêu</span></h4>
+                    </div>
 
-          <div class="modal-body">
-            <table>
-              <tbody>
-                <tr>
-                  <td>Người Yêu:</td>
-                  <td>{{ user.name }}</td>
-                </tr>
-                <tr>
-                  <td><span>Điểm Hẹn:</span></td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      [(ngModel)]="order.address"
-                      name="address"
-                    />
-                  </td>
-                </tr>
+                    <div class="modal-body">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Người Yêu:</td>
+                                    <td>{{ user.name }}</td>
+                                </tr>
+                                <tr>
+                                    <td><span>Điểm Hẹn:</span></td>
+                                    <td>
+                                        <input type="text" class="form-control" [(ngModel)]="order.address" name="address" />
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <td><span>Đặt ngày hẹn:</span></td>
-                  <td>
-                    <input
-                      type="date"
-                      class="form-control"
-                      [(ngModel)]="order.start_at"
-                      name="created_at"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td><span>Đặt giờ hẹn:</span></td>
-                  <td>
-                    <input
-                      type="time"
-                      class="form-control"
-                      [(ngModel)]="order.start_time"
-                      name="start_time"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td><span>Thời gian muốn thuê</span></td>
-                  <td>
-                    <select [(ngModel)]="order.time_rent" class="form-control">
+                                <tr>
+                                    <td><span>Đặt ngày hẹn:</span></td>
+                                    <td>
+                                        <input type="date" class="form-control" [(ngModel)]="order.start_at" name="created_at" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span>Đặt giờ hẹn:</span></td>
+                                    <td>
+                                        <input type="time" class="form-control" [(ngModel)]="order.start_time" name="start_time" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span>Thời gian muốn thuê</span></td>
+                                    <td>
+                                        <select [(ngModel)]="order.time_rent" class="form-control">
                       <option value="0.5">30&nbsp;phút</option>
                       <option value="1">1&nbsp;giờ</option>
                       <option value="2">2&nbsp;giờ</option>
@@ -284,61 +234,41 @@
                       <option value="23">23&nbsp;giờ</option>
                       <option value="24">24&nbsp;giờ</option>
                     </select>
-                  </td>
-                </tr>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <td><span>Chi phí</span>:</td>
-                  <td>
-                    <input
-                      value="{{ user.price * order.time_rent | number }} VND"
-                      style="border: none; background-color: white"
-                      disabled
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td><span>Số dư hiện tại</span>:</td>
-                  <td>
-                    <span class="total-amount"> {{ money | number }} VND</span
+                                <tr>
+                                    <td><span>Chi phí</span>:</td>
+                                    <td>
+                                        <input value="{{ user.price * order.time_rent | number }} VND" style="border: none; background-color: white" disabled />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span>Số dư hiện tại</span>:</td>
+                                    <td>
+                                        <span class="total-amount"> {{ money | number }} VND</span
                     ><span class="load-more-credit">+</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <textarea
-                      placeholder="Type a message ..."
-                      name="message"
-                      maxlength="255"
-                      type="text"
-                      class="form-control"
-                    ></textarea>
-                    <p class="err-message"></p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="submit"
-              class="btn-fill btn btn-danger"
-              (click)="saveOrder()"
-              (click)="changeMoney()"
-            >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <textarea placeholder="Type a message ..." name="message" maxlength="255" type="text" class="form-control"></textarea>
+                                        <p class="err-message"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-fill btn btn-danger" (click)="saveOrder()">
               <span>Thuê</span>
             </button>
-            <button
-              type="button"
-              class="btn btn-default"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">
               <span>Đóng</span>
             </button>
-          </div>
+                    </div>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>

@@ -45,8 +45,10 @@ class OrderController extends Controller
                 $service_provider->save();
                 DB::commit();
                 Session::flash('success', 'Bạn đã đặt thuê thành công');
+                // return response()->json('success');
             } catch (\Exception $e) {
                 DB::rollback();
+                // return response()->json($e);
                 Session::flash('error', 'Có lỗi xảy ra vui lòng thử lại');
             }
             return response()->json($user_account);
