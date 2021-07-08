@@ -96,7 +96,7 @@ export class ProfileUserComponent implements OnInit {
       {
         next: (res) => {
           // thong bao thanh cong
-
+            this.getUserProfile();
             this.data.getCurentUser(res);
             this.toastr.success('Cập nhật thành công!','Thông báo');
 
