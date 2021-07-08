@@ -1,6 +1,6 @@
 .styled select {
     background: transparent;
-    width: 300px;
+    width: 180px;
     font-size: 16px;
     border: 1px solid #CCC;
     height: 30px;
@@ -8,10 +8,10 @@
 
 .styled {
     /* margin: 50px; */
-    width: 250px;
+    width: 180px;
     height: 30px;
     border: 1px solid #111;
     border-radius: 3px;
     overflow: hidden;
-    background: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat #EEE;
+    /* background: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat #EEE; */
 }

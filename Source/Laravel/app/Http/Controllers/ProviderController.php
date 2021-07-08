@@ -66,7 +66,7 @@ class ProviderController extends Controller
     }
 
     public function getAll(){
-        $providers = DB::table('users')->where('is_service_provider','=',1)->get();
+        $providers = User::where('is_service_provider','=',1)->paginate(10);
         return response()->json($providers,200);
     }
 

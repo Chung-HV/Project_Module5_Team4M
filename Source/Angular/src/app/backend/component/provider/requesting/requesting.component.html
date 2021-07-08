@@ -9,7 +9,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Requesting List</li>
+                        <li class="breadcrumb-item active">Danh sách người đang yêu cầu cung cấp dịch vụ</li>
                     </ol>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Requesting List</h3>
+                            <h3 class="card-title">Danh sách người đang yêu cầu cung cấp dịch vụ</h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -46,9 +46,10 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>User</th>
-                                        <th>Request Date</th>
-                                        <th>Action</th>
+                                        <th>Tên người dùng</th>
+                                        <th>Ngày gửi yêu cầu</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let provider of providers">

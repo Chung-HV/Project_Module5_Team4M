@@ -18,14 +18,15 @@
           <div class="text-right col-md-3"></div>
           <div class="col-md-4">
             <div class="player-select div-autoComplete-search">
-              <input class="form-control" name="gameCategory" placeholder="Tên game" type="text" autocomplete="off"
-                value="">
+              <input class="form-control" name="search_user_name" placeholder="Tên người yêu" type="text"
+                autocomplete="off" [(ngModel)]="search_user_name">
               <div class="suggestion-game-hide"></div>
             </div>
           </div>
           <div class="text-left col-md-3"><button class="btn btn-danger btn-filter" data-toggle="modal"
-              data-target="#filter"><span>Bộ
-                lọc</span></button><button class="btn btn-success btn-search"><span>Tìm
+              data-target="#filter">
+              <span>
+                Bộ lọc</span></button><button class="btn btn-success btn-search" (click)="searchUserName()"><span>Tìm
                 kiếm</span>&nbsp;</button></div>
         </section>
       </div>
@@ -35,10 +36,10 @@
         <section class="box vip-player">
           <h4 class="section-title">Kết quả tìm kiếm theo bộ lọc ({{this.count_filter}})</h4>
           <button class="refresh-btn" (click)="removeFilter()"><i class="fas fa-sync fa-spin" aria-hidden="true"
-              style="margin-right: 5px;" >
+              style="margin-right: 5px;">
             </i>
-              <span>Thoát khỏi bộ lọc</span>
-            </button>
+            <span>Thoát khỏi bộ lọc</span>
+          </button>
         </section>
         <div class="row flex-card" *ngIf="count_filter >0">
 
@@ -62,22 +63,49 @@
                 <a [routerLink]="['/frontend/provider-detail',user.id]">{{user.name}}</a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">{{ user.hobby }}</p>
-              <!-- <div class="category">
-                <div class="div--flex"><img
-                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
-                    alt="category logo"><span>Liên minh Huyền thoại</span></div>
-              </div> -->
+              <p class="player-title">{{ user.introducion }}</p>
+              <div class="category">
+                <div class="div--flex">
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-love-flat-simple-hobby-icon-png-image_4478699.jpg"
+                    class="" alt="category logo">
+                  <span>{{user.hobby}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="row flex-card" *ngIf="count_filter == 0">
-          Không tìm thấy kết quả phù hợp!
+          <!-- Không tìm thấy kết quả phù hợp! -->
+          <table style="align-items: center; margin: auto;margin-top: 100px;">
+            <tr>
+              <td class="text-left">
+                <div style="text-align: center;">
+                  <h1 style="font-size: 100px;"><b>404</b></h1>
+                  <div>
+                    <button class="btn btn-danger btn-filter" (click)="removeFilter()"  >
+                    <span>
+                      Về  Trang Chủ
+                    </span>
+                    </button>
+                  </div>
+                  <h3>Có Vẻ Như Kêt Quả Mà Bạn</h3>
+                  <h3>Bạn Cần Tìm Không Có .......</h3>
+                </div>
+              </td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              <td class="text-right">
+                <img src="http://127.0.0.1:8000/storage/images/users/4mlogo.jpg" style="width: 270px;height: 270px;">
+              </td>
+            </tr>
+          </table>
+
+
         </div>
       </div>
       <div>
         <section class="box vip-player" *ngIf="filter_user == null">
-          <h4 class="section-title">VIP PLAYER</h4>
+          <h4 class="section-title">Người Yêu Vip</h4>
           <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
               style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
@@ -108,9 +136,12 @@
               </h3>
               <p class="player-title">{{ user.introducion }}</p>
               <div class="category">
-                <div class="div--flex"><img
-                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
-                    alt="category logo"><span>{{ user.hobby }}</span></div>
+                <div class="div--flex">
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-love-flat-simple-hobby-icon-png-image_4478699.jpg"
+                    class="" alt="category logo">
+                  <span>{{user.hobby}}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -118,7 +149,7 @@
       </div>
       <div *ngIf="filter_user == null">
         <section class="hot-player">
-          <h4 class="section-title">HOT PLAYER</h4>
+          <h4 class="section-title">Người Yêu Hot</h4>
           <button hidden class="refresh-btn"><i class="fas fa-sync" aria-hidden="true"
               style="margin-right: 5px;"></i><span>Làm
               mới</span></button>
@@ -145,12 +176,15 @@
                   (click)="increaseView(user.id)">{{user.name}} </a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">{{ user.hobby }}</p>
-              <!-- <div class="category">
-                <div class="div--flex"><img
-                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
-                    alt="category logo"><span>LOL - PUBGPC - CSGO - DTCL - VLR</span></div>
-              </div> -->
+              <p class="player-title">{{ user.introducion }}</p>
+              <div class="category">
+                <div class="div--flex">
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-love-flat-simple-hobby-icon-png-image_4478699.jpg"
+                    class="" alt="category logo">
+                  <span>{{user.hobby}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -182,12 +216,15 @@
                 <a [routerLink]="['/provider-detail',user.id]" (click)="increaseView(user.id)">{{user.name}}</a>
                 <div class="player-status ready"> </div>
               </h3>
-              <p class="player-title">{{ user.hobby }}</p>
-              <!-- <div class="category">
-                <div class="div--flex"><img
-                    src="https://files.playerduo.com/production/static-files/game-category/other.png" class=""
-                    alt="category logo"><span>Liên minh Huyền thoại</span></div>
-              </div> -->
+              <p class="player-title">{{ user.introducion }}</p>
+              <div class="category">
+                <div class="div--flex">
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-love-flat-simple-hobby-icon-png-image_4478699.jpg"
+                    class="" alt="category logo">
+                  <span>{{user.hobby}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -274,11 +311,11 @@
                     </select>
                   </div>
                 </td>
-                  <td>
-                    <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
-                        (click)="removeCity()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
-                    </div>
-                  </td>
+                <td>
+                  <div data-toggle="buttons" class="btn-group"><label type="button" class="btn btn-default active"
+                      (click)="removeCity()"><span><i class="fa fa-times" aria-hidden="true"></i></span></label>
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td class="text-left"><span>Tên</span>/Người yêu:</td>
@@ -354,4 +391,3 @@
     </form>
   </div>
 </div>
-

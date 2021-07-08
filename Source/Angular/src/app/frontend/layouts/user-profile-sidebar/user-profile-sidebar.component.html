@@ -3,7 +3,7 @@
         <div class="menu__setting--main panel panel-default">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <a aria-expanded="true" class="" role="button" href="#">TÀI KHOẢN
+                    <a aria-expanded="true" class="" role="button" href="">TÀI KHOẢN
               </a>
                 </div>
             </div>
@@ -12,7 +12,8 @@
                     <div class="panel-group">
                         <div class="menu__setting--sub panel panel-default">
                             <div class="panel-heading">
-                                <div class="active panel-title">
+                                <div class="panel-title" (click)="clickInforUser()"
+                                [ngClass]="active_info ? 'active' : 'null'" style="border-style: none;">
                                     <a role="menuitem" tabindex="-1" [routerLink]="['../../user/profile']">
                                         <i class="fas fa-user-tie"></i> Thông tin người dùng
                                     </a>
@@ -21,16 +22,18 @@
                         </div>
                         <div class="menu__setting--sub panel panel-default">
                           <div class="panel-heading">
-                              <div class="active panel-title">
+                              <div class=" panel-title" (click)="clickAlbumUser()"
+                              [ngClass]="active_album ? 'active' : 'null'" style="border-style: none;">
                                   <a role="menuitem" tabindex="-1" [routerLink]="['../../user/album']">
                                       <i class="fas fa-user-tie"></i> Album ảnh người dùng
                                   </a>
                               </div>
                           </div>
                       </div>
-                        <div class="menu__setting--sub panel panel-default">
-                            <div class="panel-heading">
-                                <div class="panel-title">
+                        <div class="menu__setting--sub panel panel-default active" >
+                            <div class="panel-heading" >
+                                <div class="panel-title" (click)="clickRentedUser()"
+                                [ngClass]="active_rented ? 'active' : 'null'" style="border-style: none;">
                                     <a role="menuitem" tabindex="-1" href="http://localhost:4200/frontend/user/orders">
                                         <i class="fas fa-sliders-h"></i> Đã thuê
                                     </a>
@@ -40,16 +43,18 @@
 
                         <div class="menu__setting--sub panel panel-default" *ngIf="is_service_provider == 1">
                             <div class="panel-heading">
-                                <div class="panel-title">
+                                <div class="panel-title" (click)="clickServiceUser()"
+                                [ngClass]="active_service ? 'active' : 'null'" style="border-style: none;">
                                     <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/services']">
                                         <i class="fas fa-sliders-h"></i> Dịch vụ cung cấp
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__setting--sub panel panel-default" *ngIf="is_service_provider == 1">
+                        <div class="menu__setting--sub panel panel-default" *ngIf="is_service_provider == 1" >
                             <div class="panel-heading">
-                                <div class="panel-title">
+                                <div  class="panel-title" (click)="clickRentUser()"
+                                [ngClass]="active_rent ? 'active' : 'null'" >
                                     <a role="menuitem" tabindex="-1" [routerLink]="['../../provider/orders']">
                                         <i class="fas fa-sliders-h"></i> Được thuê
                                     </a>

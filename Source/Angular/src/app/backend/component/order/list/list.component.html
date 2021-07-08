@@ -23,7 +23,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Providers List</li>
+                                <li class="breadcrumb-item active">Danh sách đơn thuê</li>
                             </ol>
                         </div>
                     </div>
@@ -40,9 +40,25 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header row">
-                                    <h3 class="card-title col-sm-3">Orders List</h3>
+                                    <div class="col-sm-7">
+                                        <h3 class="card-title" style="padding: auto;">Danh sách đơn thuê</h3>
+                                    </div>
+                                    <div class="col-sm-5 row" style="justify-content: right;">
+                                        <div class="col-sm-7">
+                                            <p style="margin-top: 4px;float: right; margin-right: 5px;">Trạng thái</p>
+                                        </div>
 
-                                    <div class="card-tools col-sm-3">
+                                        <div class="styled" dir="ltr">
+                                            <select #selectedStatus (change)="getByStatus(selectedStatus.value)">
+                                                <option selected value="">Toàn bộ</option>
+                                                <option value="pending">Chờ phản hồi</option>
+                                                <option value="accepted">Đang tiến hành</option>
+                                                <option value="done">Đã hoàn thành</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="card-tools col-sm-3">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -52,23 +68,8 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="col-sm-6 row">
-                                        <div class="col-sm-3 row">
-                                            <p>Sort by status</p>
-                                        </div>
-                                        <div class="col-sm-9 row">
-                                            <div class="styled" dir="ltr">
-                                                <select #selectedStatus (change)="getByStatus(selectedStatus.value)">
-                                                    <option selected value="">Toàn bộ</option>
-                                                    <option value="pending">Chờ phản hồi</option>
-                                                    <option value="accepted">Đang tiến hành</option>
-                                                    <option value="done">Đã hoàn thành</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
@@ -88,7 +89,8 @@
                                             <tr>
                                                 <td>{{i+1}}</td>
                                                 <td>
-                                                    <a data-toggle="modal" data-target="#order-detail-modal" (click)="setOrderDetailData(i)">{{order.provider.name}}</a></td>
+                                                    <a data-toggle="modal" data-target="#order-detail-modal" (click)="setOrderDetailData(i)">{{order.provider.name}}</a>
+                                                </td>
                                                 <td>{{order.customer.name}}</td>
                                                 <td>{{order.order_detail.start_at}}</td>
                                                 <td>{{order.order_detail.time*order.provider.price}}</td>
@@ -104,7 +106,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+                                    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Trước" nextLabel="Sau"></pagination-controls>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -135,8 +137,8 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Oder Detail</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body" *ngFor="let data of order_detail">
                     <div class="row">
