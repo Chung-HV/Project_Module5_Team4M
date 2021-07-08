@@ -8,7 +8,7 @@ import { FrontendFooterComponent } from './layouts/frontend-footer/frontend-foot
 import { FrontendHomeComponent } from './component/frontend-home/frontend-home.component';
 import { LoginComponent } from './component/login/login.component';
 import { ProfileUserComponent } from './component/profile-user/profile-user.component';
-import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/frontend-user-header.component';
+// import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/frontend-user-header.component';
 
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -20,6 +20,7 @@ import { CustomerOrdersComponent,} from './component/order/customer-order/custom
 import { UserProfileSidebarComponent } from './layouts/user-profile-sidebar/user-profile-sidebar.component';
 import { CreateAlbumComponent } from './component/user-album/create-album/create-album.component';
 import { CurrencyPipe} from '@angular/common';
+import { FrontendUserHeaderComponent } from './layouts/frontend-user-header/frontend-user-header.component';
 
 @NgModule({
   declarations: [

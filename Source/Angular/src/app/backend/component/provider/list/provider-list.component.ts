@@ -15,6 +15,9 @@ export class ProviderListComponent implements OnInit {
   constructor(private userService: UserService,
     private toastr: ToastrService,
   ) {
+    this.getAllProvider();
+  }
+  getAllProvider(){
     this.userService.getAllProviders().subscribe(
       providers => {
         this.providers = providers.data;
@@ -23,11 +26,14 @@ export class ProviderListComponent implements OnInit {
     )
   }
   ngOnInit(): void {
+
   }
 
   setVip(provider_id:any){
     this.userService.setVip(provider_id).subscribe({
       next: ()=>{
+    this.getAllProvider();
+
         this.toastr.success('Đặt tài khoản VIP thành công!');
        },
        error: (error) => {
