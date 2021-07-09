@@ -35,7 +35,7 @@
                                             <td>{{order_details[i].time}} Giờ</td>
                                             <td>{{order_details[i].start_time}}</td>
                                             <td>{{order_details[i].start_at}}</td>
-                                            <td>{{providers[i].price * order_details[i].time}} 000.d</td>
+                                            <td>{{providers[i].price * order_details[i].time| number}} VNĐ</td>
                                             <td *ngIf="order.status == 'pending'">Chờ {{providers[i].name}} phản hồi</td>
                                             <td *ngIf="order.status == 'accepted'">Đang tiến hành</td>
                                             <td *ngIf="order.status == 'request done'">Chờ xác nhận</td>
