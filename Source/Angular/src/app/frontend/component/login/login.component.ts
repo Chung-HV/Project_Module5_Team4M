@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
+        this.data.setCurrenMoney(data.user.accounts.mooney);
+
         localStorage.setItem('token', data.access.token);
         localStorage.setItem('user_id', data.user.id);
         this.data.changeCheck(false);

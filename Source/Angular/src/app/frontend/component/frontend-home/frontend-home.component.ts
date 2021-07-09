@@ -24,7 +24,9 @@ export class FrontendHomeComponent implements OnInit {
   is_service_provider!:any;
   provider_id: any;
   user!: any;
-  money!:any;
+  money:any = this.data.currentMoney.subscribe(
+    (money)=>(this.money = money)
+  )
   user_main: any =[];
   open: any = false;
   user_id = localStorage.getItem('user_id');
