@@ -281,8 +281,8 @@
 
                 <tr>
                   <td><span>Chi phí</span>:</td>
-                  <td>
-                    <input
+                  <td> <span class="total-amount">-</span>
+                    <input class="total-amount"
                       value="{{ user.price * order.time_rent | number }} VND"
                       style="border: none; background-color: white"
                       disabled
@@ -292,22 +292,11 @@
                 <tr>
                   <td><span>Số dư hiện tại</span>:</td>
                   <td>
-                    <span class="total-amount"> {{ money | number }} VND</span
+                    <span > {{ money | number }} VND</span
                     ><span class="load-more-credit">+</span>
                   </td>
                 </tr>
-                <tr>
-                  <td colspan="2">
-                    <textarea
-                      placeholder="Type a message ..."
-                      name="message"
-                      maxlength="255"
-                      type="text"
-                      class="form-control"
-                    ></textarea>
-                    <p class="err-message"></p>
-                  </td>
-                </tr>
+
               </tbody>
             </table>
           </div>
@@ -318,7 +307,7 @@
               (click)="saveOrder()"
               (click)="changeMoney()"
             >
-              <span>Thuê</span>
+              <span data-dismiss="modal">Thuê</span>
             </button>
             <button
               type="button"

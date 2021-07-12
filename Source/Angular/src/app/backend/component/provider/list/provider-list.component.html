@@ -66,7 +66,7 @@
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let provider of providers | paginate:{itemsPerPage: 10,currentPage : currentPage}">
+                                        <tbody *ngFor="let provider of providers | paginate:{itemsPerPage: 5,currentPage : currentPage}">
                                             <tr>
                                                 <td>{{provider.id}}</td>
                                                 <td>{{provider.name}}</td>

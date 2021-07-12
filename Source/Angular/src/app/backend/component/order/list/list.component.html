@@ -85,7 +85,7 @@
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let order of orders.data | paginate:{itemsPerPage: 20,currentPage : currentPage}, let i = index">
+                                        <tbody *ngFor="let order of orders.data | paginate:{itemsPerPage: 5,currentPage : currentPage}, let i = index">
                                             <tr>
                                                 <td>{{i+1}}</td>
                                                 <td>

@@ -80,18 +80,23 @@ export class ProviderDetailComponent implements OnInit {
       start_at: this.order.start_at,
       start_time: this.order.start_time,
     };
-    
-    this.homeService.orderServiceProvider(data).subscribe(
-      (response) => {
-        console.log(response);
-        
-        this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
-        // this.router.navigate(['frontend/user/orders'])
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if(localStorage.getItem('user_id')){
+      this.homeService.orderServiceProvider(data).subscribe(
+        (response) => {
+          console.log(response);
+
+          this.toastr.success('Đặt lịch thuê thành công, vui lòng chờ xác nhận');
+          // this.router.navigate(['frontend/user/orders'])
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }else{
+      this.toastr.error('Bạn cần đăng nhập trước khi thuê');
+
+     this.router.navigate(['frontend/login']);
+    }
   }
   changeMoney(){
     // const money = this.money - (this.users.price*this.order.time_rent);
